@@ -1,11 +1,12 @@
 #include <vector>
 #include <algorithm>
+#include <iterator>
 
 template <typename T> void selection_sort(std::vector<T>& v)
 {
 	int min;
 
-	for (int i = 0; i < v.size() - 1; i++) {
+	for (int i = 0; i < v.size(); i++) {
 		min = i;
 		for (int j = i + 1; j < v.size(); j++) {
 			if (v[j] < v[min]) {
