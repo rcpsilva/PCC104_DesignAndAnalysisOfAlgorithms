@@ -9,7 +9,6 @@ int main() {
 	printSequence(v);
 	selection_sort(v);
 	printSequence(v);
-
 	
 	std::list<Student> l({});
 	l.push_back(Student("Rodrigo", 8));
