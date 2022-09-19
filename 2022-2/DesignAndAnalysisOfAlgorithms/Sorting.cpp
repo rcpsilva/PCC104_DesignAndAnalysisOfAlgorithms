@@ -15,7 +15,6 @@ template <typename T> void selection_sort(std::vector<T>& v)
 		}
 		std::swap(v[i], v[min]);
 	}
-
 }
 
 template<class It, class C> void selection_sort(It first, It last, C comparator) {
