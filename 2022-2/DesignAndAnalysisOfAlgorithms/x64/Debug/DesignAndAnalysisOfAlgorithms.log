@@ -1,3 +1,4 @@
-﻿  Search.cpp
-C:\Users\rcpsi\source\repos\PCC104_DesignAndAnalysisOfALgorithms\2022-2\DesignAndAnalysisOfAlgorithms\Search.cpp(114,90): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+﻿  main.cpp
+  Search.cpp
+  Generating Code...
   DesignAndAnalysisOfAlgorithms.vcxproj -> C:\Users\rcpsi\source\repos\PCC104_DesignAndAnalysisOfALgorithms\2022-2\DesignAndAnalysisOfAlgorithms\x64\Debug\DesignAndAnalysisOfAlgorithms.exe

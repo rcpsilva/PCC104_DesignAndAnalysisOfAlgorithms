@@ -8,14 +8,13 @@
 int main() {
 	
 	printf("All \n");
-	generate_all_vals(3);
+	generate_permutations(4);
 
-	printf("Combinations \n");
+	/*printf("Combinations \n");
 	generate_combinations(3);
 
 	printf("Permutations \n");
 	generate_permutations(3);
-
 
 	printf("TSP \n");
 	std::vector<std::vector<int>> costs({
@@ -23,5 +22,5 @@ int main() {
 		{0,0,40},
 		{12,10,0} });
 	
-	printSequence(tsp_brute_force(costs));
+	printSequence(tsp_brute_force(costs));*/
 }
