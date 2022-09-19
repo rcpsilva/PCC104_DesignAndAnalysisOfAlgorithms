@@ -16,4 +16,12 @@ int main() {
 	printf("Permutations \n");
 	generate_permutations(3);
 
+
+	printf("TSP \n");
+	std::vector<std::vector<int>> costs({
+		{0,80,50},
+		{0,0,40},
+		{12,10,0} });
+	
+	printSequence(tsp_brute_force(costs));
 }
