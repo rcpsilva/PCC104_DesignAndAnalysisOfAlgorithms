@@ -128,11 +128,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Search.h" />
     <ClInclude Include="Sorting.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Search.cpp" />
     <ClCompile Include="Sorting.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Util.cpp" />

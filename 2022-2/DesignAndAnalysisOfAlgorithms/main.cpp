@@ -3,26 +3,17 @@
 #include "Util.h"
 #include "Sorting.h"
 #include "Student.cpp" 
+#include "Search.h"
 
 int main() {
-	std::vector<int> v({0,0,0,5,4,3});
-	printSequence(v);
-	selection_sort(v);
-	printSequence(v);
 	
-	std::list<Student> l({});
-	l.push_back(Student("Rodrigo", 8));
-	l.push_back(Student("Joao", 1));
-	l.push_back(Student("Antonio", 10));
-	printSequence(l);
-	
-	selection_sort(l.begin(), l.end());
-	printSequence(l);
-	
-	selection_sort(l.begin(), l.end(), compStudentsName());
-	printSequence(l);
+	printf("All \n");
+	generate_all_vals(3);
 
-	selection_sort(l.begin(), l.end(), compStudentsGrade());
-	printSequence(l);
+	printf("Combinations \n");
+	generate_combinations(3);
+
+	printf("Permutations \n");
+	generate_permutations(3);
 
 }
