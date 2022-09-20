@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 template<class Iterable> void printSequence(Iterable sequence) {
 	for (auto e : sequence) {

@@ -4,9 +4,23 @@
 #include "Sorting.h"
 #include "Student.cpp" 
 #include "Search.h"
+#include "ClosestPair.h"
 
 int main() {
-	
+
+	std::vector<std::vector<float>> points({ {3,3},
+		{14,1},
+		{4,6},
+		{8,9},
+		{12,123},
+		{2,5},
+		{3.1,3.2},
+		{7,8}, });
+
+	printf("Closest Pair \n");
+	printSequenceSequence(closet_pair<float>(points));
+
+
 	printf("All \n");
 	generate_permutations(4);
 

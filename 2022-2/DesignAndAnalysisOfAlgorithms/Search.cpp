@@ -119,4 +119,3 @@ void generate_binarysets(int n) {
 	std::vector<int> solution({});
 	generate_binarysets(n, solution);
 }
-

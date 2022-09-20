@@ -1,2 +1,9 @@
-﻿  Search.cpp
+﻿  main.cpp
+C:\Users\rcpsi\source\repos\PCC104_DesignAndAnalysisOfALgorithms\2022-2\DesignAndAnalysisOfAlgorithms\main.cpp(18,11): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\rcpsi\source\repos\PCC104_DesignAndAnalysisOfALgorithms\2022-2\DesignAndAnalysisOfAlgorithms\ClosestPair.cpp(14,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\rcpsi\source\repos\PCC104_DesignAndAnalysisOfALgorithms\2022-2\DesignAndAnalysisOfAlgorithms\main.cpp(21): message : see reference to function template instantiation 'std::vector<std::vector<float,std::allocator<float>>,std::allocator<std::vector<float,std::allocator<float>>>> closet_pair<float>(std::vector<std::vector<float,std::allocator<float>>,std::allocator<std::vector<float,std::allocator<float>>>>)' being compiled
   DesignAndAnalysisOfAlgorithms.vcxproj -> C:\Users\rcpsi\source\repos\PCC104_DesignAndAnalysisOfALgorithms\2022-2\DesignAndAnalysisOfAlgorithms\x64\Debug\DesignAndAnalysisOfAlgorithms.exe
