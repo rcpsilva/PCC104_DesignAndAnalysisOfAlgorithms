@@ -27,6 +27,9 @@
     <ClInclude Include="ClosestPair.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BinarySearchTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sorting.cpp">
@@ -45,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ClosestPair.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BinarySearchTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
