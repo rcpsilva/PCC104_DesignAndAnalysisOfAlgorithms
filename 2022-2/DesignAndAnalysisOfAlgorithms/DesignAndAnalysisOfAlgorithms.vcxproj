@@ -128,15 +128,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BinarySearch.h" />
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="ClosestPair.h" />
+    <ClInclude Include="FakeCoin.h" />
     <ClInclude Include="Search.h" />
     <ClInclude Include="Sorting.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinarySearch.cpp" />
     <ClCompile Include="BinarySearchTree.cpp" />
     <ClCompile Include="ClosestPair.cpp" />
+    <ClCompile Include="FakeCoin.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Search.cpp" />
     <ClCompile Include="Sorting.cpp" />

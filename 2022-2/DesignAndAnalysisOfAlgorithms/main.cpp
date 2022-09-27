@@ -6,6 +6,7 @@
 #include "Search.h"
 #include "ClosestPair.h"
 #include "BinarySearchTree.cpp"
+#include "BinarySearch.h"
 
 int main() {
 
@@ -19,4 +20,10 @@ int main() {
 	bt.insert(1);
 
 	bt.print();
+
+	std::cout << "\nBinary Search" << std::endl;
+
+	std::vector<int> v({ 1,2,3,6,8,10,19});
+
+	std::cout << binary_search(v,19) << std::endl;
 }
