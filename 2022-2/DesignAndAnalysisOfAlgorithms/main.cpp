@@ -7,6 +7,7 @@
 #include "ClosestPair.h"
 #include "BinarySearchTree.cpp"
 #include "BinarySearch.h"
+#include "FakeCoin.h"
 
 int main() {
 
@@ -26,4 +27,15 @@ int main() {
 	std::vector<int> v({ 1,2,3,6,8,10,19});
 
 	std::cout << binary_search(v,19) << std::endl;
+
+
+	std::cout << "\nFake Coint" << std::endl;
+
+	std::vector<int> coins({ 9,9,9,9,9,9,9,9,9,1 });
+
+	printSequence(coins);
+
+	std::cout << fake_coin(coins) << std::endl;
+
+
 }
