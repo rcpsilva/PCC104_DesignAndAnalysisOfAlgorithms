@@ -31,7 +31,7 @@ int main() {
 
 	std::cout << "\nFake Coint" << std::endl;
 
-	std::vector<int> coins({ 9,9,9,9,9,9,9,9,9,1 });
+	std::vector<int> coins({ 9,9,9,9,9,1,9,9,9,9 });
 
 	printSequence(coins);
 
