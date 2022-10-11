@@ -1,6 +1,7 @@
 #include <vector>
 #include <algorithm>
 #include <limits>
+#include <numeric>
 #include "Util.h"
 
 
@@ -118,4 +119,63 @@ void generate_binarysets(int n) {
 
 	std::vector<int> solution({});
 	generate_binarysets(n, solution);
+}
+
+
+void johnsonTrotter(int n) {
+	int count = 0;
+
+	std::vector<int> v(n);
+	std::iota(v.begin(), v.end(), 1);
+
+	std::vector<int> directions(n,-1); //-1 = <- ; 1 = ->
+
+	int there_is_mobile = true;
+
+	std::cout << count << std::endl;
+	printSequence(v);
+
+	while (there_is_mobile){
+
+		there_is_mobile = false;
+
+		//Find largest mobile element
+		int mobile = -1;
+		int idx_mobile = -1;
+		int neighbor = 0;
+		
+		for (int i = 0; i < v.size(); i++)
+		{
+			if ( (i + directions[i] < n) && (i + directions[i] >= 0) ) {
+				if ((v[i] > mobile) && (v[i + directions[i]] < v[i])) {
+					mobile = v[i];
+					idx_mobile = i;
+					neighbor = directions[i];
+					there_is_mobile = true;
+				}
+			}
+			
+		}
+
+		
+		if (there_is_mobile) {
+			// swap k with the adjacent element k’s arrow points to	
+			std::swap(v[idx_mobile], v[idx_mobile + neighbor]);
+			std::swap(directions[idx_mobile], directions[idx_mobile + neighbor]);
+
+			// reverse the direction of all the elements that are larger than k
+
+			for (int i = 0; i < v.size(); i++)
+			{
+				if (v[i] > mobile) {
+					directions[i] = directions[i] * (-1);
+				}
+			}
+
+			count += 1;
+			std::cout << count << std::endl;
+			printSequence(v);
+		}
+		
+	}
 }
