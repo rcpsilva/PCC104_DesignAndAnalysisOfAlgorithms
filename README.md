@@ -1,2 +1,2 @@
-# PCC104_DesignAndAnalysisOfALgorithms
+# PCC104_DesignAndAnalysisOfAlgorithms
  
