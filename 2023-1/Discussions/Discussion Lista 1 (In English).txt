@@ -26,7 +26,16 @@ In summary, studying algorithms helps us:
 
 More strictly, an algorithm is a sequence of unambiguous instructions for solving a problem, i.e., for obtaining a required output for any legitimate input in a finite amount of time.
 
-3) We can prove that the algorithm above stops by showing that the value of b decreases with each iteration of the while loop, and that eventually b will become zero, causing the loop to terminate.
+3) 
+
+function gcd(a, b)
+    while b ≠ 0
+        t := b
+        b := a mod b
+        a := t
+    return a
+
+We can prove that the algorithm above stops by showing that the value of b decreases with each iteration of the while loop, and that eventually b will become zero, causing the loop to terminate.
 
 The algorithm works by finding the greatest common divisor (GCD) of two numbers, a and b. In each iteration of the loop, the algorithm calculates the remainder of a divided by b, and assigns it to the variable b. Since the remainder is always less than b, the value of b decreases with each iteration of the loop.
 
@@ -34,4 +43,34 @@ Eventually, the algorithm will reach a point where the remainder of a divided by
 
 Therefore, we can conclude that the algorithm always terminates and returns a result.
 
-4) 
+5) 
+
+a) Understand the problem 
+	- Identify what kind problem it is
+	- Solve small instances by hand 
+	- Think about scpecial cases
+
+b) Define the expected capabilities of the computational device
+	- Is the amount of memory a concern?
+	- Is the processing capability a concern?
+	
+c) Define what kind of solution you need.
+	- Exact -> May be too slow
+	- Approximate -> Fast but may be innacurate
+	
+d) Select the algorithm design techinique and data structures
+
+e) Prove corectness
+
+f) Analyze the algorithm
+	- Time efficiency
+	- Space effiency
+	- Simplicity -> Easier to understand, easier to debug, less likely to lead to bugs.
+	- Generality
+	
+g) Code
+	- Programming Language
+	- Efficient implementation
+	
+	
+	
