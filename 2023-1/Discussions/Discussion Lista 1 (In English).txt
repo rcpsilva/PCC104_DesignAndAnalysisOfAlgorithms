@@ -71,6 +71,22 @@ f) Analyze the algorithm
 g) Code
 	- Programming Language
 	- Efficient implementation
-	
-	
-	
+
+9 - Time complexity refers to the amount of time it takes for an algorithm to run as a function of the input size.
+Space complexity refers to the amount of memory or storage required by an algorithm as a function of the input size. 
+
+10 - The best case refers to the scenario in which an algorithm performs in the most efficient manner possible, usually when the input is already sorted or some other advantageous condition is present. For example, the best case for a sorting algorithm might occur when the input is already sorted, in which case the algorithm could complete in O(n) time complexity.
+
+The worst case refers to the scenario in which an algorithm performs in the least efficient manner possible, usually when the input is in a state that is most challenging for the algorithm to handle. For example, the worst case for a sorting algorithm might occur when the input is in reverse order, in which case the algorithm could take O(n^2) time complexity.
+
+The average case refers to the scenario in which an algorithm performs in a typical manner, taking into account a distribution of possible inputs. This is often more difficult to define than the best and worst cases, as it depends on the specific distribution of inputs that the algorithm will encounter in practice. For example, the average case for a sorting algorithm might be when the input is randomly ordered, in which case the algorithm might take O(n log n) time complexity on average.
+
+def sequential_search(lst, element):
+    """
+    Search for the given element in the list using sequential search.
+    """
+    for i in range(len(lst)):
+        if lst[i] == element:
+            return i
+    return -1  # element not found in list
+
