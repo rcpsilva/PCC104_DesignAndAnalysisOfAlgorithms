@@ -1,0 +1,173 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Semanas 1 e 2}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Lista 1}
+
+\begin{enumerate}
+    \item Why do we study algorithms?
+    
+    \begin{itemize}
+        \item You have to know a standard set of important algorithms from different areas of computing; 
+        \item You should be able to design new algorithms and analyze their efficiency.
+    \end{itemize}
+
+    There are several ohter reasons why we study algorithms:
+    
+    \begin{itemize}
+
+        \item Efficiency: We study algorithms to find efficient solutions to problems. An efficient algorithm is one that can solve a problem with minimal time and space complexity.
+    
+        \item Correctness: We study algorithms to ensure that they are correct and produce the desired output for all possible inputs. A correct algorithm should always produce the correct output for any given input.
+    
+        \item Abstraction: We study algorithms to understand how to abstract a problem into a set of instructions that can be implemented on a computer.
+    
+        \item Reusability: We study algorithms to develop reusable solutions that can be used across different applications and domains.
+    
+        \item Optimization: We study algorithms to optimize existing solutions and develop new solutions that can solve problems in a more efficient and effective manner.
+    
+    \end{itemize}
+        
+
+    In summary, studying algorithms helps us: 
+    \begin{itemize}
+        \item Understand how to solve problems efficiently and correctly, 
+        \item Abstract a problems into a set of instructions, 
+        \item Develop reusable solutions, 
+        \item Optimize existing solutions.
+    \end{itemize}
+
+    
+    \item  An algorithm is a step-by-step procedure for solving a problem or accomplishing a task. It is a finite set of instructions that take some input, perform a series of computations, and produce an output.
+    
+    More strictly, an algorithm is a sequence of unambiguous instructions for solving a problem, i.e., for obtaining a required output for any legitimate input in a finite amount of time.
+    
+    \item 
+    
+    \lstinputlisting[language=Python]{gcd.py}
+    
+    
+    We can prove that the algorithm above stops by showing that the value of b decreases with each iteration of the while loop, and that eventually b will become zero, causing the loop to terminate.
+    
+    The algorithm works by finding the greatest common divisor (GCD) of two numbers, a and b. In each iteration of the loop, the algorithm calculates the remainder of a divided by b, and assigns it to the variable b. Since the remainder is always less than b, the value of b decreases with each iteration of the loop.
+    
+    Eventually, the algorithm will reach a point where the remainder of a divided by b is zero, meaning that b is a divisor of a. At this point, the loop will terminate, and the value of a, which has been progressively replaced with b during the iterations of the loop, will be the GCD of the original values of a and b.
+    
+    Therefore, we can conclude that the algorithm always terminates and returns a result.
+
+    \item 
+    
+    \item  
+    
+    \begin{enumerate}
+        \item Understand the problem 
+        \begin{itemize}
+            \item Identify what kind problem it is
+            \item Solve small instances by hand 
+            \item Think about scpecial cases
+        \end{itemize}
+
+
+        \item Define the expected capabilities of the computational device
+        \begin{itemize}
+            \item Is the amount of memory a concern?
+            \item Is the processing capability a concern?
+        \end{itemize}
+    
+
+        \item Define what kind of solution you need.
+        \begin{itemize}
+            \item Exact: May be too slow
+            \item Approximate: Fast but may be innacurate
+        \end{itemize}
+
+        \item Select the algorithm design techinique and data structures
+    
+        \item Prove corectness
+        
+        \item Analyze the algorithm
+        \begin{itemize}
+            \item Time efficiency
+            \item Space effiency
+            \item Simplicity -> Easier to understand, easier to debug, less likely to lead to bugs.
+            \item Generality
+        \end{itemize}
+            
+        \item Code
+        \begin{itemize}
+            \item Programming Language
+            \item Efficient implementation
+        \end{itemize}
+            
+    \end{enumerate}
+    
+    \item 
+
+    \item 
+
+    \item 
+    
+    \item  Time complexity refers to the amount of time it takes for an algorithm to run as a function of the input size.
+    Space complexity refers to the amount of memory or storage required by an algorithm as a function of the input size. 
+    
+    \item  The best case refers to the scenario in which an algorithm performs in the most efficient manner possible, usually when the input is already sorted or some other advantageous condition is present. For example, the best case for a sorting algorithm might occur when the input is already sorted, in which case the algorithm could complete in $O(n)$ time complexity.
+    
+    The worst case refers to the scenario in which an algorithm performs in the least efficient manner possible, usually when the input is in a state that is most challenging for the algorithm to handle. For example, the worst case for a sorting algorithm might occur when the input is in reverse order, in which case the algorithm could take $O(n^2)$ time complexity.
+    
+    The average case refers to the scenario in which an algorithm performs in a typical manner, taking into account a distribution of possible inputs. This is often more difficult to define than the best and worst cases, as it depends on the specific distribution of inputs that the algorithm will encounter in practice. For example, the average case for a sorting algorithm might be when the input is randomly ordered, in which case the algorithm might take $O(n log n)$ time complexity on average.
+
+    \lstinputlisting[language=Python]{gcd.py}
+
+
+\end{enumerate}
+
+\end{document}
+
