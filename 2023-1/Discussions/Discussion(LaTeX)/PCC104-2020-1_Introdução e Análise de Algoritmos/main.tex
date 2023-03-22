@@ -164,7 +164,64 @@
     
     The average case refers to the scenario in which an algorithm performs in a typical manner, taking into account a distribution of possible inputs. This is often more difficult to define than the best and worst cases, as it depends on the specific distribution of inputs that the algorithm will encounter in practice. For example, the average case for a sorting algorithm might be when the input is randomly ordered, in which case the algorithm might take $O(n log n)$ time complexity on average.
 
-    \lstinputlisting[language=Python]{gcd.py}
+    \lstinputlisting[language=Python]{sequential_search.py}
+
+\item 
+
+\item 
+
+\item 
+
+\item 
+
+\item 
+
+\begin{enumerate}
+    \item Big  $O$ 
+    
+    Formally, let $f(n)$ and $g(n)$ be two functions defined on the positive integers. We say that $f(n)$ is $O(g(n))$ if there exist positive constants $c$ and $n0$ such that for all $n \geq n0$, we have:
+
+    $$f(n) \leq c g(n)$$
+    
+    In other words, f(n) is asymptotically bounded above by g(n) up to a constant factor. This is usually written as:
+    
+    $$f(n) = O(g(n))$$
+    
+    Intuitively, this means that as the input size n grows larger, the rate of growth of f(n) is no faster than the rate of growth of g(n), up to a constant factor. 
+    
+    It does not mean that f(n) is equal to g(n), or that f(n) is the worst-case running time of an algorithm that solves a problem of size n, but rather that f(n) is "no worse than" g(n) in terms of its growth rate.
+
+    \item Big $\Omega$
+
+    Big Omega notation (also called lower bound notation) is used to describe the asymptotic lower bound of a function as its input size approaches infinity. It is another way to analyze the performance of algorithms and to compare them in terms of their efficiency.
+
+    Formally, let $f(n)$ and $g(n)$ be two functions defined on the positive integers. We say that $f(n)$ is $\Omega(g(n))$ if there exist positive constants $c$ and $n0$ such that for all $n \geq n0$, we have:
+
+    $$f(n) \geq c g(n)$$
+
+    In other words, $f(n)$ is asymptotically bounded below by $g(n)$ up to a constant factor. This is usually written as:
+
+    $$f(n) = \Omega(g(n))$$
+
+    Intuitively, this means that as the input size $n$ grows larger, the rate of growth of $f(n)$ is no slower than the rate of growth of $g(n)$, up to a constant factor. 
+    
+    It does not mean that $f(n)$ is equal to $g(n)$, or that $f(n)$ is the best-case running time of an algorithm that solves a problem of size $n$, but rather that $f(n)$ is "no better than" $g(n)$ in terms of its growth rate.
+
+    \item Big $\Theta$
+    
+    Big Theta notation (also called tight bound notation) is used to describe the asymptotic behavior of a function when both its upper and lower bounds are the same. It is a way to precisely characterize the running time or space complexity of an algorithm.
+
+    Formally, let $f(n)$ and $g(n)$ be two functions defined on the positive integers. We say that $f(n)$ is $\Theta(g(n))$ if there exist positive constants $c1$, $c2$, and $n0$ such that for all $n \geq n0$, we have:
+    
+    $$c_1 g(n) \leq f(n) \leq c_2 g(n)$$
+    
+    In other words, $f(n)$ is asymptotically bounded both above and below by $g(n)$ up to constant factors. This is usually written as:
+    
+    $$f(n) = \Theta(g(n))$$
+    
+    Intuitively, this means that as the input size $n$ grows larger, the rate of growth of $f(n)$ is the same as the rate of growth of $g(n)$, up to constant factors. It implies that $f(n)$ is both an upper and lower bound for the growth rate of $g(n)$. This is a precise way to describe the running time or space complexity of an algorithm, as it captures both the best and worst-case behavior.
+
+\end{enumerate}
 
 
 \end{enumerate}
