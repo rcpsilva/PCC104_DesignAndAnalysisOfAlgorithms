@@ -268,6 +268,129 @@
     \includegraphics*[width=0.7\textwidth]{ex_19.png}
 \end{figure}
 
+\item ------
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics*[width=0.6\textwidth]{mistery.png}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics*[width=0.6\textwidth]{enigma.png}
+\end{figure}
+
+\item ------
+   \begin{figure}[!ht]
+        \centering
+        \includegraphics*[width=0.55\textwidth]{rec1.png}
+    \end{figure}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics*[width=0.55\textwidth]{rec2.png}
+    \end{figure}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics*[width=0.7\textwidth]{rec3.png}
+    \end{figure}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics*[width=0.7\textwidth]{rec4.png}
+    \end{figure}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics*[width=0.7\textwidth]{rec5.png}
+    \end{figure}
+
+
+\pagebreak
+
+Preliminaries
+
+\begin{itemize}
+    \item Arithmetic progression 
+    \begin{equation*}
+        a_n = a_1 + (n - 1)d
+    \end{equation*}
+    where
+    \begin{itemize}
+        \item an is the nth term in the arithmetic progression
+        \item a1 is the first term in the arithmetic progression
+        \item n is the number of terms in the arithmetic progression
+        \item d is the common difference between consecutive terms in the arithmetic progression.
+    \end{itemize}
+    
+    \item Sum of terms of an AP
+    \begin{equation*}
+        S_n = \frac{n}{2}(a_1 + a_n)
+    \end{equation*}
+    where
+    \begin{itemize}
+        \item $S_n$ is the sum of the first $n$ terms in the arithmetic progression
+        \item $a_1$ is the first term in the arithmetic progression
+        \item $a_n$ is the nth term in the arithmetic progression.    
+    \end{itemize}
+
+    \item Geometric progression
+    \begin{equation*}
+        a_n = a_1 r^{n-1}
+    \end{equation*}
+
+    \begin{itemize}
+        \item $a_n$ is the nth term in the geometric progression
+        \item $a_1$ is the first term in the geometric progression
+        \item $n$ is the number of terms in the geometric progression
+        \item $r$ is the common ratio between consecutive terms in the geometric progression.    
+    \end{itemize}
+    
+    \item Sum of a GP
+    
+    \begin{equation*}
+        S_n = \frac{a_1(1-r^n)}{1-r}    
+    \end{equation*}
+        
+        where:
+        
+    \begin{itemize}
+        \item $S_n$ is the sum of the first $n$ terms of the geometric progression
+        \item $a_1$ is the first term of the geometric progression
+        \item $r$ is the common ratio between consecutive terms in the geometric progression.
+    \end{itemize}
+
+\end{itemize}
+
+
+\item Tracing the algorithm for n = 1 and n = 2 should help.
+
+The recurrence for the number of key comparisons is
+\begin{equation}
+  C(n) = C(n-1)+1 \text{ for } n>1, C(1)=0  
+\end{equation}
+Solving it by backward substitutions yields $C(n)=n-1$
+
+\item -----------
+\item In fact, even some seemingly simple algorithms have proved to be very difficult to analyze with mathematical precision and certainty. As we
+pointed out in Section 2.1, this is especially true for the average-case analysis.
+\begin{enumerate}
+    \item Understand the experiment's purpose.
+    \begin{itemize}
+        \item Compare different algorithms for the same problem
+        \item Check the accuraccy of theoretical assertion about the algorithm's efficiency
+        \item Develop an hypothesis about the algorithm efficiency class
+    \end{itemize}    
+    \item Decide on the efficiency metric M to be measured and the measurement unit (an operation count vs. a time unit).
+    \begin{itemize}
+        \item if time, get repeated measures
+        \item if stochastic algorithm, get repeated measures
+    \end{itemize}
+    \item Decide on characteristics of the input sample (its range, size (random or uniform?), and so on).
+    \item Prepare a program implementing the algorithm (or algorithms) for the experimentation.
+    \item Generate a sample of inputs.
+    \item Run the algorithm (or algorithms) on the sample's inputs and record the data observed.
+    \item Analyze the data obtained.
+\end{enumerate}
+
+
 \end{enumerate}
 
 \end{document}

@@ -1,11 +1,11 @@
 # Fdb version 4
-["pdflatex"] 1679882196 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Problem sets (in Portuguese)/LaTeX Sources/PCC104_1_Introdução e Análise de Algoritmos/main.tex" "main.pdf" "main" 1679882201 0
+["pdflatex"] 1679936366 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Problem sets (in Portuguese)/LaTeX Sources/PCC104_1_Introdução e Análise de Algoritmos/main.tex" "main.pdf" "main" 1679936368 0
   "alg1.PNG" 1679882019 21254 cee280db2f814bc46a9f1ce411c4be19 ""
   "alg2.PNG" 1679882019 45257 fb805f0ee84d5afa7b79d72fa498adb1 ""
   "alg3.PNG" 1679882019 32923 377c87c13bec53e8c9fd647dbc0b10d3 ""
   "alg_a.PNG" 1679882019 31992 39badcf1e701eb5bc465e034d402ffea ""
   "alg_b.PNG" 1679882019 60488 2178eddf13095808e2263a83779ef6bc ""
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Problem sets (in Portuguese)/LaTeX Sources/PCC104_1_Introdução e Análise de Algoritmos/main.tex" 1679882180 12084 e72a8a4023ebefc747642614e41101ca ""
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Problem sets (in Portuguese)/LaTeX Sources/PCC104_1_Introdução e Análise de Algoritmos/main.tex" 1679936363 12066 d0e9088a050f9831f9406c0e801cb0fb ""
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1679353348 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1679353891 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -163,9 +163,9 @@
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1679359898 4662804 131178ccc9b2f4741a821427ce79dce1 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679360027 7883451 1906458788776f148e040852b775af01 ""
   "c:/texlive/2022/texmf.cnf" 1679359856 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1679882200 1423 e593efe9300bd985239ee1f1dc222685 "pdflatex"
-  "main.out" 1679882200 227 5753917832d73ff24935792ac949b34f "pdflatex"
-  "main.tex" 1679882180 12084 e72a8a4023ebefc747642614e41101ca ""
+  "main.aux" 1679936368 1405 3dced2f7883e8b9e47160318985f525c "pdflatex"
+  "main.out" 1679936368 227 5753917832d73ff24935792ac949b34f "pdflatex"
+  "main.tex" 1679936363 12066 d0e9088a050f9831f9406c0e801cb0fb ""
   (generated)
   "main.aux"
   "main.log"
