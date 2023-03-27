@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1679945482 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Discussions/Discussion(ProblemSet1)/main.tex" "main.pdf" "main" 1679945485 0
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Discussions/Discussion(ProblemSet1)/main.tex" 1679945481 15456 3cd14011f7ade82c37f5a8e7696f86cf ""
+["pdflatex"] 1679951121 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Discussions/Discussion(ProblemSet1)/main.tex" "main.pdf" "main" 1679951124 0
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Discussions/Discussion(ProblemSet1)/main.tex" 1679951121 17172 7a84b60af128a55b154f820c88d30c75 ""
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1679353348 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1679353891 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -22,6 +22,7 @@
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm" 1679353328 768 d7b9a2629a0c353102ad947dc9221d49 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1679352646 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1679352646 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1679352646 37912 07513ec114ac737ab54cea0152f4424b ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1679352646 36281 c355509802a035cadc5f15869451dcee ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1679352646 35752 024fb6c41858982481f6968b5fc26508 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1679352646 32722 d7379af29a190c3f453aba36302ff5a9 ""
@@ -167,9 +168,9 @@
   "ex_5_limit.png" 1679514817 16590 1d4ec5b3c21600ede809e76402c1046f ""
   "ex_6_limit.png" 1679514853 36052 4ce477a70acdfb6eea0c722b45fa77fa ""
   "gcd.py" 1679505335 98 1d1ccb7db65752e0e95d67c64f983e17 ""
-  "main.aux" 1679945484 773 e521b152b2fe3b913bc9fd3d3777d3d9 "pdflatex"
-  "main.out" 1679945483 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1679945481 15456 3cd14011f7ade82c37f5a8e7696f86cf ""
+  "main.aux" 1679951124 773 e521b152b2fe3b913bc9fd3d3777d3d9 "pdflatex"
+  "main.out" 1679951123 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1679951121 17172 7a84b60af128a55b154f820c88d30c75 ""
   "mistery.png" 1679944906 59779 d480eac7837999e8c3bef9820e12262c ""
   "rec1.png" 1679944107 54619 747b6ea05f09df03e83e9ec014e07ef3 ""
   "rec2.png" 1679944135 53271 cde0ba974842cae991f845f05ea0d5ca ""
