@@ -40,7 +40,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 
-\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Lista 1}
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ Lecture Notes \\ Introduction to the Analysis of Algorithms}
 \author{Prof. Rodrigo Silva}
 %\date{}
 
@@ -332,6 +332,13 @@ Preliminaries
     \end{itemize}
 
     \item Geometric progression
+    
+    \begin{equation*}
+        a, ar, ar^2, ar^3,...
+    \end{equation*}
+
+    The $n-th$ term
+
     \begin{equation*}
         a_n = a_1 r^{n-1}
     \end{equation*}
@@ -346,7 +353,7 @@ Preliminaries
     \item Sum of a GP
     
     \begin{equation*}
-        S_n = \frac{a_1(1-r^n)}{1-r}    
+        S_n = \sum^{n}_{i=1} a_1r^{i-1} = a_1 + a_1r + a_1r^2 + ... + a_1r^{n-1} =  \frac{a_1(1-r^n)}{1-r}    
     \end{equation*}
         
         where:
