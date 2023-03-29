@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Força Bruta e Busca Exaustiva}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Instruções}
+
+
+
+% \begin{itemize}
+%     \item Implementar as atividades práticas em C++ é altamente recomendado.
+%     \item Utilize ao máximo os algoritmos e estruturas de dados da biblioteca STL. \url{https://www.geeksforgeeks.org/the-c-standard-template-library-stl/}. 
+%     \item Evite ao máximo a utilização de ponteiros, mas se precisar, utilizar ponteiros inteligentes \url{https://alandefreitas.github.io/moderncpp/basic-syntax/pointers/smart-pointers/}. 
+%     \item Quando precisar de uma estrutura de dados linear sempre avalie primeiro a utilização da classe \texttt{vector} (\url{https://en.cppreference.com/w/cpp/container/vector})
+% \end{itemize}
+
+\section{Leitura Recomendada}
+
+\begin{itemize}
+    \item Capítulo 3 - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin 
+    \item Livro - \textit{Introdução à programação} - Alan de Freitas (disponível em \url{http://www.decom.ufop.br/alan/bcc702/livrocpp.pdf})
+    \item Livro - \textit{Problem Solving with Algorithms and Data Structures using C++} (disponível em: \url{https://runestone.academy/runestone/books/published/cppds/index.html#})
+    \item Arrays \url{https://superstudy.guide/algorithms-data-structures/data-structures/arrays-strings}
+    \item Pilhas e Filas \url{https://superstudy.guide/algorithms-data-structures/data-structures/stacks-queues}
+\end{itemize}
+
+
+\section{Atividades Prática}
+
+\begin{enumerate}
+    \item Implementar o algoritmo \textit{Selection Sort}
+    \item Implementar o algoritmo \textit{SequentialSearch2} (Ver Seção 3.2  \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin).
+    \item Implementar o algoritmo de busca em largura para grafos.
+    \item Implementar o algoritmo de busca em profundidade para grafos.
+    
+    %\item Implemente uma solução baseada em busca exaustiva para o problema do Caixeiro Viajante (Traveling Salesman Problem). 
+    %\item Implemente uma solução baseada em busca exaustiva para o problema da Mochila binário (Binary Knapsack Problem).
+\end{enumerate}
+
+Para cada implementação, apresentar a análise de complexidade de tempo do algoritmo.
+
+%\footnotetext{Livro - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)}}
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}
+
