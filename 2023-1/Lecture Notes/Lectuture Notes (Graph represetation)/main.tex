@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{white},   
+    commentstyle=\itshape\color{green!40!black},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ Lecture Notes \\ Graph Representation}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Graphs in C++}
+
+\subsection{Adjacency list}
+
+\lstinputlisting[language=C++,caption=Example 1 - Graph as Adjacency List C++ (Iteractive)]{graph_adj_list.cpp}
+
+\subsection{Adjacency matrix}
+
+\lstinputlisting[language=C++,caption=Example 1 - Graph as Adjacency List C++]{graph_matrix.cpp}
+
+\section{Graphs in Python}
+
+\subsection{Adjacency list}
+
+\lstinputlisting[language=Python,caption=Example 1 - Graph as Adjacency List Python]{graph_adj_list.py}
+
+\subsection{Adjacency matrix}
+
+\lstinputlisting[language=Python,caption=Example 1 - Graph as Matrix Python]{graph_matrix.py}
+
+
+\end{document}
+
