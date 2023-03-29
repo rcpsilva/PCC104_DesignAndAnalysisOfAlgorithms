@@ -364,32 +364,32 @@ Preliminaries
         \item $r$ is the common ratio between consecutive terms in the geometric progression.
     \end{itemize}
 
-    \item \textbf{Master Theorem:} Suppose we have a recurrence relation of the form
+    \item \textbf{Master Theorem:} If $f(n) \in \Theta(n^d)$ where $d\geq0$ in the recurrence below  
 
     \begin{equation*}
     T(n) = a T(\frac{n}{b}) + f(n),
     \end{equation*}
+
     
     where $a \geq 1$ and $b > 1$ are constants, and $f(n)$ is a non-negative function. Then, the time complexity $T(n)$ can be asymptotically bounded as follows:
     
     \begin{enumerate}
-    \item If $f(n) = O(n^{\log_b a - \epsilon})$ for some constant $\epsilon > 0$, then $T(n) = \Theta(n^{\log_b a})$.
-    \item If $f(n) = \Theta(n^{\log_b a})$, then $T(n) = \Theta(n^{\log_b a} \log n)$.
-    \item If $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some constant $\epsilon > 0$, and if $a f(\frac{n}{b}) \leq c f(n)$ for some constant $c < 1$ and sufficiently large $n$, then $T(n) = \Theta(f(n))$.
+    \item $T(n) \in \Theta(n^d) \text{ if } a < b^d$
+    \item $T(n) \in \Theta(n^d \log n) \text{ if } a = b^d$
+    \item $T(n) \in \Theta(n^{\log_ba}) \text{ if } a > b^d$
     \end{enumerate}
 
-    \item \textbf{Subtract and Conquer Master Theorem:} Suppose we have a subtract and conquer algorithm that solves a problem of size $n$ by subtracting a smaller subproblem of size $m$ from $n$ and then solves the remainder using a recursive call to itself. If the base case takes time $f(1)$, and the recurrence relation for the algorithm is given by
-
+    \item \textbf{Subtract and Conquer Master Theorem:} 
     \begin{equation*}
-    T(n) = T(n-m) + f(m) + g(n),
+    T(n) = aT(n-b) + f(n),
     \end{equation*}
     
-    where $m < n$, then:
-    
+    for $a>0$, $b>0$, $k\geq0$ and $f(n) \in O(n^k)$
+
     \begin{enumerate}
-    \item If $g(n) = O(n^k)$ for some constant $k$ and $f(m) = O(m^c)$ for some constant $c$, then $T(n) = O(n^{k+1})$.
-    \item If $g(n) = O(n^k)$ for some constant $k$ and $f(m) = \Theta(m^c)$ for some constant $c$, then $T(n) = \Theta(n^{k+1})$.
-    \item If $g(n) = \Omega(n^k)$ for some constant $k$ and if $T(n-m) \leq cT(n)$ for some constant $c < 1$ and sufficiently large $n$, then $T(n) = \Theta(g(n))$.
+    \item If $a<1$ then $T(n)=O(n^k)$
+    \item If $a=1$ then $T(n)=O(n^{k+1})$
+    \item If $a>1$ then $T(n)=O(n^ka^(n/b))$
     \end{enumerate}
 
 \end{itemize}
