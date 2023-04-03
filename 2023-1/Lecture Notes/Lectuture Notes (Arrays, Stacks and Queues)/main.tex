@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{white},   
+    commentstyle=\itshape\color{green!40!black},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ Lecture Notes \\ Graph Representation}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Source}
+
+\begin{itemize}
+    \item Arrays \url{https://superstudy.guide/algorithms-data-structures/data-structures/arrays-strings}
+    \item Stacks and Queues \url{https://superstudy.guide/algorithms-data-structures/data-structures/stacks-queues}
+\end{itemize}
+
+\section{Arrays}
+
+An array is a collection of elements of the same data type that are stored together in contiguous memory locations and can be accessed using an index or a subscript.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics*[width=0.2\textwidth]{images/array.png}
+\end{figure}
+
+\subsection{Array operations}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics*[width=0.8\textwidth]{images/array_operations.png}
+\end{figure}
+
+\section{Stacks (Pilha pt-BR)} 
+
+A stack is an abstract data type that represents a collection of elements with a particular set of operations. It is based on the principle of Last-In-First-Out (LIFO), which means that the last element added to the stack is the first one to be removed.
+
+\section{Queues (Fila pt-BR)}
+
+A queue is an abstract data type that represents a collection of elements with a particular set of operations. It is based on the principle of First-In-First-Out (FIFO), which means that the first element added to the queue is the first one to be removed.
+
+
+
+% \lstinputlisting[language=Python,caption=Example 1 - Graph as Matrix Python]{graph_matrix.py}
+
+
+\end{document}
+
