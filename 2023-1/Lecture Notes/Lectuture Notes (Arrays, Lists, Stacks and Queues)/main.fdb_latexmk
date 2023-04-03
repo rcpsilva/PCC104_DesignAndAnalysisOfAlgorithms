@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1680528610 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Lecture Notes/Lectuture Notes (Arrays, Stacks and Queues)/main.tex" "main.pdf" "main" 1680528612 0
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Lecture Notes/Lectuture Notes (Arrays, Stacks and Queues)/main.tex" 1680528609 3733 63facde78b12298fd2cb30fe54750c89 ""
+["pdflatex"] 1680534862 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Lecture Notes/Lectuture Notes (Arrays, Lists, Stacks and Queues)/main.tex" "main.pdf" "main" 1680534865 0
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Lecture Notes/Lectuture Notes (Arrays, Lists, Stacks and Queues)/main.tex" 1680534861 3734 ed2897a92b820cbad0f392f67f852627 ""
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1679353348 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1679353891 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -157,9 +157,9 @@
   "images/queue_operations.png" 1680525489 25672 8a1c8d4199c415677c75f316d50e45f0 ""
   "images/stack.png" 1680525393 3773 2d3be30aeb105671b452c05717cdaa99 ""
   "images/stack_operations.png" 1680525430 29930 3d5dd4d8ec1ea40b9c1e9173d4f35f83 ""
-  "main.aux" 1680528612 1520 2f0cc8fb6fe78d828ef830aa679ed722 "pdflatex"
-  "main.out" 1680528612 1207 ffbe91984da51d634e4aa6d99caac7fa "pdflatex"
-  "main.tex" 1680528609 3733 63facde78b12298fd2cb30fe54750c89 ""
+  "main.aux" 1680534864 1520 2f0cc8fb6fe78d828ef830aa679ed722 "pdflatex"
+  "main.out" 1680534864 1207 ffbe91984da51d634e4aa6d99caac7fa "pdflatex"
+  "main.tex" 1680534861 3734 ed2897a92b820cbad0f392f67f852627 ""
   (generated)
   "main.aux"
   "main.log"
