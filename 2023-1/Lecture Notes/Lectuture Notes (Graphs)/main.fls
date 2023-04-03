@@ -813,6 +813,17 @@ INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT ./graph.png
+INPUT ./graph.png
+INPUT graph.png
+INPUT ./graph.png
+INPUT ./graph.png
+INPUT c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./graph_representation.png
+INPUT ./graph_representation.png
+INPUT graph_representation.png
+INPUT ./graph_representation.png
+INPUT ./graph_representation.png
 INPUT c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -832,7 +843,6 @@ INPUT ./graph_adj_list.cpp
 INPUT graph_adj_list.cpp
 INPUT ./graph_adj_list.cpp
 INPUT graph_adj_list.cpp
-INPUT c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmitt10.tfm
 INPUT ./graph_matrix.cpp
 INPUT graph_matrix.cpp
