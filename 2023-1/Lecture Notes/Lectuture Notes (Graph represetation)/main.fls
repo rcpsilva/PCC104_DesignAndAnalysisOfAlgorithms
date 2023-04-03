@@ -808,6 +808,10 @@ INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
+INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -823,7 +827,6 @@ INPUT c:/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT c:/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT ./graph_adj_list.cpp
 INPUT graph_adj_list.cpp
-INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
 INPUT ./graph_adj_list.cpp
 INPUT graph_adj_list.cpp
@@ -856,10 +859,13 @@ INPUT graph_matrix.py
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
+INPUT c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb
 INPUT c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
 INPUT c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
+INPUT c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 INPUT c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb
+INPUT c:/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
