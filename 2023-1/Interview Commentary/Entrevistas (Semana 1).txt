@@ -2,6 +2,52 @@ Semana 1:
 
 Segunda-Feira: {1, 4, 6, 8, 11, 14, 16, 17}
 
+ID 17 (20h43):
+
+- Apresentou as 4 implementações.
+- Conseguiu chegar a classe de complexidade.
+- Entende como usar o limite mas errou a resolução do mesmo.
+- Errou a expreção do somatório (correto = sum^{n-1}_{i=0} 1)
+- Impreciso ao descrver o custo da operação "deslocamento".  O(n)?
+- Errou na análise do algortmo de busca de em grafos. A resposta foi O(h+m), Omega(m^h) mas é sempre O(m^h) que representa o número de caminhos possíveis. 
+
+ID 6 (21h04):
+
+- Apresentou as 4 implementações.
+- Qual a estrutura de dados você usou para representar o grafo? Não soube responder. Não me parece que não sabe o que significa o termo estrutura de dados.
+- Não parece entender que o 'for' que varre os vizinhos de um nó está fazendo exatamente. 
+- Recorrência do método recursivo? Não conseguiu apresentar a recorrência.
+- Como definir o custo como um somatório? Não soube responder.
+- Qual a operação básica? Resposta correta mas motivo errado.
+- Custo? Respondeu corretamente mas não demonstrou a análise.
+- Qual o melhor caso? Fez a relação erronea entre melhor caso e Omega. Não conseguiu identificar o melhor caso.
+
+ID 14 (21h27):
+
+- Apresentou as 4 implementações
+- Qual a expressão de recorrência do DFS? Não conseguiu definir a expressão de recorrência.
+- Árvore de execução? Não sabe fazer a árvore de execução.
+- Representação do grafo estranha. Dificuuldades em justificar por quê o grafo é direcionado.
+- Custo (O(|v| + |e|))
+- Melhor caso? O(n) Errado! 
+- Pior caso? O(n^2) Errado! 
+- Não conseguiu escrever a expressão de custo para o algoritmo de busca sequencial.
+- Qual a estrutura de dados utilizda para resentar o grafo? R: Matriz. Errado! 
+- Custo de adição de aresta? Analisou errado. 
+
+ID 1 (21h51):
+
+- Apresentou as 4 implementações
+- Melhor caso? O(1) Correto
+- Pior caso? O(n)  Correto
+- Custo das operações de obter o primeiro elemento? Correto
+- Tratou loops
+- Excelente domínio da implementação
+
+ 
+Explicar por quê eu peço as expressões matemática e por quê eu peço os nomes das estruturas de dados.   
+
+
 
 
 
