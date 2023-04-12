@@ -52,3 +52,17 @@ class BST:
             print(node.data)
             self.inorder(node.right)
 
+if __name__ == '__main__':
+
+    bst = BST()
+
+    bst.insert(5)
+    bst.insert(3)
+    bst.insert(7)
+    bst.insert(1)
+    bst.insert(9)
+
+    print(bst.search(1)) # Output: True
+    print(bst.search(10)) # Output: False
+
+    bst.inorder(bst.root)

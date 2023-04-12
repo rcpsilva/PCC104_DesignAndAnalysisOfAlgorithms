@@ -1,12 +1,14 @@
 # Fdb version 4
-["pdflatex"] 1681322965 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Lecture Notes/Lectuture Notes (Binary trees)/main.tex" "main.pdf" "main" 1681322968 0
-  "BST.py" 1681322831 1615 9be87bd894305f2984804753c0c1269c ""
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Lecture Notes/Lectuture Notes (Binary trees)/main.tex" 1681322963 1467 00a04546283dd624f48f8ce119880100 ""
+["pdflatex"] 1681323362 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Lecture Notes/Lectuture Notes (Binary trees)/main.tex" "main.pdf" "main" 1681323364 0
+  "BST.cpp" 1681323324 1878 ec710670a0f3d4ef543886ce3c43288c ""
+  "BST.py" 1681323114 1872 0672caa06f271df6074162e0aed61643 ""
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Lecture Notes/Lectuture Notes (Binary trees)/main.tex" 1681323363 1465 f18bd51344d8fcc1bcc46992dfee8409 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1679352646 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1679352646 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1679353327 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1679353327 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
+  "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmitt10.tfm" 1679353327 768 2297ad2ac26f37e67f756dad27c77d68 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1679353327 1524 4414a8315f39513458b80dfc63bff03a ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1679353327 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1679353327 1520 eccf95517727cb11801f4f1aee3a21b4 ""
@@ -20,6 +22,7 @@
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm" 1679353328 768 1321e9409b4137d6fb428ac9dc956269 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm" 1679353328 768 d7b9a2629a0c353102ad947dc9221d49 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1679352646 32080 340ef9bf63678554ee606688e7b5339d ""
+  "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb" 1679352646 26057 4749ebe351ca6b60601cf0ab49d1bf5d ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1679352646 35752 024fb6c41858982481f6968b5fc26508 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1679352646 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1679352646 32362 bc3f3eec7ab7d65fe700963d4017d32c ""
@@ -150,9 +153,9 @@
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1679359898 4662804 131178ccc9b2f4741a821427ce79dce1 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679360027 7883451 1906458788776f148e040852b775af01 ""
   "c:/texlive/2022/texmf.cnf" 1679359856 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1681322967 1155 8a4b1ef3c243c8056d247352fffe22f6 "pdflatex"
-  "main.out" 1681322967 303 813d2efb7085d4e013526cba92ed28b2 "pdflatex"
-  "main.tex" 1681322963 1467 00a04546283dd624f48f8ce119880100 ""
+  "main.aux" 1681323364 1155 8a4b1ef3c243c8056d247352fffe22f6 "pdflatex"
+  "main.out" 1681323364 303 813d2efb7085d4e013526cba92ed28b2 "pdflatex"
+  "main.tex" 1681323363 1465 f18bd51344d8fcc1bcc46992dfee8409 ""
   (generated)
   "main.aux"
   "main.log"
