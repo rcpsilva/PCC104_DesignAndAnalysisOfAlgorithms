@@ -1,6 +1,6 @@
 Semana 1: 
 
-Segunda-Feira: {1*, 4, 6*, 8, 11, 14*, 16, 17*}
+Segunda-Feira: {1, 4, 6, 8, 11, 14, 16, 17}
 
 ID 17 (20h43):
 
@@ -14,13 +14,13 @@ ID 17 (20h43):
 ID 6 (21h04):
 
 - Apresentou as 4 implementações.
-- Qual a estrutura de dados você usou para representar o grafo? Não soube responder. Não me parece que entende o que significa o termo estrutura de dados e não conseguiu identificar a estrutura de dados utilizada. Conhecer os nomes das estruturas de dados é importante para consultar os custos na documentação da lingugem e até orientar o ChatGPT (ou similares) quando pedir a ele alguma implementação.
-- Não parece entender que o 'for' que varre os vizinhos de um nó está fazendo exatamente. Deu a impressão de ter pego o trecho de código em algum lugar (o que não é um problema) sem entendê-lo linha por linha (o que é um problema). Isso pode prejudicar muito a análise de custo. 
+- Qual a estrutura de dados você usou para representar o grafo? Não soube responder. Não me parece que não sabe o que significa o termo estrutura de dados.
+- Não parece entender que o 'for' que varre os vizinhos de um nó está fazendo exatamente. 
 - Recorrência do método recursivo? Não conseguiu apresentar a recorrência.
 - Como definir o custo como um somatório? Não soube responder.
-- Qual a operação básica? Resposta correta mas motivo errado. A operção básica é aquela que dominará o custo do método.
-- Custo do método? Respondeu corretamente mas não demonstrou a análise.
-- Qual o melhor caso? Fez a relação errada entre melhor caso e Omega. Não conseguiu identificar o melhor caso. Os conceitos de melhor caso e pior caso não parecem estar claros. 
+- Qual a operação básica? Resposta correta mas motivo errado.
+- Custo? Respondeu corretamente mas não demonstrou a análise.
+- Qual o melhor caso? Fez a relação erronea entre melhor caso e Omega. Não conseguiu identificar o melhor caso.
 
 ID 14 (21h27):
 
@@ -30,9 +30,9 @@ ID 14 (21h27):
 - Representação do grafo estranha. Dificuuldades em justificar por quê o grafo é direcionado.
 - Custo (O(|v| + |e|))
 - Melhor caso? O(n) Errado! 
-- Pior caso? O(n^2) Errado! Não parece entender os conceitos de melhor caso e pior caso. Tentou advinhar o pior caso sem refletir sobre o algoritmo e sem olhar para o código.
+- Pior caso? O(n^2) Errado! 
 - Não conseguiu escrever a expressão de custo para o algoritmo de busca sequencial.
-- Qual a estrutura de dados utilizda para resentar o grafo? Matriz. Errado. O código apresentado implementa o grafo como uma lista de adjacência. Dá a impressão que utilizou código de terceiros (o que não é um problema) sem entender linha por linha o que o código faz (isso é um problema). Ou então, não entendeu a diferença entre as representações de um grafo.
+- Qual a estrutura de dados utilizda para resentar o grafo? R: Matriz. Errado! 
 - Custo de adição de aresta? Analisou errado. 
 
 ID 1 (21h51):
