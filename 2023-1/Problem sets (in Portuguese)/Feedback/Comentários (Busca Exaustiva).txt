@@ -1,0 +1,125 @@
+
+
+ID 
+
+- Apresentou as 4 implementações
+- Melhor caso? O(1) Correto
+- Pior caso? O(n)  Correto
+- Custo das operações de obter o primeiro elemento? Correto
+- Tratou ciclos
+- Demonstrou excelente domínio da implementação e da teoria.
+
+
+ID
+
+- Explicação confusa do código
+- Internet muito ruim
+- Não conseguiu defender a classe de complexidade (O(n))
+- Custo do addEdge respondeu 0. O que está incorreto.
+
+ID 
+
+- Relação erronea entre melhor caso, pior caso e R
+- Apresentou uma análise detalhada do método.
+- Entende a utilização de limites para encontrar a complexidade
+
+ID
+
+- Lista de Adjacência 
+- Demonstrou domínio da implementação
+- Entende os conceitos de melhor caso e pior caso
+- Entende a necessidade dos limites mas não entende o que esperar dos resultados.  
+
+
+ID 
+
+- Apresentou as 4 implementações
+- Qual a expressão de recorrência do DFS? Não conseguiu definir a expressão de recorrência.
+- Árvore de execução? Não sabe fazer a árvore de execução.
+- Representação do grafo estranha. Dificuuldades em justificar por quê o grafo é direcionado.
+- Custo (O(|v| + |e|)). Correto para o algoritmo de caminhamento.
+- Melhor caso? O(n) Errado! 
+- Pior caso? O(n^2) Errado! Não parece entender os conceitos de melhor caso e pior caso. Tentou advinhar o pior caso sem refletir sobre o algoritmo e sem olhar para o código.
+- Não conseguiu escrever a expressão de custo para o algoritmo de busca sequencial.
+- Qual a estrutura de dados utilizda para resentar o grafo? Matriz. Errado. O código apresentado implementa o grafo como uma lista de adjacência. Dá a impressão que utilizou código de terceiros (o que não é um problema) sem entender linha por linha o que o código faz (isso é um problema). Ou então, não entendeu a diferença entre as representações de um grafo.
+- Custo de adição de aresta? Analisou errado.
+  
+ID
+
+- Tem boa intuição do custo de algoritmos iterativos.
+- Domina a definição de O(.).
+- Conhece o método do limite mas não lembra como aplicar .
+- Não conseguiu expressar o método recursivos com uma recorreência.
+- Domina os nomes das estruturas de dados e os custos das operções.
+- Não sabia o custo de alguma operações das estruturas de dados utilizadas. 
+
+ID
+
+- Apresentou análise completa da de custo do selectionSort
+- Entende a utilização dos limites 
+- Entende as definições de O, theta e ômega
+- Demonstrou domínio dos custos das operações do código
+- tem intuição sobre lista de adjacencia e matriz de adjacência mas não sabe qual a diferença
+
+ID
+
+- Entende o que é o melhor caso e o pior caso
+- Parece entender como descrever o custo com o somatório
+- Não entende o que é a opereção básica
+- No disse qual o custo da operação de concatenação
+- Tem intuição sobre o custo de algoritmos iterativos 
+- Explicação imprecisa sobre o sobre o custo do slection sorte
+- Tem uma ideia de como provar a classe mas foi imprecisa na descrição
+
+ID
+
+- Apresentou as 4 implementações.
+- Qual a estrutura de dados você usou para representar o grafo? Não soube responder. Não me parece que entende o que significa o termo estrutura de dados e não conseguiu identificar a estrutura de dados utilizada. Conhecer os nomes das estruturas de dados é importante para consultar os custos na documentação da lingugem e até orientar o ChatGPT (ou similares) quando pedir a ele alguma implementação.
+- Não parece entender que o 'for' que varre os vizinhos de um nó está fazendo exatamente. Deu a impressão de ter pego o trecho de código em algum lugar (o que não é um problema) sem entendê-lo linha por linha (o que é um problema). Isso pode prejudicar muito a análise de custo. 
+- Recorrência do método recursivo? Não conseguiu apresentar a recorrência.
+- Como definir o custo como um somatório? Não soube responder.
+- Qual a operação básica? Resposta correta mas motivo errado. A operção básica é aquela que dominará o custo do método.
+- Custo do método? Respondeu corretamente mas não demonstrou a análise.
+- Qual o melhor caso? Fez a relação errada entre melhor caso e Omega. Não conseguiu identificar o melhor caso. Os conceitos de melhor caso e pior caso não parecem estar claros. 
+
+
+ID 
+
+- Boa intuição sobre o custo de algortimos interativos
+- Conhece o método dos limites mas não sabe utilizar
+- Entende melhor caso e pior caso
+- Sabe os nomes das estruturas de dados
+- Não sabe o custo de obter os vizinhos 
+- Tem alguma intuição sobre as direnças entre lista e matriz de adjacência.
+
+ID 
+
+- Tem intuição sobre o custo de algoritmos iterativos
+- Não identificou o pior e o melhor caso corretamente.
+- Não demonstrou conhecimento sobre o teste do limite
+- Não deu o nome correto das estrutura de dados
+- Não conhece o custo das operações da estrutura de grafos utilizada para representar o grafo.
+
+ID 
+
+- Analisou o custo corretamente
+- Não descreveu corretamente o melhor caso, mas calculou a complexidade corretamente
+- Pior caso, OK 
+- Comentou da análise gráfica
+- Lembrou do teste do limite mas não sabe extamente como utilizar.
+- Não demostrou conhecimento sobre a estrutura de dados utilizada para armazenar o grafo.
+- Não demostrou conhecimento sobre o custo das operações na estrutura de dados utilizada para representar o grafo.
+
+ID 
+
+- Apresentou as 4 implementações.
+- Conseguiu chegar a classe de complexidade.
+- Entende como usar o limite mas errou a resolução do mesmo.
+- Errou a expreção do somatório (correto = sum^{n-1}_{i=0} 1)
+- Impreciso ao descrver o custo da operação "deslocamento".  O(n)?
+- Errou na análise do algortmo de busca de em grafos. A resposta foi O(h+m), Omega(m^h) mas é sempre O(m^h) que representa o número de caminhos possíveis. 
+
+
+
+
+ 
