@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1681758077 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Problem sets (in Portuguese)/LaTeX Sources/PCC104_3_Diminuir e Conquistar/main.tex" "main.pdf" "main" 1681758080 0
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Problem sets (in Portuguese)/LaTeX Sources/PCC104_3_Diminuir e Conquistar/main.tex" 1681758075 3712 280a31a03b15cc1a1f1af84bd70a0af2 ""
+["pdflatex"] 1681758277 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Problem sets (in Portuguese)/LaTeX Sources/PCC104_3_Diminuir e Conquistar/main.tex" "main.pdf" "main" 1681758279 0
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-1/Problem sets (in Portuguese)/LaTeX Sources/PCC104_3_Diminuir e Conquistar/main.tex" 1681758276 3712 2ccad0154970585af06fea77821e66c0 ""
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1679353348 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1679353891 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -152,9 +152,9 @@
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1679359898 4662804 131178ccc9b2f4741a821427ce79dce1 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679360027 7883451 1906458788776f148e040852b775af01 ""
   "c:/texlive/2022/texmf.cnf" 1679359856 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1681758080 787 6f96fdcd06b8c0684183359610b7ead9 "pdflatex"
-  "main.out" 1681758080 285 9ad3c96e8959f09d84281d385d0cec3a "pdflatex"
-  "main.tex" 1681758075 3712 280a31a03b15cc1a1f1af84bd70a0af2 ""
+  "main.aux" 1681758279 787 6f96fdcd06b8c0684183359610b7ead9 "pdflatex"
+  "main.out" 1681758279 285 9ad3c96e8959f09d84281d385d0cec3a "pdflatex"
+  "main.tex" 1681758276 3712 2ccad0154970585af06fea77821e66c0 ""
   (generated)
   "main.aux"
   "main.log"
