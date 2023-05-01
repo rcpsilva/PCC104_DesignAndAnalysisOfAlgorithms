@@ -1,0 +1,107 @@
+
+ID 
+
+- Discutiu corretamente a escolha do busca binária e busca por interpolação. 
+- Analisou incorretamente o pior caso da busca binária
+- Analisou incorretamente o pior caso da busca por interpolação 
+- Perguntar análise do busca binária
+- Fez corretamente a relação entre custo da busca e altura da árvore
+- Não considerou árvore degenerada
+
+
+ID 
+- Apresentou domínio sobre a implementação.
+- Entende bem como o custo é representtado pela relação de recorrência.
+- Não resolveu a relação de recorrência diretamente mas apresentou a árvore de chamadas e deduziu o custo corretamente.
+- Entende a diferença entre recursivo e iterativo.
+- Entendeu o pior caso e melhor caso dos algoritmos de árvore de busca binária.
+- Ainda não tem intuição sobre a como chegamos à altura de uma árvore binária.
+
+
+ID 
+
+- Bom do domínio da implementação do método de busca binária
+- Ainda tem alguma confusão na hora de pensar no número de iterações para algoritmos que dividem a entrada por dois a cada iteração.
+- Melhorou a intuição sobre o custo dos algoritmos.
+- Ainda não está claro a diferença de dividir para conquistar e diminuir para conquistar o que é razoável para este estágio.
+- Ainda tem dificuldades em descrever o custo com relações de recorrência.
+- Está claro o que é o pior caso e melhor caso.
+
+
+ID 
+
+- Sabe tudo
+
+ID 
+
+- Conseguiu discutir bem a diferença entre os algoritmos de busca em arrays
+- Entendeu os diferentes casos para as árvores binárias de busca
+- Ainda está inseguro sobre a representação dos custos como relações de recorrência
+
+ID 
+
+ - Não apresentou nenhum algoritmo recursivo mas não era requisito. Verificar em próximas entrevistas se entende algoritmos recursivos.
+ - Entende o que é iterativo e recursivo.
+ - Descreveu bem a análise do busca binária.
+ - Disse que o busca por interpolação não encontra a chave mesmo que ela existe. O que está errado.
+ - Soube explicar quando é melhor usar cada tipo de busca.
+ - Dificuldade em relacionar a busca com a altura da árvore mas eventualmente chegou na resposta.
+ 
+ID
+
+- Ótima análise dos casos  melhor, pior, médio
+- Análise profunda do dos algoritmo
+- Entende a diferença entre diminuir e conquistar e dividir e conquistar
+- Análise bem feita dos algortimos de árvore binária. Considerou o melhor caso e o pior caso.
+ 
+ID 
+ 
+- Soube pensar em como escolher entre os algoritmos de busca. 
+- Boa análise sobre busca por interpolação.
+- Utilizou o limite para comparar complexidades.
+- Comentar difernça entre recursivo e iterativo.
+- Considerou a diferença de estrutura da árvore para a análise.
+
+ID 
+ 
+- Não implementou o busca por interpolação (importante!)
+- Recursivo e iterativo
+- Não domina a notação das relações de recorrência mas discutiu a análse corretamente
+
+ID 
+
+- Não apresentou muito domínio sobre o algoritmo de busca por interpolação
+- Não implementou os algoritmos de busca em árvore
+- Apresentou domínio sobre o algoritmo de busca binário
+- Ainda tem dificuldades para descrever o custo dos algoritmos 
+- Não resolveu a relação de recorrência diretamente mas apresentou a árvore de chamadas. A árvore desenhada foi imprecisa mas deduziu o custo corretamente
+
+ID 
+
+- Definiu a operação básica para análise
+- Definiu a relação de recorrência e utilizou o "truque" do n = 2^k
+- Usou o limite
+- Discutiu corretamente os melhores e piores casos do busca binária
+- Discutiu corretamente os melhores e piores casos do busca interpolação
+- Impreciso na discussão sobre a escolha do busca por interpolação.
+
+ID 
+
+- Comparação ente busca binária e busca por interpolação - Não discutiu o melhor caso em termos do espaçamento constante entre os valores
+- Pior caso do busca por interpolação - Não discutiu adequamente em termos do tipo de entrada
+- Tem intuição sobre as chamadas recursivas apresentou as relações de recorrência
+- Comentou sobre o "truque" do 2^k
+- Dificuldade em implementar e explicar os algoritmo de árvore binária.
+- Interpretação errada das classes assintóticas do algoritmos de busca em árvore
+- Interpretação errada sobre o melhor caso e pior caso.
+
+ID 
+
+- Conseguiu escrever a relação de recorrência
+- Não resolveu a relação de recorrência diretamente mas apresentou a árvore de chamadas e deduziu o custo corretamente.
+- Bom domínio da implementação do método de busca binária
+- Errou sobre encontrar o primeiro do vetor
+- Não parece entender a diferença entre iterativo e recursivo.
+- Apresentou domínio sobre as implementações.
+- Não analisou corretamente o algoritmo de pesquisa em árvore mas conseguiu pensar no melhor caso e no pior caso.
+- Ainda está com a intuição ruim sobre os custos de pior caso
