@@ -40,7 +40,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 
-\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Dividir e Conquistar}
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Programação Dinâmica}
 \author{Prof. Rodrigo Silva}
 %\date{}
 
@@ -52,7 +52,7 @@
 \section{Leitura Recomendada}
 
 \begin{itemize}
-    \item Capítulo 5 - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin 
+    \item Capítulo 8 - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin 
     \item Livro - \textit{Introdução à programação} - Alan de Freitas (disponível em \url{http://www.decom.ufop.br/alan/bcc702/livrocpp.pdf})
     \item Livro - \textit{Problem Solving with Algorithms and Data Structures using C++} (disponível em: \url{https://runestone.academy/runestone/books/published/cppds/index.html#})
 \end{itemize}
@@ -61,25 +61,21 @@
 \section{Atividades}
 
 \begin{enumerate}
-    \item Implemente um algoritmo de divisão e conquista para encontrar a posição do maior elemento de um arranjo de $n$ elementos. Responda também: % 1 - 5.1
-    \begin{enumerate} 
-        \item Qual será a saída do método quando vários elementos do arranjo tiverem o maior valor?
-        \item Defina e resolva a relação de recorrência para o método proposto.
-        \item Como este algoritmo se compara com uma solução força bruta?
-    \end{enumerate}
-    \item Implemente o algoritmo MergeSort. O MergeSort é um algoritmo estável? Explique.
-    \item Implemente o algoritmo QuickSort. O QuickSort é um algoritmo estável? Explique.
-    \item Implemente um algoritmo recursivo que encontre o tamanho de uma árvore binária.
-    \item Implemente os caminhamentos \textit{preorder}, \textit{postorder} e \textit{inorder} para árvores binárias.
-     
+    \item Implemente um algoritmo para o cálculo do $n$-ésimo número de Fibonacci sem utilizar programação dinâmica.
+    \item Implemente um algoritmo  para o cálculo do $n$-ésimo número de Fibonacci utilização programação dinâmica.
+    \item Implemente um algoritmo  para o problema do troco (\textit{Change-making problem} (Seção 8.1)) utilizando programação dinâmica.
+    \item Implemente um algoritmo  para o problema de coleta de moedas (\textit{Coin-collecting problem} (Seção 8.1)) utilizando programação dinâmica. 
+    \item Implemente um algoritmo para o problema de coleta de moedas (\textit{Coin-collecting problem} (Seção 8.1)) sem utilizar programação dinâmica. 
+    \item Implemente o algoritmo baseado em função de memória (\textit{memory function}) para solução do problema da mochila (\textit{knapsack problem}). 
 \end{enumerate}
 
 Para cada implementação, apresentar a análise de complexidade de tempo do algoritmo. Esta análise deverá conter:
 
 \begin{itemize}
     \item Expressão matemática que define o custo do algoritmo (relação de recorrência para recursivos ou somatórios para iterativos) 
+    \item Uma reflexão sobre melhor caso, pior caso e caso médio.
     \item Cálculo da função de custo (quando possível, utilizar o teorema mestre para verificar o cálculo).
-    \item Indicação da classe de eficiência ($O$ ou $\Theta$). A indicação da classe, deve ser justificada. Você pode provar pela definição, pelo limite, teorema mestre, utilizar os resultados demonstrados em aula.
+    \item Indicação da classe de eficiência ($O$ ou $\Theta$). A indicação da classe, deve ser justificada. Você pode provar pela definição, pelo limite, teorema mestre ou utilizar os resultados demonstrados em aula.
 \end{itemize}
 
 
