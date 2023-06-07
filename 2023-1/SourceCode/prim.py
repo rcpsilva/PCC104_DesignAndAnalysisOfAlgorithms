@@ -31,7 +31,7 @@ def prim(graph):
 
 
 # Example usage
-graph = defaultdict(list)
+graph = {}
 graph['A'] = [('B', 4), ('H', 8)]
 graph['B'] = [('A', 4), ('H', 11), ('C', 8)]
 graph['C'] = [('B', 8), ('I', 2), ('F', 4), ('D', 7)]
@@ -41,6 +41,7 @@ graph['F'] = [('C', 4), ('D', 14), ('E', 10), ('G', 2)]
 graph['G'] = [('F', 2), ('I', 6), ('H', 1)]
 graph['H'] = [('A', 8), ('B', 11), ('G', 1), ('I', 7)]
 graph['I'] = [('C', 2), ('G', 6), ('H', 7)]
+
 
 minimum_spanning_tree = prim(graph)
 for edge in minimum_spanning_tree:
