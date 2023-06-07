@@ -1,4 +1,4 @@
-from draw_graph import draw_graph
+from draw_graph import draw_graph_kruskall
 
 def kruskal(graph):
     # Collect all edges from the graph
@@ -66,4 +66,4 @@ minimum_spanning_tree = kruskal(graph)
 for edge in minimum_spanning_tree:
     print(edge)
 
-draw_graph(graph,minimum_spanning_tree)
+draw_graph_kruskall(graph,minimum_spanning_tree)

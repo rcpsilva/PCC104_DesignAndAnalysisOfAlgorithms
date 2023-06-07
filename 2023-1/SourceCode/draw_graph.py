@@ -1,7 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
-def draw_graph(graph, mst_edges=None):
+def draw_graph_prim(graph, mst_edges=None):
     G = nx.Graph()
 
     # Add edges and weights to the graph
@@ -30,6 +30,34 @@ def draw_graph(graph, mst_edges=None):
 
     # Draw node labels
     nx.draw_networkx_labels(G, pos)
+
+    # Show the graph
+    plt.axis('off')
+    plt.show()
+
+def draw_graph_kruskall(graph, mst_edges):
+    G = nx.Graph()
+
+    # Add edges from the graph to the networkx graph object
+    for vertex, neighbors in graph.items():
+        for neighbor, weight in neighbors.items():
+            G.add_edge(vertex, neighbor, weight=weight)
+
+    pos = nx.spring_layout(G)  # Layout algorithm for graph visualization
+
+    # Draw graph edges
+    nx.draw_networkx_edges(G, pos, alpha=0.2)
+
+    # Highlight the edges in the MST
+    nx.draw_networkx_edges(G, pos, edgelist=mst_edges, edge_color='r', width=2)
+
+    # Draw graph nodes and labels
+    nx.draw_networkx_nodes(G, pos, node_size=200, node_color='lightblue')
+    nx.draw_networkx_labels(G, pos, font_size=10)
+
+    # Draw edge labels
+    edge_labels = nx.get_edge_attributes(G, 'weight')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
 
     # Show the graph
     plt.axis('off')

@@ -1,6 +1,6 @@
 from collections import defaultdict
 import heapq
-from draw_graph import draw_graph
+from draw_graph import draw_graph_prim
 
 def prim(graph):
     # Select an arbitrary starting vertex
@@ -47,4 +47,4 @@ minimum_spanning_tree = prim(graph)
 for edge in minimum_spanning_tree:
     print(edge)
 
-draw_graph(graph,minimum_spanning_tree)
+draw_graph_prim(graph,minimum_spanning_tree)
