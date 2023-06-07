@@ -62,6 +62,7 @@ graph = {
     'I': {'C': 2, 'G': 6, 'H': 7}
 }
 
+
 minimum_spanning_tree = kruskal(graph)
 for edge in minimum_spanning_tree:
     print(edge)
