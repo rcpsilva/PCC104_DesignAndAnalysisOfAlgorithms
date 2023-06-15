@@ -86,7 +86,6 @@ def draw_sudoku(board):
                 screen.blit(number_text, number_rect)
 
     pygame.display.update()
-    pygame.time.delay(10)
 
 def draw_sudoku_txt(board):
     os.system('cls')

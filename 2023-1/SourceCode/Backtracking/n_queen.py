@@ -19,25 +19,24 @@ def backtracking(n):
 
 def bt(sol):
 
-    if sol[-1] != -1:
+    if sol[-1] != -1: # Solução é completa 
         return sol
     else:
-        for i in range(len(sol)):
+        for i in range(len(sol)): # Encontra uma variável livre
             if sol[i] == -1:
+                # Para cadda valor v no domínio de sol[i]
                 for v in range(len(sol)):
                     if viable(sol,i,v):
                         sol[i] = v 
                         sol = bt(sol)  
-                        
                         if sol[-1] != -1:
                             return sol
                         sol[i] = -1
-
                 return sol
 
 if __name__ == '__main__':
 
-    sol = backtracking(10)
+    sol = backtracking(20)
 
     print(sol)
 
