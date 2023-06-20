@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Prova - Algoritmos Gulosos}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Orientações}
+
+\begin{itemize}
+    \item Esta prova tem 4 questões.
+    \item É obrigatória a entrega do código fonte dos algoritmos gulosos. Provas sem os códigos fonte não serão corrigidas e terão nota 0.
+    \item A avaliação do código apresentado entre na avaliação das questões relacionadas. 
+\end{itemize}
+
+\section*{Questões}
+
+\begin{enumerate}
+    \item Quando devemos utilizar algoritmos gulosos?
+
+    \item Considere o pseudo-código do algoritmo de Prim abaixo, a sua própria implementação e responda:
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics*[width=0.8\textwidth]{prim.png}
+        \caption{Algoritmo de Prim}
+    \end{figure}
+
+    \begin{enumerate}
+        \item Como você implementou a operação que encontra a aresta de menor peso? Indique no seu código e apresente a análise de complexidade completa desta operação.
+        \item Apresente a análise de complexidade da sua implementação do algoritmo de Prim.
+        \item Discuta a possibilidade de melhorar o seu código. Caso não seja possível melhora, explique o por quê. 
+    \end{enumerate}
+
+    \pagebreak
+
+    \item Considere o pseudo-código do algoritmo de Kruskall abaixo, a sua própria implementação e responda:
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics*[width=0.8\textwidth]{kruskall.png}
+        \caption{Algoritmo de Kruskall}
+    \end{figure}
+
+    \begin{enumerate}
+        \item Como você implementou a operação que verifica se uma aresta faz um ciclo? Indique no seu código e apresente a análise de complexidade completa desta operação.
+        \item Apresente a análise de complexidade da sua implementação do algoritmo de Kruskall.
+        \item Discuta a possibilidade de melhorar o seu código. Caso não seja possível melhora, explique o por quê. 
+    \end{enumerate}
+
+    \item Considere o problema da árvore geradora mínima definido como um problema de decisão. Ou seja, ´´Existe uma árvore geradora com custo menor ou igual a X?''. Responda:
+    
+    \begin{enumerate}
+        \item A qual classe de problemas este problema pertence, P, NP ou NP-completo? Justifique.
+        \item O que precisaríamos fazer para provar que este problema pertence à classe NP?
+        \item O que precisaríamos fazer para provar que este problema pertence à classe NP-completo?
+    \end{enumerate}
+
+\end{enumerate}
+
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}
