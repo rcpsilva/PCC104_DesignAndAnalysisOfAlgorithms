@@ -88,6 +88,14 @@ def graph_to_edges(graph):
             edges.add(edge)
     return edges
 
+def get_cost(points,path):
+    cost = 0
+    for i in range(len(path)-1):
+        cost += distance.euclidean(points[path[i]],points[path[i+1]])
+
+    return cost
+
+
 def df(points, graph, begin, end):
 
     F = [[begin]]
@@ -141,7 +149,7 @@ def bb(points, graph, begin, end, bound=10000):
 if __name__ == '__main__':
 
     # Example usage
-    m = 10
+    m = 15
     points = generate_points(m)
     graph = generate_graph(m)
 
@@ -149,11 +157,12 @@ if __name__ == '__main__':
     print(graph)
 
     begin = 0
-    end = m-1
+    end = 1
 
-    path = df(points,graph,begin,end)
+    path = bb(points,graph,begin,end)
 
     print(path)
+    print(get_cost(points,path))
 
     # Draw the random spanning tree
     plot_path(path, points, graph_to_edges(graph), begin, end)
