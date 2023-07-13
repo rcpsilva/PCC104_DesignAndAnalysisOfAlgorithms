@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Prova - Algoritmos Gulosos}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Orientações}
+
+\begin{itemize}
+    \item É obrigatória a entrega do código fonte dos algoritmos gulosos. Provas sem os códigos fonte não serão corrigidas e terão nota 0.
+    \item A avaliação do código apresentado entra na avaliação das questões relacionadas. 
+\end{itemize}
+
+
+\section*{Questões}
+
+\begin{enumerate}
+    
+
+\item Análise de Algoritmo Iterativo Simples
+
+Considerando o algoritmo de ordenação abaixo, que implementa o método de "Bubble Sort":
+
+\begin{lstlisting}[language=Python]
+def bubble_sort(lista):
+    for i in range(len(lista)):
+        for j in range(0, len(lista) - i - 1):
+            if lista[j] > lista[j + 1]:
+                lista[j], lista[j + 1] = lista[j + 1], lista[j]
+\end{lstlisting}
+
+\noindent
+b) Qual é a complexidade de tempo no pior caso deste algoritmo? \\
+c) Qual é a complexidade de espaço deste algoritmo?
+
+\item Análise de Algoritmo Recursivo Simples
+
+Veja o seguinte algoritmo de busca binária:
+
+\begin{lstlisting}[language=Python]
+def binary_search(array, low, high, target):
+    if high >= low:
+        mid = (high + low) // 2
+        if array[mid] == target:
+            return mid
+        elif array[mid] > target:
+            return binary_search(array, low, mid - 1, target)
+        else:
+            return binary_search(array, mid + 1, high, target)
+    else:
+        return -1
+\end{lstlisting}
+
+\noindent
+a) Explique como este algoritmo funciona. \\
+b) Determine e justifique a complexidade de tempo no pior caso deste algoritmo. \\
+c) Determine e justifique a complexidade de tempo no melhor caso deste algoritmo. \\
+
+\item Análise e Perguntas Teóricas Sobre o Branch and Bound
+
+\noindent
+a) Explique o conceito de branch and bound e sua aplicação na resolução de problemas de otimização. \\
+b) Compare o branch and bound com o método de força bruta. Em quais cenários cada um seria preferível e por quê? \\
+c) Como a estratégia de branch and bound pode impactar o custo computacional da resolução de um problema? \\
+d) Apresente a análise de custo da sua implementação do branch and bound.
+
+\item Perguntas Teóricas Sobre Classes de Problemas (P, NP, NP-completo)
+
+\noindent
+a) Defina as classes de problemas P, NP e NP-Completo. \\
+c) É possível que P = NP? Explique sua resposta, discutindo as implicações se P fosse de fato igual a NP. 
+
+\end{enumerate}
+
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}
