@@ -95,55 +95,49 @@ def get_cost(points,path):
 
     return cost
 
-
-def df(points, graph, begin, end):
+def dfs(graph, begin, end):
 
     F = [[begin]]
 
     while F:
-        path = F.pop()
-        
+        path = F.pop(-1)
         if path[-1] == end:
             return path
-        
-        for neighbor in graph[path[-1]]:
-            if neighbor not in path:
-                F.append(path + [neighbor])
+        else:
+            for neighbors in graph[path[-1]]:
+                if neighbors not in path:
+                    F.append(path + [neighbors])
 
     return
 
-def bb(points, graph, begin, end, bound=10000):
+def bb(graph, begin, end, points):
 
     F = [[begin]]
     C = [0]
-    H = [distance.euclidean(points[begin],points[end])]
-
+    H = [distance.euclidean(points[begin], points[end])]
+    bound = 10000
     best_path = []
-    best_cost = bound
+    best_cost = 10000
 
     while F:
-        path = F.pop()
-        cost = C.pop()
-        heu = H.pop()
+        path = F.pop(-1)
+        cost = C.pop(-1)
+        heur = H.pop(-1)
 
-        if cost + heu < bound:
-            
+        if cost + heur < bound:
             if path[-1] == end:
-                print(bound)
                 if cost < best_cost:
                     best_path = path
                     best_cost = cost
-                    bound = cost
-
+                    bound = cost                
             else:
                 for neighbor in graph[path[-1]]:
                     if neighbor not in path:
                         F.append(path + [neighbor])
-                        C.append(cost + distance.euclidean(points[path[-1]],points[neighbor]))
+                        C.append(cost + distance.euclidean(points[path[-1]], points[neighbor]))
                         H.append(distance.euclidean(points[neighbor],points[end]))
 
     return best_path
-
 
 
 if __name__ == '__main__':
@@ -159,13 +153,16 @@ if __name__ == '__main__':
     begin = 0
     end = 1
 
-    path = bb(points,graph,begin,end)
 
-    print(path)
-    print(get_cost(points,path))
+    #path = bb(points,graph,begin,end)
+
+    #print(path)
+    #print(get_cost(points,path))
 
     # Draw the random spanning tree
+    #path = dfs(graph,begin,end)
+    path = bb(graph,begin,end,points)
+    print(get_cost(points,path))
     plot_path(path, points, graph_to_edges(graph), begin, end)
-
 
 
