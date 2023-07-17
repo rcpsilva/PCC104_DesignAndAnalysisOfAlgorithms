@@ -9,7 +9,7 @@
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{backcolour}{rgb}{1,1,1}
 
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{backcolour},   
@@ -17,7 +17,7 @@
     keywordstyle=\color{magenta},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
+    basicstyle=\ttfamily\small,
     breakatwhitespace=false,         
     breaklines=true,                 
     captionpos=b,                    
@@ -55,7 +55,7 @@
 \section*{Orientações}
 
 \begin{itemize}
-    \item É obrigatória a entrega do código fonte dos algoritmos gulosos. Provas sem os códigos fonte não serão corrigidas e terão nota 0.
+    \item É obrigatória a entrega do código fonte da prática de branch and bound. Provas sem os códigos fonte não serão corrigidas e terão nota 0.
     \item A avaliação do código apresentado entra na avaliação das questões relacionadas. 
 \end{itemize}
 
@@ -65,61 +65,113 @@
 \begin{enumerate}
     
 
-\item Análise de Algoritmo Iterativo Simples
+\item \textit{Análise de Algoritmo Iterativo Simples}
 
-Considerando o algoritmo de ordenação abaixo, que implementa o método de "Bubble Sort":
+Considerando o algoritmo de ordenação apresentado na Figura \ref{fig:alg1_pyhton} (para a versão C++, veja \ref{fig:alg1_cpp}), que implementa o método de "Bubble Sort". Apresente a análise completa e detalhada deste algoritmo? 
 
-\begin{lstlisting}[language=Python]
-def bubble_sort(lista):
-    for i in range(len(lista)):
-        for j in range(0, len(lista) - i - 1):
-            if lista[j] > lista[j + 1]:
-                lista[j], lista[j + 1] = lista[j + 1], lista[j]
-\end{lstlisting}
+\item \textit{Análise de Algoritmo Recursivo Simples}
 
-\noindent
-b) Qual é a complexidade de tempo no pior caso deste algoritmo? \\
-c) Qual é a complexidade de espaço deste algoritmo?
+Veja algoritmo de busca binária apresentado na figura \ref{fig:alg2_python}  (aara a versão em C++ veja \ref{fig:alg2_cpp}) e responda:
 
-\item Análise de Algoritmo Recursivo Simples
+\begin{enumerate}
+\item Explique como este algoritmo funciona. 
+\item Apresente a análise completa e detalhada da complexidade de tempo do pior caso deste algoritmo. 
+\item Apresente a análise completa e detalhada da complexidade de tempo do melhor caso deste algoritmo. 
+\end{enumerate}
 
-Veja o seguinte algoritmo de busca binária:
+\item \textit{Análise e Perguntas Teóricas Sobre o Branch and Bound}
 
-\begin{lstlisting}[language=Python]
-def binary_search(array, low, high, target):
-    if high >= low:
-        mid = (high + low) // 2
-        if array[mid] == target:
-            return mid
-        elif array[mid] > target:
-            return binary_search(array, low, mid - 1, target)
-        else:
-            return binary_search(array, mid + 1, high, target)
-    else:
-        return -1
-\end{lstlisting}
+\begin{enumerate}
+\item  Explique o conceito de branch and bound e sua aplicação na resolução de problemas de otimização. 
+\item  Compare o branch and bound com o método de força bruta. Em quais cenários cada um seria preferível e por quê? 
+\item  Como a estratégia de branch and bound pode impactar o custo computacional da resolução de um problema? 
+\end{enumerate}
 
-\noindent
-a) Explique como este algoritmo funciona. \\
-b) Determine e justifique a complexidade de tempo no pior caso deste algoritmo. \\
-c) Determine e justifique a complexidade de tempo no melhor caso deste algoritmo. \\
+\item \textit{Perguntas Teóricas Sobre Classes de Problemas (P, NP, NP-completo)}
 
-\item Análise e Perguntas Teóricas Sobre o Branch and Bound
-
-\noindent
-a) Explique o conceito de branch and bound e sua aplicação na resolução de problemas de otimização. \\
-b) Compare o branch and bound com o método de força bruta. Em quais cenários cada um seria preferível e por quê? \\
-c) Como a estratégia de branch and bound pode impactar o custo computacional da resolução de um problema? \\
-d) Apresente a análise de custo da sua implementação do branch and bound.
-
-\item Perguntas Teóricas Sobre Classes de Problemas (P, NP, NP-completo)
-
-\noindent
-a) Defina as classes de problemas P, NP e NP-Completo. \\
-c) É possível que P = NP? Explique sua resposta, discutindo as implicações se P fosse de fato igual a NP. 
+É possível que P = NP? Explique sua resposta, discutindo as implicações se P fosse de fato igual a NP. 
 
 \end{enumerate}
 
+
+\begin{figure} [!ht]
+    \begin{lstlisting}[language=Python]
+        def bubble_sort(lista):
+            for i in range(len(lista)):
+                for j in range(0, len(lista) - i - 1):
+                    if lista[j] > lista[j + 1]:
+                        lista[j], lista[j + 1] = lista[j + 1], lista[j]
+        \end{lstlisting}
+        \label{fig:alg1_pyhton}
+        \caption{Algoritmo 1 - Versão Python}
+\end{figure}
+
+\begin{figure} [!ht]
+    \begin{lstlisting}[language=c++]
+    void bubble_sort(vector<int>& lista) {
+        int i, j;
+        bool swapped;
+        int n = lista.size();
+
+        for (i = 0; i < n-1; i++) {
+            swapped = false;
+            for (j = 0; j < n-i-1; j++) {
+                if (lista[j] > lista[j+1]) {
+                    int temp = lista[j];
+                    lista[j] = lista[j+1];
+                    lista[j+1] = temp;
+                    swapped = true;
+                }
+            }
+
+            if (swapped == false)
+                break;
+        }
+}
+
+    \end{lstlisting}
+        \label{fig:alg1_cpp}
+        \caption{Algoritmo 1 - Versão C++}
+\end{figure}
+
+\begin{figure}
+
+\begin{lstlisting}[language=Python]
+    def binary_search(array, low, high, target):
+        if high >= low:
+            mid = (high + low) // 2
+            if array[mid] == target:
+                return mid
+            elif array[mid] > target:
+                return binary_search(array, low, mid - 1, target)
+            else:
+                return binary_search(array, mid + 1, high, target)
+        else:
+            return -1
+    \end{lstlisting}
+    \label{fig:alg2_python}
+    \caption{Algortimo 2 - Versão Python}
+\end{figure}
+
+\begin{figure}
+\begin{lstlisting}[language=Python]
+    int binary_search(vector<int>& array, int low, int high, int target) {
+        if (high >= low) {
+            int mid = low + (high - low) / 2;  
+            if (array[mid] == target)
+                return mid;
+            else if (array[mid] > target)
+                return binary_search(array, low, mid - 1, target);
+            else
+                return binary_search(array, mid + 1, high, target);
+        } else {
+            return -1;
+        }
+    }
+    \end{lstlisting}
+    \label{fig:alg2_cpp}
+    \caption{Algortimo 2 - Versão Python}
+\end{figure}
 
 %\bibliographystyle{plain}
 %\bibliography{references}
