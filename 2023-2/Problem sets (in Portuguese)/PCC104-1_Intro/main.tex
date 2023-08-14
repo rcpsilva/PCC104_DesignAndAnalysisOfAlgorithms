@@ -40,7 +40,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 
-\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Branch and Bound}
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Somatórios, PA e PG}
 \author{Prof. Rodrigo Silva}
 %\date{}
 
@@ -52,27 +52,84 @@
 \section*{Leitura Recomendada}
 
 \begin{itemize}
-    \item Capítulo 12 (12.4) - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin 
+    \item Important summation formulas (Appendix A) - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin 
+    \item Sum manipulation rules (Appendix A) - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin 
+    \item PA e PG: resumo, fórmulas e exercícios - \url{https://www.todamateria.com.br/pa-e-pg/}
 \end{itemize}
 
 
 \section{Atividades}
 
+\subsection{Important summation formulas}
+
 \begin{enumerate}
-    \item Implemente um algoritmo para a reolução do problema do caixeiro viajante baseado em força bruta.
-    \item Implemente um algoritmo para a reolução do problema do caixeiro viajante baseado em branch and bound. 
-    \item Compare as duas abordagens em termos do número operações para instâncias aleatórias de 3 tamanhos diferentes. Para cada tamanho , gere 10 instâncias. Ao final, gere um boxplot com os resultados.
+
+    \item $ S = \sum_{n=1}^{5} 3 $
+    \item $ S = \sum_{k=0}^{15} (-2) $
+    \item $ S = \sum_{i=3}^{8} 7 $
+    \item $ S = \sum_{n=1}^{x} 3 $
+    \item $ S = \sum_{k=0}^{n+2} (-2) $
+    \item $ S = \sum_{i=3}^{k} 7 $
+    \item $ S = \sum_{k=1}^{5} k$ 
+    \item $ S = \sum_{k=0}^{n} k$
+    \item $ S = \sum_{k=i}^{n} k$
+    \item $ S = \sum_{i=1}^{4} i^2$
+    \item $ S = \sum_{i=1}^{n} i^2 $
+    
 \end{enumerate}
 
-Para cada implementação, apresentar a análise de complexidade de tempo do algoritmo. Esta análise deverá conter:
+\subsection{Sum manipulation rules}
 
-\begin{itemize}
-    \item Definição clara e explícita da operação básica.
-    \item Expressão matemática que define o custo do algoritmo (relação de recorrência para recursivos ou somatórios para iterativos) 
-    \item Uma reflexão sobre melhor caso, pior caso e caso médio.
-    \item Cálculo da função de custo (quando possível, utilizar o teorema mestre para verificar o cálculo).
-    \item Indicação da classe de eficiência ($O$ ou $\Theta$). A indicação da classe, deve ser justificada. Você pode provar pela definição, pelo limite, teorema mestre ou utilizar os resultados demonstrados em aula.
-\end{itemize}
+\begin{enumerate}
+    \item \(S = \sum_{n=1}^{6} (3n)\)
+    \item \(S = \sum_{k=1}^{10} (-2k)\)
+    \item \(S = \sum_{i=1}^{8} (5i)\)
+    \item \(S = \sum_{n=1}^{k} (3n)\)
+    \item \(S= \sum_{k=1}^{n} (-2k)\)
+    \item \(S = \sum_{i=1}^{x} (5i)\)
+    \item \(S = \sum_{n=1}^{5} (2n + 3)\)
+    \item \(S = \sum_{k=1}^{7} (4k - 1)\)
+    \item \(S = \sum_{n=1}^{k} (2n + 3)\)
+    \item \(S = \sum_{k=1}^{n} (4k - 1)\)
+    \item \(S = \sum_{n=1}^{6} (3n - 2n)\)
+    \item \(S = \sum_{k=1}^{8} (2k + k+1)\)
+    \item \(S = \sum_{i=1}^{k} (4i - 4i-1)\)
+    \item \(S = \sum_{n=1}^{7} (2n) + \sum_{n=1}^{7} (3n)\)
+    \item \(S = \sum_{k=1}^{5} (k^2) + \sum_{k=1}^{5} (2k)\)
+    \item \(S = \sum_{i=1}^{6} (4i) + \sum_{i=3}^{6} (i^2)\).
+\end{enumerate}
+
+\subsection{Progressões aritméticas}
+
+\begin{enumerate}
+
+    \item  Seja \(S_n\) a soma dos primeiros \(n\) termos de uma progressão aritmética. Se o primeiro termo é 3 e a razão é 6, escreva \(S_n\) em termos de \(n\).
+    
+    \item  Dada a progressão aritmética \(8, 14, 20, \ldots\), determine o valor do 50º termo.
+    
+    \item  Seja \(a_1\) o primeiro termo de uma progressão aritmética e \(a_n\) o \(n\)-ésimo termo. Se a soma dos primeiros 12 termos é 234 e \(a_{12} = 31\), encontre \(a_1\).
+    
+    \item  A soma dos primeiros \(n\) termos de uma progressão aritmética é \(S_n = 3n^2 + 2n\). Determine a expressão para o \(n\)-ésimo termo \(a_n\) em termos de \(n\).
+    
+    \item  Em uma progressão aritmética, a soma dos primeiros 25 termos é igual a 500, e a soma dos primeiros 40 termos é igual a 880. Encontre o valor do primeiro termo e da razão da progressão.
+    
+\end{enumerate}
+
+\subsection{Progressões geométricas}
+
+\begin{enumerate}
+    \item Seja \(S_n\) a soma dos primeiros \(n\) termos de uma progressão geométrica. Se o primeiro termo é 2 e a razão é \(3/2\), escreva \(S_n\) em termos de \(n\).
+    
+    \item  Dada a progressão geométrica \(5, 10, 20, \ldots\), determine o valor do 7º termo.
+    
+    \item  Seja \(a_1\) o primeiro termo de uma progressão geométrica e \(a_n\) o \(n\)-ésimo termo. Se a soma dos primeiros 8 termos é 546 e \(a_{8} = 32\), encontre \(a_1\).
+    
+    \item  A soma dos primeiros \(n\) termos de uma progressão geométrica é \(S_n = 80(2^n - 1)\). Determine a expressão para o \(n\)-ésimo termo \(a_n\) em termos de \(n\).
+    
+    \item  Em uma progressão geométrica, a soma dos primeiros 10 termos é igual a 511 e a soma dos primeiros 5 termos é igual a 455. Encontre o valor do primeiro termo e da razão da progressão.
+    
+\end{enumerate}
+
 
 %\bibliographystyle{plain}
 %\bibliography{references}
