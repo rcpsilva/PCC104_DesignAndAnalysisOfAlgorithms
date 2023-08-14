@@ -809,10 +809,10 @@ INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
-INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT main.aux

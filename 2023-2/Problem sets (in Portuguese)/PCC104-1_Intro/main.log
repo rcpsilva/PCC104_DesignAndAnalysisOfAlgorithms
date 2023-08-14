@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.20)  14 AUG 2023 12:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.20)  14 AUG 2023 12:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -547,25 +547,40 @@ Package grfext Info: Graphics extension search list:
 (grfext)             \AppendGraphicsExtensions on input line 504.
  (c:/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-)) [1
+))
+Overfull \hbox (15.87227pt too wide) in paragraph at lines 55--56
+[]\OT1/cmr/m/n/10 Somat^^Sorios e Pro-dut^^Sorios - []$\OT1/cmtt/m/n/10 http : / / arsilva . weebly . com / uploads / 2 / 1 / 0 / 0 / 21008856 / somatrio .
+ []
 
-{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./main.aux)
+
+Overfull \hbox (83.39822pt too wide) in paragraph at lines 58--59
+[][]$\OT1/cmtt/m/n/10 https : / / www . cs . yale . edu / homes / aspnes / pinewiki / attachments / SummationNotation / summation-[]notation .
+ []
+
+
+Overfull \hbox (24.51112pt too wide) in paragraph at lines 68--69
+[]\OT1/cmr/m/n/10 Fazer os exrc^^S^^Pcios da apos-tila []$\OT1/cmtt/m/n/10 http : / / arsilva . weebly . com / uploads / 2 / 1 / 0 / 0 / 21008856 / somatrio .
+ []
+
+[1
+
+{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E995DBD5E67AD4B2FF2BDCD853FC5F7A;831.
+(rerunfilecheck)             Checksum: 41B53C07FE8FF7823BB30C1673A42762;1107.
  ) 
 Here is how much of TeX's memory you used:
- 21601 strings out of 476024
- 397491 string characters out of 5794016
- 1866382 words of memory out of 5000000
- 41669 multiletter control sequences out of 15000+600000
+ 21606 strings out of 476024
+ 397542 string characters out of 5794016
+ 1868382 words of memory out of 5000000
+ 41671 multiletter control sequences out of 15000+600000
  518211 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,6n,104p,531b,521s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,6n,104p,531b,525s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (2 pages, 140063 bytes).
+Output written on main.pdf (3 pages, 144361 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
- 46 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 168 PDF objects out of 1000 (max. 8388607)
+ 137 compressed objects within 2 object streams
+ 49 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
