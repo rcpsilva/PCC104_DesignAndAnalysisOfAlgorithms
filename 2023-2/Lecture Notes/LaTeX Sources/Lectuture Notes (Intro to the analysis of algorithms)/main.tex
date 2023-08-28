@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{white},   
+    commentstyle=\itshape\color{green!40!black},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\newtheorem{definition}{Definition}[section]
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ Lecture Notes \\ Introdução à análise de algoritmos}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Leitura Recomendada}
+
+\begin{itemize}
+    \item Capítulo 2 - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin 
+\end{itemize}
+
+\section{Definições}
+
+\begin{definition}[Operação básica]
+    Operação que mais contribui para o tempo total de execução.
+\end{definition}
+
+\subsection{Melhor caso, pior caso e caso médio}
+
+Claro, vou definir cada um desses conceitos no contexto de análise de algoritmos:
+
+
+
+\begin{definition}[Melhor Caso (Best Case)]
+O melhor caso de um algoritmo é aquele em que ele alcança o menor consumo de recursos (tempo ou espaço) entre todas as entradas possíveis. Em outras palavras, é a situação em que o algoritmo se comporta da forma mais eficiente. No entanto, o melhor caso nem sempre é o cenário mais relevante, já que as entradas da vida real podem não se assemelhar ao melhor caso.
+\end{definition}
+
+\begin{definition}[Pior Caso (Worst Case)]
+O pior caso de um algoritmo é aquele em que ele requer o maior consumo de recursos entre todas as entradas possíveis. Isso dá uma ideia do desempenho máximo que o algoritmo pode atingir. O pior caso é frequentemente utilizado para garantir que o algoritmo não terá um desempenho inaceitavelmente ruim, independentemente das entradas.
+\end{definition}
+
+\begin{definition}[Caso Médio (Average Case)]
+O caso médio de um algoritmo é a média ponderada dos consumos de recursos (tempo ou espaço) em todas as possíveis entradas. Isso proporciona uma visão mais realista do desempenho do algoritmo, já que as entradas da vida real tendem a ser uma mistura de diferentes casos. A análise do caso médio pode ser complexa, pois requer o conhecimento das probabilidades de diferentes entradas e como o algoritmo se comporta em cada uma.
+\end{definition}
+
+\begin{definition}[Eficiência Amortizada (Amortized Efficiency)]
+A eficiência amortizada é uma medida de desempenho que leva em consideração o custo total médio de uma sequência de operações ao longo do tempo. Isso é particularmente útil quando um algoritmo pode ter operações caras, mas, em média, elas são balanceadas por operações mais baratas. Um exemplo clássico é a análise de estruturas de dados dinâmicas, como tabelas de hash ou filas, onde algumas operações podem ser mais custosas em termos de tempo, mas, ao longo do tempo, o custo médio por operação é razoável.
+\end{definition}
+
+
+\begin{algorithm}
+\caption{Busca Sequencial}
+\begin{algorithmic}[1]
+\Function{BuscaSequencial}{$lista, alvo$}
+    \For{$i \gets 1$ to $tamanho(lista)$}
+        \If{$lista[i] = alvo$}
+            \State \textbf{return} $i$ \Comment{Elemento encontrado na posição $i$}
+        \EndIf
+    \EndFor
+    \State \textbf{return} $-1$ \Comment{Elemento não encontrado na lista}
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+% \lstinputlisting[language=Python,caption=Example 1 - Graph as Matrix Python]{graph_matrix.py}
+
+
+\end{document}
+
