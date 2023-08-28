@@ -67,9 +67,19 @@
 
 \subsection{Melhor caso, pior caso e caso médio}
 
-Claro, vou definir cada um desses conceitos no contexto de análise de algoritmos:
-
-
+\begin{algorithm}[!ht]
+    \caption{Busca Sequencial}
+    \begin{algorithmic}[1]
+    \Function{BuscaSequencial}{$lista, alvo$}
+        \For{$i \gets 1$ to $tamanho(lista)$}
+            \If{$lista[i] = alvo$}
+                \State \textbf{return} $i$ \Comment{Elemento encontrado na posição $i$}
+            \EndIf
+        \EndFor
+        \State \textbf{return} $-1$ \Comment{Elemento não encontrado na lista}
+    \EndFunction
+    \end{algorithmic}
+    \end{algorithm}    
 
 \begin{definition}[Melhor Caso (Best Case)]
 O melhor caso de um algoritmo é aquele em que ele alcança o menor consumo de recursos (tempo ou espaço) entre todas as entradas possíveis. Em outras palavras, é a situação em que o algoritmo se comporta da forma mais eficiente. No entanto, o melhor caso nem sempre é o cenário mais relevante, já que as entradas da vida real podem não se assemelhar ao melhor caso.
@@ -87,21 +97,19 @@ O caso médio de um algoritmo é a média ponderada dos consumos de recursos (te
 A eficiência amortizada é uma medida de desempenho que leva em consideração o custo total médio de uma sequência de operações ao longo do tempo. Isso é particularmente útil quando um algoritmo pode ter operações caras, mas, em média, elas são balanceadas por operações mais baratas. Um exemplo clássico é a análise de estruturas de dados dinâmicas, como tabelas de hash ou filas, onde algumas operações podem ser mais custosas em termos de tempo, mas, ao longo do tempo, o custo médio por operação é razoável.
 \end{definition}
 
+\section{Análise assintótica}
 
-\begin{algorithm}
-\caption{Busca Sequencial}
-\begin{algorithmic}[1]
-\Function{BuscaSequencial}{$lista, alvo$}
-    \For{$i \gets 1$ to $tamanho(lista)$}
-        \If{$lista[i] = alvo$}
-            \State \textbf{return} $i$ \Comment{Elemento encontrado na posição $i$}
-        \EndIf
-    \EndFor
-    \State \textbf{return} $-1$ \Comment{Elemento não encontrado na lista}
-\EndFunction
-\end{algorithmic}
-\end{algorithm}
+\begin{definition}[$O$ (Big $O$)]
+    Dada uma função \( f(n) \) e outra função \( g(n) \), dizemos que \( f(n) \) é \( O(g(n)) \), denotado como \( f(n) = O(g(n)) \), se existem constantes positivas \( c \) e \( n_0 \) tais que \( 0 \leq f(n) \leq c \cdot g(n) \) para todo \( n \geq n_0 \). Em outras palavras, \( g(n) \) é um limite superior assintótico para \( f(n) \).
+\end{definition}
 
+\begin{definition}[$\Theta$ (Theta)]
+    Dada uma função \( f(n) \) e outra função \( g(n) \), dizemos que \( f(n) \) é \( \Theta(g(n)) \) se existem constantes positivas \( c_1, c_2 \) e \( n_0 \) tais que \( 0 \leq c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n) \) para todo \( n \geq n_0 \). Em outras palavras, \( g(n) \) é um limite assintótico ajustado para \( f(n) \), e \( f(n) \) está entre \( c_1 \cdot g(n) \) e \( c_2 \cdot g(n) \) para valores suficientemente grandes de \( n \).
+\end{definition}
+
+\begin{definition}[$\Omega$ (Ômega)]
+    Dada uma função \( f(n) \) e outra função \( g(n) \), dizemos que \( f(n) \) é \( \Omega(g(n)) \) se existem constantes positivas \( c \) e \( n_0 \) tais que \( 0 \leq c \cdot g(n) \leq f(n) \) para todo \( n \geq n_0 \). Em outras palavras, \( g(n) \) é um limite inferior assintótico para \( f(n) \).
+\end{definition}    
 
 % \lstinputlisting[language=Python,caption=Example 1 - Graph as Matrix Python]{graph_matrix.py}
 

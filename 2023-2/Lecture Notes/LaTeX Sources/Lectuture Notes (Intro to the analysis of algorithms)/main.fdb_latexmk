@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1693229845 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Lecture Notes/LaTeX Sources/Lectuture Notes (Intro to the analysis of algorithms)/main.tex" "main.pdf" "main" 1693229849 0
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Lecture Notes/LaTeX Sources/Lectuture Notes (Intro to the analysis of algorithms)/main.tex" 1693229842 4313 3d2f8dd9e11ddc6b7e1849b0d142f8cd ""
+["pdflatex"] 1693230449 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Lecture Notes/LaTeX Sources/Lectuture Notes (Intro to the analysis of algorithms)/main.tex" "main.pdf" "main" 1693230454 0
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Lecture Notes/LaTeX Sources/Lectuture Notes (Intro to the analysis of algorithms)/main.tex" 1693230438 5606 712cb4421287a6272eccf3cb8d3bea75 ""
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1679353348 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1679353891 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -28,6 +28,7 @@
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1679352646 35752 024fb6c41858982481f6968b5fc26508 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1679352646 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1679352646 32362 bc3f3eec7ab7d65fe700963d4017d32c ""
+  "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1679352646 32762 7fee39e011c23b3589931effd97b9702 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1679352646 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1679352646 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1679352646 37944 359e864bd06cde3b1cf57bb20757fb06 ""
@@ -161,9 +162,9 @@
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1679359898 4662804 131178ccc9b2f4741a821427ce79dce1 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679360027 7883451 1906458788776f148e040852b775af01 ""
   "c:/texlive/2022/texmf.cnf" 1679359856 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1693229849 939 ebee01e7ade909d515b074f037fbf4e6 "pdflatex"
-  "main.out" 1693229849 352 0b818f0b8785f4c02d2f156b665e76b6 "pdflatex"
-  "main.tex" 1693229842 4313 3d2f8dd9e11ddc6b7e1849b0d142f8cd ""
+  "main.aux" 1693230454 1057 5fb78a442a2ee1ab5caa378aac10f58c "pdflatex"
+  "main.out" 1693230454 499 f174c0901534f6c643226fcc031e81bb "pdflatex"
+  "main.tex" 1693230438 5606 712cb4421287a6272eccf3cb8d3bea75 ""
   (generated)
   "main.aux"
   "main.log"
