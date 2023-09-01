@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.20)  28 AUG 2023 10:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.20)  31 AUG 2023 21:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -550,49 +550,49 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) [1
 
 {c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<alg1.PNG, id=45, 768.62157pt x 204.01219pt>
+<alg1.PNG, id=46, 768.62157pt x 204.01219pt>
 File: alg1.PNG Graphic file (type png)
 <use alg1.PNG>
-Package pdftex.def Info: alg1.PNG  used on input line 128.
+Package pdftex.def Info: alg1.PNG  used on input line 127.
 (pdftex.def)             Requested size: 264.51115pt x 70.20995pt.
-<alg2.PNG, id=47, 743.02594pt x 297.36093pt>
+<alg2.PNG, id=48, 743.02594pt x 297.36093pt>
 File: alg2.PNG Graphic file (type png)
 <use alg2.PNG>
-Package pdftex.def Info: alg2.PNG  used on input line 135.
+Package pdftex.def Info: alg2.PNG  used on input line 134.
 (pdftex.def)             Requested size: 264.51115pt x 105.86105pt.
-<alg3.PNG, id=48, 742.27313pt x 234.1247pt>
+<alg3.PNG, id=49, 742.27313pt x 234.1247pt>
 File: alg3.PNG Graphic file (type png)
 <use alg3.PNG>
-Package pdftex.def Info: alg3.PNG  used on input line 142.
+Package pdftex.def Info: alg3.PNG  used on input line 141.
 (pdftex.def)             Requested size: 264.51115pt x 83.431pt.
- [2 <./alg1.PNG> <./alg2.PNG>]
-<alg_a.PNG, id=77, 505.38812pt x 129.48375pt>
+ [2 <./alg1.PNG> <./alg2.PNG> <./alg3.PNG>]
+<alg_a.PNG, id=74, 505.38812pt x 129.48375pt>
 File: alg_a.PNG Graphic file (type png)
 <use alg_a.PNG>
-Package pdftex.def Info: alg_a.PNG  used on input line 188.
+Package pdftex.def Info: alg_a.PNG  used on input line 187.
 (pdftex.def)             Requested size: 352.6793pt x 90.3594pt.
-<alg_b.PNG, id=78, 540.51938pt x 180.675pt>
+<alg_b.PNG, id=75, 540.51938pt x 180.675pt>
 File: alg_b.PNG Graphic file (type png)
 <use alg_b.PNG>
-Package pdftex.def Info: alg_b.PNG  used on input line 206.
+Package pdftex.def Info: alg_b.PNG  used on input line 202.
 (pdftex.def)             Requested size: 352.6793pt x 117.88947pt.
- [3 <./alg3.PNG> <./alg_a.PNG>] [4 <./alg_b.PNG>] (./main.aux)
+ [3 <./alg_a.PNG>] [4 <./alg_b.PNG>] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 5753917832D73FF24935792AC949B34F;227.
  ) 
 Here is how much of TeX's memory you used:
- 21652 strings out of 476024
- 398123 string characters out of 5794016
- 1867382 words of memory out of 5000000
+ 21650 strings out of 476024
+ 398109 string characters out of 5794016
+ 1868382 words of memory out of 5000000
  41703 multiletter control sequences out of 15000+600000
  517736 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,6n,104p,577b,621s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (4 pages, 311502 bytes).
+Output written on main.pdf (4 pages, 310911 bytes).
 PDF statistics:
- 178 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
- 58 named destinations out of 1000 (max. 500000)
+ 176 PDF objects out of 1000 (max. 8388607)
+ 132 compressed objects within 2 object streams
+ 56 named destinations out of 1000 (max. 500000)
  54 words of extra memory for PDF output out of 10000 (max. 10000000)
 
