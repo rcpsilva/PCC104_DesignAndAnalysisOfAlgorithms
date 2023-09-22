@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Prova 1}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Orientações}
+
+\begin{itemize}
+    \item É obrigatória a entrega do código fonte dos algoritmos implementados. Provas sem os códigos fonte não serão corrigidas e terão nota 0.
+    \item A avaliação do código apresentado entra na avaliação das questões relacionadas. 
+    \item Simplificações feitas na análise de custo dos algoritmos devem ser indicadas e justificadas.
+\end{itemize}
+
+\section*{Questões}
+
+\begin{enumerate}
+    \item Considere a sua implementação do algoritmo \textit{SelectionSort}
+
+    \begin{enumerate}
+        \item Apresente a expressão matemática que define o custo (em comparações).
+        \item Resolva a expressão para encontrar a classe de complexidade e determine a classe de complexidade em notação $O$ ou $\Theta$. 
+    \end{enumerate}
+
+    \item Qual a vantagem do algoritmo \textit{SequentialSearch2}? Explique.
+    
+    \item Considere a sua implementação do algoritmo de busca em profundidade.
+    \begin{enumerate}
+        \item Defina a operação básica e apresente a expressão matemática que define o custo da sua implementação.
+        \item Resolva a expressão para encontrar a classe de complexidade e determine a classe de complexidade em notação $O$ ou $\Theta$.
+    \end{enumerate}
+
+\end{enumerate}
+
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}
