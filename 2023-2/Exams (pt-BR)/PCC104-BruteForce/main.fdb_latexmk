@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1695410880 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-BruteForce/main.tex" "main.pdf" "main" 1695410883 0
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-BruteForce/main.tex" 1695410878 2606 98fe43a263eeda88df7207cb333561ab ""
+["pdflatex"] 1695664414 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-BruteForce/main.tex" "main.pdf" "main" 1695664416 0
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-BruteForce/main.tex" 1695664414 2948 2b9d55cceef48859fbaacece67a71c72 ""
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1679353348 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1679353891 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -150,9 +150,9 @@
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1679359898 4662804 131178ccc9b2f4741a821427ce79dce1 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679360027 7883451 1906458788776f148e040852b775af01 ""
   "c:/texlive/2022/texmf.cnf" 1679359856 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1695410883 554 e6f85c6f44bbe194532b4fa1fd8ca02c "pdflatex"
-  "main.out" 1695410882 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1695410878 2606 98fe43a263eeda88df7207cb333561ab ""
+  "main.aux" 1695664416 554 e6f85c6f44bbe194532b4fa1fd8ca02c "pdflatex"
+  "main.out" 1695664416 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1695664414 2948 2b9d55cceef48859fbaacece67a71c72 ""
   (generated)
   "main.aux"
   "main.log"
