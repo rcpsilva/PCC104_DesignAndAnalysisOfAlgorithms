@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1697589133 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-DecreaseAndConquer/main.tex" "main.pdf" "main" 1697589135 0
+["pdflatex"] 1697589239 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-DecreaseAndConquer/main.tex" "main.pdf" "main" 1697589242 0
   "BST.py" 1697588807 583 39f2e815f9685b1ee3a577ec7732a476 ""
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-DecreaseAndConquer/main.tex" 1697589132 3723 422cbc9dc8098e1b06f2c95954f5614b ""
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-DecreaseAndConquer/main.tex" 1697589238 3723 bf471d82eed499030aaeb4fdc79827e2 ""
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1679353348 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1679353891 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -157,9 +157,9 @@
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1679359898 4662804 131178ccc9b2f4741a821427ce79dce1 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679360027 7883451 1906458788776f148e040852b775af01 ""
   "c:/texlive/2022/texmf.cnf" 1679359856 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1697589135 649 a51f4d56074abdcbe9301117ff5b55c1 "pdflatex"
-  "main.out" 1697589134 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1697589132 3723 422cbc9dc8098e1b06f2c95954f5614b ""
+  "main.aux" 1697589241 649 a51f4d56074abdcbe9301117ff5b55c1 "pdflatex"
+  "main.out" 1697589241 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1697589238 3723 bf471d82eed499030aaeb4fdc79827e2 ""
   (generated)
   "main.aux"
   "main.log"
