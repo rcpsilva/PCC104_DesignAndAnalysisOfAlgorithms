@@ -41,6 +41,15 @@ class BST():
         elif value < node.value:
             return self._search(node.left,value)
 
+    def height(self):
+        return self._height(self.root)
+    
+    def _height(self,node):
+        if node is None:
+            return 0
+        else:
+            return 1 + max(self._height(node.left),self._height(node.right))
+
     def inorder(self):
         elements = []
         self._inorder(self.root, elements)
@@ -80,4 +89,6 @@ if __name__ == '__main__':
 
     print(tree.search(10))
     print(tree.search(11))
+
+    print(f'height {tree.height()}')
 
