@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{.95,.95,.95}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    %keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    %stringstyle=\color{codepurple},
+    %basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ De volta ao básico}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Questões}
+
+\begin{enumerate}
+
+    \item Resolva as seguintes relações de recorrência
+    
+    \begin{enumerate}
+        \item $T(n) = T(n-1) + 5$, $T(1)=0$
+        \item $T(n) = 3T(n-1)$, $T(1)=4$
+        \item $T(n) = T(n-1) + n$, $T(0)=0$
+        \item $T(n) = T(n/2) + n$, $T(1)=1$
+        \item $T(n) = T(n/3) + 1$, $T(1)=1$
+    \end{enumerate}
+
+
+    \item Escreva um algoritmo recursivo que tenha custo definido por $T(n) = T(n-1) + 5$, $T(1)=1$. 
+   
+    \item Escreva um algoritmo recursivo que tenha custo definido por $T(n) = 2T(n/2) + 1$, $T(1)=1$.
+    
+    \item Escreva um algoritmo iterativo que tenha complexidade $O(n^2)$.
+
+    \item Para cada um dos algoritmos abaixo, indique:
+    
+    \begin{enumerate}
+        \item O que este algoritmo computa?
+        \item Qual a operação básica deste algoritmo?
+        \item Quantas vezes esta operação básica é executada?
+        \item Qual a classe deste algoritmo em relaçãoo à eficiência?
+    \end{enumerate}
+
+
+    \begin{figure}[!ht]
+        \lstinputlisting[language=Python]{it2.py}
+        \caption{Algoritmo 1}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \lstinputlisting[language=Python]{it4.py}
+        \caption{Algoritmo 2}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \lstinputlisting[language=Python]{it3.py}
+        \caption{Algoritmo 3}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \lstinputlisting[language=Python]{rec1.py}
+        \caption{Algoritmo 4}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \lstinputlisting[language=Python]{it1.py}
+        \caption{Algoritmo 5}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \lstinputlisting[language=Python]{rec2.py}
+        \caption{Algoritmo 6}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \lstinputlisting[language=Python]{rec3.py}
+        \caption{Algoritmo 7}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \lstinputlisting[language=Python]{rec4.py}
+        \caption{Algoritmo 8}
+    \end{figure}
+    
+    
+\end{enumerate}
+
+
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}
