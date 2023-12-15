@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{.95,.95,.95}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    %keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    %stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Prova 6}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Questões}
+
+\begin{enumerate}
+
+    \item Apresente a análise de complexidade completa dos algoritmos abaixo. 
+    
+    \begin{enumerate}
+        \item Algoritmo 1
+        \begin{figure}[!ht]
+            \lstinputlisting[language=Python]{algorithm1.py}
+        \end{figure}
+
+        \item Algoritmo 2
+        \begin{figure}[!ht]
+            \lstinputlisting[language=Python]{algorithm2.py}
+        \end{figure}
+
+        \item Algoritmo 3
+        \begin{figure}[!ht]
+            \lstinputlisting[language=Python]{algorithm3.py}
+        \end{figure}
+
+        \item Algoritmo 4
+        \begin{figure}[!ht]
+            \lstinputlisting[language=Python]{algorithm4.py}
+        \end{figure}
+    \end{enumerate}
+
+    \item Faça a análise do resultados obtidos por você com as implementações do Branch and Bound e da Busca Exaustiva para o problema do caixeiro viajante. Demonstre conhecimento sobre os algoritmos implementados e sobre a complexidade de cada um.
+    
+    \item Dado um problema NP-completo, $P_{NPC}$, e um problema, ${P_{?}}$, que se deseja provar NP-completo responda:
+    \begin{enumerate}
+        \item Quais são os dois passos para se provar que $P_{?}$? 
+        \item Como a prova de cada passo pode ser feita?
+        \item Por quê os dois passos são necessários? Seria possível determinar a NP-Completude de $P_{?}$ só com o passo 1 ou só com o passo 2?
+        \item Imagine que $P_{NPC}$ foi resolvido por algum algoritmo em tempo polinomial. Qual seria o custo de se resolver $P2_{NPC}$ que sabemos ser NP-completo? 
+    \end{enumerate} 
+    
+
+
+    
+\end{enumerate}
+
+
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}
