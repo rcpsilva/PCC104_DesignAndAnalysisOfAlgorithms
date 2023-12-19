@@ -1,10 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1702675220 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-BranchAndBound/main.tex" "main.pdf" "main" 1702675223 0
+["pdflatex"] 1702947917 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-BranchAndBound/main.tex" "main.pdf" "main" 1702947920 0
   "algorithm1.py" 1702668292 210 187f9a399259a6db1fa68772c940fa31 ""
   "algorithm2.py" 1702668287 92 e0b898e6b4826bd27739ecf70ececc08 ""
   "algorithm3.py" 1702673700 221 ea960b3939b3493de021a153eb0d2c3f ""
   "algorithm4.py" 1702673919 108 46070ce06beea162d42e6cb9eac72a1c ""
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-BranchAndBound/main.tex" 1702675219 2924 51f2103bf4228ca102027e03cf06a837 ""
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2023-2/Exams (pt-BR)/PCC104-BranchAndBound/main.tex" 1702947919 2939 ce7c6ebb024d2448a140792f929fae8d ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1679352646 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1679352646 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -156,9 +156,9 @@
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1679359898 4662804 131178ccc9b2f4741a821427ce79dce1 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679360027 7883451 1906458788776f148e040852b775af01 ""
   "c:/texlive/2022/texmf.cnf" 1679359856 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1702675222 962 3d9c45b9ace2b15d263b14c4778c93bb "pdflatex"
-  "main.out" 1702675222 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1702675219 2924 51f2103bf4228ca102027e03cf06a837 ""
+  "main.aux" 1702947919 962 3d9c45b9ace2b15d263b14c4778c93bb "pdflatex"
+  "main.out" 1702947919 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1702947919 2939 ce7c6ebb024d2448a140792f929fae8d ""
   (generated)
   "main.aux"
   "main.log"
