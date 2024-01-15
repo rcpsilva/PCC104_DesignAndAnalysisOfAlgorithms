@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.20)  19 DEC 2023 22:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.20)  20 DEC 2023 13:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -556,23 +556,23 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1.
 ) (./algorithm2.py) (./algorithm5.py) [1
 
-{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./algorithm8.py) (./algorithm4.py) (./algorithm6.py) (./algorithm3.py) [2] (./algorithm7.py) [3] (./main.aux)
+{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./algorithm8.py) (./algorithm4.py) (./algorithm6.py) (./algorithm3.py) (./algorithm10.py) [2] (./algorithm9.py) (./algorithm7.py) [3] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 22115 strings out of 476024
- 402696 string characters out of 5794016
+ 22166 strings out of 476024
+ 403389 string characters out of 5794016
  2100382 words of memory out of 5000000
- 42111 multiletter control sequences out of 15000+600000
+ 42126 multiletter control sequences out of 15000+600000
  516937 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,6n,104p,540b,1650s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on main.pdf (3 pages, 77281 bytes).
+Output written on main.pdf (3 pages, 79486 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
- 90 named destinations out of 1000 (max. 500000)
+ 195 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
+ 120 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
