@@ -1,0 +1,116 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=0.5in]{geometry} % This sets the margin to 1 inch on all sides
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\begin{document}
+
+\title{Arrays, Matrizes, Strings e Listas Encadeadas}
+\author{PCC104 - Projeto e Análise de Algoritmos}
+\date{\today}
+
+\maketitle
+
+\section*{Exercícios}
+
+\section{Arrays}
+
+\begin{enumerate}
+
+    \item \textbf{Missing in Array} \\
+    \textbf{Dificuldade: Fácil} \\
+    Dado um array \texttt{arr} de tamanho \( n-1 \) que contém inteiros distintos no intervalo de 1 a \( n \) (inclusive), encontre o elemento faltante. O array é uma permutação de tamanho \( n \) com um elemento faltando. Retorne o elemento faltante.
+
+    \textbf{Exemplos:}
+    \begin{itemize}
+        \item \textbf{Entrada:} \( n = 5, \texttt{arr} = [1,2,3,5] \) \\
+        \textbf{Saída:} 4 \\
+        \textbf{Explicação:} Todos os números de 1 a 5 estão presentes, exceto 4.
+        
+        \item \textbf{Entrada:} \( n = 2, \texttt{arr} = [1] \) \\
+        \textbf{Saída:} 2 \\
+        \textbf{Explicação:} Todos os números de 1 a 2 estão presentes, exceto 2.
+    \end{itemize}
+    
+    \textbf{Complexidade de Tempo Esperada:} \( O(n) \) \\
+    \textbf{Complexidade de Espaço Auxiliar Esperada:} \( O(1) \)
+
+    \item \textbf{Array Leaders} \\
+    \textbf{Dificuldade: Fácil} \\
+    Dado um array \texttt{arr} de \( n \) inteiros positivos, sua tarefa é encontrar todos os líderes no array. Um elemento do array é considerado um líder se ele for maior que todos os elementos à sua direita ou se for igual ao elemento máximo à sua direita. O elemento mais à direita é sempre um líder.
+
+    \textbf{Exemplos:}
+    \begin{itemize}
+        \item \textbf{Entrada:} \( n = 6, \texttt{arr} = [16,17,4,3,5,2] \) \\
+        \textbf{Saída:} 17 5 2 \\
+        \textbf{Explicação:} Não há nada maior à direita de 17, 5 e 2.
+        
+        \item \textbf{Entrada:} \( n = 5, \texttt{arr} = [10,4,2,4,1] \) \\
+        \textbf{Saída:} 10 4 4 1 \\
+        \textbf{Explicação:} Ambas as ocorrências de 4 estão na saída, pois ser igual ao maior elemento à direita também é permitido.
+    \end{itemize}
+    
+    \textbf{Complexidade de Tempo Esperada:} \( O(n) \) \\
+    \textbf{Complexidade de Espaço Auxiliar Esperada:} \( O(n) \)
+
+    \item \textbf{Second Largest} \\
+    \textbf{Dificuldade: Fácil} \\
+    Dado um array \texttt{arr}, retorne o segundo maior elemento distinto do array. Se o segundo maior elemento não existir, retorne -1.
+
+    \textbf{Exemplos:}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{arr} = [12, 35, 1, 10, 34, 1] \\
+        \textbf{Saída:} 34 \\
+        \textbf{Explicação:} O maior elemento do array é 35 e o segundo maior é 34.
+        
+        \item \textbf{Entrada:} \texttt{arr} = [10, 10] \\
+        \textbf{Saída:} -1 \\
+        \textbf{Explicação:} O maior elemento do array é 10 e o segundo maior elemento não existe, então a resposta é -1.
+    \end{itemize}
+    
+    \textbf{Complexidade de Tempo Esperada:} \( O(n) \) \\
+    \textbf{Complexidade de Espaço Auxiliar Esperada:} \( O(1) \)
+
+    \item \textbf{Kadane's Algorithm} \\
+    \textbf{Dificuldade: Média} \\
+    Dado um array de inteiros \texttt{arr[]}. Encontre o subarray contíguo (contendo pelo menos um número) que tem a soma máxima e retorne sua soma.
+
+    \textbf{Exemplos:}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{arr[]} = [1, 2, 3, -2, 5] \\
+        \textbf{Saída:} 9 \\
+        \textbf{Explicação:} A soma máxima do subarray é 9, composta pelos elementos [1, 2, 3, -2, 5].
+        
+        \item \textbf{Entrada:} \texttt{arr[]} = [-1, -2, -3, -4] \\
+        \textbf{Saída:} -1 \\
+        \textbf{Explicação:} A soma máxima do subarray é -1, composta pelo elemento [-1].
+    \end{itemize}
+    
+    \textbf{Complexidade de Tempo Esperada:} \( O(n) \) \\
+    \textbf{Complexidade de Espaço Auxiliar Esperada:} \( O(1) \)
+
+    \item \textbf{Indexes of Subarray Sum} \\
+    \textbf{Dificuldade: Média} \\
+    Dado um array não ordenado \texttt{arr} de tamanho \( n \) que contém apenas inteiros não-negativos, encontre um subarray (elementos contínuos) que tenha soma igual a \( s \). Você deve retornar os índices esquerdo e direito (indexação baseada em 1) desse subarray.
+
+    No caso de múltiplos subarrays, retorne os índices do subarray que aparece primeiro ao mover da esquerda para a direita. Se nenhum subarray existir, retorne um array contendo o elemento -1.
+
+    \textbf{Exemplos:}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{arr[]} = [1,2,3,7,5], \( n = 5 \), \( s = 12 \) \\
+        \textbf{Saída:} 2 4 \\
+        \textbf{Explicação:} A soma dos elementos da 2ª à 4ª posição é 12.
+        
+        \item \textbf{Entrada:} \texttt{arr[]} = [1,2,3,4,5,6,7,8,9,10], \( n = 10 \), \( s = 15 \)
+        \textbf{Saída:} 1 5 \\
+        \textbf{Explicação:} A soma dos elementos da 1ª à 5ª posição é 15.
+    \end{itemize}
+    
+    \textbf{Complexidade de Tempo Esperada:} \( O(n) \) \\
+    \textbf{Complexidade de Espaço Auxiliar Esperada:} \( O(1) \)
+
+\end{enumerate}
+
+\end{document}
