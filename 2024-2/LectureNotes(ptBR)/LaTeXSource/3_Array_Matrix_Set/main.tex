@@ -1,0 +1,136 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{tikz} % For drawing diagrams
+\usetikzlibrary{matrix}
+
+
+\title{Data Structures: Arrays, Matrices, and Sets}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Array}
+
+\subsection{Definition}
+An array is a data structure consisting of a collection of elements (values or variables), each identified by an array index. Arrays are used to store multiple items of the same type together, making it easy to access elements based on their position.
+
+\subsection{Main Operations}
+\begin{itemize}
+    \item \textbf{Access:} Access an element using its index.\\
+    Time Complexity: $O(1)$ (constant time).
+    
+    \item \textbf{Insert:} Insert a new element at the end or a specific index. Inserting at the end is efficient, while inserting at the beginning or in the middle requires shifting elements.\\
+    Time Complexity: 
+    \begin{itemize}
+        \item Insertion at the end: $O(1)$
+        \item Insertion at an arbitrary position: $O(n)$
+    \end{itemize}
+
+    \item \textbf{Delete:} Remove an element from the array. If the element is removed from the beginning or middle, shifting elements is necessary.\\
+    Time Complexity: $O(n)$
+    
+    \item \textbf{Search:} Find an element by value.\\
+    Time Complexity: $O(n)$ (linear search)
+\end{itemize}
+
+\subsection{Diagram}
+\begin{center}
+\begin{tikzpicture}
+\draw[thick] (0,0) rectangle (1,1) node[midway] {0};
+\draw[thick] (1,0) rectangle (2,1) node[midway] {1};
+\draw[thick] (2,0) rectangle (3,1) node[midway] {2};
+\draw[thick] (3,0) rectangle (4,1) node[midway] {3};
+\draw[thick] (4,0) rectangle (5,1) node[midway] {4};
+\draw[thick] (5,0) rectangle (6,1) node[midway] {5};
+\draw[thick] (6,0) rectangle (7,1) node[midway] {6};
+\draw[thick] (7,0) rectangle (8,1) node[midway] {7};
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+\section{Matrix}
+
+\subsection{Definition}
+A matrix is a 2D array, typically organized in rows and columns. Matrices are commonly used in mathematical computations, including linear algebra and graph theory. Each element in a matrix can be accessed by a pair of indices: the row and column numbers.
+
+\subsection{Main Operations}
+\begin{itemize}
+    \item \textbf{Access:} Access an element using row and column indices.\\
+    Time Complexity: $O(1)$
+    
+    \item \textbf{Insert:} Insert a new row or column in the matrix, which requires shifting elements.\\
+    Time Complexity: $O(m \times n)$ (where $m$ and $n$ are the dimensions of the matrix)
+    
+    \item \textbf{Delete:} 
+    \begin{itemize}
+        \item If implemented as a static 2D array, removing a row or column requires shifting elements, leading to a time complexity of $O(m \times n)$. 
+        \item If implemented as a vector of vectors, removing a row is simpler because each row is an independent vector. Removing a row involves removing a single element from the outer vector, making it $O(m)$, where $m$ is the number of rows.
+    \end{itemize}
+
+    \item \textbf{Search:} Find an element in the matrix by value.\\
+    Time Complexity: $O(m \times n)$
+    
+    \item \textbf{Transpose:} Flip the matrix over its diagonal (row $i$ becomes column $i$).\\
+    Time Complexity: $O(m \times n)$
+\end{itemize}
+
+\subsection{Diagram}
+\begin{center}
+\begin{tikzpicture}
+\matrix (m) [matrix of nodes,nodes in empty cells,
+  nodes={draw, minimum size=1cm, anchor=center}] {
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9 \\
+};
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+\section{Set}
+
+\subsection{Definition}
+A set is an unordered collection of distinct elements. Unlike arrays or matrices, sets do not allow duplicate values. They are commonly used to represent collections where each element is unique.
+
+\subsection{Main Operations}
+\begin{itemize}
+    \item \textbf{Insert:} Add a new element to the set.\\
+    Time Complexity: $O(1)$ on average (if implemented using a hash set), $O(\log n)$ if using a balanced binary tree.
+    
+    \item \textbf{Delete:} Remove an element from the set.\\
+    Time Complexity: $O(1)$ on average (if using a hash set), $O(\log n)$ for a balanced binary tree.
+    
+    \item \textbf{Search (Contains):} Check if an element is present in the set.\\
+    Time Complexity: $O(1)$ on average (hash set), $O(\log n)$ for a balanced binary tree.
+    
+    \item \textbf{Union:} Combine two sets into a single set containing all elements from both.\\
+    Time Complexity: $O(n + m)$ (where $n$ and $m$ are the sizes of the sets).
+    
+    \item \textbf{Intersection:} Find elements that are present in both sets.\\
+    Time Complexity: $O(\min(n, m))$
+    
+    \item \textbf{Difference:} Find elements in one set that are not in another.\\
+    Time Complexity: $O(\min(n, m))$
+\end{itemize}
+
+\subsection{Diagram}
+\begin{center}
+\begin{tikzpicture}
+    \draw[fill=blue!20] (-1,0) circle (1.5cm) node at (-1,-1.8) {Set A};
+    \draw[fill=red!20] (1,0) circle (1.5cm) node at (1,-1.8) {Set B};
+    \node at (-1,0.5) {1};
+    \node at (-1,-0.5) {2};
+    \node at (1,0.5) {3};
+    \node at (1,-0.5) {4};
+    \node at (0,0) {5};
+\end{tikzpicture}
+\end{center}
+
+\end{document}
