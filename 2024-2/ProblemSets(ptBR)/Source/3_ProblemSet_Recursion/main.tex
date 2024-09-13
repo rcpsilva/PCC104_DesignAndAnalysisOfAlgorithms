@@ -184,6 +184,39 @@
     Expected Output: 3 \\
     Explanation: The three solutions are \{2, 2, 2, 2\}, \{2, 2, 4\}, and \{4, 4\}.
     
+    \item \textbf{Binary Search using Recursion.} \\
+    Write a recursive function that implements the binary search algorithm to find the position of a target element in a sorted array. If the target element is not present, the function should return -1. 
+    
+    \textbf{Algorithm Explanation:}
+    - Binary search works by repeatedly dividing the search interval in half. 
+    - If the value of the search key is less than the item in the middle of the interval, the search continues in the lower half. 
+    - If the value is greater, the search continues in the upper half. 
+    - This process continues until the value is found or the interval is empty.
+
+    \textbf{Examples:} \\
+    Input: arr = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}, target = 6 \\
+    Output: 5 \\
+    \textit{Explanation:} The element 6 is at index 5 (0-based indexing).
+    
+    Input: arr = \{1, 2, 3, 4, 5\}, target = 10 \\
+    Output: -1 \\
+    \textit{Explanation:} The element 10 is not present in the array.
+    
+    Input: arr = \{10, 20, 30, 40, 50\}, target = 30 \\
+    Expected Output: 2 \\
+    Explanation: The element 30 is at index 2.
+    
+    Input: arr = \{5, 15, 25, 35, 45, 55\}, target = 45 \\
+    Expected Output: 4 \\
+    Explanation: The element 45 is at index 4.
+    
+    Input: arr = \{7, 14, 21, 28, 35, 42\}, target = 50 \\
+    Expected Output: -1 \\
+    Explanation: The element 50 is not present in the array.
+    
+    Input: arr = \{2, 3, 5, 7, 11, 13, 17, 19\}, target = 7 \\
+    Expected Output: 3 \\
+    Explanation: The element 7 is at index 3.
     
 \end{enumerate}
 
