@@ -1,0 +1,151 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+
+\title{\vspace{-2cm} Algorithm Design and Analysis}
+\author{Exam 1}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Instructions}
+For each of the following questions:
+\begin{enumerate}[noitemsep] 
+    \item Write an algorithm that solves the given problem.
+    \item Define the basic operation.
+    \item Derive the expression for the number of operations.
+    \item Determine the time complexity of the given algorithm.  
+\end{enumerate}
+
+\section*{Question 1}
+\textbf{Problem:} Write an algorithm that prints the submatrix formed by the intersection of odd-numbered columns and even-numbered rows of a matrix.
+
+\textbf{Example Input:}
+\[
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+5 & 6 & 7 & 8 \\
+9 & 10 & 11 & 12 \\
+13 & 14 & 15 & 16
+\end{bmatrix}
+\]
+
+\textbf{Example Output:}
+\[
+\begin{bmatrix}
+2 & 4 \\
+10 & 12
+\end{bmatrix}
+\]
+
+
+\section*{Question 2}
+\textbf{Problem:} Write an algorithm that performs matrix multiplication of two matrices \(A\) and \(B\).
+
+\textbf{Matrix Multiplication:} Given \(A\) of dimension \(m \times n\) and \(B\) of dimension \(n \times p\), the product \(C = A \times B\) will have dimension \(m \times p\). The element \(C[i][j]\) is calculated as:
+
+\[
+C[i][j] = \sum_{k=1}^{n} A[i][k] \times B[k][j]
+\]
+
+\textbf{Example Input:}
+\[
+A = \begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix},
+B = \begin{bmatrix}
+5 & 6 \\
+7 & 8
+\end{bmatrix}
+\]
+
+\textbf{Example Output:}
+\[
+C = \begin{bmatrix}
+19 & 22 \\
+43 & 50
+\end{bmatrix}
+\]
+
+\section*{Question 3}
+\textbf{Problem:} Given an array \texttt{arr} of size \(n-1\) that contains distinct integers in the range from 1 to \(n\), find the missing element.
+
+\textbf{Example Input:}
+\[
+arr = [1, 2, 4, 6, 3, 7, 8]
+\]
+
+\textbf{Example Output:}
+\[
+5
+\]
+
+
+\section*{Question 4}
+\textbf{Problem:} Given an array \texttt{arr} of \(n\) integers, find all the leaders in the array. An element is considered a leader if it is greater than or equal to all the elements to its right.
+
+\textbf{Example Input:}
+\[
+arr = [16, 17, 4, 3, 5, 2]
+\]
+
+\textbf{Example Output:}
+\[
+[17, 5, 2]
+\]
+
+
+\appendix
+
+\section{Appendix - Matrix Multiplication}
+
+Matrix multiplication can be described as follows:
+1. The number of columns in matrix \(A\) must be equal to the number of rows in matrix \(B\) for the multiplication to be valid.
+2. Each element \(C[i][j]\) in the resulting matrix \(C\) is obtained by multiplying the elements of the \(i\)-th row of \(A\) by the corresponding elements of the \(j\)-th column of \(B\), and summing these products.
+
+\subsection{Visual Representation of Matrix Multiplication}
+
+Below is the visual representation of multiplying matrix \(A\) of size \(2 \times 3\) by matrix \(B\) of size \(3 \times 2\), resulting in matrix \(C\) of size \(2 \times 2\):
+
+\[
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22} \\
+b_{31} & b_{32}
+\end{bmatrix}
+=
+\begin{bmatrix}
+c_{11} & c_{12} \\
+c_{21} & c_{22}
+\end{bmatrix}
+\]
+
+To calculate the elements of matrix \(C\), we apply the formula mentioned above. Thus, we have:
+
+\[
+c_{11} = a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31}
+\]
+\[
+c_{12} = a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32}
+\]
+\[
+c_{21} = a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31}
+\]
+\[
+c_{22} = a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32}
+\]
+
+\end{document}
