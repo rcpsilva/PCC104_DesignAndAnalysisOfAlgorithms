@@ -1,0 +1,179 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\title{Prova de Projeto e Análise de Algoritmos}
+\author{Disciplina: Projeto e Análise de Algoritmos}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Instruções}
+Para cada uma das questões a seguir, escreva um algoritmo que resolve o problema apresentado, defina a operação básica, obtenha a expressão para o número de operações e defina a ordem de complexidade do algoritmo apresentado. Além disso, apresente exemplos de entrada e saída.
+
+\section*{Questão 1}
+\textbf{Problema:} Escreva um algoritmo que imprima a submatriz que possui a interseção das colunas ímpares com as linhas pares de uma matriz.
+
+\textbf{Exemplo de Entrada:}
+\[
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+5 & 6 & 7 & 8 \\
+9 & 10 & 11 & 12 \\
+13 & 14 & 15 & 16
+\end{bmatrix}
+\]
+
+\textbf{Exemplo de Saída:}
+\[
+\begin{bmatrix}
+2 & 4 \\
+10 & 12
+\end{bmatrix}
+\]
+
+\textbf{Algoritmo:}
+\begin{algorithm}
+\caption{Imprime colunas ímpares e linhas pares}
+\begin{algorithmic}[1]
+\Procedure{ImprimeColLinPar}{$M$}
+    \For{cada linha $i$ de $M$ tal que $i$ é par}
+        \For{cada coluna $j$ de $M$ tal que $j$ é ímpar}
+            \State Imprimir $M[i][j]$
+        \EndFor
+    \EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Operação básica:} Comparação de índices.
+
+\textbf{Complexidade:} A complexidade do algoritmo é $O(m \times n)$, onde $m$ é o número de linhas e $n$ é o número de colunas.
+
+\newpage
+
+\section*{Questão 2}
+\textbf{Problema:} Escreva um algoritmo que realiza a multiplicação de duas matrizes \(A\) e \(B\).
+
+\textbf{Multiplicação de Matrizes:} Dados \(A\) de dimensão \(m \times n\) e \(B\) de dimensão \(n \times p\), o produto \(C = A \times B\) terá dimensão \(m \times p\). O elemento \(C[i][j]\) é calculado como:
+
+\[
+C[i][j] = \sum_{k=1}^{n} A[i][k] \times B[k][j]
+\]
+
+\textbf{Exemplo de Entrada:}
+\[
+A = \begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix},
+B = \begin{bmatrix}
+5 & 6 \\
+7 & 8
+\end{bmatrix}
+\]
+
+\textbf{Exemplo de Saída:}
+\[
+C = \begin{bmatrix}
+19 & 22 \\
+43 & 50
+\end{bmatrix}
+\]
+
+\textbf{Algoritmo:}
+\begin{algorithm}
+\caption{Multiplicação de Matrizes}
+\begin{algorithmic}[1]
+\Procedure{MultiplicaMatrizes}{$A, B$}
+    \For{cada linha $i$ de $A$}
+        \For{cada coluna $j$ de $B$}
+            \State $C[i][j] \gets 0$
+            \For{cada elemento $k$ da linha $i$ de $A$}
+                \State $C[i][j] \gets C[i][j] + A[i][k] \times B[k][j]$
+            \EndFor
+        \EndFor
+    \EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Operação básica:} Multiplicação de elementos da matriz.
+
+\textbf{Complexidade:} A complexidade do algoritmo é $O(m \times n \times p)$, onde $m$, $n$ e $p$ são as dimensões das matrizes.
+
+\newpage
+
+\section*{Questão 3}
+\textbf{Problema:} Dado um array \texttt{arr} de tamanho \(n-1\) que contém inteiros distintos no intervalo de 1 a \(n\), encontre o elemento faltante.
+
+\textbf{Exemplo de Entrada:}
+\[
+arr = [1, 2, 4, 6, 3, 7, 8]
+\]
+
+\textbf{Exemplo de Saída:}
+\[
+5
+\]
+
+\textbf{Algoritmo:}
+\begin{algorithm}
+\caption{Encontra elemento faltante}
+\begin{algorithmic}[1]
+\Procedure{EncontraFaltante}{$arr, n$}
+    \State $S \gets \frac{n(n+1)}{2}$ \Comment{Soma dos primeiros $n$ inteiros}
+    \State $S_{arr} \gets \sum_{i=1}^{n-1} arr[i]$
+    \State \Return $S - S_{arr}$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Operação básica:} Soma de elementos.
+
+\textbf{Complexidade:} A complexidade do algoritmo é $O(n)$.
+
+\newpage
+
+\section*{Questão 4}
+\textbf{Problema:} Dado um array \texttt{arr} de \(n\) inteiros, encontre todos os líderes no array. Um elemento é considerado um líder se ele for maior ou igual a todos os elementos à sua direita.
+
+\textbf{Exemplo de Entrada:}
+\[
+arr = [16, 17, 4, 3, 5, 2]
+\]
+
+\textbf{Exemplo de Saída:}
+\[
+[17, 5, 2]
+\]
+
+\textbf{Algoritmo:}
+\begin{algorithm}
+\caption{Encontra Líderes}
+\begin{algorithmic}[1]
+\Procedure{EncontraLideres}{$arr$}
+    \State $n \gets \text{tamanho de } arr$
+    \State $max \gets arr[n-1]$
+    \State Imprimir $max$
+    \For{$i \gets n-2 \text{ até } 0$}
+        \If{$arr[i] \geq max$}
+            \State Imprimir $arr[i]$
+            \State $max \gets arr[i]$
+        \EndIf
+    \EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Operação básica:} Comparação entre elementos.
+
+\textbf{Complexidade:} A complexidade do algoritmo é $O(n)$.
+
+
+\end{document}

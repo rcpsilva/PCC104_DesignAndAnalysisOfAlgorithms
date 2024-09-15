@@ -1,0 +1,155 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+
+\title{\vspace{-2cm} Projeto e Análise de Algoritmos}
+\author{Prova 1}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Instruções}
+Para cada uma das questões a seguir:
+\begin{enumerate}[noitemsep] 
+    \item Escreva um algoritmo que resolve o problema apresentado.
+    \item Defina a operação básica.
+    \item Obtenha a expressão para o número de operações.
+    \item Defina a ordem de complexidade do algoritmo apresentado.  
+\end{enumerate}
+
+\section*{Questão 1}
+\textbf{Problema:} Escreva um algoritmo que imprima a submatriz que possui a interseção das colunas ímpares com as linhas pares de uma matriz.
+
+\textbf{Exemplo de Entrada:}
+\[
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+5 & 6 & 7 & 8 \\
+9 & 10 & 11 & 12 \\
+13 & 14 & 15 & 16
+\end{bmatrix}
+\]
+
+\textbf{Exemplo de Saída:}
+\[
+\begin{bmatrix}
+2 & 4 \\
+10 & 12
+\end{bmatrix}
+\]
+
+
+\section*{Questão 2}
+\textbf{Problema:} Escreva um algoritmo que realiza a multiplicação de duas matrizes \(A\) e \(B\).
+
+\textbf{Multiplicação de Matrizes:} Dados \(A\) de dimensão \(m \times n\) e \(B\) de dimensão \(n \times p\), o produto \(C = A \times B\) terá dimensão \(m \times p\). O elemento \(C[i][j]\) é calculado como:
+
+\[
+C[i][j] = \sum_{k=1}^{n} A[i][k] \times B[k][j]
+\]
+
+\textbf{Exemplo de Entrada:}
+\[
+A = \begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix},
+B = \begin{bmatrix}
+5 & 6 \\
+7 & 8
+\end{bmatrix}
+\]
+
+\textbf{Exemplo de Saída:}
+\[
+C = \begin{bmatrix}
+19 & 22 \\
+43 & 50
+\end{bmatrix}
+\]
+
+\section*{Questão 3}
+\textbf{Problema:} Dado um array \texttt{arr} de tamanho \(n-1\) que contém inteiros distintos no intervalo de 1 a \(n\), encontre o elemento faltante.
+
+\textbf{Exemplo de Entrada:}
+\[
+arr = [1, 2, 4, 6, 3, 7, 8]
+\]
+
+\textbf{Exemplo de Saída:}
+\[
+5
+\]
+
+
+\section*{Questão 4}
+\textbf{Problema:} Dado um array \texttt{arr} de \(n\) inteiros, encontre todos os líderes no array. Um elemento é considerado um líder se ele for maior ou igual a todos os elementos à sua direita.
+
+\textbf{Exemplo de Entrada:}
+\[
+arr = [16, 17, 4, 3, 5, 2]
+\]
+
+\textbf{Exemplo de Saída:}
+\[
+[17, 5, 2]
+\]
+
+
+\appendix
+
+\section{Apêndice - Multiplicação de Matrizes}
+
+
+Em termos simples, a multiplicação de matrizes pode ser descrita da seguinte forma:
+1. O número de colunas de \(A\) deve ser igual ao número de linhas de \(B\) para que a multiplicação seja válida.
+2. Cada elemento \(C[i][j]\) da matriz resultante \(C\) é obtido multiplicando-se os elementos da \(i\)-ésima linha de \(A\) pelos elementos correspondentes da \(j\)-ésima coluna de \(B\) e somando esses produtos.
+
+\subsection{Esquema Visual da Multiplicação}
+
+A seguir, temos o esquema visual da multiplicação de uma matriz \(A\) de dimensão \(2 \times 3\) por uma matriz \(B\) de dimensão \(3 \times 2\), resultando em uma matriz \(C\) de dimensão \(2 \times 2\):
+
+\[
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22} \\
+b_{31} & b_{32}
+\end{bmatrix}
+=
+\begin{bmatrix}
+c_{11} & c_{12} \\
+c_{21} & c_{22}
+\end{bmatrix}
+\]
+
+
+Para calcular os elementos da matriz \(C\), aplicamos a fórmula mencionada acima. Assim, temos:
+
+\[
+c_{11} = a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31}
+\]
+\[
+c_{12} = a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32}
+\]
+\[
+c_{21} = a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31}
+\]
+\[
+c_{22} = a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32}
+\]
+
+
+
+\end{document}
