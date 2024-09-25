@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1727224200 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2024-2/ProblemSets(ptBR)/Basics/arrays_matrizes/main.tex" "main.pdf" "main" 1727224201 0
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2024-2/ProblemSets(ptBR)/Basics/arrays_matrizes/main.tex" 1727224076 1386 6473e887fcfe212183c8f722c7f88a73 ""
+["pdflatex"] 1727224365 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2024-2/ProblemSets(ptBR)/Basics/arrays_matrizes/main.tex" "main.pdf" "main" 1727224366 0
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2024-2/ProblemSets(ptBR)/Basics/arrays_matrizes/main.tex" 1727224366 1445 9b841ff64c87f284897cc2818ea88ab5 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1679353327 1524 4414a8315f39513458b80dfc63bff03a ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1679353327 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -17,16 +17,20 @@
   "c:/texlive/2022/texmf-dist/tex/generic/babel-portuges/brazil.ldf" 1679352840 6591 308dec8ccec5a8d302be8a046d473dd3 ""
   "c:/texlive/2022/texmf-dist/tex/generic/babel/babel.sty" 1679352792 151363 1f5971af3ef874d432e8fb43e0edb71d ""
   "c:/texlive/2022/texmf-dist/tex/generic/babel/txtbabel.def" 1679352793 6927 64b53e78feab932ab94f892bb5a5facf ""
+  "c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty" 1679354820 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
+  "c:/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty" 1679354820 1057 525c2192b5febbd8c1f662c9468335bb ""
   "c:/texlive/2022/texmf-dist/tex/latex/base/article.cls" 1679355175 20144 d5ecf0a5140c8d8d8b72cbe86e320eff ""
   "c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty" 1679355175 5048 84b05796b49b69e2d4257d537721c960 ""
   "c:/texlive/2022/texmf-dist/tex/latex/base/size10.clo" 1679355175 8448 c33a4e1cb35cee9b33c2b21033b73e39 ""
+  "c:/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty" 1679354401 41601 9cf6c5257b1bc7af01a58859749dd37a ""
+  "c:/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty" 1679354513 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
   "c:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1679355136 30429 213676d4c7327a21d91ddaed900e7b81 ""
   "c:/texlive/2022/texmf-dist/web2c/texmf.cnf" 1679352532 40171 cdab547de63d26590bebb3baff566530 ""
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1679359898 4662804 131178ccc9b2f4741a821427ce79dce1 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679360027 7883451 1906458788776f148e040852b775af01 ""
   "c:/texlive/2022/texmf.cnf" 1679359856 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1727224201 131 8f1a39fa039fc74df233b9c8903b3350 "pdflatex"
-  "main.tex" 1727224076 1386 6473e887fcfe212183c8f722c7f88a73 ""
+  "main.aux" 1727224366 131 8f1a39fa039fc74df233b9c8903b3350 "pdflatex"
+  "main.tex" 1727224366 1445 9b841ff64c87f284897cc2818ea88ab5 ""
   (generated)
   "main.aux"
   "main.log"
