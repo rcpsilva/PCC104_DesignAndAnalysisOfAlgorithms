@@ -133,4 +133,59 @@ A set is an unordered collection of distinct elements. Unlike arrays or matrices
 \end{tikzpicture}
 \end{center}
 
+\newpage
+
+\section{Hash Table}
+
+\subsection{Definition}
+A hash table (or hash map) is a data structure that implements an associative array, a structure that can map keys to values. It uses a hash function to compute an index (or hash code) into an array of buckets, from which the desired value can be found. The main advantage of hash tables is their average time complexity for basic operations like insert, delete, and search, which is $O(1)$, assuming a good hash function and low collision rate.
+
+\subsection{Main Operations}
+\begin{itemize}
+    \item \textbf{Insert:} Add a key-value pair to the hash table. If the key already exists, the value is updated.\\
+    Time Complexity: $O(1)$ on average, but $O(n)$ in the worst case if too many collisions occur.
+
+    \item \textbf{Delete:} Remove a key-value pair from the hash table. The hash function is used to locate the index of the key to remove.\\
+    Time Complexity: $O(1)$ on average, but $O(n)$ in the worst case due to collisions.
+
+    \item \textbf{Search:} Find a value by its associated key. The hash function computes the index, and the value is retrieved from that location.\\
+    Time Complexity: $O(1)$ on average, but $O(n)$ in the worst case.
+
+    \item \textbf{Collision Handling:} Since different keys can produce the same hash code (a collision), hash tables must handle collisions. Common methods include:
+    \begin{itemize}
+        \item \textbf{Chaining:} Each bucket points to a linked list of elements with the same hash value.
+        \item \textbf{Open Addressing:} If a collision occurs, the algorithm looks for the next available slot.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Diagram}
+\begin{center}
+\begin{tikzpicture}
+\draw[thick] (0,0) rectangle (2,0.8) node[midway] {Index 0};
+\draw[thick] (0,-1) rectangle (2,-0.2) node[midway] {Index 1};
+\draw[thick] (0,-2) rectangle (2,-1.2) node[midway] {Index 2};
+\draw[thick] (0,-3) rectangle (2,-2.2) node[midway] {Index 3};
+\draw[thick] (0,-4) rectangle (2,-3.2) node[midway] {Index 4};
+\draw[->, thick] (2.2,0.4) -- (4,0.4) node[midway, above] {Key 1, Value A};
+\draw[->, thick] (2.2,-0.6) -- (4,-0.6) node[midway, above] {Key 2, Value B};
+\draw[->, thick] (2.2,-2.6) -- (4,-2.6) node[midway, above] {Key 3, Value C};
+\end{tikzpicture}
+\end{center}
+
+\subsection{Advantages and Disadvantages}
+\begin{itemize}
+    \item \textbf{Advantages:}
+    \begin{itemize}
+        \item Fast average time complexity for search, insert, and delete operations ($O(1)$).
+        \item Can store a large number of key-value pairs efficiently.
+    \end{itemize}
+    
+    \item \textbf{Disadvantages:}
+    \begin{itemize}
+        \item Performance degrades if there are many collisions, leading to $O(n)$ complexity in the worst case.
+        \item Requires a good hash function to minimize collisions.
+    \end{itemize}
+\end{itemize}
+
+
 \end{document}

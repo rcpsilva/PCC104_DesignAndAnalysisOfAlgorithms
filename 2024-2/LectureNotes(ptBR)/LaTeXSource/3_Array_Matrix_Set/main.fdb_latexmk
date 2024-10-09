@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1726021610 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2024-2/LectureNotes(ptBR)/LaTeXSource/3_Array_Matrix_Set/main.tex" "main.pdf" "main" 1726021613 0
-  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2024-2/LectureNotes(ptBR)/LaTeXSource/3_Array_Matrix_Set/main.tex" 1726021611 5290 14efc0f392183bba68fec9313e601073 ""
+["pdflatex"] 1728516702 "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2024-2/LectureNotes(ptBR)/LaTeXSource/3_Array_Matrix_Set/main.tex" "main.pdf" "main" 1728516704 0
+  "c:/Users/rcpsi/source/repos/PCC104_DesignAndAnalysisOfALgorithms/2024-2/LectureNotes(ptBR)/LaTeXSource/3_Array_Matrix_Set/main.tex" 1728516702 8201 abc4394339540da467b6c3c711c0634e ""
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1679353348 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1679354266 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1679353891 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -123,8 +123,8 @@
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1679359898 4662804 131178ccc9b2f4741a821427ce79dce1 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679360027 7883451 1906458788776f148e040852b775af01 ""
   "c:/texlive/2022/texmf.cnf" 1679359856 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1726021613 1243 ef72fdbc780afefa811f5368542c1e63 "pdflatex"
-  "main.tex" 1726021611 5290 14efc0f392183bba68fec9313e601073 ""
+  "main.aux" 1728516703 1773 df2adcd5f298f9f0160c8fbfa0a88c05 "pdflatex"
+  "main.tex" 1728516702 8201 abc4394339540da467b6c3c711c0634e ""
   (generated)
   "main.aux"
   "main.log"
