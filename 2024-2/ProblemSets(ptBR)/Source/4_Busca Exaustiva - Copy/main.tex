@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Federal University of Ouro Preto \\ PCC104 - Project and Analysis of Algorithms \\ Brute Force and Exhaustive Search}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Instructions}
+
+\begin{itemize}
+    \item Implementing the practical activities in C++ is highly recommended.
+    \item Make the most use of algorithms and data structures from the STL library. \url{https://www.geeksforgeeks.org/the-c-standard-template-library-stl/}.
+    \item Avoid using pointers as much as possible, but if necessary, use smart pointers \url{https://alandefreitas.github.io/moderncpp/basic-syntax/pointers/smart-pointers/}.
+    \item When you need a linear data structure, always first consider using the \texttt{vector} class (\url{https://en.cppreference.com/w/cpp/container/vector}).
+\end{itemize}
+
+\section{Recommended Reading}
+
+\begin{itemize}
+    \item Chapter 3 - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin
+    \item Book - \textit{Problem Solving with Algorithms and Data Structures using C++} (available at: \url{https://runestone.academy/runestone/books/published/cppds/index.html#})
+    \item Arrays \url{https://www.interviewcake.com/concept/python/array?}
+    \item Stacks \url{https://www.interviewcake.com/concept/python/stack?}
+    \item Queues \url{https://www.interviewcake.com/concept/python/queue?}
+    \item Graphs \url{https://www.interviewcake.com/concept/python3/graph}
+    \item Book - \textit{Introduction to Programming} - Alan de Freitas (available at \url{http://www.decom.ufop.br/alan/bcc702/livrocpp.pdf})
+\end{itemize}
+
+\section{Practical Activities}
+
+\begin{enumerate}
+    \item Implement the \textit{Selection Sort} algorithm.
+    \item Implement the \textit{SequentialSearch2} algorithm (see Section 3.2 of \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin).
+    \item Implement the breadth-first search algorithm for graphs.
+    \item Implement the depth-first search algorithm for graphs.
+    \item Implement an exhaustive search solution for the Traveling Salesman Problem.
+    \item Implement an exhaustive search solution for the Binary Knapsack Problem.
+    \item Given a grid of size \( n \times n \) filled with 0, 1, 2, 3, check if there is a possible path from the origin to the destination. You can move up, down, right, and left.
+
+    \textbf{Cell Descriptions:}
+    \begin{itemize}
+        \item A cell value of 1 means Origin.
+        \item A cell value of 2 means Destination.
+        \item A cell value of 3 means an empty cell.
+        \item A cell value of 0 means a Wall (a blocked cell that cannot be traversed).
+    \end{itemize}
+    
+    \textbf{Note:} There is only one origin and one destination.
+    
+    \textbf{Examples:}
+    \begin{itemize}
+        \item \textbf{Input:} \texttt{grid} = \(\begin{bmatrix}3 & 0 & 3 & 0 & 0\\3 & 0 & 0 & 0 & 3\\3 & 3 & 3 & 3 & 3\\0 & 2 & 3 & 0 & 0\\3 & 0 & 0 & 1 & 3\end{bmatrix}\) \\
+        \textbf{Output:} 0 \\
+        \textbf{Explanation:} The grid looks like this: \\
+        \[
+        \begin{bmatrix}
+        3 & 0 & 3 & 0 & 0 \\
+        3 & 0 & 0 & 0 & 3 \\
+        3 & 3 & 3 & 3 & 3 \\
+        0 & 2 & 3 & 0 & 0 \\
+        3 & 0 & 0 & 1 & 3
+        \end{bmatrix}
+        \]
+        There is no path to reach the destination (3,1) from the origin (4,3).
+        
+        \item \textbf{Input:} \texttt{grid} = \(\begin{bmatrix}1 & 3\\3 & 2\end{bmatrix}\) \\
+        \textbf{Output:} 1 \\
+        \textbf{Explanation:} The grid looks like this: \\
+        \[
+        \begin{bmatrix}
+        1 & 3 \\
+        3 & 2
+        \end{bmatrix}
+        \]
+        There is a path from the origin (0,0) to the destination (1,1).
+    \end{itemize}
+    
+    \textbf{Expected Time Complexity:} \( O(n^2) \) \\
+    \textbf{Expected Auxiliary Space Complexity:} \( O(n^2) \)
+    
+\end{enumerate}
+
+For each implementation, present an analysis of the worst-case and best-case (if applicable) time complexity of the algorithm. This analysis should include:
+
+\begin{itemize}
+    \item A mathematical expression defining the number of operations (recurrence relation for recursive algorithms or summations for iterative algorithms).
+    \item The final expression of the cost function.
+    \item Indication of the efficiency class ($O$ or $\Theta$). The indication of the class must be justified. You can prove it by definition, by bounds, or use results demonstrated in the first exercise list (related to Chapter 2 of the book).
+\end{itemize}
+
+%\footnotetext{Book - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)}}
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}
