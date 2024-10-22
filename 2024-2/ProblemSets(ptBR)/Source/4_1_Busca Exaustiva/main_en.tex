@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Federal University of Ouro Preto \\ PCC104 - Project and Analysis of Algorithms \\ Brute Force and Exhaustive Search - Part 2}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+%\section*{Instructions}
+% \begin{itemize}
+%     \item It is highly recommended to implement the practical activities in C++.
+%     \item Make maximum use of algorithms and data structures from the STL library. \url{https://www.geeksforgeeks.org/the-c-standard-template-library-stl/}. 
+%     \item Avoid the use of pointers as much as possible, but if needed, use smart pointers \url{https://alandefreitas.github.io/moderncpp/basic-syntax/pointers/smart-pointers/}. 
+%     \item When you need a linear data structure, always evaluate the use of the \texttt{vector} class first (\url{https://en.cppreference.com/w/cpp/container/vector})
+% \end{itemize}
+
+\section{Recommended Reading}
+
+\begin{itemize}
+    \item Chapter 3 - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin 
+    \item Book - \textit{Problem Solving with Algorithms and Data Structures using C++} (available at: \url{https://runestone.academy/runestone/books/published/cppds/index.html#})
+    \item Arrays \url{https://www.interviewcake.com/concept/python/array?}
+    %\item LinkedLists \url{https://www.interviewcake.com/concept/python/linked-list?}
+    \item Stacks \url{https://www.interviewcake.com/concept/python/stack?}
+    \item Queues \url{https://www.interviewcake.com/concept/python/queue?}
+    \item Graphs \url{https://www.interviewcake.com/concept/python3/graph}
+    \item Book - \textit{Introduction to Programming} - Alan de Freitas (available at \url{http://www.decom.ufop.br/alan/bcc702/livrocpp.pdf})
+\end{itemize}
+
+
+\section{Practical Activities}
+
+\begin{enumerate}
+    \item Implement the \textit{BubbleSort} algorithm (See section 3.1)
+    \item Implement the \textit{Brute Force String Matching} algorithm (See Section 3.2).
+    \item Implement a brute force algorithm to solve the Closest-Pair problem (See section 3.3).
+    \item Implement a brute force algorithm to solve the problem of finding the convex hull (See section 3.3)
+\end{enumerate}
+
+For each implementation, present the complexity analysis for the worst-case and best-case (if applicable) runtime of the algorithm. This analysis should contain:
+
+\begin{itemize}
+    \item A mathematical expression that defines the number of operations (recurrence relation for recursive algorithms or summations for iterative ones) 
+    \item Final expression of the cost function
+    \item Indication of the efficiency class ($O$ or $\Theta$). The indication of the class must be justified. You can prove it by definition, by limit, or use results demonstrated in the first exercise list (related to Chapter 2 of the book).
+\end{itemize}
+
+
+
+%\footnotetext{Book - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)}}
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}

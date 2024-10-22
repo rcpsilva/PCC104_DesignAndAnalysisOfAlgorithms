@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Força Bruta e Busca Exaustiva -Parte 2}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+%\section*{Instruções}
+% \begin{itemize}
+%     \item Implementar as atividades práticas em C++ é altamente recomendado.
+%     \item Utilize ao máximo os algoritmos e estruturas de dados da biblioteca STL. \url{https://www.geeksforgeeks.org/the-c-standard-template-library-stl/}. 
+%     \item Evite ao máximo a utilização de ponteiros, mas se precisar, utilizar ponteiros inteligentes \url{https://alandefreitas.github.io/moderncpp/basic-syntax/pointers/smart-pointers/}. 
+%     \item Quando precisar de uma estrutura de dados linear sempre avalie primeiro a utilização da classe \texttt{vector} (\url{https://en.cppreference.com/w/cpp/container/vector})
+% \end{itemize}
+
+\section{Leitura Recomendada}
+
+\begin{itemize}
+    \item Capítulo 3 - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin 
+    \item Livro - \textit{Problem Solving with Algorithms and Data Structures using C++} (disponível em: \url{https://runestone.academy/runestone/books/published/cppds/index.html#})
+    \item Arrays \url{https://www.interviewcake.com/concept/python/array?}
+    %\item LinkedLists \url{https://www.interviewcake.com/concept/python/linked-list?}
+    \item Pilhas \url{https://www.interviewcake.com/concept/python/stack?}
+    \item Filas \url{https://www.interviewcake.com/concept/python/queue?}
+    \item Grafos \url{https://www.interviewcake.com/concept/python3/graph}
+    \item Livro - \textit{Introdução à programação} - Alan de Freitas (disponível em \url{http://www.decom.ufop.br/alan/bcc702/livrocpp.pdf})
+\end{itemize}
+
+
+\section{Atividades Práticas}
+
+\begin{enumerate}
+    \item Implementar o algoritmo \textit{BubbleSort} (Ver seção 3.1)
+    \item Implementar o algoritmo \textit{Brute Force String Matching} (Ver Seção 3.2).
+    \item Implementar um algoritmo de força bruta para resover o problema do ''par mais próximo´´ (Ver seção 3.3).
+    \item Implementar um algoritmo de força bruta para resolver o problem de encontrar o feixo convexo (convex-hull) (Ver seção 3.3)
+\end{enumerate}
+
+Para cada implementação, apresentar a análise de complexidade de pior casor e melhor caso (se houver) do tempo do algoritmo. Esta análise deverá conter:
+
+\begin{itemize}
+    \item Expressão matemática que define o número de operações (relação de recorrência para recursivos ou somatórios para iterativos) 
+    \item Expressão final da função de custo
+    \item Indicação da classe de eficiência ($O$ ou $\Theta$). A indicação da classe, deve ser justificada. Você pode provar pela definição, pelo limite, ou utilizar resultado demonstrados na primeira lista de exercícios (referentes ao capítulo 2 do livro).
+\end{itemize}
+
+
+
+%\footnotetext{Livro - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)}}
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}
+
