@@ -1,0 +1,191 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{url}
+\usepackage[margin=0.8in]{geometry}
+
+\title{Conjunto de Problemas: BFS e DFS}
+\author{Prof. Rodrigo Silva}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introdução}
+
+Este conjunto de problemas divide a implementação dos algoritmos BFS (Busca em Largura) e DFS (Busca em Profundidade) em pequenas partes. O objetivo é ajudar os alunos a implementar gradualmente cada componente e, em seguida, combiná-los para formar os algoritmos completos.
+
+\section*{Parte 1: Representando o Grafo}
+
+\subsection*{Problema 1.1: Representação do Grafo}
+
+Escreva uma função para representar um grafo usando um dicionário, onde cada chave é um nó e o valor é uma lista de seus vizinhos. (Veja \url{https://www.w3schools.com/python/python_dictionaries.asp} para aprender como usar dicionários (a estrutura de dados usada para representar o grafo) em Python).
+
+\begin{verbatim}
+Grafo = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'E'],
+    'D': ['B'],
+    'E': ['C']
+}
+\end{verbatim}
+
+A função \texttt{adicionar\_aresta(nó1, nó2)} deve atualizar esta representação de dicionário.
+
+\begin{algorithm}[H]
+\caption{adicionar\_aresta(nó1, nó2)}
+\begin{algorithmic}
+    \IF {nó1 não está no Grafo}
+        \STATE Grafo[nó1] $\gets$ lista vazia
+    \ENDIF
+    \IF {nó2 não está no Grafo}
+        \STATE Grafo[nó2] $\gets$ lista vazia
+    \ENDIF
+    \STATE adicionar nó2 à lista de Grafo[nó1]
+    \STATE adicionar nó1 à lista de Grafo[nó2] \COMMENT{como o grafo é não direcionado}
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\section*{Parte 2: BFS - Busca em Largura}
+
+\subsection*{Problema 2.1: Inicializando a Fila}
+
+Escreva uma função que inicializa uma fila para BFS usando uma lista Python.
+
+\begin{algorithm}[H]
+\caption{Inicializar\_Fila(nó\_inicial)}
+\begin{algorithmic}
+    \STATE fila $\gets$ [nó\_inicial] \COMMENT{Inicializa a fila com nó\_inicial}
+    \RETURN fila
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\subsection*{Problema 2.2: Lidando com Vizinhos}
+
+Escreva uma função para visitar um nó e enfileirar todos os seus vizinhos não visitados.
+
+\begin{algorithm}[H]
+\caption{Visitar\_Vizinhos(grafo, nó, visitados, fila)}
+\begin{algorithmic}
+    \FOR{cada vizinho em grafo[nó]}
+        \IF{vizinho não está em visitados}
+            \STATE fila.append(vizinho) \COMMENT{enfileira vizinho}
+            \STATE visitados.add(vizinho)
+        \ENDIF
+    \ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\subsection*{Problema 2.3: BFS Completo}
+
+Agora, junte tudo para completar o algoritmo BFS.
+
+\begin{algorithm}[H]
+\caption{BFS(grafo, nó\_inicial)}
+\begin{algorithmic}
+    \STATE visitados $\gets$ set() \COMMENT{conjunto vazio}
+    \STATE fila $\gets$ Inicializar\_Fila(nó\_inicial)
+    \STATE visitados.add(nó\_inicial)
+    
+    \WHILE{fila não está vazia}
+        \STATE nó $\gets$ fila.pop(0) \COMMENT{desenfileira da frente}
+        \STATE imprimir "Visitado", nó
+        \STATE Visitar\_Vizinhos(grafo, nó, visitados, fila)
+    \ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\section*{Parte 3: DFS - Busca em Profundidade}
+
+\subsection*{Problema 3.1: Inicializando a Pilha}
+
+Escreva uma função que inicializa uma pilha para DFS usando uma lista Python.
+
+\begin{algorithm}[H]
+\caption{Inicializar\_Pilha(nó\_inicial)}
+\begin{algorithmic}
+    \STATE pilha $\gets$ [nó\_inicial] \COMMENT{Inicializa a pilha com nó\_inicial}
+    \RETURN pilha
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\subsection*{Problema 3.2: Lidando com Vizinhos na DFS}
+
+Escreva uma função para visitar um nó e empilhar todos os seus vizinhos não visitados.
+
+\begin{algorithm}[H]
+\caption{Visitar\_Vizinhos\_DFS(grafo, nó, visitados, pilha)}
+\begin{algorithmic}
+    \FOR{cada vizinho em grafo[nó]}
+        \IF{vizinho não está em visitados}
+            \STATE pilha.append(vizinho) \COMMENT{empilha o vizinho}
+            \STATE visitados.add(vizinho)
+        \ENDIF
+    \ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\subsection*{Problema 3.3: DFS Completo}
+
+Agora, junte tudo para completar o algoritmo DFS.
+
+\begin{algorithm}[H]
+\caption{DFS(grafo, nó\_inicial)}
+\begin{algorithmic}
+    \STATE visitados $\gets$ set() \COMMENT{conjunto vazio}
+    \STATE pilha $\gets$ Inicializar\_Pilha(nó\_inicial)
+    \STATE visitados.add(nó\_inicial)
+
+    \WHILE{pilha não está vazia}
+        \STATE nó $\gets$ pilha.pop() \COMMENT{desempilha da pilha}
+        \STATE imprimir "Visitado", nó
+        \STATE Visitar\_Vizinhos\_DFS(grafo, nó, visitados, pilha)
+    \ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\section*{Parte 4: DFS Recursivo (Opcional)}
+
+\subsection*{Problema 4.1: DFS Recursivo}
+
+Escreva uma função recursiva para executar a DFS.
+
+\begin{algorithm}[H]
+\caption{DFS\_Recursivo(grafo, nó, visitados)}
+\begin{algorithmic}
+    \STATE visitados.add(nó)
+    \STATE imprimir "Visitado", nó
+
+    \FOR{cada vizinho em grafo[nó]}
+        \IF{vizinho não está em visitados}
+            \STATE DFS\_Recursivo(grafo, vizinho, visitados)
+        \ENDIF
+    \ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\section*{Passo Final: Juntando Tudo}
+
+No final, os alunos devem testar os algoritmos BFS e DFS em um grafo de exemplo, combinando todas as etapas. Isso ajudará a reforçar como cada parte se encaixa no algoritmo completo.
+
+\end{document}

@@ -1,0 +1,191 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{url}
+\usepackage[margin=0.8in]{geometry}
+
+\title{Problem Set: BFS and DFS}
+\author{Prof. Rodrigo Silva}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+This problem set breaks down the implementation of BFS (Breadth-First Search) and DFS (Depth-First Search) into smaller parts. The goal is to help students gradually implement each component and then combine them to form the full algorithms.
+
+\section*{Part 1: Representing the Graph}
+
+\subsection*{Problem 1.1: Graph Representation}
+
+Write a function to represent a graph using a dictionary, where each key is a node and the value is a list of its neighbors. (See \url{https://www.w3schools.com/python/python_dictionaries.asp} to learn how to use dictionaries (the data structure used to represent the graph) in Python).
+
+\begin{verbatim}
+Graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'E'],
+    'D': ['B'],
+    'E': ['C']
+}
+\end{verbatim}
+
+The function \texttt{add\_edge(node1, node2)} should update this dictionary representation.
+
+\begin{algorithm}[H]
+\caption{add\_edge(node1, node2)}
+\begin{algorithmic}
+    \IF {node1 is not in Graph}
+        \STATE Graph[node1] $\gets$ empty list
+    \ENDIF
+    \IF {node2 is not in Graph}
+        \STATE Graph[node2] $\gets$ empty list
+    \ENDIF
+    \STATE append node2 to Graph[node1]
+    \STATE append node1 to Graph[node2] \COMMENT{since the graph is undirected}
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\section*{Part 2: BFS - Breadth-First Search}
+
+\subsection*{Problem 2.1: Initializing the Queue}
+
+Write a function that initializes a queue for BFS using a Python list.
+
+\begin{algorithm}[H]
+\caption{Initialize\_Queue(start\_node)}
+\begin{algorithmic}
+    \STATE queue $\gets$ [start\_node] \COMMENT{Initialize queue with start\_node}
+    \RETURN queue
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\subsection*{Problem 2.2: Handling Neighbors}
+
+Write a function to visit a node and enqueue all its unvisited neighbors.
+
+\begin{algorithm}[H]
+\caption{Visit\_Neighbors(graph, node, visited, queue)}
+\begin{algorithmic}
+    \FOR{each neighbor in graph[node]}
+        \IF{neighbor is not in visited}
+            \STATE queue.append(neighbor) \COMMENT{enqueue neighbor}
+            \STATE visited.add(neighbor)
+        \ENDIF
+    \ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\subsection*{Problem 2.3: BFS Complete}
+
+Now, put everything together to complete the BFS algorithm.
+
+\begin{algorithm}[H]
+\caption{BFS(graph, start\_node)}
+\begin{algorithmic}
+    \STATE visited $\gets$ set() \COMMENT{empty set}
+    \STATE queue $\gets$ Initialize\_Queue(start\_node)
+    \STATE visited.add(start\_node)
+    
+    \WHILE{queue is not empty}
+        \STATE node $\gets$ queue.pop(0) \COMMENT{dequeue from front}
+        \STATE print "Visited", node
+        \STATE Visit\_Neighbors(graph, node, visited, queue)
+    \ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\section*{Part 3: DFS - Depth-First Search}
+
+\subsection*{Problem 3.1: Initializing the Stack}
+
+Write a function that initializes a stack for DFS using a Python list.
+
+\begin{algorithm}[H]
+\caption{Initialize\_Stack(start\_node)}
+\begin{algorithmic}
+    \STATE stack $\gets$ [start\_node] \COMMENT{Initialize stack with start\_node}
+    \RETURN stack
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\subsection*{Problem 3.2: Handling Neighbors in DFS}
+
+Write a function to visit a node and push all its unvisited neighbors to the stack.
+
+\begin{algorithm}[H]
+\caption{Visit\_Neighbors\_DFS(graph, node, visited, stack)}
+\begin{algorithmic}
+    \FOR{each neighbor in graph[node]}
+        \IF{neighbor is not in visited}
+            \STATE stack.append(neighbor) \COMMENT{push neighbor onto stack}
+            \STATE visited.add(neighbor)
+        \ENDIF
+    \ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\subsection*{Problem 3.3: DFS Complete}
+
+Now, put everything together to complete the DFS algorithm.
+
+\begin{algorithm}[H]
+\caption{DFS(graph, start\_node)}
+\begin{algorithmic}
+    \STATE visited $\gets$ set() \COMMENT{empty set}
+    \STATE stack $\gets$ Initialize\_Stack(start\_node)
+    \STATE visited.add(start\_node)
+
+    \WHILE{stack is not empty}
+        \STATE node $\gets$ stack.pop() \COMMENT{pop from the stack}
+        \STATE print "Visited", node
+        \STATE Visit\_Neighbors\_DFS(graph, node, visited, stack)
+    \ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\section*{Part 4: Recursive DFS (Optional)}
+
+\subsection*{Problem 4.1: Recursive DFS}
+
+Write a recursive function to perform DFS.
+
+\begin{algorithm}[H]
+\caption{DFS\_Recursive(graph, node, visited)}
+\begin{algorithmic}
+    \STATE visited.add(node)
+    \STATE print "Visited", node
+
+    \FOR{each neighbor in graph[node]}
+        \IF{neighbor is not in visited}
+            \STATE DFS\_Recursive(graph, neighbor, visited)
+        \ENDIF
+    \ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+---
+
+\section*{Final Step: Putting It All Together}
+
+At the end, students should test BFS and DFS on a sample graph by combining all the steps. This will help reinforce how each part fits into the whole algorithm.
+
+\end{document}
