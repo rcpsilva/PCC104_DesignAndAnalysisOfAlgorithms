@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Federal University of Ouro Preto \\ PCC104 - Project and Analysis of Algorithms \\ Divide and Conquer}
+\author{Prof. Rodrigo Silva}
+%
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Recommended Reading}
+
+\begin{itemize}
+    \item Chapter 4 - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} by Anany Levitin
+    \item Book - \textit{Problem Solving with Algorithms and Data Structures using C++} (available at: \url{https://runestone.academy/runestone/books/published/cppds/index.html#})
+\end{itemize}
+
+\section{Practical Activities}
+
+\begin{enumerate}
+    \item Implement the \textit{Insertion Sort} algorithm.
+    %\item Implement the topological sort algorithm.
+    %\item Implement the Johnson-Trotter algorithm to generate permutations.
+    %\item Implement the \textit{LexicographicPermute} method presented in the textbook.
+    %\item Implement an algorithm that, given a set of elements, generates all its subsets.
+    \item Implement the binary search algorithm.
+    \item Implement an algorithm for the \textit{fake coin problem}.
+    \item Implement the \textit{interpolation search} method.
+    %\item Implement an algorithm for calculating the median without sorting the set of numbers.
+    %\item Implement the \textit{binary search tree} data structure and the methods for searching and inserting.
+    % https://hub.packtpub.com/binary-search-tree-tutorial/
+\end{enumerate}
+
+For each implementation, present the time complexity analysis of the algorithm. This analysis should include:
+
+\begin{itemize}
+    \item A mathematical expression defining the cost of the algorithm (recurrence relation for recursive algorithms or summation for iterative ones).
+    \item Calculation of the cost function.
+    \item Indication of the efficiency class ($O$ or $\Theta$). The indication of the class should be justified. You can prove it using the definition, the limit, the master theorem, or results demonstrated in class.
+\end{itemize}
+
+%
+\end{document}

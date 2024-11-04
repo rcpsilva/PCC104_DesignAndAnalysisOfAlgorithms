@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{\vspace{-2 cm}Universidade Federal de Ouro Preto \\ PCC104 - Projeto e Análise de Algoritmos \\ Diminuir e Conquistar}
+\author{Prof. Rodrigo Silva}
+%\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Leitura Recomendada}
+
+\begin{itemize}
+    \item Capítulo 4 - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin 
+    \item Livro - \textit{Problem Solving with Algorithms and Data Structures using C++} (disponível em: \url{https://runestone.academy/runestone/books/published/cppds/index.html#})
+\end{itemize}
+
+\section{Atividades Práticas}
+
+\begin{enumerate}
+    \item Implemente o algortimo \textit{Insertion Sort}.
+    %\item Implemente o algoritmo de busca topológia.
+    %\item Implemente o algoritmo de Johnson-Trotter para gerar permutações.
+    %\item Implemente o método \textit{LexicographicPermute} apresentado no livro texto.
+    %\item Implemente um algoritmo que, dado um conjunto de elementos, gere todos seus subconjuntos.
+    \item Implemente o algoritmo de busca binária.
+    \item Implemente um algoritmo para o problema da moeda falsa (\textit{fake coin problem}).
+    \item Implemente o método \textit{interpolation search}.
+    %\item Implemente um algoritmo para o cálculo da mediana que não envolva ordenar o conjunto de números.
+    %\item Implemente a estrutura de dados \textit{binary search tree} e os métodos buscar e inserir.
+    % https://hub.packtpub.com/binary-search-tree-tutorial/
+\end{enumerate}
+
+Para cada implementação, apresentar a análise de complexidade de tempo do algoritmo. Esta análise deverá conter:
+
+\begin{itemize}
+    \item Expressão matemática que define o custo do algoritmo (relação de recorrência para recursivos ou somatórios para iterativos) 
+    \item Cálculo da função de custo
+    \item Indicação da classe de eficiência ($O$ ou $\Theta$). A indicação da classe, deve ser justificada. Você pode provar pela definição, pelo limite, teorema mestre, utilizar os resultados demonstrados em aula.
+\end{itemize}
+
+%\footnotetext{Livro - \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)}}
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}
+
