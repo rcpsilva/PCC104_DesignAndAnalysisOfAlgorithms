@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+
+\title{\vspace{-1.5cm} Design and Analysis of Algorithms - Exam 2}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\vspace{-2cm} 
+\section*{Instructions}
+For each of the following questions:
+\begin{enumerate}[noitemsep] 
+    \item Write an algorithm that solves the given problem.
+    \item Define the basic operation.
+    \item Derive the expression for the number of operations.
+    \item Define the time complexity of the presented algorithm.  
+\end{enumerate}
+
+\section*{Questions}
+
+\begin{enumerate}
+    \item Given a square matrix, write an algorithm to check if the sum of the values of each column is equal to the sum of the values of each row. That is, the algorithm should return True if the sum of the values of column $i$ is equal to the sum of the values of row $i$ for all $i$ in $[0, 1, 2, ..., n-1]$ and False, otherwise. 
+    
+%    \textbf{Examples}
+%
+%    \textit{Input:}
+%    \[
+%    A = \begin{bmatrix}
+%    1 & 3 \\
+%    3 & 4
+%    \end{bmatrix}
+%    \]
+%
+%    \textit{Output:}
+%    True
+%
+%
+%    \textit{Input:}
+%    \[
+%    A = \begin{bmatrix}
+%    1 & 7 \\
+%    3 & 4
+%    \end{bmatrix}
+%    \]
+%
+%    \textit{Output:}
+%    False
+
+
+    \item Write a recursive function to calculate the sum of the first \( n \) natural numbers.
+    
+    \item Present an exhaustive search algorithm for the Binary Knapsack Problem. You should present and analyze both the search algorithm and the method that calculates the cost of a solution.
+    
+    \item For each of the following operations, indicate the time complexity $\Theta(\cdot)$:
+    \begin{enumerate}
+        \item Adding an element at the beginning of an array.
+        \item Removing an element from the beginning of an array.
+        \item Adding an element at the end of an array.
+        \item Removing an element from the end of an array.
+        \item Searching for an element in an array.
+        \item Adding an element to a stack (implemented in an array).
+        \item Removing an element from a stack (implemented in an array).
+        \item Adding an element to a queue (implemented in an array).
+        \item Removing an element from a queue (implemented in an array).
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
