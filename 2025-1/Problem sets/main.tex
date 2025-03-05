@@ -1,0 +1,163 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Exercises on Basic Python, Object-Oriented Programming, and Testing}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Basic Python (Chapter 2)}
+
+\begin{enumerate}
+    \item Compute the result and explain how Python evaluates the expressions below:
+    \begin{itemize}
+        \item \texttt{5 + 3 * 2}
+        \item \texttt{10 / 3}
+        \item \texttt{10 // 3}
+        \item \texttt{10 \% 3}
+        \item \texttt{5 ** 2}
+    \end{itemize}
+    
+    \item What will be the output of the following Python program? Explain why.
+    
+    \begin{lstlisting}[language=Python]
+    x = 3.5
+    y = int(x)
+    print(y, type(y))
+    \end{lstlisting}
+    
+    \item Lists:
+    
+    \begin{enumerate}
+        \item Create a list with the first five prime numbers.
+        \item Write a function to remove all even numbers from a given list.
+        \item Implement a function that finds the second largest number in a list.
+        \item Write a function that flattens a nested list.
+        \item Write a function that rotates a list to the right by a given number of positions.
+        
+        Input: \texttt{[1,2,3,4,5]}, Rotate by 2
+        Output: \texttt{[4,5,1,2,3]}
+        
+        Analyze its time complexity.
+        
+        \item Write a function to count the occurrences of each element in a list.
+        
+        Input: \texttt{[1,1,2,3,3,3,4]}
+        Output: \texttt{\{1:2, 2:1, 3:3, 4:1\}}
+        
+        Analyze its efficiency.
+    \end{enumerate}
+    
+    \item Tuples:
+    
+    \begin{enumerate}
+        \item Convert a list of tuples into a dictionary.
+        \item Write a function that swaps the first and last elements of a tuple.
+        \item Write a function that finds the maximum and minimum values in a tuple.
+        
+        Input: \texttt{(4, 7, 1, 9)}
+        Output: \texttt{(9,1)}
+        
+        Discuss time complexity.
+        
+        \item Write a function that converts a tuple of numbers into a single concatenated string.
+        
+        Input: \texttt{(1,2,3,4)}
+        Output: \texttt{"1234"}
+        
+        Analyze its efficiency.
+    \end{enumerate}
+    
+    \item Dictionaries:
+    
+    \begin{enumerate}
+        \item Create a dictionary that maps three cities to their country.
+        \item Write a function that merges two dictionaries, summing values of common keys.
+        \item Write a function that inverts a dictionary (keys become values and vice versa).
+        
+        Input: \texttt{\{'a': 1, 'b': 2\}}
+        Output: \texttt{\{1: 'a', 2: 'b'\}}
+        
+        Analyze time complexity.
+        
+        \item Write a function to find the most frequently occurring value in a dictionary.
+        
+        Input: \texttt{\{'a': 3, 'b': 2, 'c': 3\}}
+        Output: \texttt{3}
+        
+        Analyze performance.
+    \end{enumerate}
+    
+    \item Sets:
+    
+    \begin{enumerate}
+        \item Write a function that returns the union, intersection, and difference of two sets.
+        \item Write a function that finds the symmetric difference between two sets.
+        
+        Input: \texttt{\{1,2,3\}}, \texttt{\{2,3,4\}}
+        Output: \texttt{\{1,4\}}
+        
+        Provide an asymptotic analysis.
+        
+        \item Write a function to check if two sets are disjoint.
+        
+        Input: \texttt{\{1,2,3\}}, \texttt{\{4,5,6\}}
+        Output: \texttt{True}
+        
+        Discuss its computational complexity.
+    \end{enumerate}
+\end{enumerate}
+
+\section*{Object-Oriented Programming (Chapter 3)}
+
+\begin{enumerate}
+    \item Define a class \texttt{Rectangle} in Python with:
+    \begin{itemize}
+        \item Attributes: \texttt{length} and \texttt{width}.
+        \item A method \texttt{area()} that returns the area of the rectangle.
+        \item A method \texttt{perimeter()} that returns the perimeter of the rectangle.
+    \end{itemize}
+
+    \item Define a class \texttt{Circle} with an attribute \texttt{radius}. Include methods:
+    \begin{itemize}
+        \item \texttt{area()} that calculates the area.
+        \item \texttt{circumference()} that calculates the circumference.
+    \end{itemize}
+    \textbf{Example:} \texttt{Circle(5).area()} returns approximately 78.54.
+
+    \item Define a class \texttt{Student} with attributes \texttt{name}, \texttt{age}, and \texttt{grades}. Include methods:
+    \begin{itemize}
+        \item \texttt{average()} returning the average of grades.
+        \item \texttt{is\_passing()} returning \texttt{True} if the average grade is above a threshold (e.g., 60).
+    \end{itemize}
+    \textbf{Example:} \texttt{Student("Alice",20,[80,90]).average()} returns 85.
+
+    \item Define a class \texttt{BankAccount} with attributes \texttt{balance} and methods \texttt{deposit()} and \texttt{withdraw()}.\\
+    \textbf{Example:} After depositing 50 into an account initialized with 100, the balance is 150.
+
+    \item Implement inheritance by defining a superclass \texttt{Vehicle} with attributes \texttt{make} and \texttt{model}. Create subclasses \texttt{Car} and \texttt{Bike} with additional attributes \texttt{doors} for \texttt{Car} and \texttt{type} for \texttt{Bike}.\\
+    \textbf{Example:} \texttt{Car("Ford","Mustang",4)} creates a car object.
+\end{enumerate}
+
+\section*{Testing (Chapter 4)}
+
+\begin{enumerate}
+    \item Write a Python function \texttt{is\_positive(n)} that returns \texttt{True} if \texttt{n} is positive and \texttt{False} otherwise. Use an \texttt{assert} statement to test your function.\\
+    \textbf{Example:} Input: \texttt{5}, Output: \texttt{True}; Input: \texttt{-3}, Output: \texttt{False}
+
+    \item Write unit tests for the \texttt{Rectangle} class using Python's \texttt{unittest} framework.
+
+    \item Explain the concept of Test-Driven Development (TDD) and illustrate it by writing tests first for a simple function that calculates the factorial of a number.
+
+    \item Write tests that specifically check edge cases, incorrect usage, and error handling for a function that divides two numbers.
+
+    \item Explain why tests should be maintained even after they pass successfully.
+\end{enumerate}
+
+\end{document}
