@@ -33,85 +33,115 @@
     \end{lstlisting}
     
     \item Lists:
-    
+
     \begin{enumerate}
-        \item Create a list with the first five prime numbers.
-        \item Write a function to remove all even numbers from a given list.
-        \item Implement a function that finds the second largest number in a list.
-        \item Write a function that flattens a nested list.
-        \item Write a function that rotates a list to the right by a given number of positions.
+        \item Create a list with the first five prime numbers.\\
+        \textbf{Example:} Output: \texttt{[2, 3, 5, 7, 11]}
         
-        Input: \texttt{[1,2,3,4,5]}, Rotate by 2
-        Output: \texttt{[4,5,1,2,3]}
+        \item Write a function to remove all even numbers from a given list.\\
+        \textbf{Example:} \\
+        Input: \texttt{[1,2,3,4,5,6]} \\
+        Output: \texttt{[1,3,5]}
         
-        Analyze its time complexity.
+        \item Implement a function that finds the second largest number in a list.\\
+        \textbf{Example:} \\
+        Input: \texttt{[10,20,4,45,99]} \\
+        Output: \texttt{45}
         
-        \item Write a function to count the occurrences of each element in a list.
+        \item Write a function that flattens a nested list.\\
+        \textbf{Example:} \\
+        Input: \texttt{[[1,2],[3,4],[5]]} \\
+        Output: \texttt{[1,2,3,4,5]}
         
-        Input: \texttt{[1,1,2,3,3,3,4]}
+        \item Write a function that rotates a list to the right by a given number of positions.\\
+        \textbf{Example:} \\
+        Input: \texttt{[1,2,3,4,5]}, Rotate by 2 \\
+        Output: \texttt{[4,5,1,2,3]}    
+        
+        \item Write a function to count the occurrences of each element in a list.\\
+        \textbf{Example:} \\
+        Input: \texttt{[1,1,2,3,3,3,4]} \\
         Output: \texttt{\{1:2, 2:1, 3:3, 4:1\}}
         
-        Analyze its efficiency.
     \end{enumerate}
-    
+
     \item Tuples:
-    
+
     \begin{enumerate}
-        \item Convert a list of tuples into a dictionary.
-        \item Write a function that swaps the first and last elements of a tuple.
-        \item Write a function that finds the maximum and minimum values in a tuple.
+        \item Convert a list of tuples into a dictionary.\\
+        \textbf{Example:} \\
+        Input: \texttt{[(1,'a'), (2,'b'), (3,'c')]} \\
+        Output: \texttt{\{1:'a', 2:'b', 3:'c'\}}
         
-        Input: \texttt{(4, 7, 1, 9)}
+        \item Write a function that swaps the first and last elements of a tuple.\\
+        \textbf{Example:} \\
+        Input: \texttt{(1,2,3,4,5)} \\
+        Output: \texttt{(5,2,3,4,1)}
+        
+        \item Write a function that finds the maximum and minimum values in a tuple.\\
+        \textbf{Example:} \\
+        Input: \texttt{(4, 7, 1, 9)} \\
         Output: \texttt{(9,1)}
         
-        Discuss time complexity.
-        
-        \item Write a function that converts a tuple of numbers into a single concatenated string.
-        
-        Input: \texttt{(1,2,3,4)}
+        \item Write a function that converts a tuple of numbers into a single concatenated string.\\
+        \textbf{Example:} \\
+        Input: \texttt{(1,2,3,4)} \\
         Output: \texttt{"1234"}
         
-        Analyze its efficiency.
     \end{enumerate}
+        
+    \item Dictionaries
+
+        \begin{enumerate}
+            
+            \item Write a function that merges two dictionaries, summing values of common keys.\\
+            \textbf{Example:} Input: \texttt{\{'a':1, 'b':2\}}, \texttt{\{'b':3, 'c':4\}}\\
+            Output: \texttt{\{'a':1, 'b':5, 'c':4\}}
+            
+            \item Write a function that inverts a dictionary (keys become values and vice versa).\\
+            \textbf{Example:} Input: \texttt{\{'a': 1, 'b': 2\}}\\
+            Output: \texttt{\{1: 'a', 2: 'b'\}}
+            
+            \item Write a function to find the most frequently occurring value in a dictionary.\\
+            \textbf{Example:} Input: \texttt{\{'a': 3, 'b': 2, 'c': 3\}}\\
+            Output: \texttt{3}
+            
+            \item Write a function that groups words by their first letter from a given list. The function should return a dictionary where the keys are the first letters and the values are lists of words.\\
+            \textbf{Example:} Input: \texttt{["apple", "banana", "apricot", "blueberry", "cherry"]}\\
+            Output: \texttt{\{"a": ["apple", "apricot"], "b": ["banana", "blueberry"], "c": ["cherry"]\}}
+            
+            \item Write a function that finds the key associated with the highest value in a dictionary.\\
+            \textbf{Example:} Input: \texttt{\{'a': 10, 'b': 25, 'c': 17\}}\\
+            Output: \texttt{'b'}
+        \end{enumerate}
     
-    \item Dictionaries:
-    
-    \begin{enumerate}
-        \item Create a dictionary that maps three cities to their country.
-        \item Write a function that merges two dictionaries, summing values of common keys.
-        \item Write a function that inverts a dictionary (keys become values and vice versa).
+        \item Sets:
+
+        \begin{enumerate}
+            \item Write a function that returns the union, intersection, and difference of two sets.\\
+            \textbf{Example:} \\
+            Input: \texttt{\{1,2,3\}}, \texttt{\{3,4,5\}} \\
+            Output: \\
+            Union: \texttt{\{1,2,3,4,5\}} \\
+            Intersection: \texttt{\{3\}} \\
+            Difference (Set 1 - Set 2): \texttt{\{1,2\}} \\
+            Difference (Set 2 - Set 1): \texttt{\{4,5\}}
+            
+            \item Write a function that finds the symmetric difference between two sets.\\
+            \textbf{Example:} \\
+            Input: \texttt{\{1,2,3\}}, \texttt{\{2,3,4\}} \\
+            Output: \texttt{\{1,4\}}
+            
+            \item Write a function to check if two sets are disjoint.\\
+            \textbf{Example:} \\
+            Input: \texttt{\{1,2,3\}}, \texttt{\{4,5,6\}} \\
+            Output: \texttt{True} \\
+            \\
+            Input: \texttt{\{1,2,3\}}, \texttt{\{3,4,5\}} \\
+            Output: \texttt{False}
+            
+        \end{enumerate}
         
-        Input: \texttt{\{'a': 1, 'b': 2\}}
-        Output: \texttt{\{1: 'a', 2: 'b'\}}
-        
-        Analyze time complexity.
-        
-        \item Write a function to find the most frequently occurring value in a dictionary.
-        
-        Input: \texttt{\{'a': 3, 'b': 2, 'c': 3\}}
-        Output: \texttt{3}
-        
-        Analyze performance.
-    \end{enumerate}
-    
-    \item Sets:
-    
-    \begin{enumerate}
-        \item Write a function that returns the union, intersection, and difference of two sets.
-        \item Write a function that finds the symmetric difference between two sets.
-        
-        Input: \texttt{\{1,2,3\}}, \texttt{\{2,3,4\}}
-        Output: \texttt{\{1,4\}}
-        
-        Provide an asymptotic analysis.
-        
-        \item Write a function to check if two sets are disjoint.
-        
-        Input: \texttt{\{1,2,3\}}, \texttt{\{4,5,6\}}
-        Output: \texttt{True}
-        
-        Discuss its computational complexity.
-    \end{enumerate}
 \end{enumerate}
 
 \section*{Object-Oriented Programming (Chapter 3)}
@@ -158,6 +188,29 @@
     \item Write tests that specifically check edge cases, incorrect usage, and error handling for a function that divides two numbers.
 
     \item Explain why tests should be maintained even after they pass successfully.
+\end{enumerate}
+
+\section*{Running Time Analysis (Chapter 5)}
+
+\begin{enumerate}
+    \item Implement a Python program that adds the first \( k \) natural numbers in two ways: using a loop and using the formula \( S = \frac{k(k+1)}{2} \). Measure and compare the running time of both implementations.\\
+    \textbf{Example:} Input: \texttt{k=1000}, Output: Time for loop: \texttt{X ms}, Time for formula: \texttt{Y ms}
+    
+    \item Analyze the time complexity of common list operations such as appending, indexing, and slicing. Provide Python examples and justify the complexity of each operation.
+    
+    \item Consider a dictionary with \( n \) elements. Measure the execution time of inserting, deleting, and accessing elements. Compare your results to the expected theoretical complexities.
+    
+    \item Analyze the complexity of the exercises in the Basic Python section. Provide the worst-case time complexity for each function.
+    
+    \item Explain the Big-O notation concept and determine the worst-case time complexity of the following function:
+    \begin{lstlisting}[language=Python]
+    def mystery_function(n):
+        total = 0
+        for i in range(n):
+            for j in range(i):
+                total += j
+        return total
+    \end{lstlisting}
 \end{enumerate}
 
 \end{document}
