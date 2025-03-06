@@ -1,0 +1,205 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Stacks, Queues, and Linked Lists}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Stacks and Queues (Chapter 6)}
+
+\begin{enumerate}
+    \item \textbf{Simulating a Stack Using a Python List}
+    
+    Implement a class \texttt{SimpleStack} that supports the following operations using a Python list:
+    \begin{itemize}
+        \item \texttt{push(x)}: Push an element onto the stack.
+        \item \texttt{pop()}: Remove the top element and return it.
+        \item \texttt{top()}: Return the top element without removing it.
+        \item \texttt{is\_empty()}: Return \texttt{True} if the stack is empty; otherwise, return \texttt{False}.
+    \end{itemize}
+    Implement the class and test it with at least three different sequences of push and pop operations.
+    
+    \item \textbf{Reverse a String Using a Stack}
+    
+    Implement a function \texttt{reverse\_string(s: str) -> str} that reverses a given string using a stack.
+    
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    reverse_string("hello")  # Output: "olleh"
+    \end{lstlisting}
+
+    \item \textbf{Balanced Parentheses with Stack}
+    
+    Given a string containing only \texttt{'(', ')', '{', '}', '[' and ']'}, determine if the string is balanced. A string is considered balanced if:
+    \begin{enumerate}
+        \item Each opening bracket has a corresponding closing bracket.
+        \item Brackets are closed in the correct order.
+    \end{enumerate}
+    
+    \textbf{Examples:}
+    \begin{itemize}
+        \item \texttt{"({[]})"} $\Rightarrow$ Valid
+        \item \texttt{"({[)]}"} $\Rightarrow$ Invalid
+        \item \texttt{"{[(])}"} $\Rightarrow$ Invalid
+        \item \texttt{"()"} $\Rightarrow$ Valid
+    \end{itemize}
+    Implement a function \texttt{is\_balanced(s: str) -> bool} to check if a given string is balanced using a stack.
+    
+    \item \textbf{Implement a Stack with Minimum Retrieval in O(1) Time}
+    
+    Extend the stack data structure to support a function \texttt{get\_min()} that returns the minimum element in the stack in $O(1)$ time. The stack should support the following operations:
+    \begin{itemize}
+        \item \texttt{push(x)}: Push an element onto the stack.
+        \item \texttt{pop()}: Remove the top element.
+        \item \texttt{top()}: Get the top element without removing it.
+        \item \texttt{get\_min()}: Retrieve the minimum element currently in the stack.
+    \end{itemize}
+    
+    \textbf{Hint:} Maintain an auxiliary stack that keeps track of the minimum values as elements are pushed and popped.
+    
+    Implement this modified stack in Python and demonstrate its correctness using test cases.
+    
+    \item \textbf{Implement a Queue Using Two Stacks}
+    
+    Using \textbf{two stacks}, implement a queue that supports the following operations:
+    \begin{itemize}
+        \item \texttt{enqueue(x)}: Insert an element into the queue.
+        \item \texttt{dequeue()}: Remove the front element of the queue.
+        \item \texttt{front()}: Retrieve the front element without removing it.
+        \item \texttt{is\_empty()}: Check if the queue is empty.
+    \end{itemize}
+    Write a Python class implementing this queue using two stacks and analyze the time complexity of each operation.
+    
+    \item \textbf{Design a Circular Queue}
+    
+    Implement a \textbf{circular queue} with a fixed size $n$ that supports:
+    \begin{itemize}
+        \item \texttt{enqueue(x)}: Adds an element if there is space.
+        \item \texttt{dequeue()}: Removes the front element.
+        \item \texttt{front()}: Returns the front element.
+        \item \texttt{rear()}: Returns the last element.
+        \item \texttt{is\_full()}: Checks if the queue is full.
+        \item \texttt{is\_empty()}: Checks if the queue is empty.
+    \end{itemize}
+    The queue should use an array (list) of size $n$ and implement wrap-around behavior.
+    Implement this circular queue in Python and test it with multiple enqueue and dequeue operations.
+    
+    \item \textbf{Implement a Browser Back-Forward Navigation System (Stack Application)}
+    
+    Simulate a simple browser navigation system using two stacks:
+    \begin{itemize}
+        \item \texttt{visit(url)}: Visit a new website (push onto the main stack).
+        \item \texttt{back()}: Go back to the previous website (pop from main stack and push onto a "forward" stack).
+        \item \texttt{forward()}: Go forward if possible (pop from the "forward" stack back onto the main stack).
+        \item \texttt{current()}: Get the current webpage.
+    \end{itemize}
+    
+    \textbf{Example Usage:}
+    \begin{lstlisting}[language=Python]
+    browser = Browser()
+    browser.visit("google.com")
+    browser.visit("youtube.com")
+    browser.back()  # Returns "google.com"
+    browser.forward()  # Returns "youtube.com"
+    browser.current()  # Returns "youtube.com"
+    \end{lstlisting}
+    Implement this class and test it with a series of navigation commands.
+
+\end{enumerate}
+
+\section*{Linked Lists (Chapter 7)}
+
+\begin{enumerate}
+    \item \textbf{Implement a Singly Linked List}
+    
+    Implement a class \texttt{SinglyLinkedList} that supports the following operations:
+    \begin{itemize}
+        \item \texttt{insert\_at\_head(value)}: Inserts a new node with the given value at the head.
+        \item \texttt{insert\_at\_tail(value)}: Inserts a new node at the tail.
+        \item \texttt{delete\_by\_value(value)}: Removes the first occurrence of the given value.
+        \item \texttt{search(value)}: Returns \texttt{True} if the value is present, otherwise \texttt{False}.
+        \item \texttt{display()}: Prints the linked list in order.
+    \end{itemize}
+    Implement this class in Python and test it with at least five different sequences of operations.
+    
+    \item \textbf{Reverse a Singly Linked List}
+    
+    Implement a function \texttt{reverse(head)} that reverses a singly linked list.
+    
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    Input: 1 -> 2 -> 3 -> 4 -> None
+    Output: 4 -> 3 -> 2 -> 1 -> None
+    \end{lstlisting}
+    Implement this function and analyze its time complexity.
+    
+    \item \textbf{Detect a Cycle in a Linked List}
+    
+    Given the head of a linked list, determine if it contains a cycle.
+    
+    \textbf{Hint:} Use Floyd’s cycle detection algorithm (slow and fast pointers).
+    
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    Input: 1 -> 2 -> 3 -> 4 -> 2 (cycle)
+    Output: True
+    \end{lstlisting}
+    Implement this function and test it with both cyclic and acyclic linked lists.
+    
+    \item \textbf{Merge Two Sorted Linked Lists}
+    
+    Implement a function \texttt{merge\_sorted(l1, l2)} that merges two sorted linked lists into a single sorted linked list.
+    
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    Input: 1 -> 3 -> 5, 2 -> 4 -> 6
+    Output: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+    \end{lstlisting}
+    Implement this function and analyze its time complexity.
+    
+    \item \textbf{Find the Middle Node of a Linked List}
+    
+    Implement a function \texttt{find\_middle(head)} that returns the middle node of a linked list. If there are two middle nodes, return the second one.
+    
+    \textbf{Hint:} Use the slow and fast pointer technique.
+    
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    Input: 1 -> 2 -> 3 -> 4 -> 5
+    Output: 3
+    \end{lstlisting}
+    Implement this function and test it with both even-length and odd-length linked lists.
+    
+    \item \textbf{Implement a Doubly Linked List}
+    
+    Implement a class \texttt{DoublyLinkedList} that supports the following operations:
+    \begin{itemize}
+        \item \texttt{insert\_at\_head(value)}: Inserts a new node at the head.
+        \item \texttt{insert\_at\_tail(value)}: Inserts a new node at the tail.
+        \item \texttt{delete\_by\_value(value)}: Removes the first occurrence of the given value.
+        \item \texttt{display\_forward()}: Prints the linked list from head to tail.
+        \item \texttt{display\_backward()}: Prints the linked list from tail to head.
+    \end{itemize}
+    Implement this class and test it with various operations.
+    
+    \item \textbf{Check if a Linked List is a Palindrome}
+    
+    Implement a function \texttt{is\_palindrome(head)} that checks whether a singly linked list is a palindrome.
+    
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    Input: 1 -> 2 -> 2 -> 1
+    Output: True
+    \end{lstlisting}
+    Implement this function using either a stack or the fast and slow pointer approach.
+
+\end{enumerate}
+
+\end{document}
