@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Understanding the Implementation of Basic Data Structures in Python}
+\begin{document}
+\maketitle
+
+If you're curious to see \textbf{how basic data structures like lists, dictionaries, sets, and tuples are implemented in Python}, there are a few ways to explore this depending on how deep you want to go:
+
+\section*{1. Quick Info via \texttt{help()} or \texttt{\_\_doc\_\_}}
+You won’t see the full implementation, but you’ll get a summary of how it works.
+
+\begin{lstlisting}[language=Python]
+help(list)
+help(dict)
+\end{lstlisting}
+
+\section*{2. Browse the CPython Source Code (Actual Implementation)}
+
+Python’s most widely used implementation is \textbf{CPython}, and most of the core data structures are written in \textbf{C} for performance.
+
+You can browse the source code here: \url{https://github.com/python/cpython}
+
+\subsection*{Key files:}
+
+\begin{itemize}[leftmargin=2cm]
+  \item[\texttt{list}] \href{https://github.com/python/cpython/blob/main/Objects/listobject.c}{listobject.c}
+  \item[\texttt{dict}] \href{https://github.com/python/cpython/blob/main/Objects/dictobject.c}{dictobject.c}
+  \item[\texttt{set}] \href{https://github.com/python/cpython/blob/main/Objects/setobject.c}{setobject.c}
+  \item[\texttt{tuple}] \href{https://github.com/python/cpython/blob/main/Objects/tupleobject.c}{tupleobject.c}
+  \item[\texttt{str}] \href{https://github.com/python/cpython/blob/main/Objects/unicodeobject.c}{unicodeobject.c}
+\end{itemize}
+
+\section*{3. Use the \texttt{collections} Module for Higher-Level Structures}
+
+Some data structures like \texttt{deque}, \texttt{defaultdict}, and \texttt{OrderedDict} are implemented in Python or C extensions.
+
+\begin{lstlisting}[language=Python]
+from collections import deque
+help(deque)
+\end{lstlisting}
+
+You can find their implementation in:
+\begin{itemize}
+  \item \href{https://github.com/python/cpython/blob/main/Lib/collections/__init__.py}{collections/\_\_init\_\_.py}
+  \item \href{https://github.com/python/cpython/blob/main/Modules/_collectionsmodule.c}{\_collectionsmodule.c (C backend)}
+\end{itemize}
+
+\section*{4. Use Pure Python Versions (For Educational Purposes)}
+
+There are many educational re-implementations of Python data structures in pure Python online. For instance:
+
+\begin{itemize}
+  \item \href{https://github.com/trekhleb/py-algorithms}{cpython-data-structures on GitHub} – great for understanding the logic behind them.
+\end{itemize}
+
+\vspace{1em}
+Would you like to see a simplified Python version of, say, a \texttt{list} or \texttt{dict}?
+
+
+\section*{5. Official Reference}
+
+\url{https://wiki.python.org/moin/TimeComplexity}
+
+\end{document}
