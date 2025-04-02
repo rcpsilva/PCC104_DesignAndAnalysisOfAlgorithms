@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\title{PCC104 – Prova 1}
+\author{Universidade Federal de Ouro Preto}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{enumerate}
+
+\item  Explique, com suas próprias palavras, o que significam os seguintes termos:
+\begin{itemize}
+  \item Melhor caso
+  \item Caso médio
+  \item Pior caso
+\end{itemize}
+
+\item Considere o seguinte algoritmo recursivo:
+
+\begin{verbatim}
+def soma_n(n):
+    if n == 0:
+        return 0
+    else:
+        return n + soma_n(n-1)
+\end{verbatim}
+
+\begin{itemize}
+  \item[a)] O que este algoritmo computa?
+  \item[b)] Qual a relação de recorrência associada ao número de adições?
+  \item[c)] Qual a complexidade de tempo no pior caso (use notação O)? Apresente os calculos necessários para chegar a sua resposta.
+\end{itemize}
+
+\item Analise a complexidade do algoritmo abaixo:
+
+\begin{verbatim}
+def imprime_pares(lista):
+    for i in lista:
+        for j in lista:
+            if (i + j) % 2 == 0:
+                print(i, j)
+\end{verbatim}
+
+\begin{itemize}
+  \item[a)] Qual é a operação básica?
+  \item[b)] Quantas vezes ela é executada (em termos de n = len(lista))?
+  \item[c)] Qual a complexidade de tempo no pior caso?  Apresente os calculos necessários para chegar a sua resposta.
+\end{itemize}
+
+\item Resolva a seguinte relação de recorrência:
+
+\[ x(n) = x(n-1) + n, \quad x(0) = 0 \]
+
+Encontre a solução fechada e a complexidade de tempo do algoritmo correspondente.
+
+\item Resolva a seguinte relação de recorrência:
+
+\[ x(n) = 2x(n/2) + 1, \quad x(1) = 1 \]
+
+Encontre a solução fechada e a complexidade de tempo do algoritmo correspondente.
+
+\item Prove que todo polinômio de grau $k$ do tipo $p(n) = a_k n^k + \dots + a_0$, com $a_i > 0$, pertence a $\Theta(n^k)$.
+
+\item Implemente uma função que receba uma lista de inteiros e retorne um dicionário com o número de ocorrências de cada valor.
+
+Exemplo:
+\begin{verbatim}
+Entrada: [1,1,2,3,3,3]
+Saída: {1: 2, 2: 1, 3: 3}
+\end{verbatim}
+
+\item Escreva uma função que recebe uma lista de listas e retorna uma lista achatada. Qual a complexidade de tempo no pior caso?  Apresente os calculos necessários para chegar a sua resposta.
+
+Exemplo:
+\begin{verbatim}
+Entrada: [[1, 2], [3, 4], [5]]
+Saída: [1, 2, 3, 4, 5]
+\end{verbatim}
+
+\item Implemente uma função que verifique se dois conjuntos são disjuntos.
+
+Exemplo:
+\begin{verbatim}
+Entrada: {1,2,3}, {4,5} => Saída: True
+Entrada: {1,2,3}, {3,4} => Saída: False
+\end{verbatim}
+
+\item Escreva uma função que rotaciona uma lista para a direita por um número de posições dado. Qual a complexidade de tempo no pior caso?  Apresente os calculos necessários para chegar a sua resposta.
+
+Exemplo:
+\begin{verbatim}
+Entrada: [1,2,3,4,5], Rotacionar por 2
+Saída: [4,5,1,2,3]
+\end{verbatim}
+
+\end{enumerate}
+
+\end{document}
