@@ -1,0 +1,149 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{url}
+\geometry{a4paper, margin=1in}
+
+\title{Recursion, Dynamic Programming, and Binary Search}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Instructions}
+
+\begin{itemize}
+    \item The references fir this problem set are Chapters 9, 10, and 11 of the textbook and Levitin's book.
+    \item The textbook is available at \url{https://github.com/rcpsilva/PCC104_DesignAndAnalysisOfAlgorithms/blob/main/2025-1/Course%20Material/A%20First%20Course%20on%20Data%20Structures%20in%20Python.pdf}
+    \item Presente the complexity analysis of your solutions.
+\end{itemize}
+
+\section*{Recursion (Chapter 9)}
+
+\begin{enumerate}
+    \item \textbf{Recursive Maximum Finder}
+
+    Write a recursive function \texttt{find\_max(L)} that returns the maximum element in a list \texttt{L}.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    find_max([1, 5, 3, 9, 2])  # Output: 9
+    \end{lstlisting}
+
+    \item \textbf{Recursive String Reversal}
+
+    Implement a recursive function \texttt{reverse(s)} that returns the reversed version of the string \texttt{s}.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    reverse("python")  # Output: "nohtyp"
+    \end{lstlisting}
+
+    \item \textbf{Sum of Digits}
+
+    Write a recursive function \texttt{sum\_digits(n)} that returns the sum of the digits of an integer \texttt{n}.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    sum_digits(1234)  # Output: 10
+    \end{lstlisting}
+
+    \item \textbf{Palindrome Check}
+
+    Write a recursive function \texttt{is\_palindrome(s)} that returns \texttt{True} if the string \texttt{s} is a palindrome and \texttt{False} otherwise.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    is_palindrome("racecar")  # Output: True
+    is_palindrome("hello")    # Output: False
+    \end{lstlisting}
+\end{enumerate}
+
+\section*{Dynamic Programming (Chapter 10)}
+
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item \textbf{Fibonacci with Memoization}
+
+    Implement a memoized version of the Fibonacci sequence. The function \texttt{fib(n)} should return the $n$th Fibonacci number.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    fib(10)  # Output: 55
+    \end{lstlisting}
+
+    \item \textbf{Minimum Coin Change}
+
+    Given coins of certain denominations and a total amount, write a function \texttt{min\_coins(coins, amount)} that computes the minimum number of coins needed to make the amount.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    min_coins([1, 3, 4], 6)  # Output: 2 (3 + 3)
+    \end{lstlisting}
+
+    \item \textbf{Longest Common Subsequence (LCS)}
+
+    Write a function \texttt{lcs(X, Y)} that returns the length of the longest common subsequence of two strings \texttt{X} and \texttt{Y}.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    lcs("abcde", "ace")  # Output: 3
+    \end{lstlisting}
+
+    \item \textbf{0/1 Knapsack Problem}
+
+    Given weights and values of $n$ items, write a function \texttt{knapsack(W, weights, values)} to determine the maximum value that can be put in a knapsack of capacity $W$.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    knapsack(50, [10, 20, 30], [60, 100, 120])  # Output: 220
+    \end{lstlisting}
+\end{enumerate}
+
+\section*{Binary Search (Chapter 11)}
+
+\begin{enumerate}
+    \setcounter{enumi}{8}
+    \item \textbf{Binary Search Implementation}
+
+    Implement a recursive function \texttt{binary\_search(L, x)} that returns \texttt{True} if \texttt{x} is in the sorted list \texttt{L}, and \texttt{False} otherwise.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    binary_search([1, 3, 5, 7, 9], 3)  # Output: True
+    binary_search([1, 3, 5, 7, 9], 4)  # Output: False
+    \end{lstlisting}
+
+    \item \textbf{First Occurrence in Sorted Array}
+
+    Modify your binary search to find the index of the first occurrence of a number in a sorted list with duplicates.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    first_occurrence([1, 2, 2, 2, 3, 4], 2)  # Output: 1
+    \end{lstlisting}
+
+    \item \textbf{Square Root Using Binary Search}
+
+    Implement a function \texttt{sqrt\_binary(n)} that returns the integer square root of a non-negative integer $n$ using binary search.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    sqrt_binary(10)  # Output: 3
+    sqrt_binary(16)  # Output: 4
+    \end{lstlisting}
+
+    \item \textbf{Peak Element Finder}
+
+    Write a function \texttt{find\_peak(L)} that returns an index of a peak element using a binary search-like approach. An element is a peak if it is greater than or equal to its neighbors.
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+    find_peak([1, 3, 20, 4, 1, 0])  # Output: 2 (index of 20)
+    \end{lstlisting}
+\end{enumerate}
+
+\end{document}
