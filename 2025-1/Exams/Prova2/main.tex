@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\title{PCC104 – Prova 2}
+\author{Universidade Federal de Ouro Preto}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{enumerate}
+
+\item Resolva a seguinte recorrência:
+
+$T(n) = 2T(n-1) + n$, para $n > 0$, com $T(0) = 1$.
+
+\item Apresente um algoritmo para o qual a expressão da Questão 1 represente o número de operações.
+
+\item Considere a sua implementação do \textit{Recursive Maximum Finder}, \texttt{find\_max(L)} (Lista 4, Recursion, Ex 1). Mostre a árvore de chamadas da sua implementação para \texttt{find\_max([1,5,3,9,2])}
+
+\item Apresente a análise de complexidade completa para a sua implementação do método \texttt{reverse\_string(S)} (Lista 3, Stacks and Queues, Ex. 2)
+
+\item Considere uma matriz \texttt{M}, de dimensão $n \times m$, ordenada. Apresente um algoritmo baseado em busca binária, \texttt{binary\_search(M, x)}, que retorna \texttt{True} se \texttt{x} estiver em \texttt{M} e \texttt{False}, caso contrário. (Sugestão: Faça uma busca binária para encontrar a linha em que o número provavelmente está e, em seguida, execute a busca binária comum nessa linha.)
+
+Exemplos: 
+\begin{enumerate}
+\item 
+  \[ M = \begin{bmatrix}
+ 1&  2&  5  \\
+ 6&  7&  8  \\
+ 11& 15 & 16  \\
+ 20& 22 & 26  \\
+ 28& 30&  31  \\
+\end{bmatrix} x = 16
+\]
+$>>$ True
+
+\item
+\[ M = \begin{bmatrix}
+ 11& 15 & 16  \\
+ 20& 22 & 26  \\
+\end{bmatrix} x = 3
+\]
+$>>$ False
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+\end{document}
