@@ -1,8 +1,8 @@
-PWD c:/Users/rcpsi/OneDrive/Documents/GitHub/PCC104_DesignAndAnalysisOfAlgorithms/2025-1/Problem sets/Latex Source/4_Recursion_DynamicProc_BinarySearch
+PWD c:/Users/rcpsi/OneDrive/Documents/GitHub/PCC104_DesignAndAnalysisOfAlgorithms/2025-1/Problem sets/Latex Source/5_Sorting_BinaryTrees_Heaps_Graphs
 INPUT c:/texlive/2024/texmf.cnf
 INPUT c:/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/Users/rcpsi/OneDrive/Documents/GitHub/PCC104_DesignAndAnalysisOfAlgorithms/2025-1/Problem sets/Latex Source/4_Recursion_DynamicProc_BinarySearch/main.tex
+INPUT c:/Users/rcpsi/OneDrive/Documents/GitHub/PCC104_DesignAndAnalysisOfAlgorithms/2025-1/Problem sets/Latex Source/5_Sorting_BinaryTrees_Heaps_Graphs/main.tex
 OUTPUT main.log
 INPUT c:/texlive/2024/texmf-dist/tex/latex/base/article.cls
 INPUT c:/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -62,24 +62,19 @@ INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
-INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
-INPUT c:/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT c:/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT c:/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
 OUTPUT main.pdf
 INPUT c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT main.aux
-INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
-INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
