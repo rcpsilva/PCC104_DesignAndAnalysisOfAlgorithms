@@ -3,9 +3,10 @@
 \usepackage{amsmath}
 \usepackage{geometry}
 \usepackage{url}
+\usepackage{hyperref} 
 \geometry{a4paper, margin=1in}
 
-\title{Sorting, Binary Trees, Priority Queues and Graphs}
+\title{Sorting, Binary Trees, Priority Queues, and Graphs}
 \author{}
 \date{}
 
@@ -13,39 +14,48 @@
 
 \maketitle
 
-\section*{Instructions}
-
 \section*{Sorting}
 
 \begin{enumerate}
-    \item Implement the SelectionSort algorithm and present best and worst cases complexity analyisis.
-    \item Implement the InsertionSort algorithm and present best and worst cases complexity analyisis.
-    \item Implement the QuickSort algorithm and present best and worst cases complexity analyisis.  
+    \item Implement the \textbf{Selection Sort} algorithm and analyze its best-case and worst-case time complexity.
+    \item Implement the \textbf{Insertion Sort} algorithm and analyze its best-case and worst-case time complexity.
+    \item Implement the \textbf{Quick Sort} algorithm and analyze its best-case and worst-case time complexity.
 \end{enumerate}
 
 \section*{Binary Trees}
 
 \begin{enumerate}
-    \setcounter{enumi}{4}
-    \item Implement the missing methods in the code available at \url{https://github.com/rcpsilva/PCC104_DesignAndAnalysisOfAlgorithms/blob/main/2025-1/Problem%20sets/Latex%20Source/5_Sorting_BinaryTrees_Heaps_Graphs/binary_search_tree.py}. Present the complexity analyis for each method.
+    \setcounter{enumi}{3}
+    \item Implement the missing methods in the code available at:\\
+    \url{https://github.com/rcpsilva/PCC104_DesignAndAnalysisOfAlgorithms/blob/main/2025-1/Problem%20sets/Latex%20Source/5_Sorting_BinaryTrees_Heaps_Graphs/binary_search_tree.py}\\
+    For each implemented method, present its time complexity analysis. You may define auxiliary methods if needed.
 \end{enumerate}
 
 \section*{Heaps}
 
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item Using the base code available at: \\
+    \url{https://github.com/rcpsilva/PCC104_DesignAndAnalysisOfAlgorithms/blob/main/2025-1/Problem%20sets/Latex%20Source/5_Sorting_BinaryTrees_Heaps_Graphs/heap.py}\\
+    Implement a \textbf{min-heap} using a Python list as the underlying data structure. Ensure that the heap supports insertion and removal of the minimum element.
+\end{enumerate}
+
 \section*{Graphs}
 
 \begin{enumerate}
-    \setcounter{enumi}{8}
-    \item Implement the DFS and the BFS algorithms for a graph represented as adjacency list. Present the space and time complexity analysis in terms of the graph depth, $h$, and the branching factor (average number of children per node), $b$.
-    \item Implement the DFS, the BFS and the A$^*$ algorithms to find a path in a maze.
-    The maze is represented as a $m \times n$ matrix, where each cell may contain:
-
+    \setcounter{enumi}{5}
+    \item Implement the \textbf{Depth-First Search (DFS)} and \textbf{Breadth-First Search (BFS)} algorithms for a graph represented using an adjacency list. Analyze the time and space complexity of both algorithms in terms of the graph's depth $h$ and average branching factor $b$.
+    
+    \item Implement the \textbf{DFS}, \textbf{BFS}, and \textbf{A$^*$} algorithms to find a path in a maze. The maze is represented as an $m \times n$ matrix, where each cell may contain:
+    
     \begin{itemize}
         \item \texttt{0}: free space;
         \item \texttt{1}: wall;
         \item \texttt{s}: starting position;
         \item \texttt{g}: goal (maze exit).
     \end{itemize}
+    
+    Your implementation should return a valid path (if one exists) from the start to the goal position.
 \end{enumerate}
 
 \end{document}
