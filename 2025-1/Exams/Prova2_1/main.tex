@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\title{PCC104 – Prova 2 (Versão B)}
+\author{Universidade Federal de Ouro Preto}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+\item (2pts) Resolva a seguinte recorrência assumindo que $n$ é potência de 2:
+
+\[
+T(n) = T\left(\frac{n}{2}\right) + n,\quad T(1) = 1
+\]
+
+\item (1pt) Apresente um algoritmo para o qual a recorrência da Questão 1 represente o número de operações realizadas no pior caso. Justifique sua escolha.
+
+\item (1pt) Considere a função \texttt{sum\_digits(n)}, definida de forma recursiva para retornar a soma dos dígitos de um número inteiro positivo $n$. 
+
+Mostre a árvore de chamadas da função ao executar \texttt{sum\_digits(742)}. 
+
+\item (2pts) Considere sua implementação da função \texttt{is\_palindrome(s)}, que verifica se uma string é palíndroma de forma recursiva. Apresente a análise de complexidade no pior caso.
+
+\item (4pts) *Considere um vetor $V$ de números inteiros distintos e com tamanho $n$, onde $n$ é potência de 2. Um número $x$ é chamado de \textit{dominante local} se $x > x_{\text{vizinho à esquerda}}$ e $x > x_{\text{vizinho à direita}}$.
+
+Escreva um algoritmo \texttt{find\_local\_dominant(V)} baseado em divisão e conquista que retorna o índice de um elemento dominante local (caso exista).
+
+\begin{itemize}
+  \item Justifique a complexidade da sua solução.
+  \item \textbf{Dica:} Avalie o elemento central de $V$. Caso ele não seja dominante local, em qual lado (esquerdo ou direito) você deveria continuar buscando? Use os vizinhos para decidir.
+\end{itemize}
+
+
+\item (4pts) *Uma string contém letras minúsculas e o caractere '\#', que representa um backspace (remove o último caractere inserido).
+
+Exemplo: \texttt{"ab\#c"} $\rightarrow$ \texttt{"ac"}
+
+Implemente um algoritmo \texttt{processa(s)} que retorna a string final após aplicar os backspaces. Use uma pilha.
+
+Justifique a complexidade da sua solução.
+
+\end{enumerate}
+
+$*$ Você deve escolher ou a questão 5 ou a questão 6.
+
+\end{document}
