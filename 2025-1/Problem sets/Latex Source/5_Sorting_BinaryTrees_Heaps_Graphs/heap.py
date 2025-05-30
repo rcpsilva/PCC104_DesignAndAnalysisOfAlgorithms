@@ -12,7 +12,8 @@ class HeapPQ:
             item (Any): O item a ser inserido.
             priority (int | float): A prioridade associada ao item. Menor valor indica maior prioridade.
         """
-        pass
+        self._entries.append((item,priority))
+        self._upheap(len(self._entries)-1)
 
     def _parent(self, i):
         """Retorna o índice do pai de um nó no heap.
@@ -23,7 +24,8 @@ class HeapPQ:
         Returns:
             int: Índice do nó pai.
         """
-        pass
+        
+        return (i-1)//2
 
     def _children(self, i):
         """Retorna os índices dos filhos de um nó no heap.
@@ -36,22 +38,23 @@ class HeapPQ:
         """
         pass
 
-    def _swap(self, a, b):
-        """Troca dois elementos do heap de lugar.
-
-        Args:
-            a (int): Índice do primeiro elemento.
-            b (int): Índice do segundo elemento.
-        """
-        pass
-
     def _upheap(self, i):
         """Sobe um elemento na árvore até restaurar a propriedade do heap.
 
         Args:
             i (int): Índice do elemento a ser ajustado.
         """
-        pass
+        
+
+        if i == 0:
+            return
+        
+        parent = self._parent(i)
+        if self._entries[parent][1] >= self._entries[i][1]:
+            return
+        else:
+            self._entries[parent], self._entries[i] = self._entries[i], self._entries[parent]  
+            return self._upheap(parent)
 
     def findmin(self):
         """Retorna o item com menor prioridade sem removê-lo da fila.
@@ -83,7 +86,7 @@ class HeapPQ:
         Returns:
             int: Número de elementos.
         """
-        pass
+        return len(self._entries)
 
 if __name__ == '__main__':
     pq = HeapPQ()
@@ -94,11 +97,20 @@ if __name__ == '__main__':
     pq.insert("task C", 5)
     pq.insert("task D", 1)
     pq.insert("task E", 3)
+    pq.insert("task F", 4)
+    pq.insert("task G", 5)
+    pq.insert("task H", 6)
+    pq.insert("task I", 7)
+    pq.insert("task J", 8)
+    pq.insert("task K", 9)
+    pq.insert("task L", 10)
 
     print(f"Tamanho da fila: {len(pq)}")  # Deve ser 5
 
-    print(f"Item de maior prioridade: {pq.findmin()}")  # Deve ser "task D"
+    print(pq._entries)
+
+    #print(f"Item de maior prioridade: {pq.findmin()}")  # Deve ser "task D"
 
     # Remoções sucessivas
-    while len(pq) > 0:
-        print(f"Removido: {pq.removemin()}")
+    #while len(pq) > 0:
+    #    print(f"Removido: {pq.removemin()}")
