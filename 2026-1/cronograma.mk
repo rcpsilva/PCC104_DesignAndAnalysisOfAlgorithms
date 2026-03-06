@@ -23,16 +23,34 @@ Metodologia:
 
 - Aulas expositivas sobre o conteúdo programático.
 
-- Seminários com professores e profissionais convidados.
-
 - Provas: Testes individuais feitos durante as aulas.
 
 - Leituras recomendadas: leitura de textos técnicos com a finalidade de proporcionar ao discente a oportunidade de consulta e desenvolvimento de sua capacidade de análise, síntese e crítica de uma bibliografia específica.
-
-Exame Especial: Os alunos que tiverem pelo menos 75% de frequência (mínimo para aprovação) e média inferior a seis pontos poderão fazer o Exame Especial ou o Exame Especial Parcial. Estes exames serão provas únicas, individuais.
 
 Atividades avaliativas:
 
 - 4 provas (P1, P2, P3, P4) no valor de 10 pontos.
 
 Nota final = 0.15 * P1 + 0.2 * P2 + 0.2 * P3 + 0.45 * P4
+
+
+Bibliografia principal:
+
+CORMEN, Thomas H.; LEISERSON, Charles E.; RIVEST, Ronald L.; STEIN, Clifford. Algoritmos: teoria e prática. 4. ed. Rio de Janeiro: Grupo GEN | LTC, 2022.  https://integrada.minhabiblioteca.com.br/books/9788595159914
+. Acesso em: 20 fev. 2026.
+
+LEVITIN, Anany. Introduction to Design and Analysis of Algorithms. 3. ed. Boston: Pearson, 2012.
+
+SZWARCFITER, Jayme Luiz; MARKENZON, Lilian. Estruturas de dados e seus algoritmos. 3. ed. Rio de Janeiro: Grupo GEN, 2010. 
+
+
+Bibliografia complementar:
+
+SEDGEWICK, Robert. Algorithms. 2. ed. Reading: Addison-Wesley, 1988. ISBN 0201066734.
+
+ZIVIANI, Nivio. Projeto de algoritmos com implementações em Java e C++. São Paulo: Cengage Learning, 2006. ISBN 8522105251.
+
+LAMBERT, Kenneth A. Fundamentos de Python: estruturas de dados. São Paulo: Cengage Learning Brasil, 2022. Disponível em: Minha Biblioteca. Acesso em: 20 fev. 2026.
+
+WAZLAWICK, Raul Sidnei. Introdução a algoritmos e programação com Python: uma abordagem dirigida por testes. Rio de Janeiro: Grupo GEN, 2018. Disponível em: https://integrada.minhabiblioteca.com.br/books/9788595156968
+. Acesso em: 20 fev. 2026.

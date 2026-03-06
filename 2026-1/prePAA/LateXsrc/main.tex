@@ -1,0 +1,181 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{enumitem}
+
+% Margens reduzidas para maximizar o uso do espaço sem usar colunas duplas
+\geometry{a4paper, margin=1.5cm}
+
+% Configuração compacta para os blocos de código
+\lstset{
+    basicstyle=\ttfamily\small,
+    frame=single,
+    aboveskip=4pt,
+    belowskip=4pt,
+    xleftmargin=0pt,
+    xrightmargin=0pt,
+    showstringspaces=false
+}
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{Autoavaliação - Pré-requisitos para Projeto e Análise de Algoritmos}}\\[0.2cm]
+    \textit{Departamento de Computação (DECOM) - UFOP}
+\end{center}
+
+\noindent\textbf{Instruções:} Esta lista tem caráter diagnóstico. A disciplina exige alguma maturidade matemática e fluência em programação. Resolva as questões abaixo para identificar tópicos que precisam de revisão antes do início das aulas. Você precisa de mais do que uma olhada na wikipedia para resolver a maioria dos exercícios, procure o professor da disciplina. 
+
+\vspace{0.3cm}
+
+\section*{Parte 1: Fundamentos Matemáticos (Álgebra e Funções)}
+\begin{enumerate}[leftmargin=*, itemsep=2pt, parsep=0pt]
+    \item Simplifique a expressão $2^{\log_2 n}$.
+    \item Qual é a relação entre $\log_2(n^a)$ e $a \cdot \log_2 n$?
+    \item Expresse $\log_b a$ usando logaritmos na base $c$.
+    \item Simplifique a expressão $a^{\log_b c}$ para que a base seja $c$.
+    \item Verdadeiro ou Falso: $\log_2(x + y) = \log_2 x + \log_2 y$. Justifique.
+    \item Ordene as seguintes funções em ordem crescente de taxa de crescimento assintótico quando $n \to \infty$: $n \log n$, $n^2$, $2^n$, $\sqrt{n}$, $n!$, $\log n$.
+    \item Encontre o limite: $\lim_{n \to \infty} \frac{3n^2 + 5n}{n^2 - 2}$.
+    \item Encontre o limite: $\lim_{n \to \infty} \frac{\log n}{n}$.
+\end{enumerate}
+
+\section*{Parte 2: Somatórios e Séries}
+\begin{enumerate}[leftmargin=*, itemsep=2pt, parsep=0pt, resume]
+    \item Calcule a forma fechada da progressão aritmética: $\sum_{i=1}^{n} i$.
+    \item Calcule a forma fechada da soma dos quadrados: $\sum_{i=1}^{n} i^2$.
+    \item Dada uma constante $c \neq 1$, qual é a forma fechada da progressão geométrica $\sum_{i=0}^{n} c^i$?
+    %\item Qual é o valor exato da série infinita $\sum_{i=0}^{\infty} \left(\frac{1}{2}\right)^i$?
+\end{enumerate}
+
+\section*{Parte 3: Probabilidade}
+\begin{enumerate}[leftmargin=*, itemsep=2pt, parsep=0pt, resume]
+    %\item Explique o princípio da Indução Matemática utilizando o Caso Base e o Passo Indutivo.
+    %\item Prove por indução que $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$ para todo $n \ge 1$.
+    %\item Explique brevemente o método de prova por contradição (redução ao absurdo).
+    \item O que é o Valor Esperado (Esperança) de uma variável aleatória discreta?
+    \item Se jogarmos um dado justo de 6 faces, qual é o valor esperado do resultado?
+    \item Qual é a probabilidade de tirar duas caras consecutivas ao lançar uma moeda justa duas vezes?
+    \item Se dois eventos $A$ e $B$ são estritamente independentes, com $P(A) = 0.4$ e $P(B) = 0.5s$, qual é a probabilidade de ambos ocorrerem em simultâneo ($P(A \cap B)$)?
+    \item Numa urna existem 3 bolas vermelhas e 2 bolas azuis. Qual é a probabilidade de sortear ao acaso duas bolas vermelhas consecutivamente, sem repor a primeira bola retirada?
+\end{enumerate}
+
+\section*{Parte 4: Estruturas de Dados Conceituais}
+\begin{enumerate}[leftmargin=*, itemsep=2pt, parsep=0pt, resume]
+    \item Qual é a diferença fundamental entre uma Pilha (LIFO) e uma Fila (FIFO)?
+    \item Em um array (vetor) estático não ordenado de tamanho $n$, qual é o custo (em quantidade de operações) para encontrar um elemento específico no pior caso?
+    \item Qual é a vantagem de uma Lista Encadeada sobre um Array Estático na inserção de elementos no meio da estrutura?
+    \item Qual é a principal desvantagem da Lista Encadeada em relação ao Array para acessar o $k$-ésimo elemento?
+    \item Defina formalmente o que é uma Árvore Binária.
+    \item O que caracteriza uma Árvore Binária de Busca (BST)? Qual propriedade seus nós devem respeitar?
+    \item Em Teoria dos Grafos, defina Vértices (Nós) e Arestas (Arcos). Qual a diferença entre grafo direcionado e não direcionado?
+\end{enumerate}
+
+\section*{Parte 5: Programação e Algoritmos}
+\begin{enumerate}[leftmargin=*, itemsep=2pt, parsep=0pt, resume]
+    \item \textbf{Recursão:} Escreva a saída exata da função abaixo se fizermos a chamada \texttt{func(5)}:
+\begin{lstlisting}[language=C]
+void func(int n) {
+    if (n > 0) {
+        func(n - 1);
+        printf("%d ", n);
+    }
+}
+\end{lstlisting}
+    \item \textbf{Complexidade Intuitiva:} Quantas vezes o comando \texttt{print} será executado no trecho abaixo, em função de $n$?
+\begin{lstlisting}[language=Python]
+for i in range(n):
+    for j in range(n):
+        print("Ola")
+\end{lstlisting}
+\end{enumerate}
+
+
+\section*{Parte 6: Rastreamento de Algoritmos (Teste de Mesa)}
+\textit{Instruções: Para os exercícios abaixo, construa uma tabela e registre os valores de cada variável solicitada a cada nova iteração do laço.}
+
+\begin{enumerate}[leftmargin=*, itemsep=2pt, parsep=0pt, resume]
+    \item \textbf{Rastreamento Simples (MDC):} O pseudocódigo abaixo implementa o Algoritmo de Euclides para encontrar o Máximo Divisor Comum. Para a chamada \texttt{mdc(30, 12)}, registre os valores das variáveis \texttt{a}, \texttt{b} e \texttt{temp} no início de cada iteração do laço \texttt{while} e indique qual será o valor retornado.
+\begin{lstlisting}[language=Python]
+def mdc(a, b):
+    while b != 0:
+        temp = b
+        b = a % b
+        a = temp
+    return a
+\end{lstlisting}
+
+    \item \textbf{Laços Aninhados:} Analise o trecho de código abaixo. Registre os valores de \texttt{i}, \texttt{j} e \texttt{x} a cada vez que a linha \texttt{x = x + i + j} for executada. Ao final, qual será o valor impresso?
+\begin{lstlisting}[language=Python]
+x = 0
+# O laco externo executa para i = 1, 2, 3
+for i in range(1, 4):      
+    # O laco interno executa de i ate 3
+    for j in range(i, 4):  
+        x = x + i + j
+print(x)
+\end{lstlisting}
+
+    \item \textbf{Rastreamento de Busca Binária:} Dado o vetor ordenado $V = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]$ (com índices de 0 a 9) e o valor \texttt{alvo = 23}. Acompanhe a execução do algoritmo de Busca Binária. Registre os valores exatos das variáveis \texttt{esq} (limite esquerdo), \texttt{dir} (limite direito) e \texttt{meio} (índice central, divisão inteira) a cada iteração do laço principal, até que o elemento seja encontrado ou a busca encerrada.
+\begin{lstlisting}[language=Python]
+esq = 0
+dir = 9
+encontrado = False
+
+while esq <= dir and not encontrado:
+    meio = (esq + dir) // 2
+    if V[meio] == alvo:
+        encontrado = True
+    elif V[meio] < alvo:
+        esq = meio + 1
+    else:
+        dir = meio - 1
+\end{lstlisting}
+
+\item \textbf{Rastreamento de Recursão (Árvore de Chamadas):} A função abaixo calcula o enésimo termo da sequência de Fibonacci. Rastreie a execução para a chamada \texttt{fib(4)}. Desenhe a árvore de recursão ilustrando cada chamada gerada. Em seguida, responda: quantas vezes a chamada \texttt{fib(1)} e a chamada \texttt{fib(0)} são avaliadas independentemente durante toda a execução?
+\begin{lstlisting}[language=Python]
+def fib(n):
+    if n <= 1:
+        return n
+    return fib(n - 1) + fib(n - 2)
+\end{lstlisting}
+
+    \item \textbf{Rastreamento de Divisão e Conquista (Pilha de Execução):} O algoritmo abaixo calcula a potência $x^n$ de forma recursiva otimizada. Rastreie passo a passo a chamada \texttt{pot(2, 5)}. Registre na sua tabela cada nova chamada empilhada com seus respectivos parâmetros (\texttt{x} e \texttt{n}). Depois, registre o valor exato que cada chamada retorna ao ser desempilhada. 
+\begin{lstlisting}[language=Python]
+def pot(x, n):
+    if n == 0:
+        return 1
+    if n % 2 == 0:
+        temp = pot(x, n // 2)
+        return temp * temp
+    else:
+        return x * pot(x, n - 1)
+\end{lstlisting}
+
+\end{enumerate}
+
+\section*{Parte 7: Exercícios Práticos de Implementação}
+\textit{Recomendação: Para cada um dos problemas abaixo, escrevea uma função. Escolha a linguagem de sua preferência (C, C++, Java ou Python).}
+\begin{enumerate}[leftmargin=*, itemsep=2pt, resume]
+    \item Dado um vetor de $n$ inteiros imprima: mínimo, máximo, soma e média.
+    \item Dado um vetor de $n$ inteiros conte quantos elementos são positivos, negativos e zeros.
+    \item Dado um vetor de $n$ inteiros encontre o segundo maior elemento (sem ordenar) e trate duplicatas.
+    \item Verifique se um vetor está em ordem não-decrescente.
+    \item Remova todas as ocorrências de um valor $x$ do vetor (compactando).
+    \item Rotacione o vetor $k$ posições à direita (com $k$ podendo ser maior que $n$).
+    \item Intercale dois vetores de mesmo tamanho (a1,b1,a2,b2,\dots).
+    \item Calcule a frequência de cada valor em um vetor.\item Implemente uma função que receba um array ordenado de inteiros e um valor alvo. A função deve retornar o índice do alvo ou -1 se não existir, utilizando o algoritmo de \textbf{Busca Binária}.
+    \item Implemente uma função que inverta a ordem dos elementos de um array (ou os caracteres de uma string) \textit{in-place} (ou seja, sem alocar um novo array do mesmo tamanho na memória).
+    \item Implemente uma classe ou estrutura de \textbf{Pilha} (Stack) simples utilizando um array internamente. Ela deve obrigatoriamente possuir os métodos \texttt{push(valor)}, \texttt{pop()} e \texttt{isEmpty()}.
+    \item Dada uma matriz $n\times m$ e encontre a posição (i,j) do maior elemento.
+    \item Some duas matrizes de mesmo tamanho.
+    \item Multiplique duas matrizes compatíveis (versão direta $O(nmk)$).
+    \item Verifique se uma matriz quadrada é triangular superior.
+    \item Implemente fatorial e Fibonacci recursivos e compare (tempo) com as versões iterativas.
+    \item Implemente busca binária recursiva em vetor ordenado.
+\end{enumerate}
+
+\end{document}
