@@ -1,4 +1,4 @@
- Semana     & Conteúdo                                          	
+ Data    & Conteúdo                                          	
  ---------- &---------------------------------------------------	
 20/03	& Início das Aulas - Análise e Projeto de Algoritmos
 27/03	& Caracterização dos tempos de execução
