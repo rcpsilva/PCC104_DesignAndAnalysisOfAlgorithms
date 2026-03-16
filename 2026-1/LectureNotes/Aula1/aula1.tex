@@ -1,0 +1,192 @@
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Codificação e idioma
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+
+
+\usepackage{xcolor}
+\definecolor{rsOrange}{RGB}{230,120,20}
+\newcommand{\og}[1]{\textcolor{rsOrange}{#1}}
+
+% Theme choice:
+\usetheme{default}
+
+% Title page details: 
+\title{PCC104 - Projeto e Análise de Algoritmos} 
+\author{Prof. Rodrigo Silva}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+% Algoritmo
+\section{Algoritmo}
+
+\begin{frame}{Algoritmo}
+    \begin{block}{}
+    \begin{itemize}
+        \item Procedimento computacional
+        \item Bem definido
+        \item Toma algum valor ou conjunto de valores de \og{entrada}
+        \item Produz algum valor ou conjunto de valores de \og{saída} 
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Procedimento Computacional}
+    \begin{block}{}
+    \begin{itemize}
+        \item Sequência de passos bem definidos (não ambíguos)
+        \item Cada passo descreve uma operação elementar
+        \item Cada passo é simples e executável em tempo finito
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Algoritmo}
+    \begin{block}{}
+    \begin{itemize}
+        \item Procedimento para resolver um \og{problema computacional}
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Problema Computacional}
+
+\begin{block}{Definição}
+Um problema computacional é a especificação de uma tarefa que define,
+para cada valor de \og{entrada}, quais valores de \og{saída} são considerados corretos.
+\end{block}
+
+\vspace{0.4cm}
+
+\begin{exampleblock}{Exemplo: Ordenação}
+
+\textbf{Entrada:} uma sequência de números  
+\[
+(a_1, a_2, \dots, a_n)
+\]
+
+\textbf{Saída:} uma permutação da sequência tal que
+
+\[
+a_1 \le a_2 \le \dots \le a_n
+\]
+
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}{Instância de um Problema}
+
+\begin{block}{Definição}
+Uma \og{instância de um problema} é um conjunto específico de valores
+de entrada para um problema computacional.
+\end{block}
+
+\vspace{0.4cm}
+
+\begin{exampleblock}{Exemplo: Problema de Ordenação}
+
+\textbf{Problema:} ordenar uma sequência de números.
+
+\textbf{Instância:}
+
+\[
+(8,\,3,\,5,\,2,\,9)
+\]
+
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}{Problema, Instância e Algoritmo}
+
+\begin{columns}
+
+\column{0.45\textwidth}
+
+\begin{block}{Conceitos}
+\begin{itemize}
+    \item \textbf{Problema} → classe de tarefas
+    \item \textbf{Instância} → caso específico
+    \item \textbf{Algoritmo} → método para resolver
+\end{itemize}
+\end{block}
+
+\column{0.55\textwidth}
+
+\begin{exampleblock}{Exemplo}
+
+\[
+\text{Problema: ordenação}
+\]
+\[
+\Downarrow
+\]
+\[
+\text{Instância: } (8,3,5,2,9)
+\]
+\[
+\Downarrow
+\]
+\[
+\text{Algoritmo}
+\]
+\[
+\Downarrow
+\]
+\[
+\text{Saída: } (2,3,5,8,9)
+\]
+
+\end{exampleblock}
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Algoritmo Correto}
+
+\begin{block}{Definição}
+Um algoritmo é dito \og{correto} se, para toda instância válida do problema, ele produz uma saída que satisfaz a especificação do problema em tempo finito.
+\end{block}
+
+\vspace{0.4cm}
+
+
+\end{frame}
+
+% Introdução à análise de algoritmos
+
+\section{Introdução à Análise de Algoritmos}
+
+\begin{frame}
+\centering
+\Huge Introdução à Análise de Algoritmos
+\end{frame}
+
+\section{}
+\begin{frame}{}
+\end{frame}
+
+\end{document}

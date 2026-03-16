@@ -1,0 +1,3 @@
+\babel@toc {brazil}{}\relax 
+\beamer@sectionintoc {1}{Algoritmo}{3}{0}{1}
+\beamer@sectionintoc {2}{Introdução à Análise de Algoritmos}{10}{0}{2}
