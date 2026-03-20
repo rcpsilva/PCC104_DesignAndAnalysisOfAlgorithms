@@ -1,5 +1,5 @@
 \documentclass{beamer}
-
+\usepackage{tikz}
 % Codificação e idioma
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -383,7 +383,6 @@ Na análise de algoritmos, assumimos o modelo RAM, no qual:
 \end{alertblock}
 
 \end{frame}
-
 %---------------------------------------------------------------
 \begin{frame}{Especificando a Análise }
 \begin{itemize}
@@ -391,9 +390,7 @@ Na análise de algoritmos, assumimos o modelo RAM, no qual:
     \item Tamanho da entrada?
 \end{itemize}
 \end{frame}
-
-% -------------------------------------------------------------
-
+%-------------------------------------------------------------
 \begin{frame}{Insertion Sort: Custo e Frequência}
 
 \small
@@ -446,7 +443,6 @@ $t_i$ é o número de vezes que o teste do \texttt{while} é executado para cada
 \end{alertblock}
 
 \end{frame}
-
 %---------------------------------------------------------------
 \begin{frame}{Análise Insertion Sort}
 
@@ -502,7 +498,6 @@ T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
 
 \end{frame}
 %-------------------------------------------------
-
 \begin{frame}{Casos de Análise de Algoritmos}
 
 \begin{block}{Melhor Caso}
@@ -517,9 +512,7 @@ T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
 \end{block}
 
 \end{frame}
-
 %-------------------------------------------------
-
 \begin{frame}{Casos de Análise de Algoritmos}
 
 
@@ -538,9 +531,7 @@ T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
 
 
 \end{frame}
-
-%-------------------------------------------------
-
+%------------------------------------------------
 \begin{frame}{Casos de Análise de Algoritmos}
 
 \begin{block}{Caso Médio}
@@ -555,9 +546,7 @@ T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
 \end{block}
 
 \end{frame}
-
 %------------------------------------------------
-
 \begin{frame}{Por que analisar o pior caso?}
 
 \begin{block}{Garantia de Desempenho}
@@ -589,12 +578,509 @@ T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
 
 \end{frame}
 % -------------------------------------------------------
-
 \begin{frame}
 
+\centering
 \Huge
 Caracterização dos Tempos de Execução
 
 \end{frame}
+% -------------------------------------------------------
+\begin{frame}{Caracterização dos Tempos de Execução}
 
+\begin{align*}
+T(n) = \;& \left (\frac{c_4}{2}+\frac{c_5}{2}+\frac{c_6}{2} \right ) n^2 \\
+        & + \left (c_1 +c_2 + c_3 + \frac{c_4}{2}-\frac{c_5}{2}-\frac{c_6}{2} + c_7 \right )n\\
+        & - (c_2 + c_3 + c_4 +c_7)
+\end{align*}
+
+\end{frame}
+%--------------------------------------------
+\begin{frame}{Por que não contar exatamente o número de operações?}
+
+\begin{block}{Constantes e Detalhes Irrelevantes}
+\begin{itemize}
+    \item Diferenças como:
+    \[
+    T(n) = 3n^2 + 10n + 5 \quad \text{vs} \quad T(n) = n^2
+    \]
+    \item Para $n$ grande, o termo dominante é o mesmo
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Baixa Escalabilidade da Análise Exata}
+\begin{itemize}
+    \item Expressões exatas são complexas e pouco informativas
+    \item Difíceis de comparar entre algoritmos
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{alertblock}{Ideia Central}
+\begin{itemize}
+    \item Queremos capturar o comportamento para $n$ grande
+    \item Por isso usamos \textbf{taxa de crescimento} e \textbf{notação assintótica}
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Notação $O$ (Big-O)}
+
+\begin{block}{Definição Intuitiva}
+\begin{itemize}
+    \item A notação $O$ caracteriza um \textbf{limite superior} assintótico
+    \item Indica que uma função não cresce mais rápido que uma certa taxa
+    \item Baseia-se no \textbf{termo dominante} (maior ordem)
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Exemplo}
+\[
+T(n) = 7n^3 + 100n^2 - 20n + 6
+\]
+
+\begin{itemize}
+    \item Termo dominante: $n^3$
+    \item Logo: $T(n) = O(n^3)$
+\end{itemize}
+\end{block}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Notação $O$ (Big-O)}
+
+\begin{block}{Observação Importante}
+\begin{itemize}
+    \item Também podemos escrever:
+    \[
+    T(n) = O(n^4),\; O(n^5), \dots
+    \]
+    \item Pois a função cresce mais lentamente que essas taxas
+    \item Em geral: $T(n) = O(n^c)$ para qualquer $c \geq 3$
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{alertblock}{Mensagem-chave}
+A notação $O$ fornece um \textbf{limite superior}, não necessariamente o mais justo.
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Notação $\Omega$ (Big-Omega)}
+
+\begin{block}{Definição Intuitiva}
+\begin{itemize}
+    \item A notação $\Omega$ caracteriza um \textbf{limite inferior} assintótico
+    \item Indica que uma função cresce \textbf{pelo menos tão rápido} quanto uma certa taxa
+    \item Foca no comportamento para $n$ \textbf{grande}
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Exemplo}
+\[
+T(n) = 7n^3 + 100n^2 - 20n + 6
+\]
+
+\begin{itemize}
+    \item Termo dominante: $n^3$
+    \item Logo: $T(n) = \Omega(n^3)$
+\end{itemize}
+\end{block}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Notação $\Omega$ (Big-Omega)}
+
+\begin{block}{Observação Importante}
+\begin{itemize}
+    \item Também podemos escrever:
+    \[
+    T(n) = \Omega(n^2),\; \Omega(n), \dots
+    \]
+    \item Pois a função cresce pelo menos tão rápido quanto essas taxas
+    \item Em geral: $T(n) = \Omega(n^c)$ para qualquer $c \leq 3$
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{alertblock}{Interpretação}
+\begin{itemize}
+    \item $\Omega(\cdot)$ fornece um \textbf{limite inferior}
+    \item Descreve o \textbf{melhor crescimento possível} do algoritmo
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Notação $\Theta$ (Big-Theta)}
+
+\begin{block}{Definição Intuitiva}
+\begin{itemize}
+    \item A notação $\Theta$ caracteriza um \textbf{limite assintótico justo}
+    \item Indica que a função cresce \textbf{exatamente} a uma certa taxa
+    \item Considera limites superior e inferior simultaneamente
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Interpretação}
+\begin{itemize}
+    \item A função está limitada por constantes:
+    \[
+    c_1 f(n) \leq T(n) \leq c_2 f(n)
+    \]
+    \item Para $n$ suficientemente grande
+    \item Os fatores $c_1$ e $c_2$ não precisam ser iguais
+\end{itemize}
+\end{block}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Notação $\Theta$ (Big-Theta)}
+
+\begin{block}{Caracterização}
+\begin{itemize}
+    \item Se:
+    \[
+    T(n) = O(f(n)) \quad \text{e} \quad T(n) = \Omega(f(n))
+    \]
+    \item Então:
+    \[
+    T(n) = \Theta(f(n))
+    \]
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Exemplo}
+\[
+T(n) = 7n^3 + 100n^2 - 20n + 6
+\]
+
+\begin{itemize}
+    \item $T(n) = O(n^3)$ e $T(n) = \Omega(n^3)$
+    \item Logo: $T(n) = \Theta(n^3)$
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{alertblock}{Mensagem-chave}
+$\Theta(\cdot)$ descreve a \textbf{taxa de crescimento exata} do algoritmo.
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Notação $O$ — Definição Formal}
+
+\begin{block}{Ideia}
+\begin{itemize}
+    \item A notação $O$ descreve um \textbf{limite assintótico superior}
+    \item Fornece um limite dentro de um \textbf{fator constante}
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Definição Formal}
+Para uma função $g(n)$, definimos:
+\small
+\[
+O(g(n)) = \left \{ f(n) : \exists\, c > 0,\; \exists\, n_0 > 0 \text{ tais que } 0 \leq f(n) \leq c\,g(n),\; \forall n \geq n_0 \right \} 
+\]
+\end{block}
+\normalsize
+\vspace{0.2cm}
+
+\begin{alertblock}{Interpretação}
+\begin{itemize}
+    \item A função $f(n)$ não cresce mais rápido que $g(n)$
+    \item A desigualdade vale a partir de algum ponto $n_0$
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Exemplo: Prova usando a definição formal de $O$}
+\small
+\begin{block}{Objetivo}
+Mostrar que:
+\[
+f(n) = 3n^2 + 5n + 2 \;\;\text{é}\;\; O(n^2)
+\]
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Passo 1: Majorar a função}
+Para $n \geq 1$:
+\[
+3n^2 + 5n + 2 \leq 3n^2 + 5n^2 + 2n^2 = 10n^2
+\]
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Passo 2: Escolha das constantes}
+\begin{itemize}
+    \item $c = 10$
+    \item $n_0 = 1$
+\end{itemize}
+
+Logo:
+\[
+0 \leq f(n) \leq 10n^2 \quad \forall n \geq 1
+\]
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{alertblock}{Conclusão}
+Pela definição formal, $f(n) = O(n^2)$.
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Notação $\Omega$ — Definição Formal}
+
+\begin{block}{Ideia}
+\begin{itemize}
+    \item A notação $\Omega$ descreve um \textbf{limite assintótico inferior}
+    \item Garante crescimento mínimo dentro de um \textbf{fator constante}
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Definição Formal}
+Para uma função $g(n)$, definimos:
+
+\small
+\[
+\Omega(g(n)) = \left\{ f(n) : \exists\, c > 0,\; \exists\, n_0 > 0 \text{ tais que } 
+0 \leq c\,g(n) \leq f(n),\; \forall n \geq n_0 \right\}
+\]
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{alertblock}{Interpretação}
+\begin{itemize}
+    \item A função $f(n)$ cresce pelo menos tão rápido quanto $g(n)$
+    \item A desigualdade vale a partir de algum ponto $n_0$
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Notação $\Theta$ — Definição Formal}
+
+\begin{block}{Ideia}
+\begin{itemize}
+    \item A notação $\Theta$ descreve um \textbf{limite assintótico justo}
+    \item Combina limite superior e inferior
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Definição Formal}
+Para uma função $g(n)$, definimos:
+
+\[
+\Theta(g(n)) = \{ f(n) : \exists\, c_1, c_2 > 0,\; \exists\, n_0 > 0 \text{ tais que }
+\]
+\[
+0 \leq c_1 g(n) \leq f(n) \leq c_2 g(n),\; \forall n \geq n_0 \}
+\]
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{alertblock}{Interpretação}
+\begin{itemize}
+    \item $f(n)$ está limitada superior e inferiormente por $g(n)$
+    \item Descreve a \textbf{taxa de crescimento exata}
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Notações Assintóticas: Interpretação Gráfica}
+
+\centering
+\begin{columns}
+
+%----------------------------------
+\column{0.33\textwidth}
+\centering
+\textbf{$O(g(n))$}
+
+\begin{tikzpicture}[scale=0.6]
+\draw[->] (0,0) -- (4,0) node[right] {$n$};
+\draw[->] (0,0) -- (0,4);
+
+\draw[thick, blue] (0,0) .. controls (2,1) .. (4,2.5) node[right] {$f(n)$};
+\draw[thick, red] (0,0) .. controls (2,2) .. (4,3.5) node[right] {$c g(n)$};
+
+\draw[dashed] (1,0) -- (1,4) node[above] {$n_0$};
+\end{tikzpicture}
+
+\vspace{0.2cm}
+\scriptsize Limite superior
+
+%----------------------------------
+\column{0.33\textwidth}
+\centering
+\textbf{$\Omega(g(n))$}
+
+\begin{tikzpicture}[scale=0.6]
+\draw[->] (0,0) -- (4,0) node[right] {$n$};
+\draw[->] (0,0) -- (0,4);
+
+\draw[thick, blue] (0,0) .. controls (2,2.5) .. (4,3.5) node[right] {$f(n)$};
+\draw[thick, red] (0,0) .. controls (2,1) .. (4,2.5) node[right] {$c g(n)$};
+
+\draw[dashed] (1,0) -- (1,4) node[above] {$n_0$};
+\end{tikzpicture}
+
+\vspace{0.2cm}
+\scriptsize Limite inferior
+
+%----------------------------------
+\column{0.33\textwidth}
+\centering
+\textbf{$\Theta(g(n))$}
+
+\begin{tikzpicture}[scale=0.6]
+\draw[->] (0,0) -- (4,0) node[right] {$n$};
+\draw[->] (0,0) -- (0,4);
+
+\draw[thick, blue] (0,0) .. controls (2,2) .. (4,3) node[right] {$f(n)$};
+\draw[thick, red] (0,0) .. controls (2,1.5) .. (4,2.5) node[right] {$c_1 g(n)$};
+\draw[thick, red] (0,0) .. controls (2,2.5) .. (4,3.5) node[right] {$c_2 g(n)$};
+
+\draw[dashed] (1,0) -- (1,4) node[above] {$n_0$};
+\end{tikzpicture}
+
+\vspace{0.2cm}
+\scriptsize Limite justo
+
+%----------------------------------
+\end{columns}
+
+\vspace{0.3cm}
+
+\begin{alertblock}{Mensagem-chave}
+Para $n \geq n_0$: $O$ limita acima, $\Omega$ abaixo e $\Theta$ entre dois limites.
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Comparação de Funções Assintóticas}
+
+\begin{block}{Hipótese}
+Considere $f(n)$, $g(n)$ e $h(n)$ funções assintoticamente positivas.
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Transitividade}
+\begin{itemize}
+    \item Se $f(n) = \Theta(g(n))$ e $g(n) = \Theta(h(n))$
+    \item Se $f(n) = O(g(n))$ e $g(n) = O(h(n))$
+    \item Se $f(n) = \Omega(g(n))$ e $g(n) = \Omega(h(n))$
+    \item Se $f(n) = o(g(n))$ e $g(n) = o(h(n))$
+    \item Se $f(n) = \omega(g(n))$ e $g(n) = \omega(h(n))$
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{alertblock}{Ideia}
+As relações assintóticas preservam a ordem de comparação entre funções.
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Comparação de Funções Assintóticas}
+
+\begin{block}{Hipótese}
+Considere $f(n)$, $g(n)$ e $h(n)$ funções assintoticamente positivas.
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Transitividade}
+\begin{itemize}
+    \item Se $f(n) = \Theta(g(n))$ e $g(n) = \Theta(h(n))$, então $f(n) = \Theta(h(n))$
+    \item Se $f(n) = O(g(n))$ e $g(n) = O(h(n))$, então $f(n) = O(h(n))$
+    \item Se $f(n) = \Omega(g(n))$ e $g(n) = \Omega(h(n))$, então $f(n) = \Omega(h(n))$
+    \item Se $f(n) = o(g(n))$ e $g(n) = o(h(n))$, então $f(n) = o(h(n))$
+    \item Se $f(n) = \omega(g(n))$ e $g(n) = \omega(h(n))$, então $f(n) = \omega(h(n))$
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{alertblock}{Ideia}
+As relações assintóticas preservam a ordem de comparação entre funções.
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Comparação de Funções Assintóticas}
+\small
+\begin{block}{Reflexividade}
+\[
+f(n) = \Theta(f(n)), \qquad
+f(n) = O(f(n)), \qquad
+f(n) = \Omega(f(n))
+\]
+\end{block}
+
+
+\begin{block}{Simetria}
+\[
+f(n) = \Theta(g(n))
+\iff
+g(n) = \Theta(f(n))
+\]
+\end{block}
+
+
+
+\begin{block}{Simetria de Transposição}
+\[
+f(n) = O(g(n))
+\iff
+g(n) = \Omega(f(n))
+\]
+
+\[
+f(n) = o(g(n))
+\iff
+g(n) = \omega(f(n))
+\]
+\end{block}
+
+
+\begin{alertblock}{Mensagem-chave}
+$\Theta$ é simétrica; $O$ e $\Omega$ são relações transpostas uma da outra.
+\end{alertblock}
+
+\end{frame}
 \end{document}
