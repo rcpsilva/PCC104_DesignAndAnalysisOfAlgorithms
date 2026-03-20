@@ -1,15 +1,25 @@
-% Inbuilt themes in beamer
 \documentclass{beamer}
 
 % Codificação e idioma
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[brazil]{babel}
+\usepackage[portuguese]{babel}
 
+% Matemática
+\usepackage{amsmath}
 
+% Algoritmos (CLRS-style)
+\usepackage{algpseudocode}
+
+% Cores
 \usepackage{xcolor}
+
+% Comentários mais elegantes
+\algrenewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) #1}
 \definecolor{rsOrange}{RGB}{230,120,20}
 \newcommand{\og}[1]{\textcolor{rsOrange}{#1}}
+\setbeamercolor{block title alerted}{fg=rsOrange}
+\setbeamercolor{alerted text}{fg=rsOrange}
 
 % Theme choice:
 \usetheme{default}
@@ -18,7 +28,7 @@
 \title{PCC104 - Projeto e Análise de Algoritmos} 
 \author{Prof. Rodrigo Silva}
 \date{\today}
-\logo{\large \LaTeX{}}
+\logo{\large \includegraphics[width=0.3\textwidth]{logo.jpg}}
 
 
 \begin{document}
@@ -51,7 +61,7 @@
     \end{itemize}
     \end{block}
 \end{frame}
-
+%---------------------------------------
 \begin{frame}{Procedimento Computacional}
     \begin{block}{}
     \begin{itemize}
@@ -61,7 +71,7 @@
     \end{itemize}
     \end{block}
 \end{frame}
-
+%---------------------------------------
 \begin{frame}{Algoritmo}
     \begin{block}{}
     \begin{itemize}
@@ -69,7 +79,7 @@
     \end{itemize}
     \end{block}
 \end{frame}
-
+%---------------------------------------
 \begin{frame}{Problema Computacional}
 
 \begin{block}{Definição}
@@ -95,7 +105,7 @@ a_1 \le a_2 \le \dots \le a_n
 \end{exampleblock}
 
 \end{frame}
-
+%---------------------------------------
 \begin{frame}{Instância de um Problema}
 
 \begin{block}{Definição}
@@ -118,7 +128,7 @@ de entrada para um problema computacional.
 \end{exampleblock}
 
 \end{frame}
-
+%---------------------------------------
 \begin{frame}{Problema, Instância e Algoritmo}
 
 \begin{columns}
@@ -164,7 +174,7 @@ de entrada para um problema computacional.
 \end{columns}
 
 \end{frame}
-
+%---------------------------------------
 \begin{frame}{Algoritmo Correto}
 
 \begin{block}{Definição}
@@ -175,18 +185,416 @@ Um algoritmo é dito \og{correto} se, para toda instância válida do problema, 
 
 
 \end{frame}
-
-% Introdução à análise de algoritmos
-
+%---------------------------------------
 \section{Introdução à Análise de Algoritmos}
+%---------------------------------------
+\begin{frame}{Ordenação por Inserção (Insertion Sort)}
 
-\begin{frame}
+\begin{block}{Problema de Ordenação}
+\textbf{Entrada:}  
+Uma sequência de $n$ números  
+\[
+\langle a_1, a_2, \dots, a_n \rangle
+\]
+
+\vspace{0.3cm}
+
+\textbf{Saída:}  
+Uma permutação (reordenação) da sequência de entrada  
+\[
+\langle a_1', a_2', \dots, a_n' \rangle
+\]
+tal que  
+\[
+a_1' \leq a_2' \leq \dots \leq a_n'
+\]
+
+\end{block}
+
+\vspace{0.3cm}
+
+\begin{alertblock}{Objetivo}
+Reordenar os elementos da entrada em ordem não decrescente.
+\end{alertblock}
+
+\end{frame}
+% ---------------------------------------------
+\begin{frame}{Ordenação por Inserção}
+
+\begin{block}{\textsc{Insertion-Sort}$(A)$}
+\begin{algorithmic}[1]
+\For{$j \gets 2$ \textbf{to} $A.\text{length}$}
+    \State $key \gets A[j]$
+    \State \Comment{Insere $A[j]$ na sequência ordenada $A[1 \dots j-1]$}
+    \State $i \gets j - 1$
+    \While{$i > 0$ \textbf{and} $A[i] > key$}
+        \State $A[i + 1] \gets A[i]$
+        \State $i \gets i - 1$
+    \EndWhile
+    \State $A[i + 1] \gets key$
+\EndFor
+\end{algorithmic}
+\end{block}
+
+\og{Exemplo} : $[5,2,4,6,1,3]$
+
+\end{frame}
+% ---------------------------------------------
+\begin{frame}{Corretude da ordenação por inserção}
+
+\begin{block}{Invariante de Laço}
+Uma \textbf{invariante de laço} é uma propriedade que deve ser verdadeira:
+\begin{itemize}
+    \item \textbf{Inicialização:} antes da primeira iteração do laço;
+    \item \textbf{Manutenção:} antes de cada iteração, permanece verdadeira após a execução do corpo do laço;
+    \item \textbf{Término:} ao final do laço, fornece uma propriedade útil para demonstrar a correção do algoritmo.
+\end{itemize}
+\end{block}
+
+\vspace{0.3cm}
+
+\begin{alertblock}{Uso}
+Invariantes de laço são utilizadas para demonstrar a \textbf{correção} de algoritmos iterativos.
+\end{alertblock}
+
+\end{frame}
+%----------------------------------------------
+\begin{frame}{Correção do Insertion Sort}
+
+\begin{block}{Invariante de Laço}
+No início de cada iteração do laço \textbf{for} (linha 1), o subarray
+\[
+A[1 \dots j-1]
+\]
+consiste nos elementos originalmente em $A[1 \dots j-1]$, porém em ordem não decrescente.
+\end{block}
+
+\begin{block}{Prova}
+\textbf{Inicialização:}  
+Para $j = 2$, o subarray $A[1]$ contém apenas um elemento, logo está ordenado.
+
+\vspace{0.2cm}
+
+\textbf{Manutenção:}  
+A cada iteração, o elemento $A[j]$ é inserido na posição correta em $A[1 \dots j-1]$, produzindo $A[1 \dots j]$ ordenado.
+
+\vspace{0.2cm}
+
+\textbf{Término:}  
+Quando o laço termina ($j = A.\text{length} + 1$), temos
+\[
+A[1 \dots A.\text{length}]
+\]
+ordenado.
+\end{block}
+
+\end{frame}
+%--------------------------------------------
+\begin{frame}{O que é Análise de Algoritmos?}
+
+\begin{block}{Definição}
+A \textbf{análise de algoritmos} consiste em prever os recursos computacionais necessários para executar um algoritmo, tipicamente em função do tamanho da entrada $n$.
+\end{block}
+
+\vspace{0.3cm}
+
+\begin{block}{Por que analisar algoritmos?}
+\begin{itemize}
+    \item Comparar diferentes algoritmos para o mesmo problema;
+    \item Prever desempenho para entradas grandes;
+    \item Compreender como o tempo de execução cresce com $n$;
+    \item Guiar o projeto de algoritmos mais eficientes.
+\end{itemize}
+\end{block}
+
+\vspace{0.3cm}
+
+\begin{alertblock}{Desafio}
+Para analisar um algoritmo, precisamos de um modelo que defina:
+\begin{itemize}
+    \item O que é uma operação;
+    \item Quanto custa cada operação.
+\end{itemize}
+\end{alertblock}
+
+\vspace{0.2cm}
+
 \centering
-\Huge Introdução à Análise de Algoritmos
+$\Rightarrow$ \textbf{Modelo de Computação (RAM)}
+
+\end{frame}
+%--------------------------------------------
+\begin{frame}{Modelo de Computação (RAM -\textit{Random-access Machine})}
+
+
+Na análise de algoritmos, assumimos o modelo RAM, no qual:
+\begin{itemize}
+    \item As instruções são executadas sequencialmente;
+    \item Cada operação básica (atribuição, soma, comparação, acesso a memória) custa tempo constante;
+    \item O acesso à memória é uniforme (tempo constante para qualquer posição).
+\end{itemize}
+
+
+\begin{block}{Cuidados}
+\begin{itemize}
+    \item O custo constante pode variar entre operações (ex.: divisão vs. soma);
+    \item Ignoramos efeitos de hardware (cache, paralelismo, I/O);
+    \item Assumimos que os dados cabem na memória principal.
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Limitações}
+\begin{itemize}
+    \item Não modela hierarquia de memória;
+    \item Não captura custo de operações com números muito grandes;
+    \item Pode não refletir desempenho real em sistemas modernos.
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+%--------------------------------------------
+\begin{frame}{Análise do Insertion Sort}
+
+\begin{block}{Por que analisar?}
+\begin{itemize}
+    \item Determinar o custo computacional do algoritmo
+    \item Comparar diferentes algoritmos para o mesmo problema
+    \item Prever comportamento em diferentes tamanhos de entrada
+\end{itemize}
+\end{block}
+
+\vspace{0.3cm}
+
+\begin{block}{Modelo de Análise (CLRS)}
+\begin{itemize}
+    \item Modelo \textbf{RAM} (Random Access Machine)
+    \item Cada operação elementar tem custo constante
+    \item Tempo total = número de execuções de cada linha
+\end{itemize}
+\end{block}
+
+\vspace{0.3cm}
+
+\begin{alertblock}{Ideia central}
+\begin{itemize}
+    \item O tempo depende do número de deslocamentos realizados
+    \item Esse número varia conforme a \textbf{ordem da entrada}
+\end{itemize}
+\end{alertblock}
+
 \end{frame}
 
-\section{}
-\begin{frame}{}
+%---------------------------------------------------------------
+\begin{frame}{Especificando a Análise }
+\begin{itemize}
+    \item Modelo RAM 
+    \item Tamanho da entrada?
+\end{itemize}
+\end{frame}
+
+% -------------------------------------------------------------
+
+\begin{frame}{Insertion Sort: Custo e Frequência}
+
+\small
+
+\begin{columns}[T]
+
+%----------------------------------
+\begin{column}{0.55\textwidth}
+
+\textbf{Ordena-Por-Inserção$(A,n)$}
+
+\begin{enumerate}
+    \item \textbf{for} $i = 2$ \textbf{to} $n$
+    \item \quad chave $= A[i]$
+    \item \quad $j = i - 1$
+    \item \quad \textbf{while} $j > 0$ \textbf{and} $A[j] >$ chave
+    \item \qquad $A[j+1] = A[j]$
+    \item \qquad $j = j - 1$
+    \item \quad $A[j+1] =$ chave
+\end{enumerate}
+
+\end{column}
+
+%----------------------------------
+\begin{column}{0.45\textwidth}
+
+\textbf{Custo: n$^o$ Vezes}
+
+\vspace{0.2cm}
+
+\begin{itemize}
+    \item $c_1$ : $n - 1$ 
+    \item $c_2$ : $n - 1$ 
+    \item $c_3$ : $n - 1$ 
+    \item $c_4$ : $n - 1$ 
+    \item $c_5$ : $\sum_{i=2}^{n} (t_i - 1)$ 
+    \item $c_6$ : $\sum_{i=2}^{n} (t_i - 1)$ 
+    \item $c_7$ : $n - 1$ 
+\end{itemize}
+
+\end{column}
+
+%----------------------------------
+\end{columns}
+
+\vspace{0.3cm}
+
+\begin{alertblock}{Observação}
+$t_i$ é o número de vezes que o teste do \texttt{while} é executado para cada $i$.
+\end{alertblock}
+
+\end{frame}
+
+%---------------------------------------------------------------
+\begin{frame}{Análise Insertion Sort}
+
+
+\begin{block}{Tempo Total}
+\small
+\begin{align*}
+T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
+       & + c_5 \sum_{i=2}^{n} (t_i - 1) + c_6 \sum_{i=2}^{n} (t_i - 1) + c_7(n-1)
+\end{align*}
+\normalsize
+\end{block}
+
+\vspace{0.3cm}
+
+\vspace{0.3cm}
+
+\begin{alertblock}{Observação}
+Mesmo para entradas de mesmo tamanho o tempo de execução pode sdepender de qual entrada desse tamanho é dada.
+\end{alertblock}
+
+\end{frame}
+%-------------------------------------------------
+\begin{frame}{Análise Insertion Sort - Entrada ordenada}
+
+\begin{block}{Tempo Total}
+\small
+\begin{align*}
+T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
+       & + c_5 \sum_{i=2}^{n} (t_i - 1) + c_6 \sum_{i=2}^{n} (t_i - 1) + c_7(n-1)
+\end{align*}
+\normalsize
+\end{block}
+
+
+\og{$T(n) = an + b$ (Tempo linear)}
+
+\end{frame}
+%-------------------------------------------------
+\begin{frame}{Análise Insertion Sort - Ordem Decrescente}
+
+\begin{block}{Tempo Total}
+\small
+\begin{align*}
+T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
+       & + c_5 \sum_{i=2}^{n} (t_i - 1) + c_6 \sum_{i=2}^{n} (t_i - 1) + c_7(n-1)
+\end{align*}
+\normalsize
+\end{block}
+
+
+\og{$T(n) = an^2 + bn + c$ (Tempo quadrático)}
+
+\end{frame}
+%-------------------------------------------------
+
+\begin{frame}{Casos de Análise de Algoritmos}
+
+\begin{block}{Melhor Caso}
+\begin{itemize}
+    \item Menor tempo de execução para entradas de tamanho $n$
+    \item Ocorre quando a entrada favorece o algoritmo
+    \item Formalmente:
+    \[
+    T_{\text{best}}(n) = \min_{\text{entradas de tamanho } n} T(n)
+    \]
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+%-------------------------------------------------
+
+\begin{frame}{Casos de Análise de Algoritmos}
+
+
+\begin{block}{Pior Caso}
+\begin{itemize}
+    \item Maior tempo de execução para entradas de tamanho $n$
+    \item Garante limite superior de desempenho
+    \item Formalmente:
+    \[
+    T_{\text{worst}}(n) = \max_{\text{entradas de tamanho } n} T(n)
+    \]
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+
+\end{frame}
+
+%-------------------------------------------------
+
+\begin{frame}{Casos de Análise de Algoritmos}
+
+\begin{block}{Caso Médio}
+\begin{itemize}
+    \item Tempo esperado sobre todas as entradas de tamanho $n$
+    \item Depende de uma distribuição de probabilidade
+    \item Formalmente:
+    \[
+    T_{\text{avg}}(n) = \mathbb{E}[T(n)]
+    \]
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Por que analisar o pior caso?}
+
+\begin{block}{Garantia de Desempenho}
+\begin{itemize}
+    \item Fornece um limite superior para o tempo de execução
+    \item Garante que o algoritmo nunca será pior do que isso
+    \item \og{O caso médio é quase tão ruim quanto o pior caso}
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Independência da Entrada}
+\begin{itemize}
+    \item Não depende de hipóteses sobre a distribuição dos dados
+    \item Evita suposições difíceis de justificar na prática
+\end{itemize}
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{block}{Robustez}
+\begin{itemize}
+    \item Essencial em sistemas críticos (tempo real, segurança, etc.)
+    \item Protege contra entradas adversariais
+\end{itemize}
+\end{block}
+
+
+\end{frame}
+% -------------------------------------------------------
+
+\begin{frame}
+
+\Huge
+Caracterização dos Tempos de Execução
+
 \end{frame}
 
 \end{document}
