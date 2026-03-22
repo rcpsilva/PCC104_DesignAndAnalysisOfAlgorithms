@@ -422,10 +422,10 @@ Na análise de algoritmos, assumimos o modelo RAM, no qual:
 \vspace{0.2cm}
 
 \begin{itemize}
-    \item $c_1$ : $n - 1$ 
+    \item $c_1$ : $n$ 
     \item $c_2$ : $n - 1$ 
     \item $c_3$ : $n - 1$ 
-    \item $c_4$ : $n - 1$ 
+    \item $c_4$ : $\sum_{i=2}^{n} t_i$ 
     \item $c_5$ : $\sum_{i=2}^{n} (t_i - 1)$ 
     \item $c_6$ : $\sum_{i=2}^{n} (t_i - 1)$ 
     \item $c_7$ : $n - 1$ 
@@ -450,7 +450,7 @@ $t_i$ é o número de vezes que o teste do \texttt{while} é executado para cada
 \begin{block}{Tempo Total}
 \small
 \begin{align*}
-T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
+T(n) =\;& c_1 n- + c_2 (n-1) + c_3 (n-1) + c_4 \sum_{i=2}^{n} (t_i)\\
        & + c_5 \sum_{i=2}^{n} (t_i - 1) + c_6 \sum_{i=2}^{n} (t_i - 1) + c_7(n-1)
 \end{align*}
 \normalsize
@@ -471,7 +471,7 @@ Mesmo para entradas de mesmo tamanho o tempo de execução pode sdepender de qua
 \begin{block}{Tempo Total}
 \small
 \begin{align*}
-T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
+T(n) =\;& c_1 n- + c_2 (n-1) + c_3 (n-1) + c_4 \sum_{i=2}^{n} (t_i)\\
        & + c_5 \sum_{i=2}^{n} (t_i - 1) + c_6 \sum_{i=2}^{n} (t_i - 1) + c_7(n-1)
 \end{align*}
 \normalsize
@@ -487,12 +487,11 @@ T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
 \begin{block}{Tempo Total}
 \small
 \begin{align*}
-T(n) =\;& c_1 (n-1) + c_2 (n-1) + c_3 (n-1) + c_4 (n-1)\\
+T(n) =\;& c_1 n- + c_2 (n-1) + c_3 (n-1) + c_4 \sum_{i=2}^{n} (t_i)\\
        & + c_5 \sum_{i=2}^{n} (t_i - 1) + c_6 \sum_{i=2}^{n} (t_i - 1) + c_7(n-1)
 \end{align*}
 \normalsize
 \end{block}
-
 
 \og{$T(n) = an^2 + bn + c$ (Tempo quadrático)}
 

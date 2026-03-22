@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.30)  20 MAR 2026 18:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.30)  20 MAR 2026 20:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -950,7 +950,7 @@ File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 [34
 
 ]
-Overfull \hbox (7.5473pt too wide) detected at line 815
+Overfull \hbox (7.5473pt too wide) detected at line 814
 \OT1/mathkerncmss/m/sl/10 O\OT1/cmss/m/n/10 (\OT1/mathkerncmss/m/sl/10 g\OT1/cmss/m/n/10 (\OT1/mathkerncmss/m/sl/10 n\OT1/cmss/m/n/10 )) = []
  []
 
@@ -959,7 +959,7 @@ Overfull \hbox (7.5473pt too wide) detected at line 815
 [35
 
 ]
-Overfull \vbox (0.29224pt too high) detected at line 855
+Overfull \vbox (0.29224pt too high) detected at line 854
  []
 
 
@@ -967,7 +967,7 @@ Overfull \vbox (0.29224pt too high) detected at line 855
 [36
 
 ]
-Overfull \hbox (6.65295pt too wide) detected at line 887
+Overfull \hbox (6.65295pt too wide) detected at line 886
 \OT1/cmss/m/n/10 
 (\OT1/mathkerncmss/m/sl/10 g\OT1/cmss/m/n/10 (\OT1/mathkerncmss/m/sl/10 n\OT1/cmss/m/n/10 )) = []
  []
@@ -981,17 +981,17 @@ Overfull \hbox (6.65295pt too wide) detected at line 887
 [38
 
 ]
-Overfull \hbox (0.83067pt too wide) in paragraph at lines 991--991
+Overfull \hbox (0.83067pt too wide) in paragraph at lines 990--990
  [][] 
  []
 
 
-Overfull \hbox (0.83067pt too wide) in paragraph at lines 991--991
+Overfull \hbox (0.83067pt too wide) in paragraph at lines 990--990
  [][] 
  []
 
 
-Overfull \hbox (5.57964pt too wide) in paragraph at lines 991--991
+Overfull \hbox (5.57964pt too wide) in paragraph at lines 990--990
  [][] 
  []
 
@@ -1036,13 +1036,13 @@ Package rerunfilecheck Info: File `aula1.out' has not changed.
 Here is how much of TeX's memory you used:
  26696 strings out of 473577
  519214 string characters out of 5732224
- 893100 words of memory out of 5000000
+ 892100 words of memory out of 5000000
  48974 multiletter control sequences out of 15000+600000
  583403 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,123p,501b,926s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsi1440.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on aula1.pdf (42 pages, 386881 bytes).
+Output written on aula1.pdf (42 pages, 387060 bytes).
 PDF statistics:
  1243 PDF objects out of 1440 (max. 8388607)
  1131 compressed objects within 12 object streams
