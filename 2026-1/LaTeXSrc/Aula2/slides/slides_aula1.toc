@@ -1,0 +1,7 @@
+\babel@toc {brazil}{}\relax 
+\beamer@sectionintoc {1}{Introdução}{3}{0}{1}
+\beamer@sectionintoc {2}{MergeSort}{6}{0}{2}
+\beamer@sectionintoc {3}{Recorrências}{19}{0}{3}
+\beamer@sectionintoc {4}{Indução Matemática}{26}{0}{4}
+\beamer@sectionintoc {5}{Método de Substituição}{46}{0}{5}
+\beamer@sectionintoc {6}{Método da Árvore de Recursão}{62}{0}{6}

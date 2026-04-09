@@ -1,0 +1,818 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb}
+%\usepackage{microtype} % desabilitado para compatibilidade com beamer+pdflatex
+\usepackage{csquotes}
+\usepackage{natbib}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{array}
+
+% Colors — Azul escuro + Laranja
+\definecolor{mblack}{RGB}{20, 20, 20}
+\definecolor{mprimary}{RGB}{86, 71, 135}      % azul escuro
+\definecolor{maccent}{RGB}{71, 170, 174}      % laranja
+\definecolor{mwhite}{RGB}{255, 255, 255}
+
+% Theme
+\usetheme{default}
+\usecolortheme{default}
+\setbeamercolor{normal text}{fg=mblack, bg=white}
+\setbeamercolor{frametitle}{fg=white, bg=mprimary}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{author}{fg=white}
+\setbeamercolor{date}{fg=white}
+\setbeamercolor{itemize item}{fg=maccent}
+\setbeamercolor{itemize subitem}{fg=mprimary}
+\setbeamercolor{enumerate item}{fg=maccent}
+\setbeamercolor{enumerate subitem}{fg=mprimary}
+\setbeamercolor{block title}{fg=white, bg=mprimary}
+\setbeamercolor{block body}{fg=mblack, bg=mprimary!8}
+\setbeamercolor{block title alerted}{fg=white, bg=maccent}
+\setbeamercolor{block body alerted}{fg=mblack, bg=maccent!8}
+\setbeamercolor{alerted text}{fg=maccent}
+
+\setbeamerfont{frametitle}{series=\bfseries, size=\large}
+\setbeamerfont{title}{series=\bfseries, size=\LARGE}
+\setbeamerfont{block title}{series=\bfseries}
+
+\setbeamertemplate{navigation symbols}{}
+
+% Footer
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.7\paperwidth, ht=2.25ex, dp=1ex, leftskip=0.3cm]{normal text}%
+      \tiny\color{mblack!50} PCC104 -- Projeto e Análise de Algoritmos
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.3\paperwidth, ht=2.25ex, dp=1ex, rightskip=0.3cm, right]{normal text}%
+      \tiny\color{mblack!50}\insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}
+
+% Frametitle with accent rule
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=0.55cm, dp=0.2cm, leftskip=0.5cm]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle%
+  \end{beamercolorbox}%
+  \vspace{-0.1cm}%
+  \textcolor{maccent}{\rule{\paperwidth}{2pt}}%
+}
+
+% Title page: three-band layout
+\setbeamercolor{titlebar top}{bg=mwhite}
+\setbeamercolor{titlebar main}{bg=mprimary}
+\setbeamercolor{titlebar bottom}{bg=maccent}
+
+\setbeamertemplate{title page}{%
+  \vspace{0pt}%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=0.55cm, dp=0pt]{titlebar top}\end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=3.8cm, dp=0pt, center]{titlebar main}%
+    \vspace{0.6cm}
+    {\usebeamerfont{title}\color{white}\inserttitle\par}%
+    \vspace{0.35cm}{\color{white}\small\insertauthor\par}%
+    \vspace{0.15cm}{\color{white}\footnotesize\insertdate\par}%
+    \vspace{0.25cm}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=1.3cm, dp=0pt]{titlebar bottom}\end{beamercolorbox}%
+}
+
+\setlength{\itemsep}{4pt}
+
+% Highlight commands
+\newcommand{\impt}[1]{\textcolor{maccent}{\textbf{#1}}}
+\newcommand{\ntc}[1]{\textcolor{mprimary}{#1}}
+\newcommand{\twodots}{\mathinner{\ldotp\ldotp}}
+
+\title{Divisão e Conquista}
+\author{PCC104 -- Projeto e Análise de Algoritmos\footnote{Baseado em Cormen et al. \textit{Algoritmos} (2022)}}
+\date{\today}
+
+\begin{document}
+\nocite{cormen2022algoritmos}
+
+% ============================================================
+\begin{frame}[plain]\titlepage\end{frame}
+
+% ============================================================
+\begin{frame}{Sumário}
+\tableofcontents
+\end{frame}
+
+% ============================================================
+\section{Introdução}
+% ============================================================
+
+\begin{frame}{Divisão e Conquista}
+\begin{block}{Definição}
+Técnica de projeto de algoritmos que resolve problemas de forma \impt{recursiva}, seguindo três etapas.
+\end{block}
+
+\vspace{0.3cm}
+
+\begin{enumerate}
+    \item \textbf{Dividir:} o problema original em subproblemas menores (instâncias do mesmo problema).
+    \pause
+    \item \textbf{Conquistar:} resolver os subproblemas recursivamente. Quando suficientemente pequenos, resolver diretamente (\impt{caso base}).
+    \pause
+    \item \textbf{Combinar:} as soluções dos subproblemas para construir a solução do problema original.
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+\section{MergeSort}
+% ============================================================
+
+\begin{frame}{MergeSort --- Visão Geral}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+    \item \textbf{Dividir:} arranjo de $n$ elementos em dois subarranjos de $n/2$ cada.
+    \pause
+    \item \textbf{Conquistar:} ordenar cada metade recursivamente. Caso base: tamanho 1.
+    \pause
+    \item \textbf{Combinar:} intercalar (\textit{merge}) as duas metades ordenadas.
+\end{enumerate}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{alertblock}{Etapa central}
+O trabalho real ocorre na \impt{combinação} --- o procedimento \textsc{Merge}.
+\end{alertblock}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Procedimento \textsc{Merge}$(A, p, q, r)$}
+\begin{block}{Ideia}
+Intercalar $A[p\twodots q]$ e $A[q{+}1\twodots r]$, ambos já ordenados, em $A[p\twodots r]$.
+\end{block}
+
+\vspace{0.2cm}
+
+\begin{enumerate}
+    \item Copiar as duas metades em arranjos auxiliares $L$ e $R$
+    \pause
+    \item Comparar elementos de $L$ e $R$, copiando o menor de volta para $A$
+    \pause
+    \item Copiar elementos restantes de $L$ ou $R$
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Pseudocódigo --- \textsc{Merge}$(A, p, q, r)$}
+\small
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+$n_L = q - p + 1$; \; $n_R = r - q$\\[2pt]
+Aloca $L[0\twodots n_L{-}1]$, $R[0\twodots n_R{-}1]$\\[2pt]
+\textbf{for} $i = 0$ \textbf{to} $n_L{-}1$\\
+\quad $L[i] = A[p + i]$\\[2pt]
+\textbf{for} $j = 0$ \textbf{to} $n_R{-}1$\\
+\quad $R[j] = A[q + j + 1]$\\[2pt]
+$i = 0$; $j = 0$; $k = p$
+\end{column}
+\begin{column}{0.48\textwidth}
+\textbf{while} $i < n_L$ \textbf{and} $j < n_R$\\
+\quad \textbf{if} $L[i] \leq R[j]$: $A[k] = L[i]$; $i{+}{+}$\\
+\quad \textbf{else}: $A[k] = R[j]$; $j{+}{+}$\\
+\quad $k{+}{+}$\\[4pt]
+\textbf{while} $i < n_L$\\
+\quad $A[k] = L[i]$; $i{+}{+}$; $k{+}{+}$\\[2pt]
+\textbf{while} $j < n_R$\\
+\quad $A[k] = R[j]$; $j{+}{+}$; $k{+}{+}$
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Pseudocódigo --- \textsc{MergeSort}$(A, p, r)$}
+\vspace{0.5cm}
+\begin{center}
+\begin{minipage}{0.55\textwidth}
+\textbf{if} $p \geq r$: \textbf{return} \hfill \textcolor{mblack!50}{\footnotesize// caso base}\\[6pt]
+$q = \lfloor (p + r) / 2 \rfloor$\\[6pt]
+\textsc{MergeSort}$(A, p, q)$ \hfill \textcolor{mblack!50}{\footnotesize// metade esquerda}\\[4pt]
+\textsc{MergeSort}$(A, q+1, r)$ \hfill \textcolor{mblack!50}{\footnotesize// metade direita}\\[4pt]
+\textsc{Merge}$(A, p, q, r)$ \hfill \textcolor{mblack!50}{\footnotesize// combina}
+\end{minipage}
+\end{center}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Análise de Complexidade do \textsc{Merge}}
+\begin{block}{Resultado}
+O procedimento \textsc{Merge} executa em tempo \impt{$\Theta(n)$}, onde $n = r - p + 1$.
+\end{block}
+
+\vspace{0.3cm}
+\pause
+
+\begin{itemize}
+    \item Cada elemento é copiado para $A$ \impt{exatamente uma vez}
+    \item Seja no laço principal, seja nos laços de finalização
+    \item Total de cópias: $t_L + (n_L - t_L) + t_R + (n_R - t_R) = n_L + n_R = n$
+\end{itemize}
+
+\vspace{0.3cm}
+\pause
+
+Agrupando os custos: $T(n) = \alpha \cdot n + \beta = \Theta(n)$
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Recorrência do MergeSort}
+A análise do \textsc{MergeSort} leva à recorrência:
+\[
+T(n) = 2\,T(n/2) + \Theta(n), \quad T(1) = \Theta(1)
+\]
+
+\pause
+\vspace{0.3cm}
+
+\begin{alertblock}{Solução}
+Pelo Teorema Mestre (caso~2, $a=2$, $b=2$, $f(n)=\Theta(n)$):
+\[
+T(n) = \Theta(n \lg n)
+\]
+\end{alertblock}
+
+\vspace{0.2cm}
+
+\ntc{Como resolver recorrências como essa?} $\longrightarrow$ Próximas seções.
+\end{frame}
+
+% ============================================================
+\section{Recorrências}
+% ============================================================
+
+\begin{frame}{Recorrências --- Definição}
+\begin{block}{Definição}
+Uma \textbf{recorrência} é uma equação que descreve $T(n)$ em termos de seu valor em entradas menores.
+\end{block}
+
+\vspace{0.3cm}
+\pause
+
+Dois elementos essenciais:
+\begin{itemize}
+    \item \impt{Caso recursivo:} $T(n)$ em função de $T(m)$ com $m < n$
+    \pause
+    \item \impt{Caso base:} valor de $T(n)$ para entradas suficientemente pequenas
+\end{itemize}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Recorrências --- Exemplos}
+\begin{columns}[T]
+\begin{column}{0.45\textwidth}
+\begin{block}{Busca linear}
+\[
+T(n) = T(n-1) + c
+\]
+\[
+T(1) = c
+\]
+\centering $\Rightarrow\; T(n) = \Theta(n)$
+\end{block}
+\end{column}
+
+\pause
+
+\begin{column}{0.45\textwidth}
+\begin{block}{Merge-Sort}
+\[
+T(n) = 2\,T(n/2) + \Theta(n)
+\]
+\[
+T(1) = \Theta(1)
+\]
+\centering $\Rightarrow\; T(n) = \Theta(n \lg n)$
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Recorrências Bem e Mal Definidas}
+\begin{columns}[T]
+\begin{column}{0.45\textwidth}
+\begin{block}{Bem definida}
+\begin{itemize}
+    \item Caso base definido
+    \item Argumento sempre decresce em direção ao caso base
+    \item Valor determinado de forma não ambígua
+\end{itemize}
+\end{block}
+\end{column}
+
+\pause
+
+\begin{column}{0.45\textwidth}
+\begin{alertblock}{Mal definida}
+\begin{itemize}
+    \item Sem caso base: $T(n) = 2T(n/2) + n$, sem condição de contorno
+    \item Sem decrescimento: $T(n) = T(n) + 1$
+    \item Domínio ambíguo: $T(n/2)$ com $n$ ímpar $\Rightarrow$ usar $\lfloor\cdot\rfloor$, $\lceil\cdot\rceil$
+\end{itemize}
+\end{alertblock}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\section{Indução Matemática}
+% ============================================================
+
+\begin{frame}{Indução Matemática --- Estrutura}
+\begin{block}{Objetivo}
+Demonstrar que $P(n)$ vale para todo $n \geq n_0$.
+\end{block}
+
+\vspace{0.3cm}
+\pause
+
+\begin{enumerate}
+    \item \impt{Caso base:} verificar que $P(n_0)$ é verdadeira.
+    \pause
+    \item \impt{Passo indutivo:} assumir $P(k)$ (\textbf{hipótese indutiva}) e provar $P(k+1)$.
+\end{enumerate}
+
+\vspace{0.3cm}
+\pause
+
+\ntc{Intuição:} efeito dominó --- o caso base derruba a primeira peça, o passo indutivo garante que cada peça derruba a seguinte.
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Exemplo: Soma dos Primeiros $n$ Naturais}
+Provar: $\displaystyle\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$ para todo $n \geq 1$.
+
+\vspace{0.3cm}
+\pause
+
+\textbf{Caso base} ($n=1$): $\sum_{i=1}^{1} i = 1 = \frac{1 \cdot 2}{2}$. \checkmark
+
+\vspace{0.2cm}
+\pause
+
+\textbf{Passo indutivo:} assumindo que vale para $k$:
+\begin{align*}
+\sum_{i=1}^{k+1} i &= \underbrace{\sum_{i=1}^{k} i}_{= k(k+1)/2} + (k+1)
+= \frac{k(k+1) + 2(k+1)}{2}
+= \frac{(k+1)(k+2)}{2} \quad\checkmark
+\end{align*}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Indução Forte}
+\begin{block}{Diferença}
+Na \textbf{indução forte}, a hipótese assume que $P(m)$ vale para \impt{todo} $m$ com $n_0 \leq m \leq k$ (não apenas para $k$).
+\end{block}
+
+\vspace{0.3cm}
+\pause
+
+\begin{itemize}
+    \item Logicamente equivalente à indução simples
+    \pause
+    \item Essencial para recorrências: $T(n)$ pode depender de $T(\lfloor n/2 \rfloor)$ e $T(\lceil n/2 \rceil)$ simultaneamente
+    \pause
+    \item Precisamos que a hipótese valha para \impt{todas} as entradas menores
+\end{itemize}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Exemplo com Indução Forte}
+\begin{block}{Proposição}
+Todo inteiro $n \geq 2$ pode ser escrito como produto de primos.
+\end{block}
+
+\vspace{0.2cm}
+\pause
+
+\textbf{Caso base} ($n=2$): $2$ é primo. \checkmark
+
+\vspace{0.2cm}
+\pause
+
+\textbf{Passo indutivo:} suponha que vale para todo $m$ com $2 \leq m \leq k$.
+\begin{itemize}
+    \item Se $k+1$ é primo $\Rightarrow$ imediato.
+    \pause
+    \item Se não: $k+1 = a \cdot b$ com $2 \leq a, b \leq k$.
+    \item Pela hipótese, $a$ e $b$ são produtos de primos $\Rightarrow$ $k+1$ também. \checkmark
+\end{itemize}
+
+\vspace{0.2cm}
+\pause
+
+\ntc{Nota:} indução simples não bastaria --- saber que $k$ é produto de primos nada diz sobre $k+1$.
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Indução e Recorrências}
+Provar que $T(n) \leq c\,g(n)$ para uma recorrência é uma \impt{prova por indução forte}:
+
+\vspace{0.3cm}
+
+\begin{enumerate}
+    \item Assumir $T(m) \leq c\,g(m)$ para todo $m < n$
+    \pause
+    \item Substituir na recorrência
+    \pause
+    \item Verificar que $T(n) \leq c\,g(n)$ segue algebricamente
+    \pause
+    \item Verificar o caso base, ajustando $c$ se necessário
+\end{enumerate}
+
+\vspace{0.3cm}
+
+$\longrightarrow$ Esta é a mecânica do \impt{método de substituição}.
+\end{frame}
+
+% ============================================================
+\section{Método de Substituição}
+% ============================================================
+
+\begin{frame}{Método de Substituição --- Estrutura}
+\begin{block}{Dois passos}
+\begin{enumerate}
+    \item \impt{Conjecturar} a forma da solução: $T(n) \leq c \cdot g(n)$
+    \pause
+    \item \impt{Provar por indução} que a conjectura está correta, determinando as constantes
+\end{enumerate}
+\end{block}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Exemplo: Recorrência do Merge-Sort}
+\[
+T(n) = 2\,T(\lfloor n/2 \rfloor) + dn, \quad T(1) = a
+\]
+
+\vspace{0.2cm}
+
+\textbf{Conjectura:} $T(n) \leq c\,n\lg n$ para todo $n \geq 2$.
+
+\vspace{0.3cm}
+\pause
+
+\textbf{Passo indutivo:} assumindo $T(\lfloor n/2 \rfloor) \leq c\,\lfloor n/2 \rfloor \lg \lfloor n/2 \rfloor$:
+
+\begin{align*}
+T(n) &\leq 2\bigl(c\,\lfloor n/2 \rfloor \lg \lfloor n/2 \rfloor\bigr) + dn \\
+     &\leq c\,n\lg(n/2) + dn \\
+     &= c\,n\lg n - c\,n + dn \\
+     &= c\,n\lg n - (c - d)\,n \\
+     &\leq c\,n\lg n \quad\checkmark \qquad \text{(desde que } c \geq d\text{)}
+\end{align*}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Exemplo: Caso Base}
+\textbf{Para $n = 1$:} $T(1) \leq c \cdot 1 \cdot \lg 1 = 0$ --- \impt{falha!} (pois $T(1) = a > 0$)
+
+\vspace{0.3cm}
+\pause
+
+\textbf{Para $n = 2$:} $T(2) = 2a + 2d \leq c \cdot 2\lg 2 = 2c$
+
+$\Rightarrow$ vale para $c \geq a + d$
+
+\vspace{0.3cm}
+\pause
+
+\begin{alertblock}{Conclusão}
+Com $n_0 = 2$ e $c \geq a + d \geq d$: \quad $T(n) \leq c\,n\lg n$ para todo $n \geq 2$.
+
+Logo $T(n) = O(n\lg n)$.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Flexibilidade no Caso Base}
+\begin{block}{Por que a falha em $n=1$ não é problema?}
+A notação $T(n) = O(g(n))$ exige apenas que $T(n) \leq c\,g(n)$ para $n \geq n_0$.
+\end{block}
+
+\vspace{0.3cm}
+\pause
+
+\begin{itemize}
+    \item Podemos \impt{escolher} $n_0$ e $c$
+    \pause
+    \item Um número finito de condições de contorno sempre pode ser acomodado tomando $c$ grande o suficiente
+    \pause
+    \item Na prática: concentrar-se no \impt{passo indutivo} e tratar o caso base como verificação técnica
+\end{itemize}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Armadilhas Comuns}
+\begin{columns}[T]
+\begin{column}{0.45\textwidth}
+\begin{alertblock}{Hipótese que não fecha}
+Provar $T(n) = 2T(\lfloor n/2\rfloor) + n$ é $O(n)$:
+
+$T(n) \leq c\,n + n = (c+1)\,n$
+
+\impt{Não} prova $T(n) \leq c\,n$ para a mesma constante!
+\end{alertblock}
+\end{column}
+
+\pause
+
+\begin{column}{0.45\textwidth}
+\begin{block}{Subtrair termo de ordem inferior}
+Para $T(n) = T(\lfloor n/2\rfloor) + T(\lceil n/2\rceil) + 1$:
+
+Conjecturar $T(n) \leq c\,n$ não fecha.
+
+Mas $T(n) \leq c\,n - d$ fornece a \impt{margem} necessária.
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Como Obter Boas Conjecturas}
+\begin{enumerate}
+    \item \textbf{Similaridade:} recorrência parecida com uma conhecida? Use a mesma forma.
+    
+    \ntc{Ex.:} $T(n) = 2T(\lfloor n/2\rfloor + 17) + n \;\Rightarrow\;$ provavelmente $O(n\lg n)$
+    
+    \pause
+    \vspace{0.2cm}
+    
+    \item \textbf{Limitantes frouxos:} provar $O(n^2)$ e $\Omega(n)$ primeiro, depois refinar.
+    
+    \pause
+    \vspace{0.2cm}
+    
+    \item \textbf{Árvore de recursão:} gerar a conjectura visualmente, depois verificar por substituição.
+\end{enumerate}
+\end{frame}
+
+% ============================================================
+\section{Método da Árvore de Recursão}
+% ============================================================
+
+\begin{frame}{Árvore de Recursão --- Ideia}
+\begin{block}{Definição}
+Expandir a recorrência em uma \textbf{árvore} cujos nós representam os custos em cada nível de recursão.
+\end{block}
+
+\vspace{0.3cm}
+\pause
+
+Para $T(n) = a\,T(n/b) + f(n)$:
+\begin{itemize}
+    \item \impt{Raiz:} custo $f(n)$
+    \item Cada nó gera $a$ filhos (subproblemas de tamanho $m/b$)
+    \item \impt{Folhas:} caso base, custo $\Theta(1)$ cada
+    \item Custo total = soma dos custos de todos os níveis
+\end{itemize}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Exemplo: $T(n) = 2\,T(n/2) + dn$}
+
+\begin{center}
+\begin{tikzpicture}[
+    level distance=1.2cm,
+    every node/.style={font=\small},
+    edge from parent/.style={draw, -},
+    level 1/.style={sibling distance=4.5cm},
+    level 2/.style={sibling distance=2.2cm},
+    level 3/.style={sibling distance=1.1cm},
+]
+
+% Rótulos de nível
+\node[anchor=east] at (-5.5,0) {\footnotesize Nível 0};
+\node[anchor=east] at (-5.5,-1.2) {\footnotesize Nível 1};
+\node[anchor=east] at (-5.5,-2.4) {\footnotesize Nível 2};
+\node[anchor=east] at (-5.5,-3.9) {\footnotesize Nível $\lg n$};
+
+% Custo por nível
+\node[anchor=west] at (5,0) {$dn$};
+\node[anchor=west] at (5,-1.2) {$dn$};
+\node[anchor=west] at (5,-2.4) {$dn$};
+\node[anchor=west] at (5,-3.9) {$an$};
+
+% Árvore
+\node {$dn$}
+    child {node {$d\frac{n}{2}$}
+        child {node {$d\frac{n}{4}$}
+            child {node[yshift=-0.4cm] {\footnotesize$a$} edge from parent[dashed]}
+            child {node[yshift=-0.4cm] {\footnotesize$a$} edge from parent[dashed]}
+        }
+        child {node {$d\frac{n}{4}$}
+            child {node[yshift=-0.4cm] {\footnotesize$a$} edge from parent[dashed]}
+            child {node[yshift=-0.4cm] {\footnotesize$a$} edge from parent[dashed]}
+        }
+    }
+    child {node {$d\frac{n}{2}$}
+        child {node {$d\frac{n}{4}$}
+            child {node[yshift=-0.4cm] {\footnotesize$a$} edge from parent[dashed]}
+            child {node[yshift=-0.4cm] {\footnotesize$a$} edge from parent[dashed]}
+        }
+        child {node {$d\frac{n}{4}$}
+            child {node[yshift=-0.4cm] {\footnotesize$a$} edge from parent[dashed]}
+            child {node[yshift=-0.4cm] {\footnotesize$a$} edge from parent[dashed]}
+        }
+    };
+
+\node at (0,-3.2) {$\vdots$};
+
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Exemplo: $T(n) = 2\,T(n/2) + dn$ --- Análise}
+\begin{itemize}
+    \item Nível $i$: $2^i$ nós, cada um com custo $d(n/2^i)$
+    \item Custo do nível $i$: $2^i \cdot d(n/2^i) = dn$ \quad (constante!)
+    \pause
+    \item Profundidade: $n/2^i = 1 \Rightarrow i = \lg n$
+    \item Folhas: $2^{\lg n} = n$ folhas, custo total $an$
+\end{itemize}
+
+\vspace{0.3cm}
+\pause
+
+\begin{alertblock}{Custo total}
+\[
+T(n) = \underbrace{dn + dn + \cdots + dn}_{\lg n \text{ parcelas}} + an = dn\lg n + an = \Theta(n\lg n)
+\]
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+
+% \begin{frame}{Exemplo: $T(n) = T(n/3) + T(2n/3) + dn$}
+% \begin{columns}[T]
+% \begin{column}{0.55\textwidth}
+% Subproblemas \impt{desiguais}:
+% \begin{itemize}
+%     \item Ramo esquerdo: fator $3$ $\Rightarrow$ profundidade $\log_3 n$
+%     \item Ramo direito: fator $3/2$ $\Rightarrow$ profundidade $\log_{3/2} n$
+%     \pause
+%     \item Custo por nível completo: $\leq dn$
+%     \pause
+%     \item Caminho mais longo: $\log_{3/2} n$ níveis
+% \end{itemize}
+% \end{column}
+
+% \begin{column}{0.4\textwidth}
+% \begin{block}{Resultado}
+% \[
+% T(n) \leq dn \cdot \log_{3/2} n
+% \]
+% \[
+% = O(n \lg n)
+% \]
+% \vspace{0.1cm}
+
+% pois $\log_{3/2} n = \Theta(\lg n)$
+% \end{block}
+% \end{column}
+% \end{columns}
+
+% \vspace{0.3cm}
+% \pause
+
+% Caminho mais curto: $\log_3 n$ níveis com custo $dn$ cada $\Rightarrow T(n) = \Omega(n\lg n)$.
+
+% Logo $T(n) = \Theta(n\lg n)$.
+% \end{frame}
+
+% ============================================================
+
+\begin{frame}{Exemplo: $T(n) = 3\,T(n/4) + dn^2$}
+
+\begin{center}
+\begin{tikzpicture}[
+    scale=0.85, transform shape,
+    level distance=1.3cm,
+    every node/.style={font=\footnotesize},
+    edge from parent/.style={draw, -},
+    level 1/.style={sibling distance=3.5cm},
+    level 2/.style={sibling distance=1.1cm},
+]
+
+% Rótulos
+\node[anchor=east] at (-5.5,0) {\scriptsize Nível 0};
+\node[anchor=east] at (-5.5,-1.3) {\scriptsize Nível 1};
+\node[anchor=east] at (-5.5,-2.6) {\scriptsize Nível 2};
+
+% Custos
+\node[anchor=west] at (5.5,0) {\small$dn^2$};
+\node[anchor=west] at (5.5,-1.3) {\small$\frac{3}{16}\,dn^2$};
+\node[anchor=west] at (5.5,-2.6) {\small$\left(\frac{3}{16}\right)^{\!2} dn^2$};
+
+\node {\small$dn^2$}
+    child {node {$d\!\left(\frac{n}{4}\right)^{\!2}$}
+        child {node {$\vdots$} edge from parent[dashed]}
+        child {node {$\vdots$} edge from parent[dashed]}
+        child {node {$\vdots$} edge from parent[dashed]}
+    }
+    child {node {$d\!\left(\frac{n}{4}\right)^{\!2}$}
+        child {node {$\vdots$} edge from parent[dashed]}
+        child {node {$\vdots$} edge from parent[dashed]}
+        child {node {$\vdots$} edge from parent[dashed]}
+    }
+    child {node {$d\!\left(\frac{n}{4}\right)^{\!2}$}
+        child {node {$\vdots$} edge from parent[dashed]}
+        child {node {$\vdots$} edge from parent[dashed]}
+        child {node {$\vdots$} edge from parent[dashed]}
+    };
+
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Exemplo: $T(n) = 3\,T(n/4) + dn^2$ --- Análise}
+\begin{itemize}
+    \item Nível $i$: $3^i$ nós, custo por nó $d(n/4^i)^2$ $\Rightarrow$ total $\left(\frac{3}{16}\right)^i dn^2$
+    \pause
+    \item Profundidade: $\log_4 n$
+    \item Folhas: $3^{\log_4 n} = n^{\log_4 3}$
+\end{itemize}
+
+\vspace{0.2cm}
+\pause
+
+Série geométrica com razão $3/16 < 1$:
+\[
+\sum_{i=0}^{\infty} \left(\frac{3}{16}\right)^i = \frac{16}{13}
+\]
+
+\pause
+
+\begin{alertblock}{Resultado}
+$T(n) \leq \frac{16}{13}\,dn^2 + \Theta(n^{\log_4 3}) = O(n^2)$
+
+\vspace{0.1cm}
+Custo \impt{dominado pela raiz} --- caso típico do caso~3 do Teorema Mestre.
+\end{alertblock}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}{Árvore de Recursão como Conjectura}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+\begin{block}{Uso heurístico}
+A árvore fornece uma \impt{conjectura} para a solução, que deve ser verificada pelo método de substituição.
+\end{block}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{block}{Uso como prova}
+Com cuidado (pisos, tetos, casos base), a própria árvore constitui uma \impt{prova válida}.
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{0.5cm}
+
+\begin{center}
+\ntc{Próxima seção: Teorema Mestre --- formaliza os três cenários.}
+\end{center}
+\end{frame}
+
+% ============================================================
+
+\begin{frame}[allowframebreaks]{Referências}
+  \bibliographystyle{apalike}
+  \bibliography{references}
+\end{frame}
+
+\end{document}
