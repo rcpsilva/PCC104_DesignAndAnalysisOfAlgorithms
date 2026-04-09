@@ -1,0 +1,144 @@
+\documentclass[9pt,a4paper]{extarticle}
+\usepackage{parskip}
+
+% ======================
+% Packages
+% ======================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{natbib}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\definecolor{important}{RGB}{255, 100, 100}
+\definecolor{notice}{RGB}{0, 102, 204}
+
+\newcommand{\impt}[1]{\textcolor{important}{#1}}
+\newcommand{\ntc}[1]{\textcolor{notice}{#1}}
+
+\setlist{nosep}
+\geometry{margin=2cm}
+
+% ======================
+% Listings setup (Python)
+% ======================
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
+\lstset{
+    language=Python,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red!70!black},
+    showstringspaces=false,
+    frame=single,
+    breaklines=true,
+    inputencoding=utf8
+}
+
+% ======================
+% Document
+% ======================
+\begin{document}
+
+\title{Divisão e Conquista \footnote{Material baseado em \citep{cormen2022algoritmos}}}
+\author{PCC104 -- Projeto e ANálise de Algoritmos}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+% ==============================================================
+\section{Introdução}
+
+\textbf{Definição:} Divisão e conquista é uma técnica de projeto de algoritmos que resolve problemas de forma recursiva, seguindo três etapas:
+
+\begin{enumerate}%[label=\textbf{\arabic*.}]
+    \item \textbf{Dividir:} o problema original é dividido em subproblemas menores, que são instâncias menores do mesmo problema.
+
+    \item \textbf{Conquistar:} os subproblemas são resolvidos recursivamente. Quando o subproblema é suficientemente pequeno, ele é resolvido
+          diretamente (caso base).
+
+    \item \textbf{Combinar:} as soluções dos subproblemas são combinadas para construir a solução do problema original.
+\end{enumerate}
+
+\subsection{Exemplo clássico - MergeSort}
+
+\textbf{Merge Sort:} o arranjo é dividido ao meio, cada metade é ordenada recursivamente e, ao final, as duas metades ordenadas são combinadas em um único arranjo ordenado.
+
+\begin{enumerate}
+    \item \textbf{Dividir:} o arranjo de $n$ elementos é dividido em dois subarranjos de $n/2$ elementos cada.
+
+    \item \textbf{Conquistar:} os dois subarranjos são ordenados recursivamente usando o próprio Merge Sort. Quando o subarranjo tem tamanho 1, ele já está trivialmente ordenado, esse é o caso base.
+
+    \item \textbf{Combinar:} os dois subarranjos ordenados são intercalados (\textit{merged}) para produzir um único arranjo ordenado. Essa é a etapa central do algoritmo, onde ocorre o trabalho real.
+\end{enumerate}
+
+Comecemos pelo Combinar:
+
+\begin{algorithm}
+\caption{Merge$(A, p, q, r)$}
+\begin{algorithmic}[1]
+\State $n_L = q - p + 1$  \Comment{tamanho do subarranjo esquerdo}
+\State $n_R = r - q$       \Comment{tamanho do subarranjo direito}
+\State seja $L[0 \,..\, n_L - 1]$ e $R[0 \,..\, n_R - 1]$ novos arranjos
+\For{$i = 0$ \textbf{ to } $n_L - 1$}
+    \State $L[i] = A[p + i]$
+\EndFor
+\For{$j = 0$ \textbf{ to } $n_R - 1$}
+    \State $R[j] = A[q + j + 1]$
+\EndFor
+\State $i = 0$;\ $j = 0$;\ $k = p$
+\While{$i < n_L$ \textbf{ and } $j < n_R$}
+    \If{$L[i] \leq R[j]$}
+        \State $A[k] = L[i]$;\ $i = i + 1$
+    \Else
+        \State $A[k] = R[j]$;\ $j = j + 1$
+    \EndIf
+    \State $k = k + 1$
+\EndWhile
+\While{$i < n_L$}
+    \State $A[k] = L[i]$;\ $i = i + 1$;\ $k = k + 1$
+\EndWhile
+\While{$j < n_R$}
+    \State $A[k] = R[j]$;\ $j = j + 1$;\ $k = k + 1$
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+\pagebreak 
+Agora o método
+
+\begin{algorithm}
+\caption{Merge-Sort$(A, p, r)$}
+\begin{algorithmic}[1]
+\If{$p \geq r$}
+    \State \Return
+\EndIf
+\State $q = \lfloor (p + r) / 2 \rfloor$
+\State Merge-Sort$(A, p, q)$
+\State Merge-Sort$(A, q + 1, r)$
+\State Merge$(A, p, q, r)$
+\end{algorithmic}
+\end{algorithm}
+
+\bibliographystyle{apalike}   
+\bibliography{references}
+
+
+\end{document}
+
