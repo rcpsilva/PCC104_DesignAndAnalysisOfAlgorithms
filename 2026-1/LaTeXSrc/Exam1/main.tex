@@ -1,0 +1,110 @@
+\documentclass[9pt,a4paper]{extarticle}
+
+% ======================
+% Codificação, idioma e layout
+% ======================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+% ======================
+% Matemática e símbolos
+% ======================
+\usepackage{amsmath, amssymb, amsthm, bm}
+
+% Algoritmos (CLRS-style)
+\usepackage{algpseudocode}
+
+% Cores
+\usepackage{xcolor}
+
+% ======================
+% Figuras e tabelas
+% ======================
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ======================
+% Hiperlinks
+% ======================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+% ======================
+% Início do documento
+% ======================
+\begin{document}
+
+\begin{center}
+  \Large \textbf{Prova 1 \\ Introdução à Análise de Algoritmos e Caracterização de Tempos de Execução} \\[4pt]
+  \normalsize Disciplina: PCC104 - Projeto de Análise de Algoritmos
+\end{center}
+
+\vspace{1cm}
+
+\begin{enumerate}
+  \item Qual, ou quais os problemas de utilizar unidades de tempo, por exemplo, segundos para analisar o tempo de execuçãoo de algoritmos? Qual a a estratégia mais adequada para esta tarefa?
+  \item Considere uma algoritmo que executa $2^n$ operções e outro que executa $100n^2$ operações. Qual é o aumento do número de operações para cada algortimo quando o tamanho da entrada cresce $4$ vezes?
+  \item O que é uma \textit{invariante de laço} e como ela pode ser utilizada para provar a corretude de algoritmos?
+  \item Considere a seguinte afirmação: \\
+  \textit{A notação $O(.)$ indica a ordem de complexidade de pior caso de um algoritmo.}\\
+  Esta afirmação é verdadeira ou falsa? Explique.
+  \item Sejam $f(n)$ e $g(n)$ funções assintóticamente positivas, prove ou refute cada uma das seguintes conjecturas:
+  \begin{enumerate}
+    \item $f(n) = O(g(n))$ implica $g(n) = O(f(n))$
+    \item $f(n) + g(n) = O(\max(g(n),f(n)))$
+    \item $f(n) = \Theta(f(n/2))$
+  \end{enumerate}
+  \item Apresente a expresão completa do custo $T(n)$ do algoritmo abaixo:
+    \begin{algorithmic}[1]
+    \For{$i \gets 1$ \textbf{to} $A.\text{length} - 1$}
+        \For{$j \gets A.\text{length}$ \textbf{downto} $i + 1$}
+            \If{$A[j] < A[j-1]$}
+                \State \textbf{exchange} $A[j]$ \textbf{with} $A[j-1]$
+            \EndIf
+        \EndFor
+    \EndFor
+  \end{algorithmic}
+  \item Apresente a expresão completa do custo $T(n)$ do algoritmo abaixo:
+  \begin{algorithmic}[1]
+  \For{$j \gets 2$ \textbf{to} $A.\text{length}$}
+      \State $key \gets A[j]$
+      \State $i \gets j - 1$
+      \While{$i > 0$ \textbf{and} $A[i] > key$}
+          \State $A[i + 1] \gets A[i]$
+          \State $i \gets i - 1$
+      \EndWhile
+      \State $A[i + 1] \gets key$
+  \EndFor
+  \end{algorithmic}
+  \item Apresente a expresão completa do custo $T(n)$ do algoritmo abaixo e depois discuta a complexidade de execução deste algoritmo no melhor e no pior caso:
+  \begin{algorithmic}[1]
+  \Procedure{Sequential-Search}{$A, n, v$}
+      \For{$i \gets 1$ \textbf{to} $n$}
+          \If{$A[i] = v$}
+              \State \Return $i$
+          \EndIf
+      \EndFor
+      \State \Return \textsc{nil}
+  \EndProcedure
+  \end{algorithmic}
+  \end{enumerate}
+
+
+\end{document}
+
