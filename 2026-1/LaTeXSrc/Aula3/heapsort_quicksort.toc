@@ -1,0 +1,42 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {section}{\numberline {1}Introdução}{1}{section.1}%
+\contentsline {section}{\numberline {2}Heapsort}{1}{section.2}%
+\contentsline {subsection}{\numberline {2.1}A estrutura de dados \textit {heap}}{1}{subsection.2.1}%
+\contentsline {paragraph}{Altura.}{2}{section*.2}%
+\contentsline {subsection}{\numberline {2.2}\textsc {Max-Heapify}: restaurando a propriedade de heap}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Construção do heap: \textsc {Build-Max-Heap}}{3}{subsection.2.3}%
+\contentsline {paragraph}{Corretude (invariante de laço).}{3}{section*.3}%
+\contentsline {subsection}{\numberline {2.4}O algoritmo \textsc {Heapsort}}{4}{subsection.2.4}%
+\contentsline {paragraph}{Corretude.}{4}{section*.4}%
+\contentsline {subsection}{\numberline {2.5}Filas de prioridade}{5}{subsection.2.5}%
+\contentsline {paragraph}{Operações.}{5}{section*.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}\textsc {Heap-Maximum}}{5}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}\textsc {Heap-Extract-Max}}{6}{subsubsection.2.5.2}%
+\contentsline {paragraph}{Corretude.}{6}{section*.6}%
+\contentsline {subsubsection}{\numberline {2.5.3}\textsc {Heap-Increase-Key}}{6}{subsubsection.2.5.3}%
+\contentsline {paragraph}{Invariante do laço.}{6}{section*.7}%
+\contentsline {subsubsection}{\numberline {2.5.4}\textsc {Max-Heap-Insert}}{6}{subsubsection.2.5.4}%
+\contentsline {subsubsection}{\numberline {2.5.5}Resumo das operações}{7}{subsubsection.2.5.5}%
+\contentsline {subsubsection}{\numberline {2.5.6}Aplicações}{7}{subsubsection.2.5.6}%
+\contentsline {section}{\numberline {3}Quicksort}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Descrição}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}\textsc {Partition}: o núcleo do algoritmo}{8}{subsection.3.2}%
+\contentsline {paragraph}{Invariante de laço.}{8}{section*.8}%
+\contentsline {subsection}{\numberline {3.3}Análise: pior caso}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Análise: melhor caso e caso balanceado}{8}{subsection.3.4}%
+\contentsline {paragraph}{Melhor caso.}{8}{section*.9}%
+\contentsline {paragraph}{Particionamento ``razoável''.}{9}{section*.10}%
+\contentsline {paragraph}{Intuição.}{9}{section*.11}%
+\contentsline {subsection}{\numberline {3.5}Quicksort aleatorizado}{9}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Análise do caso médio}{9}{subsection.3.6}%
+\contentsline {paragraph}{Observação-chave.}{9}{section*.12}%
+\contentsline {paragraph}{Indicadores.}{9}{section*.13}%
+\contentsline {section}{\numberline {4}Comparação com os outros métodos}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Panorama}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Quando usar cada um?}{10}{subsection.4.2}%
+\contentsline {paragraph}{\textcolor {important}{Insertion sort}.}{10}{section*.14}%
+\contentsline {paragraph}{\textcolor {important}{Merge sort}.}{10}{section*.15}%
+\contentsline {paragraph}{\textcolor {important}{Heapsort}.}{10}{section*.16}%
+\contentsline {paragraph}{\textcolor {important}{Quicksort aleatorizado}.}{10}{section*.17}%
+\contentsline {subsection}{\numberline {4.3}Diagrama das recorrências}{10}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Exercícios sugeridos do CLRS}{10}{section.5}%
