@@ -1,0 +1,106 @@
+\documentclass[9pt,a4paper]{extarticle}
+
+% ======================
+% Codificação, idioma e layout
+% ======================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+% ======================
+% Matemática e símbolos
+% ======================
+\usepackage{amsmath, amssymb, amsthm, bm}
+
+% ======================
+% Figuras e tabelas
+% ======================
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ======================
+% Hiperlinks
+% ======================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+% ======================
+% Início do documento
+% ======================
+\begin{document}
+
+\begin{center}
+  \Large \textbf{Lista de Exercícios 1 - Introdução à Análise de Algoritmos e Caracterização de Tempos de Execução} \\[4pt]
+  \normalsize Disciplina: PCC104 - Projeto de Análise de Algoritmos
+\end{center}
+
+\textit{A lista de exercícios a seguir está baseada no livro-texto adotado na disciplina, disponível na biblioteca digital da UFOP. Para acessá-lo, entre no sistema MinhaUFOP e navegue até: Biblioteca Digital → E-books Minha Biblioteca. Em seguida, localize a obra utilizando a referência indicada abaixo:}
+
+\textit{CORMEN, Thomas H.; LEISERSON, Charles E.; RIVEST, Ronald L.; STEIN, Clifford. Algoritmos: teoria e prática. 4. ed. Rio de Janeiro: Grupo GEN | LTC, 2022.}
+
+\begin{enumerate}[resume]
+\item Resolva as seguintes relações de recorrência:
+    \begin{enumerate}
+        \item $x(n) = x(n-1) + 5 \text{ para } n>1$, $x(1)=0$
+        \item $x(n) = 3x(n-1)\text{ para } n>1$, $x(1)=4$
+        \item $x(n) = x(n-1) + n \text{ para } n>0$, $x(0)=0$
+        \item $x(n) = x(n/2) + n \text{ para } n>1$, $x(1)=1$ (resolver para $n = 2^k$)
+        \item $x(n) = x(n/3) + 1 \text{ para } n>1$, $x(1)=1$ (resolver para $n = 3^k$)
+    \end{enumerate}
+    
+    % Add 8 / 9 / 10
+    
+    \item Projete um algoritmo para computar $2^n$ para qualquer inteiro não negativo, $n$, baseado na fórmula $2^n = 2^{n-1} + 2^{n-1}$.
+    \begin{enumerate}
+        \item Apresente a relação de recorrência para o número de adições feitas pelo algoritmo e resolva a relação.
+        \item Desenhe a árvore de chamadas recursivas  para este algoritmo e conte o número de chamadas feita pelo algoritmo.
+        \item Este é um bom algoritmo para resolver este problema.
+    \end{enumerate}
+    
+    \item Considere o seguinte algoritmo recursivo.
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.6\textwidth]{alg_a.PNG}
+        \label{fig:alg_a}
+    \end{figure}
+    
+    \begin{enumerate}
+        \item O que este algoritmo faz?
+        \item Apresente a relação de recorrência para a operação básica do algoritmo, conte o número de operações, resolva a relação.
+    \end{enumerate}
+    
+    % -------------- Análise empírica -----------------------
+    \item Quais são os limites da análise matemática de algoritmos? Qual a alternativa?
+    
+    \item Resuma o processo de análise empírica de algoritmos, descrito na seção 2.6 do Capítulo 2 do livro \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin.
+    
+    \item Considere o algoritmo abaixo que verifica se um grafo, definido por sua matriz de adjacência é completo. 
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.6\textwidth]{alg_b.PNG}
+        \label{fig:alg_b}
+    \end{figure}
+    
+    Qual é classe de eficiência deste algoritmo no pior caso? 
+\end{enumerate}
+
+\end{document}
+
