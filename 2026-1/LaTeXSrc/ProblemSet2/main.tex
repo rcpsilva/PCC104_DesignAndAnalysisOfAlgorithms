@@ -13,6 +13,7 @@
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{algpseudocode}
 
 % ======================
 % Matemática e símbolos
@@ -46,7 +47,7 @@
 \begin{document}
 
 \begin{center}
-  \Large \textbf{Lista de Exercícios 1 - Introdução à Análise de Algoritmos e Caracterização de Tempos de Execução} \\[4pt]
+  \Large \textbf{Lista de Exercícios 2 - Análise de Algoritmos e Caracterização de Tempos de Execução - Algoritmos Iterativos e Dividir e Conquistar} \\[4pt]
   \normalsize Disciplina: PCC104 - Projeto de Análise de Algoritmos
 \end{center}
 
@@ -55,7 +56,91 @@
 \textit{CORMEN, Thomas H.; LEISERSON, Charles E.; RIVEST, Ronald L.; STEIN, Clifford. Algoritmos: teoria e prática. 4. ed. Rio de Janeiro: Grupo GEN | LTC, 2022.}
 
 \begin{enumerate}[resume]
-\item Resolva as seguintes relações de recorrência:
+
+    % -------------- Análise de algoritmos iterativos (estilo CLRS) -----------------------
+    \item Considere o algoritmo abaixo, que calcula a soma dos elementos de um arranjo $A[1\,..\,n]$.
+
+    \begin{center}
+    \begin{minipage}{0.55\textwidth}
+    \textbf{\textsc{Soma-Arranjo}}$(A, n)$
+    \begin{algorithmic}[1]
+        \State $s \gets 0$
+        \For{$i \gets 1$ \textbf{to} $n$}
+            \State $s \gets s + A[i]$
+        \EndFor
+        \State \Return $s$
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    \begin{enumerate}
+        \item Defina o tamanho da entrada do algoritmo.
+        \item Construa a tabela de custos no estilo CLRS, associando a cada linha um custo $c_i$ e o número de vezes que ela é executada em função de $n$.
+        \item A partir da tabela, escreva a expressão de $T(n)$ como uma soma dos termos $c_i$ ponderados por suas frequências.
+        \item Simplifique $T(n)$, escrevendo-a na forma $T(n) = an + b$, e identifique as constantes $a$ e $b$ em termos dos custos $c_i$.
+        \item Justifique formalmente que $T(n) = \Theta(n)$, exibindo constantes $c_1, c_2 > 0$ e $n_0 \geq 1$ que satisfaçam a definição de $\Theta$.
+        \item Este algoritmo possui melhor caso e pior caso distintos? Justifique.
+    \end{enumerate}
+
+    \item Considere o algoritmo abaixo, que verifica se o arranjo $A[1\,..\,n]$ contém o valor $x$, retornando o índice da primeira ocorrência ou $-1$ caso $x$ não esteja em $A$.
+
+    \begin{center}
+    \begin{minipage}{0.6\textwidth}
+    \textbf{\textsc{Busca-Linear}}$(A, n, x)$
+    \begin{algorithmic}[1]
+        \State $i \gets 1$
+        \While{$i \leq n$ \textbf{and} $A[i] \neq x$}
+            \State $i \gets i + 1$
+        \EndWhile
+        \If{$i \leq n$}
+            \State \Return $i$
+        \Else
+            \State \Return $-1$
+        \EndIf
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    \begin{enumerate}
+        \item Defina o tamanho da entrada do algoritmo.
+        \item Monte a tabela de custos no estilo CLRS. Use $t$ para denotar o número de vezes que o teste do laço \textbf{while} (linha 2) é avaliado, e expresse o número de execuções das linhas 2 e 3 em função de $t$.
+        \item Escreva $T(n)$ em função dos custos $c_i$ e de $t$.
+        \item \textbf{Melhor caso:} qual é o valor de $t$? Descreva uma instância que produza esse caso e mostre que $T_{\text{melhor}}(n) = \Theta(1)$.
+        \item \textbf{Pior caso:} qual é o valor de $t$? Descreva todas as instâncias (em função de $A$ e $x$) que produzem esse caso e mostre que $T_{\text{pior}}(n) = \Theta(n)$.
+        \item \textbf{Caso médio:} suponha que $x$ ocorra exatamente uma vez em $A$ e que a probabilidade de $x$ estar em qualquer posição $i \in \{1, 2, \dots, n\}$ seja uniforme. Calcule $\mathbb{E}[t]$ e mostre que $T_{\text{med}}(n) = \Theta(n)$.
+    \end{enumerate}
+
+    \item Considere o algoritmo abaixo, que verifica se o arranjo $A[1\,..\,n]$ contém algum par de elementos iguais.
+
+    \begin{center}
+    \begin{minipage}{0.65\textwidth}
+    \textbf{\textsc{Tem-Duplicata}}$(A, n)$
+    \begin{algorithmic}[1]
+        \For{$i \gets 1$ \textbf{to} $n - 1$}
+            \For{$j \gets i + 1$ \textbf{to} $n$}
+                \If{$A[i] = A[j]$}
+                    \State \Return \textsc{verdadeiro}
+                \EndIf
+            \EndFor
+        \EndFor
+        \State \Return \textsc{falso}
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    \begin{enumerate}
+        \item Defina o tamanho da entrada do algoritmo.
+        \item Determine o número de vezes que o teste do laço interno (linha 2) é executado no \textbf{pior caso}, em função de $n$. Descreva uma instância que produza o pior caso.
+
+        \textit{Sugestão: para cada valor de $i$, conte quantos valores de $j$ são considerados e some sobre $i$. Use a identidade $\sum_{i=1}^{n-1} (n - i) = \dfrac{n(n-1)}{2}$.}
+
+        \item Construa a tabela de custos no estilo CLRS para o pior caso e escreva $T_{\text{pior}}(n)$ como soma dos termos $c_i$ ponderados por suas frequências.
+        \item Mostre que $T_{\text{pior}}(n) = \Theta(n^2)$, exibindo as constantes da definição assintótica.
+        \item Descreva o \textbf{melhor caso} do algoritmo: quantas execuções da linha 3 ocorrem? Qual é a classe assintótica de $T_{\text{melhor}}(n)$?
+        \item Compare a classe assintótica deste algoritmo com a do \textsc{Insertion-Sort} no pior caso.
+    \end{enumerate}
+
+    \item Resolva as seguintes relações de recorrência:
     \begin{enumerate}
         \item $x(n) = x(n-1) + 5 \text{ para } n>1$, $x(1)=0$
         \item $x(n) = 3x(n-1)\text{ para } n>1$, $x(1)=4$
@@ -72,34 +157,278 @@
         \item Desenhe a árvore de chamadas recursivas  para este algoritmo e conte o número de chamadas feita pelo algoritmo.
         \item Este é um bom algoritmo para resolver este problema.
     \end{enumerate}
+
+    \item Utilize o método de substituição para determinar um limite assintótico superior para (Ver Seção 4.3 do livro texto):
     
-    \item Considere o seguinte algoritmo recursivo.
+    \[
+    T(n) = 2T(\left\lfloor n/2 \right\rfloor) + \Theta(n)
+    \]
     
-    \begin{figure}[!ht]
-        \centering
-        \includegraphics[width=0.6\textwidth]{alg_a.PNG}
-        \label{fig:alg_a}
-    \end{figure}
+    \item Utilize o método de árvore de recursão para descobrir um limite superior assintótico para a recorrência (Ver Seção 4.4 do livro texto):
     
+    \[
+    T(n) = T(n/3) + T(2n/3) + n
+    \]
+
+
+   % -------------- Análise de algoritmos recursivos (estilo CLRS) -----------------------
+    \item Considere o algoritmo recursivo abaixo, que calcula o fatorial de um inteiro $n \geq 0$.
+
+    \begin{center}
+    \begin{minipage}{0.55\textwidth}
+    \textbf{\textsc{Fatorial}}$(n)$
+    \begin{algorithmic}[1]
+        \If{$n = 0$}
+            \State \Return $1$
+        \EndIf
+        \State \Return $n \cdot \textsc{Fatorial}(n - 1)$
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
     \begin{enumerate}
-        \item O que este algoritmo faz?
-        \item Apresente a relação de recorrência para a operação básica do algoritmo, conte o número de operações, resolva a relação.
+        \item Defina o tamanho da entrada do algoritmo.
+        \item Seja $T(n)$ o tempo de execução de \textsc{Fatorial}$(n)$. Escreva a relação de recorrência para $T(n)$, justificando o custo de cada linha e indicando o caso base.
+        \item Resolva a recorrência pelo método da iteração (substituição reversa), obtendo uma expressão fechada para $T(n)$.
+        \item Classifique $T(n)$ usando a notação $\Theta$.
+        \item Desenhe a árvore de chamadas recursivas para $n = 5$ e indique a profundidade da árvore em função de $n$.
     \end{enumerate}
-    
-    % -------------- Análise empírica -----------------------
-    \item Quais são os limites da análise matemática de algoritmos? Qual a alternativa?
-    
-    \item Resuma o processo de análise empírica de algoritmos, descrito na seção 2.6 do Capítulo 2 do livro \textit{Introduction to the Design and Analysis of Algorithms (3rd Edition)} - Anany Levitin.
-    
-    \item Considere o algoritmo abaixo que verifica se um grafo, definido por sua matriz de adjacência é completo. 
-    
-    \begin{figure}[!ht]
-        \centering
-        \includegraphics[width=0.6\textwidth]{alg_b.PNG}
-        \label{fig:alg_b}
-    \end{figure}
-    
-    Qual é classe de eficiência deste algoritmo no pior caso? 
+
+
+
+    \item Considere o algoritmo recursivo abaixo, que realiza busca binária em um arranjo $A[p\,..\,r]$ ordenado em ordem não decrescente, retornando o índice de $x$ ou $-1$ caso $x$ não esteja em $A$.
+
+    \begin{center}
+    \begin{minipage}{0.65\textwidth}
+    \textbf{\textsc{Busca-Binária}}$(A, p, r, x)$
+    \begin{algorithmic}[1]
+        \If{$p > r$}
+            \State \Return $-1$
+        \EndIf
+        \State $q \gets \lfloor (p + r) / 2 \rfloor$
+        \If{$A[q] = x$}
+            \State \Return $q$
+        \ElsIf{$A[q] > x$}
+            \State \Return $\textsc{Busca-Binária}(A, p, q - 1, x)$
+        \Else
+            \State \Return $\textsc{Busca-Binária}(A, q + 1, r, x)$
+        \EndIf
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    Considere $n = r - p + 1$ o tamanho do subarranjo na chamada corrente.
+
+    \begin{enumerate}
+        \item Justifique por que cada chamada recursiva opera sobre um subarranjo de tamanho no máximo $\lfloor n/2 \rfloor$.
+        \item Escreva a relação de recorrência $T(n)$ para o \textbf{pior caso}, indicando claramente o caso base e o custo (não recursivo) de cada chamada.
+        \item Resolva a recorrência pelo método da iteração para $n = 2^k$, obtendo uma expressão fechada para $T(n)$.
+        \item Mostre que $T(n) = \Theta(\log n)$.
+        \item Descreva o \textbf{melhor caso} do algoritmo e dê sua classe assintótica.
+        \item Aplique o Teorema Mestre para confirmar o resultado obtido pelo método da iteração. Identifique $a$, $b$ e $f(n)$, e indique qual caso do teorema se aplica.
+    \end{enumerate}
+
+    \item Considere o algoritmo recursivo abaixo, que retorna o valor máximo de um arranjo $A[p\,..\,r]$ pelo método de divisão e conquista.
+
+    \begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \textbf{\textsc{Máximo}}$(A, p, r)$
+    \begin{algorithmic}[1]
+        \If{$p = r$}
+            \State \Return $A[p]$
+        \EndIf
+        \State $q \gets \lfloor (p + r) / 2 \rfloor$
+        \State $m_1 \gets \textsc{Máximo}(A, p, q)$
+        \State $m_2 \gets \textsc{Máximo}(A, q + 1, r)$
+        \If{$m_1 \geq m_2$}
+            \State \Return $m_1$
+        \Else
+            \State \Return $m_2$
+        \EndIf
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    Considere $n = r - p + 1$ o tamanho do subarranjo na chamada corrente.
+
+    \begin{enumerate}
+        \item Identifique os passos de \textbf{dividir}, \textbf{conquistar} e \textbf{combinar} no algoritmo, no espírito do paradigma de divisão e conquista.
+        \item Escreva a relação de recorrência $T(n)$, justificando o número de chamadas recursivas, o tamanho de cada subproblema e o custo de combinar os resultados.
+        \item Resolva a recorrência pelo método da árvore de recursão para $n = 2^k$. Indique o número de níveis, o custo por nível e o custo total.
+        \item Mostre que $T(n) = \Theta(n)$.
+        \item Aplique o Teorema Mestre para confirmar o resultado obtido pela árvore de recursão. Identifique $a$, $b$ e $f(n)$, e indique qual caso do teorema se aplica.
+        \item Compare a classe assintótica deste algoritmo com a de uma versão iterativa que percorre o arranjo uma única vez. O que isto sugere sobre o ganho (ou ausência de ganho) ao usar divisão e conquista neste problema?
+    \end{enumerate} 
+
+
+
+    % -------------- Implementação: Heapsort e Quicksort -----------------------
+    \item \textbf{Implementação do Heapsort.} Implemente o algoritmo \textsc{Heapsort} em uma linguagem de programação de sua preferência (C, C++, Python, Java ou Rust), seguindo \textbf{exatamente} a estrutura modular do pseudocódigo apresentado em aula \textbf{\textcolor{red}{Oservação: No dia da prova você deverá entregar o código impresso juntamente com a prova. Algumas das questões farão referência ao seu próprio código. A não entrega do código implica em nota 0 nestas questões.}}:
+
+    \begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \textbf{\textsc{Max-Heapify}}$(A, i)$
+    \begin{algorithmic}[1]
+        \State $\ell \gets \textsc{Left}(i)$
+        \State $r \gets \textsc{Right}(i)$
+        \If{$\ell \leq A.\text{heap-size}$ \textbf{e} $A[\ell] > A[i]$}
+            \State $\textit{largest} \gets \ell$
+        \Else
+            \State $\textit{largest} \gets i$
+        \EndIf
+        \If{$r \leq A.\text{heap-size}$ \textbf{e} $A[r] > A[\textit{largest}]$}
+            \State $\textit{largest} \gets r$
+        \EndIf
+        \If{$\textit{largest} \neq i$}
+            \State troca $A[i] \leftrightarrow A[\textit{largest}]$
+            \State \textsc{Max-Heapify}$(A, \textit{largest})$
+        \EndIf
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    \begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \textbf{\textsc{Build-Max-Heap}}$(A)$
+    \begin{algorithmic}[1]
+        \State $A.\text{heap-size} \gets A.\text{length}$
+        \For{$i \gets \lfloor A.\text{length}/2 \rfloor$ \textbf{até} $1$}
+            \State \textsc{Max-Heapify}$(A, i)$
+        \EndFor
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    \begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \textbf{\textsc{Heapsort}}$(A)$
+    \begin{algorithmic}[1]
+        \State \textsc{Build-Max-Heap}$(A)$
+        \For{$i \gets A.\text{length}$ \textbf{até} $2$}
+            \State troca $A[1] \leftrightarrow A[i]$
+            \State $A.\text{heap-size} \gets A.\text{heap-size} - 1$
+            \State \textsc{Max-Heapify}$(A, 1)$
+        \EndFor
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    \textbf{Requisitos da implementação:}
+    \begin{enumerate}
+        \item Implemente as três rotinas \textsc{Max-Heapify}, \textsc{Build-Max-Heap} e \textsc{Heapsort} como funções/métodos separados, preservando os nomes e as assinaturas.
+        \item Mantenha \texttt{heap-size} como um atributo separado de \texttt{length} (use uma struct, classe ou variáveis globais, conforme a linguagem). Não os trate como sinônimos.
+        \item A ordenação deve ser feita \textbf{in place} --- nenhum arranjo auxiliar de tamanho proporcional a $n$ é permitido.
+        \item \textbf{Atenção à indexação:} o pseudocódigo do CLRS usa indexação a partir de 1. Se sua linguagem indexa a partir de 0 (C, Python, etc.), documente claramente no início do código a convenção adotada e seja consistente em todas as rotinas.
+        \item Inclua um programa principal que: (i) lê um arranjo de entrada, (ii) executa \textsc{Heapsort}, (iii) imprime o arranjo ordenado.
+        \item \textbf{Testes:} valide a implementação com pelo menos quatro casos --- arranjo vazio, arranjo unitário, arranjo já ordenado, arranjo em ordem decrescente --- e um caso aleatório com $n \geq 20$ elementos.
+        \item Entregue o código-fonte e um arquivo \texttt{README} contendo: instruções de compilação/execução e um exemplo de saída para cada caso de teste.
+    \end{enumerate}
+
+    \item \textbf{Implementação do Quicksort.} Implemente o algoritmo \textsc{Quicksort} (com particionamento de Lomuto), na mesma linguagem escolhida para o exercício anterior, seguindo o pseudocódigo apresentado em aula \textbf{\textcolor{red}{Oservação: No dia da prova você deverá entregar o código impresso juntamente com a prova. Algumas das questões farão referência ao seu próprio código. A não entrega do código implica em nota 0 nestas questões.}}:
+
+    \begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \textbf{\textsc{Partition}}$(A, p, r)$
+    \begin{algorithmic}[1]
+        \State $x \gets A[r]$
+        \State $i \gets p - 1$
+        \For{$j \gets p$ \textbf{até} $r - 1$}
+            \If{$A[j] \leq x$}
+                \State $i \gets i + 1$
+                \State troca $A[i] \leftrightarrow A[j]$
+            \EndIf
+        \EndFor
+        \State troca $A[i+1] \leftrightarrow A[r]$
+        \State \Return $i + 1$
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    \begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \textbf{\textsc{Quicksort}}$(A, p, r)$
+    \begin{algorithmic}[1]
+        \If{$p < r$}
+            \State $q \gets \textsc{Partition}(A, p, r)$
+            \State \textsc{Quicksort}$(A, p, q - 1)$
+            \State \textsc{Quicksort}$(A, q + 1, r)$
+        \EndIf
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    \textbf{Requisitos da implementação:}
+    \begin{enumerate}
+        \item Implemente \textsc{Partition} e \textsc{Quicksort} como funções/métodos separados, preservando os nomes e as assinaturas.
+        \item A ordenação deve ser \textbf{in place} --- não aloque arranjos auxiliares para os subproblemas.
+        \item Inclua um programa principal que recebe o arranjo, chama \textsc{Quicksort}$(A, 1, n)$ (ou a versão equivalente em indexação 0) e imprime o arranjo ordenado.
+        \item \textbf{Testes:} valide com os mesmos casos do exercício anterior (vazio, unitário, ordenado, decrescente, aleatório com $n \geq 20$). Observe e relate em uma seção do \texttt{README} o que acontece com a entrada \textbf{já ordenada} em termos de tempo de execução.
+        \item \textbf{Item bônus:} implemente também \textsc{Randomized-Partition} (que escolhe o pivô uniformemente em $\{p, p+1, \dots, r\}$ e o troca com $A[r]$ antes de chamar \textsc{Partition}) e a variante \textsc{Randomized-Quicksort}. Repita o teste do item anterior na entrada já ordenada e compare empiricamente o tempo de execução com o da versão determinística.
+    \end{enumerate}
+
+    \item Considere o algoritmo \textsc{Quicksort} utilizando o último elemento como pivô:
+
+    \begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \textbf{\textsc{Quicksort}}$(A, p, r)$
+    \begin{algorithmic}[1]
+        \If{$p < r$}
+            \State $q \gets \textsc{Partition}(A, p, r)$
+            \State \textsc{Quicksort}$(A, p, q - 1)$
+            \State \textsc{Quicksort}$(A, q + 1, r)$
+        \EndIf
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    \begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \textbf{\textsc{Partition}}$(A, p, r)$
+    \begin{algorithmic}[1]
+        \State $x \gets A[r]$
+        \State $i \gets p - 1$
+        \For{$j \gets p$ \textbf{até} $r - 1$}
+            \If{$A[j] \leq x$}
+                \State $i \gets i + 1$
+                \State troca $A[i] \leftrightarrow A[j]$
+            \EndIf
+        \EndFor
+        \State troca $A[i+1] \leftrightarrow A[r]$
+        \State \Return $i + 1$
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    Em todos os itens abaixo, considere $n = r - p + 1$ o tamanho do subarranjo na chamada corrente.
+
+    \begin{enumerate}
+        \item \textbf{Custo de \textsc{Partition}.} Construa a tabela de custos no estilo CLRS para \textsc{Partition}, atribuindo um custo $c_i$ a cada linha e contando o número de execuções em função de $n$. Mostre que \textsc{Partition} executa em tempo $\Theta(n)$.
+
+        \item \textbf{Pior caso.} Suponha que, em \textbf{toda} chamada recursiva, o particionamento produza um subarranjo vazio e outro de tamanho $n - 1$.
+        \begin{enumerate}
+            \item Descreva uma instância de tamanho $n$ que produza esse comportamento (descreva também o conteúdo de $A$ que dispara o pior caso). \textit{Dica: pense no que acontece quando $A[r]$ é sempre escolhido como pivô.}
+            \item Escreva a relação de recorrência $T(n)$ para o pior caso, indicando o caso base.
+            \item Resolva a recorrência pelo método da iteração e mostre que $T(n) = \Theta(n^2)$.
+            \item Verifique que o Teorema Mestre \textbf{não} se aplica a esta recorrência. Justifique por que.
+        \end{enumerate}
+
+        \item \textbf{Melhor caso (particionamento balanceado).} Suponha agora que, em toda chamada recursiva, o particionamento produza dois subarranjos de tamanho aproximadamente $n/2$.
+        \begin{enumerate}
+            \item Escreva a relação de recorrência $T(n)$ para esse caso.
+            \item Resolva pelo método da árvore de recursão para $n = 2^k$. Indique o número de níveis, o custo por nível e o custo total.
+            \item Aplique o Teorema Mestre e identifique $a$, $b$ e $f(n)$. Indique qual caso do teorema se aplica e conclua que $T(n) = \Theta(n \lg n)$.
+        \end{enumerate}
+
+        \item \textbf{Particionamento desbalanceado mas em proporção constante.} Suponha que toda chamada produza um subarranjo de tamanho $\alpha n$ e outro de tamanho $(1 - \alpha) n$, com $\alpha \in (0, 1/2]$ constante.
+        \begin{enumerate}
+            \item Escreva a recorrência $T(n)$.
+            \item Esboce a árvore de recursão e argumente que o custo por nível é $O(n)$.
+            \item Mostre que a profundidade da árvore (medida pelo ramo mais longo, de tamanho $(1 - \alpha)^k n$) é $\Theta(\lg n)$.
+            \item Conclua que $T(n) = O(n \lg n)$.
+            \item \textit{Discussão:} qual a implicação prática deste resultado? Por que é importante que o algoritmo seja eficiente mesmo com particionamentos consistentemente desbalanceados (desde que em proporção constante)?
+        \end{enumerate}
+
+    \end{enumerate}
 \end{enumerate}
 
 \end{document}
