@@ -4,9 +4,16 @@ No **dia da prova**, vocês devem **entregar o código das implementações impr
 (**isso mesmo, em papel — apenas em papel!**).  
 Algumas perguntas da prova vão depender diretamente desse código.
 
-Na impressão o código deve ter, **obrigatoriamente**, as linhas numeradas.
+## ⚠️ Regras para o Código Impresso
 
-Recomendo quE usuários de VS Code sigam os passos abaixo para a impressão do código.  
+- O código deve estar **legível** e com **números de linha visíveis** na impressão.  
+- **Entregas sem numeração de linha ou sem extensão correta não serão aceitas.**  
+- Certifique-se de incluir **todos os arquivos relevantes**.  
+- As impressões devem ser **em preto e branco** ou **tons de cinza**, com boa legibilidade.  
+
+**O NÃO CUMPRIMENTO DESTAS REGRAS ACARRETARÁ EM NOTA 0 NAS QUESTÕES REFERENTES AO CÓDIGO.**
+
+Recomendo que usuários de VS Code sigam os passos abaixo para a impressão do código.  
 
 ---
 
@@ -23,14 +30,7 @@ Recomendo quE usuários de VS Code sigam os passos abaixo para a impressão do c
    Clique nesse ícone para **imprimir o seu código com numeração das linhas**
 ---
 
-## ⚠️ Regras para o Código Impresso
 
-- O código deve estar **legível** e com **números de linha visíveis** na impressão.  
-- **Entregas sem numeração de linha ou sem extensão correta não serão aceitas.**  
-- Certifique-se de incluir **todos os arquivos relevantes**.  
-- As impressões devem ser **em preto e branco** ou **tons de cinza**, com boa legibilidade.  
-
-**O NÃO CUMPRIMENTO DESTAS REGRAS ACARRETARÁ EM NOTA 0 NAS QUESTÕES REFERENTES AO CÓDIGO.**
 
 ---
 
