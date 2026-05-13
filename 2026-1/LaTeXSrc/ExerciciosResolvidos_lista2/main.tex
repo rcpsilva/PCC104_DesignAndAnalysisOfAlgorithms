@@ -1,0 +1,275 @@
+\documentclass[9pt,a4paper]{extarticle}
+
+% ======================
+% Codificação, idioma e layout
+% ======================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{algpseudocode}
+\usepackage{color}
+
+% ======================
+% Matemática e símbolos
+% ======================
+\usepackage{amsmath, amssymb, amsthm, bm}
+
+% ======================
+% Figuras e tabelas
+% ======================
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ======================
+% Hiperlinks
+% ======================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+% =====================================================================
+% Solução — Análise de Busca-Linear e Tem-Duplicata
+% Paleta: azulescuro = RGB (10, 40, 90); laranja = RGB (220, 110, 30)
+% =====================================================================
+\definecolor{azulescuro}{RGB}{10,40,90}
+\definecolor{laranja}{RGB}{220,110,30}
+
+% ======================
+% Início do documento
+% ======================
+\begin{document}
+
+\begin{center}
+  \Large \textbf{Exercícios Resolvidos - Lista 2 - Análise de Algoritmos e Caracterização de Tempos de Execução} \\[4pt]
+  \normalsize Disciplina: PCC104 - Projeto de Análise de Algoritmos
+\end{center}
+
+
+% --------------------------------------------------------------------
+
+\begin{itemize}
+    \item \textbf{Exercício 2}
+
+
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Tamanho da entrada.} O tamanho da entrada é $n$, o número de elementos do arranjo $A$. O valor $x$ e cada $A[i]$ ocupam $\Theta(1)$ espaço no modelo RAM usual (palavras de tamanho fixo), de modo que o tamanho dominante é o comprimento do arranjo.
+
+    \item \textbf{Tabela de custos.} Seja $t$ o número de vezes que o teste do \textbf{while} na linha~2 é avaliado. Como o teste é avaliado uma vez extra (aquela que falha e encerra o laço), a linha~3 (incremento) executa exatamente $t-1$ vezes.
+
+    \begin{center}
+    \renewcommand{\arraystretch}{1.15}
+    \begin{tabular}{@{}clcc@{}}
+        \toprule
+        \textbf{Linha} & \textbf{Instrução} & \textbf{Custo} & \textbf{Vezes} \\
+        \midrule
+        1 & $i \gets 1$                              & $c_1$ & $1$    \\
+        2 & \textbf{while} $i \leq n$ \textbf{and} $A[i]\neq x$ & $c_2$ & $t$    \\
+        3 & \quad $i \gets i+1$                      & $c_3$ & $t-1$  \\
+        4 & \textbf{if} $i \leq n$                    & $c_4$ & $1$    \\
+        5 & \quad \textbf{return} $i$                 & $c_5$ & $0$ ou $1$ \\
+        7 & \quad \textbf{return} $-1$                & $c_7$ & $0$ ou $1$ \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+
+    Exatamente uma das linhas~5 ou~7 executa; denotemos por $c_{\text{ret}}$ esse custo terminal (constante, independente de $n$).
+
+    \item \textbf{Expressão de $T(n)$.} Somando custo $\times$ frequência:
+    \[
+        T(n) \;=\; c_1 + c_2\,t + c_3\,(t-1) + c_4 + c_{\text{ret}}
+              \;=\; (c_2 + c_3)\,t \;+\; \underbrace{(c_1 + c_4 + c_{\text{ret}} - c_3)}_{\text{constante}}.
+    \]
+
+    \item \textbf{\textcolor{laranja}{Melhor caso.}} Ocorre quando o teste falha já na primeira iteração porque $A[1] = x$. Nesse caso, o \textbf{while} avalia o teste uma única vez (e sai), logo $t = 1$.
+
+    \emph{Instância:} qualquer arranjo com $A[1] = x$, por exemplo $A = \langle x, *, *, \ldots, *\rangle$.
+
+    Substituindo $t = 1$:
+    \[
+        T_{\text{melhor}}(n) = (c_2 + c_3)\cdot 1 + (c_1 + c_4 + c_{\text{ret}} - c_3) = c_1 + c_2 + c_4 + c_{\text{ret}},
+    \]
+    que é uma constante. Logo $T_{\text{melhor}}(n) = \Theta(1)$, com constantes $c_1 = c_2 = c_1 + c_2 + c_4 + c_{\text{ret}}$ e $n_0 = 1$ (na definição $c_1 \leq T_{\text{melhor}}(n) \leq c_2$ para todo $n \geq n_0$).
+
+    \item \textbf{\textcolor{laranja}{Pior caso.}} Ocorre quando o laço percorre todas as posições sem nunca encontrar $x$: o teste avalia para $i = 1, 2, \ldots, n$ (verdadeiro) e mais uma vez para $i = n+1$ (falso), totalizando $t = n+1$.
+
+    \emph{Instâncias:} todos os arranjos $A$ tais que $A[i] \neq x$ para todo $i \in \{1, \ldots, n\}$, isto é, $x \notin A$.
+
+    Substituindo $t = n+1$:
+    \[
+        T_{\text{pior}}(n) = (c_2 + c_3)(n+1) + (c_1 + c_4 + c_{\text{ret}} - c_3) = (c_2 + c_3)\,n + \kappa,
+    \]
+    com $\kappa$ constante. Tomando $a = c_2 + c_3 > 0$, vale $a n \leq T_{\text{pior}}(n) \leq 2 a n$ para $n \geq n_0$ suficientemente grande (basta $n_0 \geq |\kappa|/a$), portanto $T_{\text{pior}}(n) = \Theta(n)$.
+
+    \item \textbf{\textcolor{laranja}{Caso médio.}} Seja $X$ a variável aleatória ``posição da única ocorrência de $x$ em $A$'', uniforme em $\{1, 2, \ldots, n\}$. Se $X = k$, o teste do \textbf{while} é avaliado $k$ vezes: $k-1$ vezes com resultado verdadeiro (linhas $A[i] \neq x$ para $i < k$) e uma vez com resultado falso em $i = k$. Logo $t \mid (X = k) = k$.
+
+    \[
+        \mathbb{E}[t] \;=\; \sum_{k=1}^{n} k \cdot \Pr[X = k] \;=\; \frac{1}{n}\sum_{k=1}^{n} k \;=\; \frac{1}{n} \cdot \frac{n(n+1)}{2} \;=\; \frac{n+1}{2}.
+    \]
+
+    Por linearidade da esperança aplicada a $T(n) = (c_2 + c_3)\, t + \kappa'$:
+    \[
+        T_{\text{med}}(n) \;=\; \mathbb{E}[T(n)] \;=\; (c_2 + c_3)\,\frac{n+1}{2} + \kappa' \;=\; \tfrac{c_2 + c_3}{2}\, n + \kappa'',
+    \]
+    com $\kappa''$ constante. Concluímos que $T_{\text{med}}(n) = \Theta(n)$.
+
+    \emph{Observação:} o caso médio cresce na mesma classe do pior caso, mas com constante multiplicativa exatamente a metade.
+\end{enumerate}
+
+% ---------------------------------------------------------------------
+\item \textbf{Exercício 3}
+
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Tamanho da entrada.} O tamanho da entrada é $n$, o número de elementos do arranjo $A$.
+
+    \item \textbf{Pior caso: contagem do laço interno.} Para cada valor de $i \in \{1, \ldots, n-1\}$, o laço interno itera $j$ de $i+1$ até $n$, ou seja, $n - i$ iterações; em cada uma delas o teste da linha~2 é avaliado uma vez (a avaliação extra de saída custa apenas o teste falso da condição do \textbf{for}, que aqui contabilizamos junto). No pior caso, o algoritmo nunca retorna na linha~4, percorrendo todos os pares.
+
+    O número total de avaliações da comparação interna é
+    \[
+        \sum_{i=1}^{n-1} (n - i) \;=\; \frac{n(n-1)}{2}.
+    \]
+
+    \emph{Instância:} qualquer arranjo com todos os elementos distintos, por exemplo $A = \langle 1, 2, 3, \ldots, n\rangle$.
+
+    \item \textbf{Tabela de custos --- pior caso.} Seja $S = \dfrac{n(n-1)}{2}$ o número de pares $(i,j)$ com $i < j$.
+
+    \begin{center}
+    \renewcommand{\arraystretch}{1.15}
+    \begin{tabular}{@{}clcc@{}}
+        \toprule
+        \textbf{Linha} & \textbf{Instrução} & \textbf{Custo} & \textbf{Vezes} \\
+        \midrule
+        1 & \textbf{for} $i \gets 1$ \textbf{to} $n-1$               & $c_1$ & $n$ \\
+        2 & \quad \textbf{for} $j \gets i+1$ \textbf{to} $n$          & $c_2$ & $\sum_{i=1}^{n-1}(n-i+1) = S + (n-1)$ \\
+        3 & \quad\quad \textbf{if} $A[i] = A[j]$                      & $c_3$ & $S$ \\
+        4 & \quad\quad\quad \textbf{return verdadeiro}                & $c_4$ & $0$ \\
+        5 & \textbf{return falso}                                      & $c_5$ & $1$ \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+
+    Observação: para o laço interno na linha~2, cada bloco de $i$ produz $(n - i)$ testes verdadeiros mais $1$ teste falso (que encerra o laço), totalizando $n - i + 1$ avaliações; somando em $i$ obtém-se $S + (n-1)$. A linha~3 (comparação) é executada apenas dentro do laço, $S$ vezes.
+
+    Portanto,
+    \[
+        T_{\text{pior}}(n) \;=\; c_1\,n + c_2\,\bigl(S + (n-1)\bigr) + c_3\,S + c_5,
+    \]
+    e substituindo $S = \frac{n(n-1)}{2}$:
+    \[
+        T_{\text{pior}}(n) \;=\; \frac{c_2 + c_3}{2}\, n^2 \;+\; \left(c_1 + \frac{c_2 - c_3}{2}\right) n \;+\; (c_5 - c_2).
+    \]
+
+    \item \textbf{$T_{\text{pior}}(n) = \Theta(n^2)$.} Escrevemos $T_{\text{pior}}(n) = a\,n^2 + b\,n + d$ com
+    \[
+        a = \frac{c_2 + c_3}{2} > 0, \qquad b = c_1 + \frac{c_2 - c_3}{2}, \qquad d = c_5 - c_2.
+    \]
+    Tome as constantes $\alpha_1 = a/2$, $\alpha_2 = 2a$ e $n_0$ grande o suficiente para que
+    \[
+        \alpha_1 n^2 \;\leq\; a\,n^2 + b\,n + d \;\leq\; \alpha_2 n^2 \qquad \text{para todo } n \geq n_0.
+    \]
+    Para a cota superior, basta $n_0$ tal que $b\,n + d \leq a\,n^2$ a partir dele (válido pois o termo quadrático domina). Para a cota inferior, basta $n_0$ tal que $b\,n + d \geq -\tfrac{a}{2}\,n^2$ a partir dele. Ambos os $n_0$ são finitos, logo $T_{\text{pior}}(n) = \Theta(n^2)$.
+
+    \item \textbf{\textcolor{laranja}{Melhor caso.}} Ocorre quando $A[1] = A[2]$: na primeira iteração do laço externo, com $i = 1$ e $j = 2$, a linha~3 executa uma única vez, o teste é verdadeiro e o algoritmo retorna na linha~4.
+
+    Número de execuções da linha~3: exatamente $1$. Cada uma das demais linhas executa $O(1)$ vezes. Portanto
+    \[
+        T_{\text{melhor}}(n) = \Theta(1).
+    \]
+
+    \item \textbf{Comparação com \textsc{Insertion-Sort}.} Tanto \textsc{Tem-Duplicata} quanto \textsc{Insertion-Sort} apresentam $T_{\text{pior}}(n) = \Theta(n^2)$. A semelhança é estrutural: ambos os algoritmos varrem todos (ou quase todos) os pares de índices $(i, j)$ com $i < j$, o que naturalmente leva à soma $\sum_{i=1}^{n-1}(n-i) = \frac{n(n-1)}{2}$. A diferença está no melhor caso: \textsc{Insertion-Sort} sobre um arranjo já ordenado executa apenas a comparação inicial de cada iteração externa, atingindo $\Theta(n)$; \textsc{Tem-Duplicata}, por sua vez, sai imediatamente quando o primeiro par $(1, 2)$ já é igual, atingindo $\Theta(1)$.
+\end{enumerate}
+
+\item \textbf{Exercício 10}
+
+% =====================================================================
+% Solução --- MÁXIMO por divisão e conquista
+% Paleta: azulescuro = RGB (10, 40, 90); laranja = RGB (220, 110, 30)
+% =====================================================================
+
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Passos do paradigma D\&C.}
+    \begin{itemize}
+        \item \textbf{Dividir:} calcular $q = \lfloor (p + r)/2 \rfloor$ (linha~4) particiona $A[p\,..\,r]$ em dois subarranjos contíguos $A[p\,..\,q]$ e $A[q+1\,..\,r]$, de tamanhos $\lceil n/2 \rceil$ e $\lfloor n/2 \rfloor$. Custa $\Theta(1)$.
+        \item \textbf{Conquistar:} as chamadas recursivas das linhas~5 e~6 resolvem os dois subproblemas independentemente, retornando os máximos $m_1$ e $m_2$. O caso-base é $p = r$ (linhas~1--3), em que o máximo é o próprio elemento $A[p]$.
+        \item \textbf{Combinar:} a comparação $m_1 \geq m_2$ e a devolução do maior valor (linhas~7--11) combinam as duas soluções parciais em $\Theta(1)$.
+    \end{itemize}
+
+    \item \textbf{Relação de recorrência.} Cada chamada não trivial dispara $2$ chamadas recursivas, cada uma sobre um subarranjo de tamanho aproximadamente $n/2$; o trabalho fora das chamadas recursivas (divisão $+$ combinação) é $\Theta(1)$. O caso-base $n = 1$ executa apenas o teste da linha~1 e o retorno da linha~2, custando $\Theta(1)$. Logo,
+    \[
+        T(n) \;=\;
+        \begin{cases}
+            \Theta(1), & \text{se } n = 1, \\[2pt]
+            2\,T(n/2) + \Theta(1), & \text{se } n > 1.
+        \end{cases}
+    \]
+    Para simplificar a álgebra, escrevemos $T(n) = 2\,T(n/2) + c$ com $c > 0$ constante e $T(1) = c$.
+
+    \item \textbf{\textcolor{laranja}{Árvore de recursão, $n = 2^k$.}} A cada nível, cada subproblema gera $2$ filhos com metade do tamanho:
+
+    \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{@{}cccc@{}}
+        \toprule
+        \textbf{Nível $\ell$} & \textbf{Nós} & \textbf{Tamanho de cada subproblema} & \textbf{Custo do nível} \\
+        \midrule
+        $0$        & $1$            & $n$       & $c$            \\
+        $1$        & $2$            & $n/2$     & $2c$           \\
+        $2$        & $4$            & $n/4$     & $4c$           \\
+        $\vdots$   & $\vdots$       & $\vdots$  & $\vdots$       \\
+        $\ell$     & $2^\ell$       & $n/2^\ell$ & $2^\ell\, c$   \\
+        $\vdots$   & $\vdots$       & $\vdots$  & $\vdots$       \\
+        $k = \log_2 n$ & $2^k = n$  & $1$       & $n \cdot c$    \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+
+    A árvore tem $k + 1 = \log_2 n + 1$ níveis. O custo total é a soma sobre todos os níveis:
+    \[
+        T(n) \;=\; \sum_{\ell=0}^{k} 2^\ell\, c \;=\; c\,(2^{k+1} - 1) \;=\; c\,(2n - 1).
+    \]
+    Note que, ao contrário do que acontece no \textsc{Merge-Sort}, aqui o custo por nível \emph{não} é constante: ele dobra a cada nível porque $f(n) = \Theta(1)$ e o número de subproblemas cresce geometricamente. Em consequência, o custo é dominado pelas folhas.
+
+    \item \textbf{$T(n) = \Theta(n)$.} De $T(n) = c(2n - 1) = 2c\,n - c$, tomemos $\alpha_1 = c$ e $\alpha_2 = 2c$. Para todo $n \geq 1$ vale
+    \[
+        \alpha_1\, n \;=\; c\,n \;\leq\; 2c\,n - c \;\leq\; 2c\,n \;=\; \alpha_2\, n,
+    \]
+    pois $c\,n \leq 2c\,n - c \iff c \leq c\,n$, válido para $n \geq 1$. Portanto $T(n) = \Theta(n)$.
+
+    \item \textbf{\textcolor{laranja}{Teorema Mestre.}} Comparando $T(n) = 2\,T(n/2) + \Theta(1)$ com a forma canônica $T(n) = a\,T(n/b) + f(n)$:
+    \[
+        a = 2, \qquad b = 2, \qquad f(n) = \Theta(1).
+    \]
+    O expoente crítico é $\log_b a = \log_2 2 = 1$, logo $n^{\log_b a} = n$. Comparando $f(n)$ com $n^{\log_b a}$:
+    \[
+        f(n) = \Theta(1) = O(n^{1 - \varepsilon}) \quad \text{para qualquer } 0 < \varepsilon \leq 1.
+    \]
+    Estamos no \textbf{Caso~1} do Teorema Mestre, que conclui
+    \[
+        T(n) = \Theta(n^{\log_b a}) = \Theta(n),
+    \]
+    confirmando o resultado obtido pela árvore de recursão.
+
+    \item \textbf{Comparação com a versão iterativa.} A varredura linear --- inicializar $\max \gets A[1]$ e percorrer $A[2\,..\,n]$ atualizando $\max$ quando $A[i] > \max$ --- também é $\Theta(n)$. As duas abordagens estão na mesma classe assintótica.
+
+    Há, porém, uma diferença nas constantes e no consumo de memória. A versão recursiva executa $2n - 1$ chamadas no total ($n$ folhas $+$ $n-1$ nós internos) e usa pilha de profundidade $\Theta(\log n)$; a iterativa faz exatamente $n - 1$ comparações com $\Theta(1)$ de espaço auxiliar.
+
+    A lição é que divisão e conquista \emph{não traz ganho assintótico} quando o passo de combinação é $\Theta(1)$ e o problema original já admite solução linear: nesse cenário, $T(n) = 2T(n/2) + \Theta(1)$ cai no Caso~1 do Mestre e o custo é dominado pelas folhas, recuperando o mesmo $\Theta(n)$ da varredura. O paradigma só compensa quando combinar é mais barato que resolver do zero --- como em \textsc{Merge-Sort}, onde combinar custa $\Theta(n)$ mas resolver iterativamente custaria $\Theta(n^2)$ (\textsc{Insertion-Sort}).
+\end{enumerate}
+
+\end{itemize}
+
+\end{document}
