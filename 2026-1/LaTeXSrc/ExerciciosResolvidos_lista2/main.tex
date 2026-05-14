@@ -270,6 +270,106 @@
     A lição é que divisão e conquista \emph{não traz ganho assintótico} quando o passo de combinação é $\Theta(1)$ e o problema original já admite solução linear: nesse cenário, $T(n) = 2T(n/2) + \Theta(1)$ cai no Caso~1 do Mestre e o custo é dominado pelas folhas, recuperando o mesmo $\Theta(n)$ da varredura. O paradigma só compensa quando combinar é mais barato que resolver do zero --- como em \textsc{Merge-Sort}, onde combinar custa $\Theta(n)$ mas resolver iterativamente custaria $\Theta(n^2)$ (\textsc{Insertion-Sort}).
 \end{enumerate}
 
+\item \textbf{Exercício 9}
+
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Tamanho dos subproblemas.}
+    
+    Seja $n = r - p + 1$ o tamanho do subarranjo corrente e $q = \lfloor (p+r)/2 \rfloor$. As duas chamadas recursivas operam sobre os subarranjos $A[p\,..\,q-1]$ e $A[q+1\,..\,r]$, cujos tamanhos são, respectivamente,
+    \[
+        n_{\text{esq}} = (q-1) - p + 1 = q - p, 
+        \qquad
+        n_{\text{dir}} = r - (q+1) + 1 = r - q.
+    \]
+    Substituindo $q = \lfloor (p+r)/2 \rfloor$:
+    \[
+        n_{\text{esq}} = \left\lfloor \frac{p+r}{2} \right\rfloor - p 
+                       = \left\lfloor \frac{r-p}{2} \right\rfloor
+                       = \left\lfloor \frac{n-1}{2} \right\rfloor 
+                       \leq \left\lfloor \frac{n}{2} \right\rfloor,
+    \]
+    \[
+        n_{\text{dir}} = r - \left\lfloor \frac{p+r}{2} \right\rfloor 
+                       = \left\lceil \frac{r-p}{2} \right\rceil 
+                       = \left\lceil \frac{n-1}{2} \right\rceil 
+                       \leq \left\lfloor \frac{n}{2} \right\rfloor.
+    \]
+    A última desigualdade vale porque $\lceil (n-1)/2 \rceil = \lfloor n/2 \rfloor$ para todo $n \geq 1$. Assim, qualquer que seja o ramo escolhido, o subproblema tem tamanho \emph{no máximo} $\lfloor n/2 \rfloor$.
+    
+    \medskip
+    
+    \item \textbf{Recorrência do pior caso.}
+    
+    O pior caso ocorre quando $x \notin A$ ou quando $x$ se encontra em uma posição que exige descer até um subarranjo unitário. Em cada chamada, o trabalho não recursivo (cálculo de $q$, comparações nas linhas 1, 4 e 6 e retorno) é $\Theta(1)$. Há \emph{uma} chamada recursiva sobre um subproblema de tamanho no máximo $\lfloor n/2 \rfloor$. O caso base ocorre quando $p > r$, isto é, $n = 0$, com custo constante. Portanto,
+    \[
+        T(n) = 
+        \begin{cases}
+            \Theta(1), & \text{se } n \leq 1, \\[4pt]
+            T(\lfloor n/2 \rfloor) + \Theta(1), & \text{se } n \geq 2.
+        \end{cases}
+    \]
+    
+    \medskip
+    
+    \item \textbf{Resolução por iteração para $n = 2^k$.}
+    
+    Para $n = 2^k$, os pisos são exatos: $\lfloor n/2 \rfloor = n/2 = 2^{k-1}$. Seja $c$ uma constante positiva que limita o custo não recursivo. Então:
+    \begin{align*}
+        T(n) &= T(n/2) + c \\
+             &= \bigl[T(n/4) + c\bigr] + c = T(n/4) + 2c \\
+             &= \bigl[T(n/8) + c\bigr] + 2c = T(n/8) + 3c \\
+             &\;\;\vdots \\
+             &= T(n/2^i) + i\,c.
+    \end{align*}
+    A iteração termina quando $n/2^i = 1$, ou seja, $i = \log_2 n = k$. Logo,
+    \[
+        T(n) = T(1) + k\,c = \Theta(1) + c \log_2 n.
+    \]
+    Tomando $T(1) = d$ constante, obtemos a forma fechada
+    \[
+        \boxed{\,T(n) = c \log_2 n + d.\,}
+    \]
+    
+    \medskip
+    
+    \item \textbf{Classe assintótica: $T(n) = \Theta(\log n)$.}
+    
+    Da expressão fechada $T(n) = c \log_2 n + d$, exibimos constantes $c_1, c_2 > 0$ e $n_0$ tais que
+    \[
+        c_1 \log_2 n \leq T(n) \leq c_2 \log_2 n, \qquad \forall\, n \geq n_0.
+    \]
+    Basta tomar, por exemplo, $n_0 = 2$, $c_1 = c$ (pois $d \geq 0$) e $c_2 = c + d$ (pois $\log_2 n \geq 1$ para $n \geq 2$, donde $d \leq d \log_2 n$). Portanto $T(n) = \Theta(\log_2 n) = \Theta(\log n)$, já que logaritmos em bases distintas diferem apenas por fator constante.
+    
+    \medskip
+    
+    \item \textbf{Melhor caso.}
+    
+    O melhor caso ocorre quando $A[q] = x$ na \emph{primeira} chamada, isto é, quando o elemento procurado encontra-se exatamente na posição mediana inicial. Nesse cenário não há recursão e o algoritmo executa apenas trabalho constante:
+    \[
+        T_{\text{melhor}}(n) = \Theta(1).
+    \]
+    
+    \medskip
+    
+    \item \textbf{Aplicação do Teorema Mestre.}
+    
+    A recorrência do pior caso tem a forma $T(n) = a\,T(n/b) + f(n)$, com
+    \[
+        a = 1, \qquad b = 2, \qquad f(n) = \Theta(1).
+    \]
+    Calculamos o expoente crítico:
+    \[
+        \log_b a = \log_2 1 = 0, 
+        \qquad 
+        n^{\log_b a} = n^0 = 1.
+    \]
+    Comparando $f(n) = \Theta(1)$ com $n^{\log_b a} = \Theta(1)$, vemos que ambos são polinomialmente equivalentes, ou seja, $f(n) = \Theta(n^{\log_b a})$. Aplica-se, portanto, o \textbf{Caso 2} do Teorema Mestre, que fornece
+    \[
+        T(n) = \Theta\!\left(n^{\log_b a} \log n\right) = \Theta(\log n),
+    \]
+    confirmando o resultado obtido pelo método da iteração.
+\end{enumerate}
+
 \end{itemize}
 
 \end{document}
