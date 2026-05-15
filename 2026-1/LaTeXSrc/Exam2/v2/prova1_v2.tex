@@ -1,0 +1,120 @@
+\documentclass[9pt,a4paper]{extarticle}
+
+% ======================
+% Codificação, idioma e layout
+% ======================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+% ======================
+% Matemática e símbolos
+% ======================
+\usepackage{amsmath, amssymb, amsthm, bm}
+
+% Algoritmos (CLRS-style)
+\usepackage{algpseudocode}
+
+% Cores
+\usepackage{xcolor}
+
+% ======================
+% Figuras e tabelas
+% ======================
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ======================
+% Hiperlinks
+% ======================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+% ======================
+% Início do documento
+% ======================
+\begin{document}
+
+\begin{center}
+  \Large \textbf{Prova 1 \\ Introdução à Análise de Algoritmos e Caracterização de Tempos de Execução} \\[4pt]
+  \normalsize Disciplina: PCC104 - Projeto de Análise de Algoritmos
+\end{center}
+
+\vspace{1cm}
+
+\begin{enumerate}
+  \item Por que não é adequado medir a eficiência de um algoritmo contando o número de instruções de máquina executadas em um computador específico? Quais características desejáveis uma boa medida de eficiência deve possuir?
+
+  \item Considere um algoritmo que executa $3^n$ operações e outro que executa $50n^3$ operações. Qual é o aumento do número de operações para cada algoritmo quando o tamanho da entrada é duplicado?
+
+  \item O que significa dizer que um algoritmo é \textit{correto}? Descreva as três propriedades que devem ser verificadas em uma invariante de laço para que ela sirva como ferramenta de prova de corretude.
+
+  \item Considere a seguinte afirmação: \\
+  \textit{Se um algoritmo tem complexidade $\Theta(n^2)$, então ele também tem complexidade $O(n^3)$.}\\
+  Esta afirmação é verdadeira ou falsa? Explique.
+
+  \item Sejam $f(n)$ e $g(n)$ funções assintoticamente positivas, prove ou refute cada uma das seguintes conjecturas:
+  \begin{enumerate}
+    \item $f(n) = \Theta(g(n))$ implica $g(n) = \Theta(f(n))$
+    \item $\min(f(n), g(n)) = \Omega(f(n) + g(n))$  
+    \item $f(n) = O(f(n)^2)$
+  \end{enumerate}
+
+  \item Apresente a expressão completa do custo $T(n)$ do algoritmo abaixo:
+    \begin{algorithmic}[1]
+    \For{$i \gets 1$ \textbf{to} $A.\text{length}$}
+        \State $min \gets i$
+        \For{$j \gets i + 1$ \textbf{to} $A.\text{length}$}
+            \If{$A[j] < A[min]$}
+                \State $min \gets j$
+            \EndIf
+        \EndFor
+        \State \textbf{exchange} $A[i]$ \textbf{with} $A[min]$
+    \EndFor
+  \end{algorithmic}
+
+  \item Apresente a expressão completa do custo $T(n)$ do algoritmo abaixo:
+  \begin{algorithmic}[1]
+  \For{$i \gets 2$ \textbf{to} $A.\text{length}$}
+      \State $key \gets A[i]$
+      \State $j \gets 1$
+      \While{$j < i$ \textbf{and} $A[j] \leq key$}
+          \State $j \gets j + 1$
+      \EndWhile
+      \For{$k \gets i$ \textbf{downto} $j + 1$}
+          \State $A[k] \gets A[k - 1]$
+      \EndFor
+      \State $A[j] \gets key$
+  \EndFor
+  \end{algorithmic}
+
+  \item Apresente a expressão completa do custo $T(n)$ do algoritmo abaixo e depois discuta a complexidade de execução deste algoritmo no melhor e no pior caso:
+  \begin{algorithmic}[1]
+  \Procedure{Find-Max}{$A, n$}
+      \State $max \gets A[1]$
+      \For{$i \gets 2$ \textbf{to} $n$}
+          \If{$A[i] > max$}
+              \State $max \gets A[i]$
+          \EndIf
+      \EndFor
+      \State \Return $max$
+  \EndProcedure
+  \end{algorithmic}
+\end{enumerate}
+
+\end{document}
