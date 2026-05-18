@@ -1,0 +1,33 @@
+\babel@toc {brazil}{}\relax 
+\contentsline {section}{\numberline {1}Vetores}{1}{section.1}%
+\contentsline {paragraph}{Operações fundamentais.}{1}{section*.2}%
+\contentsline {paragraph}{Indexação base-0 vs.\ base-1.}{1}{section*.3}%
+\contentsline {section}{\numberline {2}Matrizes (Tensores)}{2}{section.2}%
+\contentsline {paragraph}{Esquemas de armazenamento.}{2}{section*.4}%
+\contentsline {paragraph}{Tensores.}{2}{section*.5}%
+\contentsline {section}{\numberline {3}Pilhas}{2}{section.3}%
+\contentsline {paragraph}{Implementação com vetor.}{2}{section*.6}%
+\contentsline {paragraph}{Análise.}{3}{section*.7}%
+\contentsline {section}{\numberline {4}Filas}{3}{section.4}%
+\contentsline {paragraph}{Implementação com vetor circular.}{3}{section*.8}%
+\contentsline {paragraph}{Análise.}{3}{section*.9}%
+\contentsline {section}{\numberline {5}Listas Encadeadas}{4}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Definição}{4}{subsection.5.1}%
+\contentsline {paragraph}{Variantes.}{4}{section*.10}%
+\contentsline {subsection}{\numberline {5.2}Busca}{4}{subsection.5.2}%
+\contentsline {paragraph}{Análise.}{4}{section*.11}%
+\contentsline {subsection}{\numberline {5.3}Inserção}{4}{subsection.5.3}%
+\contentsline {paragraph}{Análise.}{5}{section*.12}%
+\contentsline {subsection}{\numberline {5.4}Remoção}{5}{subsection.5.4}%
+\contentsline {paragraph}{Análise.}{5}{section*.13}%
+\contentsline {subsection}{\numberline {5.5}Sentinelas}{5}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Árvores Enraizadas}{5}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Árvores Binárias}{5}{subsection.6.1}%
+\contentsline {paragraph}{Terminologia.}{6}{section*.14}%
+\contentsline {paragraph}{Percursos.}{6}{section*.15}%
+\contentsline {paragraph}{Análise dos percursos.}{6}{section*.16}%
+\contentsline {subsection}{\numberline {6.2}Árvores Enraizadas com Ramificações Ilimitadas}{7}{subsection.6.2}%
+\contentsline {paragraph}{Representação por filho-esquerdo / irmão-direito.}{7}{section*.17}%
+\contentsline {paragraph}{Acesso aos filhos.}{7}{section*.18}%
+\contentsline {paragraph}{Outras representações.}{7}{section*.19}%
+\contentsline {paragraph}{Resumo comparativo.}{8}{section*.20}%

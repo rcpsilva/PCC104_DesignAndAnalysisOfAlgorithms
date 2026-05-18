@@ -1,0 +1,598 @@
+\documentclass[9pt,a4paper]{extarticle}
+\usepackage{parskip}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[expansion=false]{microtype}
+\usepackage{csquotes}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\definecolor{important}{RGB}{255, 100, 100}
+\definecolor{notice}{RGB}{0, 102, 204}
+
+\newcommand{\impt}[1]{\textcolor{important}{#1}}
+\newcommand{\ntc}[1]{\textcolor{notice}{#1}}
+
+\setlist{nosep}
+\geometry{margin=2cm}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}[theorem]{Corolário}
+\newtheorem{proposition}[theorem]{Proposição}
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}[section]
+\newtheorem{example}{Exemplo}[section]
+\newtheorem{remark}{Observação}[section]
+
+% Personalização do algpseudocode
+\algrenewcommand\algorithmicrequire{\textbf{Entrada:}}
+\algrenewcommand\algorithmicensure{\textbf{Saída:}}
+\algrenewcommand\algorithmicwhile{\textbf{enquanto}}
+\algrenewcommand\algorithmicdo{\textbf{faça}}
+\algrenewcommand\algorithmicif{\textbf{se}}
+\algrenewcommand\algorithmicthen{\textbf{então}}
+\algrenewcommand\algorithmicelse{\textbf{senão}}
+\algrenewcommand\algorithmicfor{\textbf{para}}
+\algrenewcommand\algorithmicreturn{\textbf{retorna}}
+\algrenewcommand\algorithmicend{\textbf{fim}}
+
+\title{Estruturas de Dados Elementares\footnote{Material baseado em \citep{cormen2009}.}}
+\author{PCC104 -- Projeto e Análise de Algoritmos}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% =====================================================================
+\section{Vetores}
+
+Um \impt{vetor} (ou \emph{array}) é a estrutura de dados mais primitiva e mais importante da computação: um bloco contíguo de memória dividido em posições de mesmo tamanho, cada uma identificada por um índice inteiro. A organização contígua é o que dá ao vetor a sua propriedade definidora — o \ntc{acesso aleatório em tempo constante}.
+
+\begin{definition}[Vetor]
+Um vetor $A$ de tamanho $n$ é uma sequência $A[1], A[2], \ldots, A[n]$ de elementos do mesmo tipo, armazenados em posições consecutivas de memória. Dado um endereço-base $\mathrm{base}(A)$ e o tamanho $s$ de cada elemento, o endereço do $i$-ésimo elemento é
+\[
+\mathrm{end}(A[i]) = \mathrm{base}(A) + (i - 1) \cdot s.
+\]
+\end{definition}
+
+\paragraph{Operações fundamentais.} As três operações elementares — \textsc{Acesso}, \textsc{Atribuição} e \textsc{Comprimento} — executam em tempo $\Theta(1)$. A inserção e remoção \emph{no meio} do vetor, em contrapartida, exigem deslocar todos os elementos posteriores, custando $\Theta(n)$ no pior caso.
+
+\begin{algorithm}[H]
+\caption{\textsc{Inserir}($A, n, i, x$) -- insere $x$ na posição $i$ de um vetor de tamanho $n$}
+\begin{algorithmic}[1]
+\Require Vetor $A$ com capacidade $\geq n+1$, índice $1 \leq i \leq n+1$, valor $x$
+\For{$j = n$ \textbf{decrescendo até} $i$}
+    \State $A[j+1] \gets A[j]$
+\EndFor
+\State $A[i] \gets x$
+\State \Return $n + 1$
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Indexação base-0 vs.\ base-1.} O CLRS adota indexação base-1 por clareza pedagógica, mas \impt{linguagens reais (C, Java, Python) usam base-0}. A fórmula de endereçamento em base-0 é simplesmente $\mathrm{end}(A[i]) = \mathrm{base}(A) + i \cdot s$.
+
+\begin{example}[Custo do acesso aleatório]
+Calcular o endereço de $A[i]$ envolve uma soma e uma multiplicação — operações de custo fixo, independentes de $n$. É por isso que dizemos que $A[i]$ tem custo $O(1)$, e essa propriedade é a fundação de muitos algoritmos eficientes.
+\end{example}
+
+\begin{remark}
+Embora o acesso seja constante, \ntc{percorrer} um vetor é $\Theta(n)$. A diferença é sutil mas crucial: o \emph{acesso} a uma posição é barato; a \emph{varredura} do vetor inteiro não é.
+\end{remark}
+
+% =====================================================================
+\section{Matrizes (Tensores)}
+
+Uma \impt{matriz} é uma generalização bidimensional do vetor, e um \impt{tensor} generaliza a noção para $k$ dimensões. Conceitualmente, uma matriz $A$ de dimensões $m \times n$ é um arranjo retangular de elementos $A[i][j]$ com $1 \leq i \leq m$ e $1 \leq j \leq n$.
+
+\paragraph{Esquemas de armazenamento.} A memória do computador é unidimensional, então uma matriz precisa ser \emph{linearizada}. Duas convenções dominam:
+
+\begin{itemize}
+    \item \impt{Row-major} (C, C++, Python/NumPy padrão): os elementos de uma mesma linha ficam contíguos.
+    \[
+    \mathrm{end}(A[i][j]) = \mathrm{base}(A) + \big( (i-1) \cdot n + (j-1) \big) \cdot s
+    \]
+    \item \impt{Column-major} (Fortran, MATLAB, Julia): os elementos de uma mesma coluna ficam contíguos.
+    \[
+    \mathrm{end}(A[i][j]) = \mathrm{base}(A) + \big( (j-1) \cdot m + (i-1) \big) \cdot s
+    \]
+\end{itemize}
+
+\begin{remark}[Localidade de cache]
+A escolha do esquema afeta \ntc{drasticamente} o desempenho prático. Percorrer uma matriz em ordem oposta à do armazenamento gera \emph{cache misses} a cada acesso. Em row-major, sempre prefira o laço externo sobre as linhas:
+\begin{center}
+\texttt{for i: for j: ...A[i][j]...}\quad (rápido em row-major)\\
+\texttt{for j: for i: ...A[i][j]...}\quad (lento em row-major)
+\end{center}
+A complexidade assintótica é a mesma, mas a constante escondida pode variar em uma ordem de magnitude.
+\end{remark}
+
+\paragraph{Tensores.} Um tensor de ordem $k$ com dimensões $d_1 \times d_2 \times \cdots \times d_k$ generaliza o cálculo de endereço. Em row-major,
+\[
+\mathrm{end}(A[i_1, i_2, \ldots, i_k]) = \mathrm{base}(A) + \left( \sum_{r=1}^{k} (i_r - 1) \prod_{q=r+1}^{k} d_q \right) \cdot s.
+\]
+
+\begin{example}[Multiplicação de matrizes -- versão ingênua]
+O algoritmo direto tem três laços aninhados e custo $\Theta(n^3)$:
+\begin{algorithm}[H]
+\caption{\textsc{Mult-Mat}($A, B, n$)}
+\begin{algorithmic}[1]
+\Require Matrizes $A, B$ de dimensão $n \times n$
+\State Seja $C$ uma matriz $n \times n$ inicializada com zeros
+\For{$i = 1$ \textbf{até} $n$}
+    \For{$j = 1$ \textbf{até} $n$}
+        \For{$k = 1$ \textbf{até} $n$}
+            \State $C[i][j] \gets C[i][j] + A[i][k] \cdot B[k][j]$
+        \EndFor
+    \EndFor
+\EndFor
+\State \Return $C$
+\end{algorithmic}
+\end{algorithm}
+A ordem dos laços não muda a corretude nem o custo assintótico, mas afeta drasticamente o desempenho de cache. Algoritmos sub-cúbicos (Strassen $\Theta(n^{\log_2 7})$) serão discutidos adiante.
+\end{example}
+
+% =====================================================================
+\section{Pilhas}
+
+Uma \impt{pilha} (\emph{stack}) é uma estrutura de dados que implementa a disciplina \impt{LIFO} (\emph{Last-In, First-Out}): o último elemento inserido é o primeiro a ser removido. A analogia clássica é uma pilha de pratos — só se pode adicionar ou remover do topo.
+
+\begin{definition}[Pilha]
+Uma pilha $S$ suporta três operações:
+\begin{itemize}
+    \item \textsc{Empilha}($S, x$) -- insere $x$ no topo de $S$;
+    \item \textsc{Desempilha}($S$) -- remove e retorna o elemento do topo;
+    \item \textsc{Pilha-Vazia}($S$) -- retorna verdadeiro se $S$ não contém elementos.
+\end{itemize}
+\end{definition}
+
+\paragraph{Implementação com vetor.} Mantemos um vetor $S[1 \ldots n]$ e um atributo $S.\mathit{topo}$ indicando a posição do elemento mais recente. Convenciona-se $S.\mathit{topo} = 0$ para a pilha vazia.
+
+\begin{algorithm}[H]
+\caption{\textsc{Pilha-Vazia}($S$)}
+\begin{algorithmic}[1]
+\If{$S.\mathit{topo} = 0$}
+    \State \Return \textbf{verdadeiro}
+\Else
+    \State \Return \textbf{falso}
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{\textsc{Empilha}($S, x$)}
+\begin{algorithmic}[1]
+\State $S.\mathit{topo} \gets S.\mathit{topo} + 1$
+\State $S[S.\mathit{topo}] \gets x$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{\textsc{Desempilha}($S$)}
+\begin{algorithmic}[1]
+\If{\textsc{Pilha-Vazia}($S$)}
+    \State \textbf{erro} ``estouro inferior''
+\Else
+    \State $S.\mathit{topo} \gets S.\mathit{topo} - 1$
+    \State \Return $S[S.\mathit{topo} + 1]$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Análise.} As três operações executam em \impt{tempo $O(1)$}. O custo é literalmente uma incrementação ou decrementação seguida de uma atribuição ou leitura.
+
+\begin{remark}[Estouro de pilha]
+Se $S.\mathit{topo}$ exceder $n$, ocorre \emph{overflow} (estouro superior). Na prática, esse erro pode ser tratado com \ntc{realocação dinâmica} do vetor, dobrando sua capacidade — uma técnica que estudaremos como \emph{tabela dinâmica}, cujo custo amortizado por operação permanece $O(1)$.
+\end{remark}
+
+\begin{example}[Aplicação: avaliação de expressões]
+Pilhas são a estrutura natural para avaliar expressões em \emph{notação pós-fixada} (notação polonesa reversa). Por exemplo, \texttt{3 4 + 2 *} corresponde a $(3+4) \cdot 2 = 14$. Compiladores também usam pilhas para gerenciar chamadas de função (a chamada \emph{pilha de execução}).
+\end{example}
+
+% =====================================================================
+\section{Filas}
+
+Uma \impt{fila} (\emph{queue}) implementa a disciplina \impt{FIFO} (\emph{First-In, First-Out}): o primeiro elemento inserido é o primeiro a ser removido — como uma fila de banco.
+
+\begin{definition}[Fila]
+Uma fila $Q$ suporta duas operações principais:
+\begin{itemize}
+    \item \textsc{Enfileira}($Q, x$) -- insere $x$ no final (\emph{cauda}) de $Q$;
+    \item \textsc{Desenfileira}($Q$) -- remove e retorna o elemento do início (\emph{cabeça}) de $Q$.
+\end{itemize}
+\end{definition}
+
+\paragraph{Implementação com vetor circular.} Uma fila com $n-1$ elementos no máximo pode ser implementada com um vetor $Q[1 \ldots n]$ e dois atributos: $Q.\mathit{cabeca}$ aponta para o primeiro elemento, e $Q.\mathit{cauda}$ aponta para a próxima posição livre. Para evitar deslocamentos, o vetor é tratado como \impt{circular}: após a posição $n$, voltamos à posição $1$.
+
+A fila está vazia quando $Q.\mathit{cabeca} = Q.\mathit{cauda}$ e cheia quando $Q.\mathit{cabeca} = Q.\mathit{cauda} + 1 \pmod n$. Sacrificamos uma posição do vetor para distinguir os dois casos.
+
+\begin{algorithm}[H]
+\caption{\textsc{Enfileira}($Q, x$)}
+\begin{algorithmic}[1]
+\State $Q[Q.\mathit{cauda}] \gets x$
+\If{$Q.\mathit{cauda} = Q.\mathit{comprimento}$}
+    \State $Q.\mathit{cauda} \gets 1$
+\Else
+    \State $Q.\mathit{cauda} \gets Q.\mathit{cauda} + 1$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{\textsc{Desenfileira}($Q$)}
+\begin{algorithmic}[1]
+\State $x \gets Q[Q.\mathit{cabeca}]$
+\If{$Q.\mathit{cabeca} = Q.\mathit{comprimento}$}
+    \State $Q.\mathit{cabeca} \gets 1$
+\Else
+    \State $Q.\mathit{cabeca} \gets Q.\mathit{cabeca} + 1$
+\EndIf
+\State \Return $x$
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Análise.} Ambas as operações executam em \impt{tempo $O(1)$}.
+
+\begin{remark}[Por que circular?]
+Sem o tratamento circular, $Q.\mathit{cauda}$ avançaria indefinidamente até o fim do vetor, mesmo com espaço livre no início após sucessivas remoções. O \ntc{módulo} permite reaproveitar o espaço liberado.
+\end{remark}
+
+\begin{example}[Variações]
+Filas dão origem a estruturas mais sofisticadas:
+\begin{itemize}
+    \item \emph{Deque} (\emph{double-ended queue}): permite inserção e remoção em ambas as extremidades.
+    \item \emph{Fila de prioridades}: cada elemento tem uma prioridade; o de maior (ou menor) prioridade é removido primeiro. Implementada eficientemente com \emph{heaps} — assunto de aula futura.
+\end{itemize}
+\end{example}
+
+% =====================================================================
+\section{Listas Encadeadas}
+
+A diferença fundamental entre listas encadeadas e vetores é a \impt{forma de organização na memória}: enquanto vetores ocupam posições contíguas, listas encadeadas usam \impt{ponteiros} para conectar elementos espalhados pela memória. Esse desacoplamento é o que permite inserções e remoções eficientes — ao custo de perder o acesso aleatório.
+
+\subsection{Definição}
+
+\begin{definition}[Lista duplamente encadeada]
+Uma lista duplamente encadeada $L$ é uma coleção de objetos (\emph{nós}), cada um contendo:
+\begin{itemize}
+    \item um campo \emph{chave} (\emph{key}) -- o dado armazenado;
+    \item um ponteiro \emph{prev} -- para o nó anterior, ou \textsc{nil} se for o primeiro;
+    \item um ponteiro \emph{next} -- para o nó seguinte, ou \textsc{nil} se for o último.
+\end{itemize}
+A lista é referenciada por um atributo $L.\mathit{cabeca}$, que aponta para o primeiro nó (ou \textsc{nil} se a lista é vazia).
+\end{definition}
+
+\paragraph{Variantes.} Quatro variantes são comuns na prática:
+\begin{itemize}
+    \item \impt{Simplesmente encadeada}: cada nó tem apenas \emph{next}. Economiza memória, mas remover um nó dado requer um ponteiro auxiliar para o anterior.
+    \item \impt{Duplamente encadeada}: cada nó tem \emph{prev} e \emph{next}.
+    \item \impt{Ordenada}: as chaves aparecem em ordem.
+    \item \impt{Circular}: o \emph{next} do último nó aponta para o primeiro (e o \emph{prev} do primeiro aponta para o último, no caso duplamente encadeado).
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=1.5cm, every node/.style={font=\small}]
+\node[draw, rectangle, minimum height=0.7cm, minimum width=0.7cm] (h) {9};
+\node[draw, rectangle, minimum height=0.7cm, minimum width=0.7cm, right=of h] (a) {16};
+\node[draw, rectangle, minimum height=0.7cm, minimum width=0.7cm, right=of a] (b) {4};
+\node[draw, rectangle, minimum height=0.7cm, minimum width=0.7cm, right=of b] (c) {1};
+\node[above=0.1cm of h, font=\footnotesize] {$L.\mathit{cabeca}$};
+
+\draw[->, >=stealth] (h.north east) to[bend left] (a.north west);
+\draw[->, >=stealth] (a.north east) to[bend left] (b.north west);
+\draw[->, >=stealth] (b.north east) to[bend left] (c.north west);
+
+\draw[->, >=stealth] (a.south west) to[bend left] (h.south east);
+\draw[->, >=stealth] (b.south west) to[bend left] (a.south east);
+\draw[->, >=stealth] (c.south west) to[bend left] (b.south east);
+
+\node[left=0.3cm of h, font=\small] {\textsc{nil}};
+\node[right=0.3cm of c, font=\small] {\textsc{nil}};
+\end{tikzpicture}
+\caption{Lista duplamente encadeada com chaves $\langle 9, 16, 4, 1 \rangle$.}
+\end{figure}
+
+\subsection{Busca}
+
+A busca em uma lista encadeada é \emph{linear}: percorremos os nós sequencialmente até encontrar a chave desejada ou chegar ao fim.
+
+\begin{algorithm}[H]
+\caption{\textsc{Lista-Busca}($L, k$)}
+\begin{algorithmic}[1]
+\State $x \gets L.\mathit{cabeca}$
+\While{$x \neq \textsc{nil}$ \textbf{e} $x.\mathit{chave} \neq k$}
+    \State $x \gets x.\mathit{next}$
+\EndWhile
+\State \Return $x$
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Análise.} No pior caso, a busca examina todos os $n$ nós antes de falhar ou de encontrar a chave na última posição. O tempo é \impt{$\Theta(n)$}. Note que, ao contrário do vetor, \ntc{não há busca binária em listas encadeadas} -- a ausência de acesso aleatório torna inviável saltar para a posição central.
+
+\subsection{Inserção}
+
+Inserir um nó no início de uma lista duplamente encadeada exige apenas a manipulação de quatro ponteiros, independentemente do tamanho da lista.
+
+\begin{algorithm}[H]
+\caption{\textsc{Lista-Insere}($L, x$) -- insere $x$ no início de $L$}
+\begin{algorithmic}[1]
+\State $x.\mathit{next} \gets L.\mathit{cabeca}$
+\If{$L.\mathit{cabeca} \neq \textsc{nil}$}
+    \State $L.\mathit{cabeca}.\mathit{prev} \gets x$
+\EndIf
+\State $L.\mathit{cabeca} \gets x$
+\State $x.\mathit{prev} \gets \textsc{nil}$
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Análise.} \impt{Tempo $O(1)$}. Note que isso vale para inserção em uma \ntc{posição conhecida}; inserir mantendo ordenação ou em uma posição arbitrária dada por chave requer busca prévia, totalizando $\Theta(n)$.
+
+\subsection{Remoção}
+
+Para remover um nó $x$, basta religar os ponteiros dos vizinhos, tomando cuidado com os casos de borda (quando $x$ é o primeiro ou o último nó).
+
+\begin{algorithm}[H]
+\caption{\textsc{Lista-Remove}($L, x$) -- remove $x$ de $L$}
+\begin{algorithmic}[1]
+\If{$x.\mathit{prev} \neq \textsc{nil}$}
+    \State $x.\mathit{prev}.\mathit{next} \gets x.\mathit{next}$
+\Else
+    \State $L.\mathit{cabeca} \gets x.\mathit{next}$
+\EndIf
+\If{$x.\mathit{next} \neq \textsc{nil}$}
+    \State $x.\mathit{next}.\mathit{prev} \gets x.\mathit{prev}$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Análise.} A remoção propriamente dita é \impt{$O(1)$}, \emph{dado o ponteiro $x$}. Mas se a entrada for uma \emph{chave}, é necessário primeiro buscar o nó, totalizando $\Theta(n)$ no pior caso.
+
+\subsection{Sentinelas}
+
+O código de \textsc{Lista-Remove} tem oito linhas, das quais cinco são testes para tratar os \impt{casos de borda} (nó na cabeça, nó na cauda). Sentinelas eliminam essas verificações com um truque elegante.
+
+\begin{definition}[Sentinela]
+Uma \emph{sentinela} é um nó \emph{dummy} que não armazena dado relevante, mas serve para simplificar a estrutura. Em uma lista duplamente encadeada \emph{circular com sentinela}, um único nó $L.\mathit{nil}$ fica entre o último e o primeiro elementos:
+\begin{itemize}
+    \item $L.\mathit{nil}.\mathit{next}$ aponta para o primeiro nó real (cabeça);
+    \item $L.\mathit{nil}.\mathit{prev}$ aponta para o último nó real (cauda);
+    \item em uma lista vazia, $L.\mathit{nil}.\mathit{next} = L.\mathit{nil}.\mathit{prev} = L.\mathit{nil}$.
+\end{itemize}
+\end{definition}
+
+Com essa convenção, a remoção fica radicalmente mais simples:
+
+\begin{algorithm}[H]
+\caption{\textsc{Lista-Remove'}($L, x$) -- versão com sentinela}
+\begin{algorithmic}[1]
+\State $x.\mathit{prev}.\mathit{next} \gets x.\mathit{next}$
+\State $x.\mathit{next}.\mathit{prev} \gets x.\mathit{prev}$
+\end{algorithmic}
+\end{algorithm}
+
+Sem testes, sem casos de borda. A inserção também simplifica analogamente.
+
+\begin{remark}[Quando usar sentinelas]
+Sentinelas reduzem constantes ocultas e tornam o código mais limpo, mas \ntc{ocupam memória adicional}. Para muitas listas pequenas, o custo agregado é apreciável. A regra prática: use sentinelas quando a estrutura é uma só e razoavelmente grande, ou quando a clareza do código for crítica.
+\end{remark}
+
+% =====================================================================
+\section{Árvores Enraizadas}
+
+Vetores, listas, pilhas e filas são estruturas \emph{lineares}. \impt{Árvores} são a primeira generalização hierárquica que estudaremos -- uma família de estruturas onde cada elemento pode ter múltiplos sucessores. Sua importância em algoritmos é difícil de exagerar: estão por trás de árvores de busca binária, heaps, árvores B, tries, árvores de decisão, e da própria estrutura de chamadas recursivas.
+
+Da mesma forma que listas encadeadas, árvores são tipicamente implementadas com \impt{nós conectados por ponteiros}. A questão principal é \ntc{quantos ponteiros cada nó precisa}, e a resposta depende do número de filhos.
+
+\subsection{Árvores Binárias}
+
+\begin{definition}[Árvore binária]
+Uma árvore binária $T$ é uma coleção de nós em que cada nó $x$ contém:
+\begin{itemize}
+    \item $x.\mathit{chave}$ -- o dado armazenado;
+    \item $x.p$ -- ponteiro para o nó \emph{pai} (\textsc{nil} se $x$ for a raiz);
+    \item $x.\mathit{esq}$ -- ponteiro para o filho à esquerda (\textsc{nil} se inexistente);
+    \item $x.\mathit{dir}$ -- ponteiro para o filho à direita (\textsc{nil} se inexistente).
+\end{itemize}
+A árvore é acessada pelo atributo $T.\mathit{raiz}$, que aponta para o nó raiz (ou \textsc{nil} se a árvore é vazia).
+\end{definition}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    level distance=1cm,
+    level 1/.style={sibling distance=3cm},
+    level 2/.style={sibling distance=1.5cm},
+    every node/.style={draw, circle, inner sep=1pt, minimum size=0.6cm, font=\small}
+]
+\node {1}
+  child {node {2}
+    child {node {4}}
+    child {node {5}}
+  }
+  child {node {3}
+    child {node {6}}
+    child {node {7}}
+  };
+\end{tikzpicture}
+\caption{Uma árvore binária com 7 nós e altura 2.}
+\end{figure}
+
+\paragraph{Terminologia.}
+\begin{itemize}
+    \item A \impt{raiz} é o único nó sem pai.
+    \item Um nó sem filhos é uma \impt{folha}; os demais são \impt{nós internos}.
+    \item O \impt{nível} (ou \emph{profundidade}) de um nó é o número de arestas no caminho até a raiz. A raiz está no nível $0$.
+    \item A \impt{altura} de um nó é o número de arestas no caminho mais longo até uma folha sob ele. A altura da árvore é a altura da sua raiz.
+    \item Uma árvore binária está \impt{cheia} quando todo nó interno tem exatamente dois filhos.
+    \item Está \impt{completa} quando todos os níveis estão preenchidos, exceto possivelmente o último, que é preenchido da esquerda para a direita.
+\end{itemize}
+
+\begin{theorem}[Limite de nós]
+Uma árvore binária de altura $h$ tem no máximo $2^{h+1} - 1$ nós.
+\end{theorem}
+
+\begin{proof}
+Por indução em $h$. Para $h = 0$, a árvore tem apenas a raiz, isto é, $2^{0+1} - 1 = 1$ nó. Suponha o resultado válido para altura $h-1$: uma árvore com altura $h-1$ tem no máximo $2^{h} - 1$ nós. Uma árvore de altura $h$ é a raiz mais duas subárvores de altura no máximo $h-1$, logo tem no máximo
+\[
+1 + 2(2^h - 1) = 2^{h+1} - 1 \text{ nós.} \qedhere
+\]
+\end{proof}
+
+\begin{corollary}
+Uma árvore binária com $n$ nós tem altura $h \geq \lceil \log_2(n+1) \rceil - 1$. Em particular, \impt{$h = \Omega(\log n)$}.
+\end{corollary}
+
+Esse corolário é a justificativa fundamental para árvores \ntc{balanceadas}: se conseguirmos manter $h = O(\log n)$, operações que percorrem um caminho da raiz a uma folha (busca, inserção, remoção em BSTs) executam em tempo $O(\log n)$.
+
+\paragraph{Percursos.} Os três percursos canônicos de uma árvore binária são definidos recursivamente:
+
+\begin{algorithm}[H]
+\caption{\textsc{Em-Ordem}($x$) -- visita: esquerda, raiz, direita}
+\begin{algorithmic}[1]
+\If{$x \neq \textsc{nil}$}
+    \State \textsc{Em-Ordem}($x.\mathit{esq}$)
+    \State imprime $x.\mathit{chave}$
+    \State \textsc{Em-Ordem}($x.\mathit{dir}$)
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{\textsc{Pré-Ordem}($x$) -- visita: raiz, esquerda, direita}
+\begin{algorithmic}[1]
+\If{$x \neq \textsc{nil}$}
+    \State imprime $x.\mathit{chave}$
+    \State \textsc{Pré-Ordem}($x.\mathit{esq}$)
+    \State \textsc{Pré-Ordem}($x.\mathit{dir}$)
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{\textsc{Pós-Ordem}($x$) -- visita: esquerda, direita, raiz}
+\begin{algorithmic}[1]
+\If{$x \neq \textsc{nil}$}
+    \State \textsc{Pós-Ordem}($x.\mathit{esq}$)
+    \State \textsc{Pós-Ordem}($x.\mathit{dir}$)
+    \State imprime $x.\mathit{chave}$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Análise dos percursos.} Cada nó é visitado exatamente uma vez e cada visita realiza trabalho $O(1)$ (excluindo as chamadas recursivas). Portanto, qualquer dos três percursos executa em \impt{tempo $\Theta(n)$} para uma árvore com $n$ nós.
+
+\begin{example}[Aplicação dos percursos]
+\hfill
+\begin{itemize}
+    \item \emph{Em-ordem} em uma árvore de busca binária imprime as chaves em ordem crescente.
+    \item \emph{Pós-ordem} é usada para liberar a memória de uma árvore (filhos antes do pai) e para avaliação de expressões aritméticas representadas como árvores.
+    \item \emph{Pré-ordem} é natural para serializar a estrutura da árvore.
+\end{itemize}
+\end{example}
+
+\subsection{Árvores Enraizadas com Ramificações Ilimitadas}
+
+Para árvores binárias, dois ponteiros por nó bastam. Mas e quando o número de filhos é arbitrário e variável -- como em árvores de sistema de arquivos, árvores de derivação sintática, ou árvores B com até centenas de filhos por nó? A solução ingênua de manter um vetor de ponteiros de tamanho fixo desperdiça memória; uma alocação dinâmica complica a estrutura.
+
+\paragraph{Representação por filho-esquerdo / irmão-direito.} Existe uma \impt{representação elegante} que usa apenas dois ponteiros por nó, independentemente do número de filhos:
+
+\begin{definition}[Representação filho-esquerdo / irmão-direito]
+Cada nó $x$ contém:
+\begin{itemize}
+    \item $x.p$ -- ponteiro para o pai;
+    \item $x.\mathit{filho\text{-}esq}$ -- ponteiro para o \ntc{filho mais à esquerda} de $x$;
+    \item $x.\mathit{irmao\text{-}dir}$ -- ponteiro para o \ntc{irmão imediatamente à direita} de $x$.
+\end{itemize}
+Se $x$ não tem filhos, $x.\mathit{filho\text{-}esq} = \textsc{nil}$; se $x$ é o filho mais à direita do seu pai, $x.\mathit{irmao\text{-}dir} = \textsc{nil}$.
+\end{definition}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    level distance=1.2cm,
+    sibling distance=1.5cm,
+    every node/.style={draw, circle, inner sep=1pt, minimum size=0.6cm, font=\small}
+]
+\node {A}
+  child {node {B}}
+  child {node {C}
+    child {node {F}}
+    child {node {G}}
+    child {node {H}}
+  }
+  child {node {D}}
+  child {node {E}
+    child {node {I}}
+  };
+\end{tikzpicture}
+\caption{Árvore com ramificação ilimitada. Cada nó pode ter qualquer número de filhos.}
+\end{figure}
+
+A figura acima representa uma árvore onde a raiz $A$ tem 4 filhos e $C$ tem 3 filhos. Na representação filho-esquerdo / irmão-direito, os filhos de cada nó formam uma \impt{lista encadeada simples horizontalmente}, ligada pelo ponteiro \emph{irmão-direito}, e o nó pai mantém apenas o ponteiro para o início dessa lista.
+
+\paragraph{Acesso aos filhos.} Para iterar pelos filhos de um nó $x$:
+\begin{algorithm}[H]
+\caption{\textsc{Percorre-Filhos}($x$)}
+\begin{algorithmic}[1]
+\State $y \gets x.\mathit{filho\text{-}esq}$
+\While{$y \neq \textsc{nil}$}
+    \State \textbf{processa} $y$
+    \State $y \gets y.\mathit{irmao\text{-}dir}$
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+\begin{remark}[Espaço]
+A grande vantagem dessa representação é que o espaço por nó é \impt{constante} -- três ponteiros, independentemente do grau. O preço é que o acesso ao $k$-ésimo filho é $\Theta(k)$ e não $\Theta(1)$, mas em muitos algoritmos isso é irrelevante porque os filhos são processados sequencialmente.
+\end{remark}
+
+\paragraph{Outras representações.} Dependendo da aplicação, outras estratégias são úteis:
+\begin{itemize}
+    \item \impt{Vetor de filhos}: cada nó contém um vetor (ou lista) dinâmico de ponteiros. Acesso ao $k$-ésimo filho em $\Theta(1)$, mas custo de memória adicional.
+    \item \impt{Representação por pais}: cada nó armazena apenas $x.p$. Suficiente para representar a estrutura, mas inviabiliza percursos descendentes. Útil em estruturas \emph{union-find}.
+    \item \impt{Representação implícita} (\emph{array-based}): para árvores binárias completas, podemos armazenar os nós em um vetor $A[1 \ldots n]$ com a convenção de que o pai de $A[i]$ é $A[\lfloor i/2 \rfloor]$ e os filhos são $A[2i]$ e $A[2i+1]$. \ntc{Nenhum ponteiro é necessário} -- essa é a representação usada em \emph{heaps}.
+\end{itemize}
+
+\begin{example}[Heaps]
+Uma fila de prioridades implementada com \emph{heap binário} usa um vetor para representar uma árvore binária quase-completa. Operações de inserção e extração executam em $O(\log n)$ percorrendo um único caminho da raiz a uma folha. Veremos heaps em detalhe na próxima aula.
+\end{example}
+
+\paragraph{Resumo comparativo.} As estruturas estudadas neste capítulo cobrem dois eixos: organização (linear vs.\ hierárquica) e implementação (contígua vs.\ encadeada). A tabela abaixo resume os custos das operações típicas.
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Estrutura} & \textbf{Acesso} & \textbf{Busca} & \textbf{Inserção} & \textbf{Remoção} \\
+\midrule
+Vetor                & $O(1)$         & $O(n)$  & $O(n)$         & $O(n)$ \\
+Pilha (topo)         & $O(1)$         & --      & $O(1)$         & $O(1)$ \\
+Fila (extremidades)  & $O(1)$         & --      & $O(1)$         & $O(1)$ \\
+Lista encadeada      & $O(n)$         & $O(n)$  & $O(1)^\dagger$ & $O(1)^\dagger$ \\
+Árvore binária       & $O(n)$         & $O(n)$  & $O(n)$         & $O(n)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+$^\dagger$ Dado o ponteiro para a posição de inserção/remoção.
+
+A tabela deixa clara a motivação dos próximos capítulos: para obter \impt{busca, inserção e remoção todas em $O(\log n)$}, precisaremos de árvores \emph{balanceadas} -- BSTs balanceadas, árvores rubro-negras, árvores B -- estudadas nas próximas aulas.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}
