@@ -1,0 +1,331 @@
+\documentclass[10pt,a4paper]{extarticle}
+\usepackage{parskip}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\babelprovide[import,main]{brazilian}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[expansion=false]{microtype}
+\usepackage{csquotes}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\definecolor{important}{RGB}{255, 100, 100}
+\definecolor{notice}{RGB}{0, 102, 204}
+
+\newcommand{\impt}[1]{\textcolor{important}{#1}}
+\newcommand{\ntc}[1]{\textcolor{notice}{#1}}
+
+\setlist{nosep}
+\geometry{margin=2cm}
+
+% Python listings
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
+\lstset{
+    language=Python,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red!70!black},
+    showstringspaces=false,
+    frame=single,
+    breaklines=true,
+    inputencoding=utf8
+}
+
+% Convenções CLRS para algpseudocode
+\algrenewcommand\algorithmicwhile{\textbf{enquanto}}
+\algrenewcommand\algorithmicdo{\textbf{faça}}
+\algrenewcommand\algorithmicif{\textbf{se}}
+\algrenewcommand\algorithmicthen{\textbf{então}}
+\algrenewcommand\algorithmicelse{\textbf{senão}}
+\algrenewcommand\algorithmicfor{\textbf{para}}
+\algrenewcommand\algorithmicreturn{\textbf{retorne}}
+\algrenewcommand\algorithmicend{\textbf{fim}}
+
+\title{Lista de Exercícios: Estruturas de Dados Elementares\footnote{Material baseado em Cormen, Leiserson, Rivest e Stein (CLRS), \emph{Introduction to Algorithms}, 4ª ed., MIT Press, 2022, capítulos 10 e 11.}}
+\author{PCC104 -- Projeto e Análise de Algoritmos \\ DECOM -- UFOP}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\paragraph{Instruções.} Esta lista cobre \impt{arrays}, \impt{matrizes}, \impt{pilhas}, \impt{filas}, \impt{listas duplamente encadeadas} e \impt{tabelas hash}. As questões 1 a 16 são teóricas (análise, demonstrações, projeto algorítmico); as questões 17 a 20 envolvem implementação em Python. Em todas as questões, suponha indexação a partir de $1$ (estilo CLRS), salvo menção contrária. Quando solicitada análise assintótica, use notação $O$, $\Theta$ ou $\Omega$, conforme o caso, e justifique a escolha. Marcadores indicam dificuldade: \ntc{($\star$)} introdutória, \ntc{($\star$$\star$)} intermediária, \ntc{($\star$$\star$$\star$)} desafiadora.
+
+\vspace{0.4cm}
+
+\section*{Parte I -- Arrays e Matrizes}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+
+\item \ntc{($\star$)} Considere um array $A[1\mathinner{.\,.} n]$ de inteiros armazenado em memória contígua.
+  \begin{enumerate}[label=(\alph*)]
+    \item Justifique por que o acesso $A[i]$, para qualquer $1 \le i \le n$, é realizado em tempo $\Theta(1)$. Explicite a expressão de endereçamento utilizada.
+    \item Mostre que, se $A$ está \impt{não ordenado}, a busca por um valor $x$ qualquer leva tempo $\Theta(n)$ no pior caso e $\Theta(n)$ no caso médio (sob hipótese de distribuição uniforme da posição de $x$).
+    \item Se $A$ está \impt{ordenado} em ordem crescente, descreva um algoritmo de busca em $O(\log n)$ e justifique informalmente sua corretude e complexidade.
+  \end{enumerate}
+
+\item \ntc{($\star$$\star$)} Seja $A[1\mathinner{.\,.} n, 1\mathinner{.\,.} n]$ uma matriz armazenada em \emph{row-major order}. Considere os dois trechos abaixo, ambos calculando $\sum_{i,j} A[i,j]$:
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Trecho A} & \textbf{Trecho B} \\
+\texttt{para } $i = 1$ \texttt{ até } $n$ & \texttt{para } $j = 1$ \texttt{ até } $n$ \\
+\quad \texttt{para } $j = 1$ \texttt{ até } $n$ & \quad \texttt{para } $i = 1$ \texttt{ até } $n$ \\
+\quad\quad $s \gets s + A[i,j]$ & \quad\quad $s \gets s + A[i,j]$
+\end{tabular}
+\end{center}
+  \begin{enumerate}[label=(\alph*)]
+    \item Ambos têm a mesma complexidade assintótica. Qual?
+    \item Apesar disso, na prática um deles é tipicamente mais rápido. Qual e por quê? Explique em termos de \impt{localidade espacial} e linhas de cache.
+    \item Como sua resposta mudaria se a matriz fosse armazenada em \emph{column-major} (como em Fortran ou Julia)?
+  \end{enumerate}
+
+\item \ntc{($\star$$\star$)} \textbf{Array dinâmico.} Considere um array que suporta a operação \textsc{Append}$(x)$. Quando a capacidade $c$ é atingida, alocamos um novo array de capacidade $2c$, copiamos os elementos e liberamos o antigo.
+  \begin{enumerate}[label=(\alph*)]
+    \item Mostre que, no pior caso, uma única operação \textsc{Append} custa $\Theta(n)$.
+    \item Mostre que, em uma sequência de $n$ operações \textsc{Append} a partir de um array vazio, o custo \impt{total} é $\Theta(n)$, e portanto o custo \impt{amortizado} por operação é $\Theta(1)$. (Use o argumento agregado.)
+    \item Por que a estratégia de crescer somando uma constante (e.g., $c \gets c+10$) leva a custo amortizado $\Theta(n)$ por operação? Justifique.
+  \end{enumerate}
+
+\end{enumerate}
+
+\section*{Parte II -- Pilhas}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, start=4]
+
+\item \ntc{($\star$)} (Adaptado de CLRS 10.1-1) Seja uma pilha $S$ implementada em um array $S[1\mathinner{.\,.} 6]$, inicialmente vazia. Mostre o conteúdo de $S$ e o valor do atributo $S.\textit{top}$ \impt{após cada operação} da sequência:
+\[
+\textsc{Push}(S,4),\ \textsc{Push}(S,1),\ \textsc{Push}(S,3),\ \textsc{Pop}(S),\ \textsc{Push}(S,8),\ \textsc{Pop}(S).
+\]
+Em seguida, indique o resultado retornado por uma operação \textsc{Pop} adicional.
+
+\item \ntc{($\star$$\star$)} (CLRS 10.1-2) Explique como implementar \impt{duas pilhas} $S_1$ e $S_2$ em um único array $A[1\mathinner{.\,.} n]$ de modo que nenhuma das pilhas estoure desde que o número \emph{total} de elementos nas duas seja, no máximo, $n$. As operações \textsc{Push} e \textsc{Pop} devem rodar em $O(1)$. Apresente pseudocódigo e justifique a corretude da detecção de overflow/underflow.
+
+\item \ntc{($\star$$\star$)} \textbf{Verificação de sequência alcançável.} Dada uma sequência de entrada $1, 2, \ldots, n$ que é empilhada em ordem em uma pilha (intercalando \textsc{Push} e \textsc{Pop} arbitrariamente), e dada uma permutação $\pi = \pi_1, \pi_2, \ldots, \pi_n$, descreva um algoritmo em $O(n)$ que decide se $\pi$ pode ser a sequência de saída produzida pelos \textsc{Pop}s. Justifique a complexidade..
+
+\end{enumerate}
+
+\section*{Parte III -- Filas}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, start=7]
+
+\item \ntc{($\star$)} (Adaptado de CLRS 10.1-3) Seja uma fila $Q$ implementada em um array circular $Q[1\mathinner{.\,.} 6]$, inicialmente vazia. Mostre o conteúdo de $Q$ e os atributos $Q.\textit{head}$ e $Q.\textit{tail}$ \impt{após cada operação} da sequência:
+\[
+\textsc{Enqueue}(Q,4),\ \textsc{Enqueue}(Q,1),\ \textsc{Enqueue}(Q,3),\ \textsc{Dequeue}(Q),\ \textsc{Enqueue}(Q,8),\ \textsc{Dequeue}(Q).
+\]
+
+\item \ntc{($\star$$\star$)} (CLRS 10.1-5) Uma \impt{deque} (\emph{double-ended queue}) é uma estrutura que suporta inserção e remoção em ambas as extremidades. Apresente um esquema baseado em array circular para implementar deque com as quatro operações \textsc{PushFront}, \textsc{PushBack}, \textsc{PopFront}, \textsc{PopBack} todas em tempo $O(1)$. Especifique invariantes e condições de \emph{overflow} e \emph{underflow}.
+
+\item \ntc{($\star$$\star$)} \textbf{Fila com duas pilhas.} Mostre como simular uma fila usando duas pilhas $S_1$ e $S_2$ (apenas operações \textsc{Push}, \textsc{Pop} e teste de vazio).
+  \begin{enumerate}[label=(\alph*)]
+    \item Descreva o invariante mantido entre $S_1$ e $S_2$.
+    \item Qual o custo de pior caso de uma operação \textsc{Dequeue}? E o custo \impt{amortizado} por operação em uma sequência de $n$ operações? Justifique usando o método agregado.
+  \end{enumerate}
+
+\end{enumerate}
+
+\section*{Parte IV -- Listas Duplamente Encadeadas}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, start=10]
+
+\item \ntc{($\star$$\star$)} (CLRS 10.2-1 generalizado) Considere uma \impt{lista simplesmente encadeada} $L$ (sem ponteiro para o último nó).
+  \begin{enumerate}[label=(\alph*)]
+    \item A operação \textsc{Insert}, que insere um elemento no início de $L$, pode ser implementada em $O(1)$? Justifique.
+    \item A operação \textsc{Delete}$(L, x)$, dado um \emph{ponteiro} $x$ para o nó a remover, pode ser feita em $O(1)$? Compare com o caso de listas \impt{duplamente} encadeadas e explique a diferença.
+    \item Mostre um caso (em uma lista \emph{simplesmente} encadeada) em que \textsc{Delete} pode ser feito em $O(1)$ usando um truque com cópia de campo. Quando esse truque \emph{falha}?
+  \end{enumerate}
+
+\item \ntc{($\star$$\star$)} \textbf{Sentinelas.} Seja $L$ uma lista duplamente encadeada circular com sentinela $L.\textit{nil}$ (CLRS 10.2, Seção \emph{Sentinelas}). Reescreva os procedimentos \textsc{List-Insert} e \textsc{List-Delete} usando a sentinela. Em seguida, compare-os com as versões sem sentinela:
+  \begin{enumerate}[label=(\alph*)]
+    \item Quantas instruções de teste de condição (\textbf{se}) cada versão precisa?
+    \item Em que situação o uso de sentinela pode ser \impt{desvantajoso}?
+  \end{enumerate}
+
+\item \ntc{($\star$$\star$)} \textbf{Concatenação.} Sejam $L_1$ e $L_2$ duas listas duplamente encadeadas com sentinelas, contendo conjuntos \emph{disjuntos} de elementos. Apresente um algoritmo que concatene $L_2$ ao final de $L_1$ em tempo $O(1)$, descrevendo todas as atualizações de ponteiros necessárias e o estado final dos sentinelas.
+
+\end{enumerate}
+
+\section*{Parte V -- Tabelas Hash}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, start=13]
+
+\item \ntc{($\star$)} \textbf{Endereçamento direto vs.\ hash.}
+  \begin{enumerate}[label=(\alph*)]
+    \item Descreva quando uma \impt{tabela de endereçamento direto} (\emph{direct-address table}) é uma escolha apropriada. Cite as operações \textsc{Search}, \textsc{Insert} e \textsc{Delete} e suas complexidades.
+    \item Suponha que o universo de chaves seja $U = \{0, 1, \ldots, 2^{32}-1\}$, mas que apenas $n = 10^5$ chaves estão de fato armazenadas. Por que o endereçamento direto é \impt{inviável} nesse cenário? Quanto de memória ele consumiria (em ordem de grandeza)?
+    \item Explique como uma tabela hash resolve esse problema e onde surge a possibilidade de \impt{colisões}.
+  \end{enumerate}
+
+\item \ntc{($\star$$\star$)} \textbf{Análise sob encadeamento.} Considere uma tabela hash $T[0\mathinner{.\,.} m-1]$ com resolução de colisões por \impt{encadeamento separado}, $n$ chaves armazenadas e fator de carga $\alpha = n/m$. Assuma a \impt{Hipótese da Hashing Uniforme Simples (SUHA)}.
+  \begin{enumerate}[label=(\alph*)]
+    \item Mostre que o número esperado de comparações em uma busca \impt{mal-sucedida} é $\Theta(1 + \alpha)$.
+    \item Mostre que o número esperado de comparações em uma busca \impt{bem-sucedida} é $\Theta(1 + \alpha)$.
+    \item Conclua: se $n = O(m)$, qual é o tempo esperado das operações \textsc{Search}, \textsc{Insert} e \textsc{Delete}?
+  \end{enumerate}
+
+\item \ntc{($\star$$\star$)} \textbf{Funções hash.} Considere a função de hash pelo método da divisão $h(k) = k \bmod m$.
+  \begin{enumerate}[label=(\alph*)]
+    \item Por que escolhas $m = 2^p$ são geralmente ruins? Mostre o que acontece se $k$ é uma cadeia de bits e $m = 2^p$ (qual parte de $k$ é efetivamente usada?).
+    \item Por que escolhas $m$ próximo de uma \emph{potência de 10} também podem ser ruins se as chaves provêm de identificadores decimais?
+    \item Descreva o \impt{método da multiplicação} $h(k) = \lfloor m\,(kA \bmod 1) \rfloor$, com $0 < A < 1$. Quais escolhas de $A$ Knuth sugere e por quê esse método é menos sensível à escolha de $m$?
+  \end{enumerate}
+
+\item \ntc{($\star$$\star$$\star$)} \textbf{Endereçamento aberto.} Considere uma tabela hash com endereçamento aberto, fator de carga $\alpha = n/m < 1$, e \impt{hashing uniforme} (toda permutação de sondagem é igualmente provável).
+  \begin{enumerate}[label=(\alph*)]
+    \item Mostre que o número esperado de sondagens em uma \impt{busca mal-sucedida} é, no máximo, $1/(1-\alpha)$.
+    \item Conclua que o número esperado de sondagens em uma \textsc{Insert} é também no máximo $1/(1-\alpha)$.
+    \item Compare \impt{sondagem linear}, \impt{sondagem quadrática} e \impt{duplo hashing}. Defina e diferencie \emph{clustering primário} e \emph{clustering secundário}, indicando qual estratégia sofre de qual fenômeno.
+  \end{enumerate}
+
+\end{enumerate}
+
+\section*{Parte VI -- Implementação (Python)}
+
+\paragraph{Observação.} As questões a seguir devem ser entregues como arquivos \texttt{.py} acompanhados de testes unitários (\texttt{unittest} ou \texttt{pytest}). Siga as convenções do CLRS para nomes de procedimentos e mantenha as complexidades assintóticas declaradas.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, start=17]
+
+\item \ntc{($\star$$\star$)} \textbf{Pilha com mínimo em $O(1)$.} Implemente uma classe \texttt{MinStack} que suporta as operações \textsc{Push}$(x)$, \textsc{Pop}$()$, \textsc{Top}$()$ e \textsc{Min}$()$, todas em tempo $O(1)$ no \impt{pior caso}.
+  \begin{enumerate}[label=(\alph*)]
+    \item Descreva a ideia da solução (use uma estrutura auxiliar).
+    \item Argumente por que o espaço total ainda é $O(n)$.
+    \item Inclua casos de teste com pelo menos três sequências distintas, incluindo uma com elementos repetidos.
+  \end{enumerate}
+
+\item \ntc{($\star$$\star$)} \textbf{Lista duplamente encadeada com sentinela.} Implemente uma classe \texttt{DoublyLinkedList} com um nó sentinela $\textit{nil}$ e os procedimentos:
+  \begin{itemize}
+    \item \textsc{List-Search}$(L, k)$ -- busca em $O(n)$.
+    \item \textsc{List-Insert}$(L, x)$ -- inserção no início em $O(1)$.
+    \item \textsc{List-Delete}$(L, x)$ -- remoção em $O(1)$ dado o ponteiro $x$.
+  \end{itemize}
+Compare seu código com a versão \emph{sem} sentinela: quantas linhas de \textbf{if} foram eliminadas?
+
+\item \ntc{($\star$$\star$)} \textbf{Tabela hash com encadeamento.} Implemente \texttt{HashTableChaining} usando \impt{encadeamento separado} (cada \emph{slot} aponta para uma lista encadeada).
+  \begin{enumerate}[label=(\alph*)]
+    \item Use a função hash pelo método da divisão $h(k) = k \bmod m$, com $m$ primo, recebido no construtor.
+    \item Implemente \textsc{Insert}, \textsc{Search}, \textsc{Delete} e um método \texttt{load\_factor()} que retorna $\alpha = n/m$.
+    \item Inclua um método \texttt{rehash()} que duplica $m$ (para o próximo primo $\ge 2m$) e reinsere todas as chaves quando $\alpha > 1{,}0$. Justifique brevemente, em comentário, por que o custo amortizado por \textsc{Insert} permanece $\Theta(1)$.
+  \end{enumerate}
+
+\item \ntc{($\star$$\star$$\star$)} \textbf{LRU Cache.} Implemente uma classe \texttt{LRUCache} com capacidade fixa $C$ que suporta:
+  \begin{itemize}
+    \item \texttt{get(key)} -- retorna o valor associado à chave em tempo $O(1)$, ou $-1$ se ausente.
+    \item \texttt{put(key, value)} -- insere ou atualiza o par em tempo $O(1)$. Quando a cache excede $C$, remove o item \impt{menos recentemente usado}.
+  \end{itemize}
+\emph{Dica:} combine uma tabela hash (mapa de chaves para nós) com uma lista duplamente encadeada (ordem de uso). Justifique, no relatório, por que cada operação é $O(1)$ no pior caso, e descreva o invariante que conecta as duas estruturas.
+
+\end{enumerate}
+
+% \section*{Gabarito}
+
+% \paragraph{1.} 
+% (a) $A[i]$ está em endereço $\textit{base}(A) + (i-1)\cdot s$, onde $s$ é o tamanho de cada elemento. O cálculo é uma soma e uma multiplicação, ambas $\Theta(1)$. (b) No pior caso, $x$ não está em $A$ ou está em $A[n]$: comparamos com todos os $n$ elementos, $\Theta(n)$. No caso médio (uniforme), o número esperado de comparações é $(n+1)/2 = \Theta(n)$. (c) Busca binária: a cada passo, descarte metade do intervalo. Após $k$ passos, restam $n/2^k$ elementos; paramos em $k = \lceil \log_2 n \rceil$, portanto $O(\log n)$.
+
+% \paragraph{2.} (a) Ambos $\Theta(n^2)$. (b) Trecho A é mais rápido em row-major: $A[i,j]$ e $A[i,j+1]$ ocupam endereços consecutivos, então estão na mesma linha de cache. O loop interno em $j$ explora \impt{localidade espacial}: poucos \emph{cache misses}. O Trecho B salta de linha em linha, falhando cache quase sempre se $n$ é grande. (c) Em column-major, a situação se inverte: Trecho B fica mais rápido, pois $A[i,j]$ e $A[i+1,j]$ passam a ser contíguos.
+
+% \paragraph{3.} (a) Quando a capacidade é atingida, copiamos todos os $n$ elementos: $\Theta(n)$. (b) Em $n$ \textsc{Append}s, os \emph{redimensionamentos} ocorrem quando o array tem tamanho $1, 2, 4, \ldots, 2^{\lfloor \log_2 n \rfloor}$. O custo total dos redimensionamentos é $1 + 2 + 4 + \cdots + 2^{\lfloor \log_2 n \rfloor} < 2n = \Theta(n)$. Somando o custo $\Theta(1)$ das demais $n$ inserções, o total é $\Theta(n)$, portanto $\Theta(n)/n = \Theta(1)$ amortizado. (c) Com incremento constante $c$, ocorrem $n/c$ cópias de custo $1, 2c, 3c, \ldots, n$. Soma: $\sum_{i=1}^{n/c} ic = c \cdot \frac{(n/c)(n/c+1)}{2} = \Theta(n^2/c) = \Theta(n^2)$. Amortizado por operação: $\Theta(n)$.
+
+% \paragraph{4.} Estado após cada operação (top = valor de $S.\textit{top}$):
+% \begin{center}
+% \begin{tabular}{lll}
+% \toprule
+% Operação & Conteúdo de $S$ & $S.\textit{top}$ \\
+% \midrule
+% \textsc{Push}(S,4) & $[4]$ & 1 \\
+% \textsc{Push}(S,1) & $[4,1]$ & 2 \\
+% \textsc{Push}(S,3) & $[4,1,3]$ & 3 \\
+% \textsc{Pop}(S) → 3 & $[4,1]$ & 2 \\
+% \textsc{Push}(S,8) & $[4,1,8]$ & 3 \\
+% \textsc{Pop}(S) → 8 & $[4,1]$ & 2 \\
+% \bottomrule
+% \end{tabular}
+% \end{center}
+% Uma \textsc{Pop} adicional retornaria $1$, deixando $S.\textit{top} = 1$.
+
+% \paragraph{5.} Mantenha $S_1$ crescendo da esquerda para a direita (topo em $S_1.\textit{top}$, com $S_1.\textit{top}$ iniciando em $0$) e $S_2$ crescendo da direita para a esquerda (topo em $S_2.\textit{top}$, iniciando em $n+1$). \textsc{Push}$_1$: incrementa $S_1.\textit{top}$ e grava em $A[S_1.\textit{top}]$. \textsc{Push}$_2$: decrementa $S_2.\textit{top}$ e grava em $A[S_2.\textit{top}]$. Overflow ocorre sse $S_1.\textit{top} + 1 = S_2.\textit{top}$. Underflow de $S_1$ sse $S_1.\textit{top} = 0$; de $S_2$ sse $S_2.\textit{top} = n+1$. Cada operação faz comparação e atribuição: $O(1)$.
+
+% \paragraph{6.} Simulamos diretamente: percorra $\pi$ da esquerda para a direita; mantenha um ponteiro $\textit{next}$ na entrada $1,2,\ldots,n$ e uma pilha auxiliar $S$. Para cada $\pi_k$:
+% \begin{itemize}
+%   \item Se $\pi_k$ está no topo de $S$, faça \textsc{Pop}.
+%   \item Caso contrário, faça \textsc{Push} de $\textit{next}, \textit{next}+1, \ldots$ até que $\pi_k$ seja empilhado, depois \textsc{Pop}.
+%   \item Se em algum momento ambos falham (já passamos de $\pi_k$ na entrada), $\pi$ não é alcançável.
+% \end{itemize}
+% Cada elemento é empilhado e desempilhado no máximo uma vez, então o custo é $O(n)$.
+
+% \paragraph{7.} Adotando convenção CLRS (head é o próximo a sair, tail é o próximo a entrar; vazio sse $\textit{head} = \textit{tail}$):
+% \begin{center}
+% \begin{tabular}{lcc}
+% \toprule
+% Operação & Conteúdo (head $\to$ tail) & (head, tail) \\
+% \midrule
+% Inicial & $[\,\;\;\;\;]$ & (1,1) \\
+% \textsc{Enqueue}(Q,4) & $[4]$ & (1,2) \\
+% \textsc{Enqueue}(Q,1) & $[4,1]$ & (1,3) \\
+% \textsc{Enqueue}(Q,3) & $[4,1,3]$ & (1,4) \\
+% \textsc{Dequeue}(Q) → 4 & $[1,3]$ & (2,4) \\
+% \textsc{Enqueue}(Q,8) & $[1,3,8]$ & (2,5) \\
+% \textsc{Dequeue}(Q) → 1 & $[3,8]$ & (3,5) \\
+% \bottomrule
+% \end{tabular}
+% \end{center}
+
+% \paragraph{8.} Use um array circular $Q[1\mathinner{.\,.} n]$, com índices $\textit{head}$ e $\textit{tail}$ módulo $n$. Invariante: itens estão em $Q[\textit{head}], Q[\textit{head}+1], \ldots, Q[\textit{tail}-1]$ (módulo $n$); vazio sse $\textit{head} = \textit{tail}$ e $\textit{size}=0$. Mantenha um contador $\textit{size}$. As quatro operações ajustam $\textit{head}$ ou $\textit{tail}$ em $\pm 1$ (módulo $n$) e atualizam $\textit{size}$: $O(1)$. Overflow sse $\textit{size} = n$; underflow sse $\textit{size} = 0$.
+
+% \paragraph{9.} \textsc{Enqueue}: \textsc{Push} em $S_1$. \textsc{Dequeue}: se $S_2$ vazio, transfira todo $S_1$ para $S_2$ (invertendo a ordem), depois \textsc{Pop} de $S_2$. Caso contrário, apenas \textsc{Pop} de $S_2$. (a) Invariante: o conteúdo da fila, em ordem do mais antigo ao mais novo, é (topo a base de $S_2$) seguido de (base a topo de $S_1$). (b) Pior caso de \textsc{Dequeue}: $\Theta(n)$. Amortizado: cada elemento é empilhado em $S_1$ uma vez e transferido para $S_2$ uma vez (i.e., empilhado e desempilhado de $S_1$, e empilhado em $S_2$), totalizando custo $O(1)$ amortizado por operação.
+
+% \paragraph{10.} (a) Sim: \textsc{Insert} no início é $O(1)$ -- novo nó aponta para o head atual, head $\gets$ novo nó. (b) Em lista \emph{duplamente} encadeada, dado o ponteiro $x$, fazemos $x.\textit{prev}.\textit{next} \gets x.\textit{next}$ e $x.\textit{next}.\textit{prev} \gets x.\textit{prev}$: $O(1)$. Em lista \emph{simplesmente} encadeada, precisamos do nó \emph{anterior} a $x$, que custa $O(n)$ percorrer a partir do head. (c) Truque: copie $x.\textit{next}.\textit{key}$ para $x.\textit{key}$ e remova $x.\textit{next}$ em $O(1)$. Falha se $x$ é o último nó (não há $x.\textit{next}$), ou se outros ponteiros externos apontam para $x.\textit{next}$ (o endereço removido é o sucessor, não $x$).
+
+% \paragraph{11.} Em uma lista duplamente encadeada circular com sentinela $L.\textit{nil}$ (inicialmente $L.\textit{nil}.\textit{next} = L.\textit{nil}.\textit{prev} = L.\textit{nil}$):
+
+% \textsc{List-Insert}$(L,x)$:
+% \begin{algorithmic}[1]
+% \State $x.\textit{next} \gets L.\textit{nil}.\textit{next}$
+% \State $L.\textit{nil}.\textit{next}.\textit{prev} \gets x$
+% \State $L.\textit{nil}.\textit{next} \gets x$
+% \State $x.\textit{prev} \gets L.\textit{nil}$
+% \end{algorithmic}
+
+% \textsc{List-Delete}$(L,x)$:
+% \begin{algorithmic}[1]
+% \State $x.\textit{prev}.\textit{next} \gets x.\textit{next}$
+% \State $x.\textit{next}.\textit{prev} \gets x.\textit{prev}$
+% \end{algorithmic}
+
+% (a) A versão sem sentinela precisa de \textbf{se} para detectar $x = \textit{head}$ ou $x = \textit{tail}$ (e atualizar $\textit{head}/\textit{tail}$), o que dá pelo menos 2 testes em \textsc{Delete} e 1 em \textsc{Insert}. A versão com sentinela tem 0 testes. (b) Desvantagem: memória extra para o sentinela. Em sistemas com muitas listas curtas (e.g., encadeamento em hash table com milhares de slots vazios), o custo cumulativo pode ser significativo.
+
+% \paragraph{12.} Sejam $a = L_1.\textit{nil}$, $b = L_2.\textit{nil}$. Concatenação:
+% \begin{algorithmic}[1]
+% \State $\textit{first}_2 \gets b.\textit{next}$ \Comment{primeiro nó real de $L_2$}
+% \State $\textit{last}_2 \gets b.\textit{prev}$ \Comment{último nó real de $L_2$}
+% \State $\textit{last}_1 \gets a.\textit{prev}$
+% \State $\textit{last}_1.\textit{next} \gets \textit{first}_2$
+% \State $\textit{first}_2.\textit{prev} \gets \textit{last}_1$
+% \State $\textit{last}_2.\textit{next} \gets a$
+% \State $a.\textit{prev} \gets \textit{last}_2$
+% \State $b.\textit{next} \gets b$; $b.\textit{prev} \gets b$ \Comment{$L_2$ fica vazia}
+% \end{algorithmic}
+% Número constante de atribuições: $O(1)$.
+
+% \paragraph{13.} (a) Adequada quando $|U|$ é pequeno e cabe em memória: array $T[0\mathinner{.\,.} |U|-1]$, com $T[k]$ guardando o elemento de chave $k$ (ou \textsc{Nil}). \textsc{Search}, \textsc{Insert}, \textsc{Delete}: $\Theta(1)$ no pior caso. (b) Para $|U| = 2^{32}$ ponteiros de 8 bytes, $\approx 32$ GiB. Inviável apenas para armazenar $10^5$ chaves. (c) Hash usa uma tabela de tamanho $m \ll |U|$ e uma função $h: U \to \{0,\ldots,m-1\}$. Como $|U| > m$, pelo princípio das casas dos pombos, podem existir $k_1 \ne k_2$ com $h(k_1) = h(k_2)$: colisão.
+
+% \paragraph{14.} (a) Sob SUHA, uma chave $k$ não presente é distribuída uniformemente entre os $m$ slots; o tamanho esperado da lista em $T[h(k)]$ é $\alpha = n/m$; portanto, são esperadas $\alpha$ comparações até esgotar a lista, mais $\Theta(1)$ para calcular $h(k)$ e acessar $T[h(k)]$: $\Theta(1 + \alpha)$. (b) Numere as chaves na ordem em que foram inseridas; ao buscar a $i$-ésima, esperamos comparar com as chaves \emph{inseridas depois dela} que caíram no mesmo slot, em média $(n-i)/m$. Tomando a média sobre $i$: $1 + \frac{1}{n}\sum_{i=1}^n (n-i)/m = 1 + \alpha/2 - 1/(2m) = \Theta(1+\alpha)$. (c) Se $n = O(m)$, então $\alpha = O(1)$ e as três operações esperam $\Theta(1)$.
+
+% \paragraph{15.} (a) Com $m = 2^p$, $h(k) = k \bmod m$ retorna os $p$ bits menos significativos de $k$. Isso é ruim porque ignora o restante de $k$: chaves que diferem apenas em bits altos colidem. (b) Se chaves são números em base 10 (e.g., CPFs, RAs) e $m = 10^p$, $h(k)$ é os $p$ últimos dígitos, que frequentemente têm padrões (e.g., dígitos verificadores). (c) $h(k) = \lfloor m\,(kA \bmod 1)\rfloor$ multiplica $k$ por $A$, descarta a parte inteira, e escalona por $m$. Knuth sugere $A = (\sqrt{5}-1)/2 \approx 0{,}6180$ (razão áurea), pois mistura bem as fontes de não-uniformidade da entrada. O valor de $m$ não precisa ser primo, o que dá liberdade de escolha (e.g., $m = 2^p$ permite implementação eficiente).
+
+% \paragraph{16.} (a) Em uma sequência de sondagens de busca mal-sucedida, a probabilidade de a $i$-ésima sondagem ser realizada é a probabilidade de as $i-1$ anteriores terem caído em slots ocupados. Sob hashing uniforme, a $i$-ésima é necessária com probabilidade no máximo $\prod_{j=0}^{i-2}\frac{n-j}{m-j} \le \alpha^{i-1}$. O número esperado de sondagens é, portanto, no máximo $\sum_{i=1}^{\infty} \alpha^{i-1} = \frac{1}{1-\alpha}$. (b) \textsc{Insert} faz uma busca mal-sucedida seguida da gravação: mesmo limite $1/(1-\alpha)$. (c) \emph{Sondagem linear}: $h(k,i) = (h'(k) + i) \bmod m$ -- sofre \impt{clustering primário} (blocos longos de slots consecutivos ocupados crescem rapidamente). \emph{Sondagem quadrática}: $h(k,i) = (h'(k) + c_1 i + c_2 i^2) \bmod m$ -- elimina clustering primário, mas duas chaves com mesmo $h'$ percorrem a mesma sequência: \impt{clustering secundário}. \emph{Duplo hashing}: $h(k,i) = (h_1(k) + i \cdot h_2(k)) \bmod m$ -- a sequência depende de duas funções, eliminando os dois tipos de clustering (na prática, é a melhor aproximação de hashing uniforme).
+
+% \paragraph{17.} Use uma segunda pilha $S_{\min}$. \textsc{Push}$(x)$: empilha $x$ em $S$; empilha em $S_{\min}$ o menor entre $x$ e $\textsc{Top}(S_{\min})$ (ou $x$ se $S_{\min}$ vazia). \textsc{Pop}$()$: \textsc{Pop} em ambas. \textsc{Min}$()$: $\textsc{Top}(S_{\min})$. Como $|S_{\min}| = |S|$, espaço $O(n)$. Todas as operações: $O(1)$.
+
+% \paragraph{18-20.} \emph{Soluções de referência em Python.} Espera-se: 18) sentinela único, sem \texttt{None}-checks nos métodos; 19) rehash dispara quando $\alpha > 1$, próximo primo via crivo ou teste de primalidade simples; 20) o dicionário Python guarda \texttt{key} $\to$ \texttt{node}; o nó está em uma DLL com sentinela; \texttt{get/put} fazem unlink + push\_front em $O(1)$; eviction = remover \texttt{nil.prev} e deletar do dict. As soluções completas estão no repositório da disciplina.
+
+\end{document}
