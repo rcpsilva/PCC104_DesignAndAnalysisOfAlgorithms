@@ -53,279 +53,197 @@
 \algrenewcommand\algorithmicreturn{\textbf{retorne}}
 \algrenewcommand\algorithmicend{\textbf{fim}}
 
-\title{Lista de Exercícios: Estruturas de Dados Elementares\footnote{Material baseado em Cormen, Leiserson, Rivest e Stein (CLRS), \emph{Introduction to Algorithms}, 4ª ed., MIT Press, 2022, capítulos 10 e 11.}}
+\title{Lista de Exercícios: Árvores Binárias de Busca e Árvores Rubro-Negras\footnote{Material baseado em Cormen, Leiserson, Rivest e Stein (CLRS), \emph{Introduction to Algorithms}, 4ª ed., MIT Press, 2022, capítulos 12 e 13.}}
 \author{PCC104 -- Projeto e Análise de Algoritmos \\ DECOM -- UFOP}
 \date{\today}
 
 \begin{document}
 \maketitle
 
-\paragraph{Instruções.} Esta lista cobre \impt{arrays}, \impt{matrizes}, \impt{pilhas}, \impt{filas}, \impt{listas duplamente encadeadas} e \impt{tabelas hash}. As questões 1 a 16 são teóricas (análise, demonstrações, projeto algorítmico); as questões 17 a 20 envolvem implementação em Python. Em todas as questões, suponha indexação a partir de $1$ (estilo CLRS), salvo menção contrária. Quando solicitada análise assintótica, use notação $O$, $\Theta$ ou $\Omega$, conforme o caso, e justifique a escolha. Marcadores indicam dificuldade: \ntc{($\star$)} introdutória, \ntc{($\star$$\star$)} intermediária, \ntc{($\star$$\star$$\star$)} desafiadora.
+\paragraph{Instruções.} Esta lista cobre \impt{árvores binárias de busca (ABB)} e \impt{árvores rubro-negras (ARN)}. As questões 1 a 16 são teóricas (análise, demonstrações, projeto algorítmico); as questões 17 a 20 envolvem implementação em Python. Em todas as questões, denote por $n$ o número de chaves armazenadas e por $h$ a altura da árvore; nas árvores rubro-negras, adote o nó sentinela $T.\textit{nil}$ (preto) como folha, no estilo CLRS. Quando solicitada análise assintótica, use notação $O$, $\Theta$ ou $\Omega$, conforme o caso, e justifique a escolha. Marcadores indicam dificuldade: \ntc{($\star$)} introdutória, \ntc{($\star$$\star$)} intermediária, \ntc{($\star$$\star$$\star$)} desafiadora.
 
 \vspace{0.4cm}
 
-\section*{Parte I -- Arrays e Matrizes}
+\section*{Parte I -- ABB: Propriedade e Percursos}
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
 
-\item \ntc{($\star$)} Considere um array $A[1\mathinner{.\,.} n]$ de inteiros armazenado em memória contígua.
+\item \ntc{($\star$)} (Adaptado de CLRS 12.1-1) Considere o conjunto de chaves $\{1, 4, 5, 10, 16, 17, 21\}$.
   \begin{enumerate}[label=(\alph*)]
-    \item Justifique por que o acesso $A[i]$, para qualquer $1 \le i \le n$, é realizado em tempo $\Theta(1)$. Explicite a expressão de endereçamento utilizada.
-    \item Mostre que, se $A$ está \impt{não ordenado}, a busca por um valor $x$ qualquer leva tempo $\Theta(n)$ no pior caso e $\Theta(n)$ no caso médio (sob hipótese de distribuição uniforme da posição de $x$).
-    \item Se $A$ está \impt{ordenado} em ordem crescente, descreva um algoritmo de busca em $O(\log n)$ e justifique informalmente sua corretude e complexidade.
+    \item Enuncie formalmente a \impt{propriedade de árvore binária de busca} e explique por que ela deve valer para \emph{todos} os descendentes de um nó, e não apenas para seus filhos imediatos.
+    \item Desenhe duas ABBs sobre essas chaves: uma de altura $2$ e uma de altura $6$.
+    \item Quantas ABBs \emph{estruturalmente distintas} existem sobre um conjunto de $3$ chaves distintas? Desenhe todas elas.
   \end{enumerate}
 
-\item \ntc{($\star$$\star$)} Seja $A[1\mathinner{.\,.} n, 1\mathinner{.\,.} n]$ uma matriz armazenada em \emph{row-major order}. Considere os dois trechos abaixo, ambos calculando $\sum_{i,j} A[i,j]$:
-\begin{center}
-\begin{tabular}{ll}
-\textbf{Trecho A} & \textbf{Trecho B} \\
-\texttt{para } $i = 1$ \texttt{ até } $n$ & \texttt{para } $j = 1$ \texttt{ até } $n$ \\
-\quad \texttt{para } $j = 1$ \texttt{ até } $n$ & \quad \texttt{para } $i = 1$ \texttt{ até } $n$ \\
-\quad\quad $s \gets s + A[i,j]$ & \quad\quad $s \gets s + A[i,j]$
-\end{tabular}
-\end{center}
+\item \ntc{($\star$$\star$)} \textbf{Percurso em ordem.}
   \begin{enumerate}[label=(\alph*)]
-    \item Ambos têm a mesma complexidade assintótica. Qual?
-    \item Apesar disso, na prática um deles é tipicamente mais rápido. Qual e por quê? Explique em termos de \impt{localidade espacial} e linhas de cache.
-    \item Como sua resposta mudaria se a matriz fosse armazenada em \emph{column-major} (como em Fortran ou Julia)?
+    \item Apresente o pseudocódigo de \textsc{Inorder-Tree-Walk} e demonstre, por indução no tamanho da subárvore, que ele imprime as chaves em ordem crescente.
+    \item Mostre que o percurso de uma árvore com $n$ nós leva tempo $\Theta(n)$.
+    \item (CLRS 12.1-2) Qual a diferença entre a propriedade de ABB e a propriedade de \impt{min-heap}? A propriedade de min-heap permite imprimir as $n$ chaves em ordem crescente em tempo $O(n)$? Justifique usando o limite inferior da ordenação por comparações.
   \end{enumerate}
 
-\item \ntc{($\star$$\star$)} \textbf{Array dinâmico.} Considere um array que suporta a operação \textsc{Append}$(x)$. Quando a capacidade $c$ é atingida, alocamos um novo array de capacidade $2c$, copiamos os elementos e liberamos o antigo.
-  \begin{enumerate}[label=(\alph*)]
-    \item Mostre que, no pior caso, uma única operação \textsc{Append} custa $\Theta(n)$.
-    \item Mostre que, em uma sequência de $n$ operações \textsc{Append} a partir de um array vazio, o custo \impt{total} é $\Theta(n)$, e portanto o custo \impt{amortizado} por operação é $\Theta(1)$. (Use o argumento agregado.)
-    \item Por que a estratégia de crescer somando uma constante (e.g., $c \gets c+10$) leva a custo amortizado $\Theta(n)$ por operação? Justifique.
-  \end{enumerate}
+\item \ntc{($\star$$\star$)} (CLRS 12.2-4) Um colega afirma o seguinte: se a busca por uma chave $k$ em uma ABB termina em uma folha, então as chaves da árvore podem ser particionadas em três conjuntos: $A$ (chaves à esquerda do caminho de busca), $B$ (chaves no caminho de busca) e $C$ (chaves à direita do caminho), de modo que $a \le b \le c$ para quaisquer $a \in A$, $b \in B$ e $c \in C$. Exiba um \impt{contraexemplo mínimo} para essa afirmação, indicando explicitamente o caminho de busca e os conjuntos $A$, $B$ e $C$.
 
 \end{enumerate}
 
-\section*{Parte II -- Pilhas}
+\section*{Parte II -- ABB: Consultas e Atualizações}
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, start=4]
 
-\item \ntc{($\star$)} (Adaptado de CLRS 10.1-1) Seja uma pilha $S$ implementada em um array $S[1\mathinner{.\,.} 6]$, inicialmente vazia. Mostre o conteúdo de $S$ e o valor do atributo $S.\textit{top}$ \impt{após cada operação} da sequência:
+\item \ntc{($\star$)} A partir de uma árvore vazia, insira as chaves
 \[
-\textsc{Push}(S,4),\ \textsc{Push}(S,1),\ \textsc{Push}(S,3),\ \textsc{Pop}(S),\ \textsc{Push}(S,8),\ \textsc{Pop}(S).
+41,\ 22,\ 64,\ 10,\ 30,\ 55,\ 70,\ 28
 \]
-Em seguida, indique o resultado retornado por uma operação \textsc{Pop} adicional.
+nessa ordem, usando \textsc{Tree-Insert}. Mostre a árvore \impt{após cada inserção}. Em seguida, na árvore final, destaque a sequência de nós visitados: (i) na busca bem-sucedida por $28$; (ii) na busca mal-sucedida por $56$.
 
-\item \ntc{($\star$$\star$)} (CLRS 10.1-2) Explique como implementar \impt{duas pilhas} $S_1$ e $S_2$ em um único array $A[1\mathinner{.\,.} n]$ de modo que nenhuma das pilhas estoure desde que o número \emph{total} de elementos nas duas seja, no máximo, $n$. As operações \textsc{Push} e \textsc{Pop} devem rodar em $O(1)$. Apresente pseudocódigo e justifique a corretude da detecção de overflow/underflow.
+\item \ntc{($\star$$\star$)} \textbf{Mínimo, máximo e sucessor.}
+  \begin{enumerate}[label=(\alph*)]
+    \item Apresente o pseudocódigo de \textsc{Tree-Minimum} e \textsc{Tree-Maximum} e justifique o custo $O(h)$.
+    \item Apresente \textsc{Tree-Successor}, distinguindo os dois casos ($x$ possui ou não filho direito). Justifique a corretude do caso em que $x$ \emph{não} possui filho direito.
+    \item (CLRS 12.2-5) Mostre que, se um nó de uma ABB tem dois filhos, então seu sucessor não tem filho esquerdo e seu predecessor não tem filho direito.
+  \end{enumerate}
 
-\item \ntc{($\star$$\star$)} \textbf{Verificação de sequência alcançável.} Dada uma sequência de entrada $1, 2, \ldots, n$ que é empilhada em ordem em uma pilha (intercalando \textsc{Push} e \textsc{Pop} arbitrariamente), e dada uma permutação $\pi = \pi_1, \pi_2, \ldots, \pi_n$, descreva um algoritmo em $O(n)$ que decide se $\pi$ pode ser a sequência de saída produzida pelos \textsc{Pop}s. Justifique a complexidade..
+\item \ntc{($\star$$\star$)} \textbf{Remoção.}
+  \begin{enumerate}[label=(\alph*)]
+    \item Descreva os três casos de \textsc{Tree-Delete} (nó sem filhos, com um filho, com dois filhos) e o papel do procedimento auxiliar \textsc{Transplant}.
+    \item Na árvore final da questão 4, mostre o resultado de remover a chave $22$ e, em seguida, a chave $41$, indicando em cada remoção qual caso foi aplicado.
+    \item No caso de dois filhos, a chave removida é substituída pelo seu \impt{sucessor}. Justifique por que essa substituição preserva a propriedade de ABB.
+  \end{enumerate}
 
 \end{enumerate}
 
-\section*{Parte III -- Filas}
+\section*{Parte III -- ABB: Altura e Desempenho}
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, start=7]
 
-\item \ntc{($\star$)} (Adaptado de CLRS 10.1-3) Seja uma fila $Q$ implementada em um array circular $Q[1\mathinner{.\,.} 6]$, inicialmente vazia. Mostre o conteúdo de $Q$ e os atributos $Q.\textit{head}$ e $Q.\textit{tail}$ \impt{após cada operação} da sequência:
-\[
-\textsc{Enqueue}(Q,4),\ \textsc{Enqueue}(Q,1),\ \textsc{Enqueue}(Q,3),\ \textsc{Dequeue}(Q),\ \textsc{Enqueue}(Q,8),\ \textsc{Dequeue}(Q).
-\]
-
-\item \ntc{($\star$$\star$)} (CLRS 10.1-5) Uma \impt{deque} (\emph{double-ended queue}) é uma estrutura que suporta inserção e remoção em ambas as extremidades. Apresente um esquema baseado em array circular para implementar deque com as quatro operações \textsc{PushFront}, \textsc{PushBack}, \textsc{PopFront}, \textsc{PopBack} todas em tempo $O(1)$. Especifique invariantes e condições de \emph{overflow} e \emph{underflow}.
-
-\item \ntc{($\star$$\star$)} \textbf{Fila com duas pilhas.} Mostre como simular uma fila usando duas pilhas $S_1$ e $S_2$ (apenas operações \textsc{Push}, \textsc{Pop} e teste de vazio).
+\item \ntc{($\star$$\star$)} \textbf{Tudo depende da altura.}
   \begin{enumerate}[label=(\alph*)]
-    \item Descreva o invariante mantido entre $S_1$ e $S_2$.
-    \item Qual o custo de pior caso de uma operação \textsc{Dequeue}? E o custo \impt{amortizado} por operação em uma sequência de $n$ operações? Justifique usando o método agregado.
+    \item Argumente que \textsc{Search}, \textsc{Minimum}, \textsc{Maximum}, \textsc{Successor}, \textsc{Insert} e \textsc{Delete} custam, todas, $O(h)$.
+    \item Quais são a altura \impt{mínima} e a altura \impt{máxima} de uma ABB com $n$ chaves? Exiba, para cada extremo, uma ordem de inserção que o produza.
+    \item Conclua a complexidade de pior caso dessas operações quando as chaves são inseridas em \impt{ordem crescente}.
+  \end{enumerate}
+
+
+\item \ntc{($\star$$\star$)} \textbf{Tree sort.} Considere o algoritmo de ordenação que insere as $n$ chaves em uma ABB inicialmente vazia e, em seguida, executa \textsc{Inorder-Tree-Walk}.
+  \begin{enumerate}[label=(\alph*)]
+    \item Qual é o custo de pior caso do algoritmo? Que entrada o produz?
+    \item O CLRS mostra que uma ABB \impt{construída aleatoriamente} (chaves inseridas em ordem uniformemente aleatória) tem altura esperada $O(\log n)$. Sob essa hipótese, qual é o custo esperado do \emph{tree sort}?
+    \item Relacione sua resposta com o limite inferior $\Omega(n \log n)$ da ordenação por comparações: o \emph{tree sort} poderia ter custo esperado $o(n \log n)$? Justifique.
   \end{enumerate}
 
 \end{enumerate}
 
-\section*{Parte IV -- Listas Duplamente Encadeadas}
+\section*{Parte IV -- Árvores Rubro-Negras: Propriedades}
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, start=10]
 
-\item \ntc{($\star$$\star$)} (CLRS 10.2-1 generalizado) Considere uma \impt{lista simplesmente encadeada} $L$ (sem ponteiro para o último nó).
+\item \ntc{($\star$)} \textbf{As cinco propriedades.}
   \begin{enumerate}[label=(\alph*)]
-    \item A operação \textsc{Insert}, que insere um elemento no início de $L$, pode ser implementada em $O(1)$? Justifique.
-    \item A operação \textsc{Delete}$(L, x)$, dado um \emph{ponteiro} $x$ para o nó a remover, pode ser feita em $O(1)$? Compare com o caso de listas \impt{duplamente} encadeadas e explique a diferença.
-    \item Mostre um caso (em uma lista \emph{simplesmente} encadeada) em que \textsc{Delete} pode ser feito em $O(1)$ usando um truque com cópia de campo. Quando esse truque \emph{falha}?
+    \item Enuncie as cinco propriedades rubro-negras.
+    \item Defina a \impt{altura negra} $\textit{bh}(x)$ de um nó $x$.
   \end{enumerate}
 
-\item \ntc{($\star$$\star$)} \textbf{Sentinelas.} Seja $L$ uma lista duplamente encadeada circular com sentinela $L.\textit{nil}$ (CLRS 10.2, Seção \emph{Sentinelas}). Reescreva os procedimentos \textsc{List-Insert} e \textsc{List-Delete} usando a sentinela. Em seguida, compare-os com as versões sem sentinela:
+\item \ntc{($\star$$\star$)} \textbf{Altura logarítmica (Lema 13.1).}
   \begin{enumerate}[label=(\alph*)]
-    \item Quantas instruções de teste de condição (\textbf{se}) cada versão precisa?
-    \item Em que situação o uso de sentinela pode ser \impt{desvantajoso}?
+    \item Prove, por indução, que a subárvore enraizada em um nó $x$ contém pelo menos $2^{\textit{bh}(x)} - 1$ nós internos.
+    \item Usando o item (a) e a propriedade que limita os nós vermelhos, conclua que uma árvore rubro-negra com $n$ nós internos tem altura $h \le 2\lg(n+1)$.
+    \item Conclua a complexidade de \textsc{Search}, \textsc{Minimum}, \textsc{Maximum} e \textsc{Successor} em árvores rubro-negras.
   \end{enumerate}
-
-\item \ntc{($\star$$\star$)} \textbf{Concatenação.} Sejam $L_1$ e $L_2$ duas listas duplamente encadeadas com sentinelas, contendo conjuntos \emph{disjuntos} de elementos. Apresente um algoritmo que concatene $L_2$ ao final de $L_1$ em tempo $O(1)$, descrevendo todas as atualizações de ponteiros necessárias e o estado final dos sentinelas.
 
 \end{enumerate}
 
-\section*{Parte V -- Tabelas Hash}
+\section*{Parte V -- Rotações, Inserção e Remoção}
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, start=13]
 
-\item \ntc{($\star$)} \textbf{Endereçamento direto vs.\ hash.}
+\item \ntc{($\star$)} \textbf{Rotações.}
   \begin{enumerate}[label=(\alph*)]
-    \item Descreva quando uma \impt{tabela de endereçamento direto} (\emph{direct-address table}) é uma escolha apropriada. Cite as operações \textsc{Search}, \textsc{Insert} e \textsc{Delete} e suas complexidades.
-    \item Suponha que o universo de chaves seja $U = \{0, 1, \ldots, 2^{32}-1\}$, mas que apenas $n = 10^5$ chaves estão de fato armazenadas. Por que o endereçamento direto é \impt{inviável} nesse cenário? Quanto de memória ele consumiria (em ordem de grandeza)?
-    \item Explique como uma tabela hash resolve esse problema e onde surge a possibilidade de \impt{colisões}.
+    \item Apresente o pseudocódigo de \textsc{Left-Rotate}$(T, x)$, indicando quantos ponteiros são atualizados e qual o custo da operação.
+    \item Mostre que a rotação \impt{preserva a propriedade de ABB}. \emph{Sugestão: verifique que o percurso em ordem não se altera.}
   \end{enumerate}
 
-\item \ntc{($\star$$\star$)} \textbf{Análise sob encadeamento.} Considere uma tabela hash $T[0\mathinner{.\,.} m-1]$ com resolução de colisões por \impt{encadeamento separado}, $n$ chaves armazenadas e fator de carga $\alpha = n/m$. Assuma a \impt{Hipótese da Hashing Uniforme Simples (SUHA)}.
-  \begin{enumerate}[label=(\alph*)]
-    \item Mostre que o número esperado de comparações em uma busca \impt{mal-sucedida} é $\Theta(1 + \alpha)$.
-    \item Mostre que o número esperado de comparações em uma busca \impt{bem-sucedida} é $\Theta(1 + \alpha)$.
-    \item Conclua: se $n = O(m)$, qual é o tempo esperado das operações \textsc{Search}, \textsc{Insert} e \textsc{Delete}?
-  \end{enumerate}
+\item \ntc{($\star$$\star$)} (CLRS 13.3-2) A partir de uma árvore rubro-negra inicialmente vazia, insira as chaves
+\[
+41,\ 38,\ 31,\ 12,\ 19,\ 8
+\]
+nessa ordem, usando \textsc{RB-Insert}. Mostre a árvore (\impt{com as cores}) após cada inserção, indicando, quando o \textsc{RB-Insert-Fixup} for acionado, quais casos foram aplicados.
 
-\item \ntc{($\star$$\star$)} \textbf{Funções hash.} Considere a função de hash pelo método da divisão $h(k) = k \bmod m$.
-  \begin{enumerate}[label=(\alph*)]
-    \item Por que escolhas $m = 2^p$ são geralmente ruins? Mostre o que acontece se $k$ é uma cadeia de bits e $m = 2^p$ (qual parte de $k$ é efetivamente usada?).
-    \item Por que escolhas $m$ próximo de uma \emph{potência de 10} também podem ser ruins se as chaves provêm de identificadores decimais?
-    \item Descreva o \impt{método da multiplicação} $h(k) = \lfloor m\,(kA \bmod 1) \rfloor$, com $0 < A < 1$. Quais escolhas de $A$ Knuth sugere e por quê esse método é menos sensível à escolha de $m$?
-  \end{enumerate}
+\item Quais propriedades rubro-negras podem ser violadas imediatamente após a inserção de um nó? Por que o nó inserido é colorido de \impt{vermelho}, e não de preto?
 
-\item \ntc{($\star$$\star$$\star$)} \textbf{Endereçamento aberto.} Considere uma tabela hash com endereçamento aberto, fator de carga $\alpha = n/m < 1$, e \impt{hashing uniforme} (toda permutação de sondagem é igualmente provável).
+\item \ntc{($\star$$\star$$\star$)} \textbf{Remoção em árvores rubro-negras.}
   \begin{enumerate}[label=(\alph*)]
-    \item Mostre que o número esperado de sondagens em uma \impt{busca mal-sucedida} é, no máximo, $1/(1-\alpha)$.
-    \item Conclua que o número esperado de sondagens em uma \textsc{Insert} é também no máximo $1/(1-\alpha)$.
-    \item Compare \impt{sondagem linear}, \impt{sondagem quadrática} e \impt{duplo hashing}. Defina e diferencie \emph{clustering primário} e \emph{clustering secundário}, indicando qual estratégia sofre de qual fenômeno.
+    \item Explique o conceito de \impt{preto extra}: por que a propriedade 5 é violada quando o nó removido (ou movido) é preto, e como o ``preto extra'' depositado sobre um nó $x$ restaura essa propriedade temporariamente, à custa da violação da propriedade 1?
+    \item Descreva os quatro casos do \textsc{RB-Delete-Fixup}, em função da cor do irmão $w$ de $x$ e das cores dos filhos de $w$. Qual caso encerra o laço imediatamente?
+    \item Mostre que ocorrem \impt{no máximo três rotações} e que o custo total do \emph{fixup} é $O(\log n)$. Compare com o \textsc{RB-Insert-Fixup}.
   \end{enumerate}
 
 \end{enumerate}
 
 \section*{Parte VI -- Implementação (Python)}
 
-\paragraph{Observação.} As questões a seguir devem ser entregues como arquivos \texttt{.py} acompanhados de testes unitários (\texttt{unittest} ou \texttt{pytest}). Siga as convenções do CLRS para nomes de procedimentos e mantenha as complexidades assintóticas declaradas.
+\paragraph{Observação.} As questões a seguir devem ser entregues no dia da prova.
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, start=17]
 
-\item \ntc{($\star$$\star$)} \textbf{Pilha com mínimo em $O(1)$.} Implemente uma classe \texttt{MinStack} que suporta as operações \textsc{Push}$(x)$, \textsc{Pop}$()$, \textsc{Top}$()$ e \textsc{Min}$()$, todas em tempo $O(1)$ no \impt{pior caso}.
-  \begin{enumerate}[label=(\alph*)]
-    \item Descreva a ideia da solução (use uma estrutura auxiliar).
-    \item Argumente por que o espaço total ainda é $O(n)$.
-    \item Inclua casos de teste com pelo menos três sequências distintas, incluindo uma com elementos repetidos.
-  \end{enumerate}
-
-\item \ntc{($\star$$\star$)} \textbf{Lista duplamente encadeada com sentinela.} Implemente uma classe \texttt{DoublyLinkedList} com um nó sentinela $\textit{nil}$ e os procedimentos:
+\item \ntc{($\star$$\star$)} \textbf{ABB básica.} Implemente uma classe \texttt{BST} com os procedimentos:
   \begin{itemize}
-    \item \textsc{List-Search}$(L, k)$ -- busca em $O(n)$.
-    \item \textsc{List-Insert}$(L, x)$ -- inserção no início em $O(1)$.
-    \item \textsc{List-Delete}$(L, x)$ -- remoção em $O(1)$ dado o ponteiro $x$.
+    \item \textsc{Tree-Insert}$(T, z)$ -- inserção em $O(h)$.
+    \item \textsc{Tree-Search}$(x, k)$ -- em duas versões: \impt{recursiva} e \impt{iterativa}.
+    \item \textsc{Tree-Minimum}, \textsc{Tree-Maximum} e \textsc{Tree-Successor} -- todas em $O(h)$.
+    \item \texttt{inorder()} -- retorna a lista de chaves em ordem crescente em $\Theta(n)$.
   \end{itemize}
-Compare seu código com a versão \emph{sem} sentinela: quantas linhas de \textbf{if} foram eliminadas?
+Inclua casos de teste com pelo menos três sequências de inserção distintas, incluindo uma sequência \impt{já ordenada}.
 
-\item \ntc{($\star$$\star$)} \textbf{Tabela hash com encadeamento.} Implemente \texttt{HashTableChaining} usando \impt{encadeamento separado} (cada \emph{slot} aponta para uma lista encadeada).
+\item \ntc{($\star$$\star$)} \textbf{Remoção com \textsc{Transplant}.} Estenda a classe \texttt{BST} com \textsc{Transplant}$(T, u, v)$ e \textsc{Tree-Delete}$(T, z)$.
   \begin{enumerate}[label=(\alph*)]
-    \item Use a função hash pelo método da divisão $h(k) = k \bmod m$, com $m$ primo, recebido no construtor.
-    \item Implemente \textsc{Insert}, \textsc{Search}, \textsc{Delete} e um método \texttt{load\_factor()} que retorna $\alpha = n/m$.
-    \item Inclua um método \texttt{rehash()} que duplica $m$ (para o próximo primo $\ge 2m$) e reinsere todas as chaves quando $\alpha > 1{,}0$. Justifique brevemente, em comentário, por que o custo amortizado por \textsc{Insert} permanece $\Theta(1)$.
+    \item Seus testes devem cobrir explicitamente os \impt{três casos} de remoção (sem filhos, um filho, dois filhos), incluindo a remoção da raiz.
+    \item Após cada remoção, valide a árvore comparando \texttt{inorder()} com a lista esperada.
   \end{enumerate}
-
-\item \ntc{($\star$$\star$$\star$)} \textbf{LRU Cache.} Implemente uma classe \texttt{LRUCache} com capacidade fixa $C$ que suporta:
-  \begin{itemize}
-    \item \texttt{get(key)} -- retorna o valor associado à chave em tempo $O(1)$, ou $-1$ se ausente.
-    \item \texttt{put(key, value)} -- insere ou atualiza o par em tempo $O(1)$. Quando a cache excede $C$, remove o item \impt{menos recentemente usado}.
-  \end{itemize}
-\emph{Dica:} combine uma tabela hash (mapa de chaves para nós) com uma lista duplamente encadeada (ordem de uso). Justifique, no relatório, por que cada operação é $O(1)$ no pior caso, e descreva o invariante que conecta as duas estruturas.
 
 \end{enumerate}
 
 % \section*{Gabarito}
 
-% \paragraph{1.} 
-% (a) $A[i]$ está em endereço $\textit{base}(A) + (i-1)\cdot s$, onde $s$ é o tamanho de cada elemento. O cálculo é uma soma e uma multiplicação, ambas $\Theta(1)$. (b) No pior caso, $x$ não está em $A$ ou está em $A[n]$: comparamos com todos os $n$ elementos, $\Theta(n)$. No caso médio (uniforme), o número esperado de comparações é $(n+1)/2 = \Theta(n)$. (c) Busca binária: a cada passo, descarte metade do intervalo. Após $k$ passos, restam $n/2^k$ elementos; paramos em $k = \lceil \log_2 n \rceil$, portanto $O(\log n)$.
+% \paragraph{1.} (a) Para todo nó $x$: se $y$ está na subárvore \emph{esquerda} de $x$, então $y.\textit{key} \le x.\textit{key}$; se está na subárvore \emph{direita}, $y.\textit{key} \ge x.\textit{key}$. Restringir aos filhos imediatos é insuficiente: um descendente distante da subárvore esquerda poderia exceder $x.\textit{key}$ sem violar nenhum teste local (cf.\ questão 8a). (b) Altura 2: raiz 10, filhos 4 e 17, netos 1, 5, 16, 21 (árvore completa). Altura 6: cadeia obtida por inserção em ordem crescente $1,4,5,10,16,17,21$. (c) $C_3 = 5$ formas (número de Catalan): as duas cadeias monotônicas, as duas em ``zigue-zague'' e a árvore balanceada com raiz na chave mediana.
 
-% \paragraph{2.} (a) Ambos $\Theta(n^2)$. (b) Trecho A é mais rápido em row-major: $A[i,j]$ e $A[i,j+1]$ ocupam endereços consecutivos, então estão na mesma linha de cache. O loop interno em $j$ explora \impt{localidade espacial}: poucos \emph{cache misses}. O Trecho B salta de linha em linha, falhando cache quase sempre se $n$ é grande. (c) Em column-major, a situação se inverte: Trecho B fica mais rápido, pois $A[i,j]$ e $A[i+1,j]$ passam a ser contíguos.
+% \paragraph{2.} (a) \textsc{Inorder}$(x)$: se $x \ne$ \textsc{Nil}: \textsc{Inorder}$(x.\textit{left})$; imprime $x.\textit{key}$; \textsc{Inorder}$(x.\textit{right})$. Indução no tamanho $n$ da subárvore: para $n = 0$ nada é impresso. Para $n \ge 1$, por hipótese de indução as subárvores esquerda e direita são impressas em ordem; pela propriedade de ABB, toda chave da esquerda é $\le x.\textit{key} \le$ toda chave da direita; logo a concatenação é ordenada. (b) Cada nó é visitado exatamente uma vez com trabalho $O(1)$ fora das chamadas recursivas; formalmente, $T(n) \le (c+d)n + c$ por substituição (CLRS, Teorema 12.1), e $T(n) = \Omega(n)$ pois todos os nós são impressos. (c) Min-heap exige apenas $x.\textit{key} \le$ chaves dos \emph{filhos}; nada ordena as subárvores entre si. Imprimir em ordem a partir de um heap em $O(n)$ daria uma ordenação por comparações em $O(n)$ (construir heap custa $O(n)$), contradizendo o limite inferior $\Omega(n \log n)$. Logo, não é possível.
 
-% \paragraph{3.} (a) Quando a capacidade é atingida, copiamos todos os $n$ elementos: $\Theta(n)$. (b) Em $n$ \textsc{Append}s, os \emph{redimensionamentos} ocorrem quando o array tem tamanho $1, 2, 4, \ldots, 2^{\lfloor \log_2 n \rfloor}$. O custo total dos redimensionamentos é $1 + 2 + 4 + \cdots + 2^{\lfloor \log_2 n \rfloor} < 2n = \Theta(n)$. Somando o custo $\Theta(1)$ das demais $n$ inserções, o total é $\Theta(n)$, portanto $\Theta(n)/n = \Theta(1)$ amortizado. (c) Com incremento constante $c$, ocorrem $n/c$ cópias de custo $1, 2c, 3c, \ldots, n$. Soma: $\sum_{i=1}^{n/c} ic = c \cdot \frac{(n/c)(n/c+1)}{2} = \Theta(n^2/c) = \Theta(n^2)$. Amortizado por operação: $\Theta(n)$.
+% \paragraph{3.} Contraexemplo com 4 nós: raiz 4; filho esquerdo 2; filhos de 2: 1 e 3. Busca por $1$: caminho $B = \{4, 2, 1\}$. Ao descer à esquerda em $2$, a chave $3$ (subárvore direita de 2) fica à direita do caminho: $C = \{3\}$; $A = \emptyset$. A afirmação exige $b \le c$ para todos $b \in B$, $c \in C$, mas $4 \in B$ e $3 \in C$ com $4 > 3$. A falha ocorre porque chaves em $C$ penduradas abaixo de um nó do caminho podem ser menores que nós do caminho \emph{acima} desse ponto.
 
-% \paragraph{4.} Estado após cada operação (top = valor de $S.\textit{top}$):
-% \begin{center}
-% \begin{tabular}{lll}
-% \toprule
-% Operação & Conteúdo de $S$ & $S.\textit{top}$ \\
-% \midrule
-% \textsc{Push}(S,4) & $[4]$ & 1 \\
-% \textsc{Push}(S,1) & $[4,1]$ & 2 \\
-% \textsc{Push}(S,3) & $[4,1,3]$ & 3 \\
-% \textsc{Pop}(S) → 3 & $[4,1]$ & 2 \\
-% \textsc{Push}(S,8) & $[4,1,8]$ & 3 \\
-% \textsc{Pop}(S) → 8 & $[4,1]$ & 2 \\
-% \bottomrule
-% \end{tabular}
-% \end{center}
-% Uma \textsc{Pop} adicional retornaria $1$, deixando $S.\textit{top} = 1$.
+% \paragraph{4.} Árvore final: raiz 41; subárvore esquerda: 22 com filhos 10 e 30, e 30 com filho esquerdo 28; subárvore direita: 64 com filhos 55 e 70. (As árvores intermediárias acrescentam um nó por vez nessa configuração; nenhuma inserção provoca reorganização.) Busca por 28: $41 \to 22 \to 30 \to 28$ (4 nós). Busca por 56: $41 \to 64 \to 55 \to$ (filho direito de 55 é \textsc{Nil}): mal-sucedida após 3 nós.
 
-% \paragraph{5.} Mantenha $S_1$ crescendo da esquerda para a direita (topo em $S_1.\textit{top}$, com $S_1.\textit{top}$ iniciando em $0$) e $S_2$ crescendo da direita para a esquerda (topo em $S_2.\textit{top}$, iniciando em $n+1$). \textsc{Push}$_1$: incrementa $S_1.\textit{top}$ e grava em $A[S_1.\textit{top}]$. \textsc{Push}$_2$: decrementa $S_2.\textit{top}$ e grava em $A[S_2.\textit{top}]$. Overflow ocorre sse $S_1.\textit{top} + 1 = S_2.\textit{top}$. Underflow de $S_1$ sse $S_1.\textit{top} = 0$; de $S_2$ sse $S_2.\textit{top} = n+1$. Cada operação faz comparação e atribuição: $O(1)$.
+% \paragraph{5.} (a) \textsc{Tree-Minimum}: desça por $\textit{left}$ até \textsc{Nil}; \textsc{Tree-Maximum}: simétrico por $\textit{right}$. Cada passo desce um nível: $O(h)$. (b) Caso 1: se $x.\textit{right} \ne$ \textsc{Nil}, sucessor $=$ \textsc{Tree-Minimum}$(x.\textit{right})$. Caso 2: suba por ponteiros de pai até encontrar o primeiro ancestral $y$ tal que $x$ está na subárvore \emph{esquerda} de $y$; esse $y$ é o sucessor. Corretude do caso 2: todo nó entre $x$ e $y$ no caminho de subida tem $x$ em sua subárvore direita, logo tem chave $\le x.\textit{key}$; $y$ é o menor ancestral com chave $> x.\textit{key}$, e nenhuma outra chave da árvore está estritamente entre $x.\textit{key}$ e $y.\textit{key}$. (c) Se $x$ tem dois filhos, o sucessor é o mínimo da subárvore direita; se tivesse filho esquerdo, esse filho seria menor, contradição com a minimalidade. Predecessor: simétrico (máximo da subárvore esquerda não tem filho direito).
 
-% \paragraph{6.} Simulamos diretamente: percorra $\pi$ da esquerda para a direita; mantenha um ponteiro $\textit{next}$ na entrada $1,2,\ldots,n$ e uma pilha auxiliar $S$. Para cada $\pi_k$:
+% \paragraph{6.} (a) \textsc{Transplant}$(T,u,v)$ substitui a subárvore enraizada em $u$ pela enraizada em $v$, atualizando o ponteiro do pai de $u$ (e $v.\textit{p}$, se $v \ne$ \textsc{Nil}). Casos: (i) sem filhos: transplanta \textsc{Nil}; (ii) um filho: transplanta o filho; (iii) dois filhos: $y \gets$ \textsc{Tree-Minimum}$(z.\textit{right})$; se $y$ não é filho direto de $z$, primeiro transplanta $y$ por seu filho direito e anexa a subárvore direita de $z$ a $y$; então transplanta $z$ por $y$ e anexa a subárvore esquerda. (b) Remover 22 (dois filhos): sucessor $= 28$; resultado: 41 com esquerda 28 (filhos 10 e 30) e direita 64 (filhos 55 e 70). Remover 41 (dois filhos): sucessor $= 55$ (mínimo da direita, sem filho esquerdo); resultado: raiz 55, esquerda 28 (10, 30), direita 64 (apenas filho direito 70). (c) O sucessor $y$ é maior que todas as chaves da subárvore esquerda de $z$ (pois $y \ge z.\textit{key}$) e menor ou igual a todas as chaves restantes da subárvore direita (pois é o mínimo dela). Logo, colocado na posição de $z$, a propriedade de ABB vale.
+
+% \paragraph{7.} (a) Cada operação percorre um único caminho descendente (ou ascendente, no caso 2 do sucessor), com trabalho $O(1)$ por nó: $O(h)$. (b) Mínima: $\lceil \lg(n+1) \rceil - 1 = \Theta(\log n)$, atingida por árvore balanceada -- e.g., inserindo sempre a mediana do intervalo restante. Máxima: $n - 1$ (cadeia), produzida pela inserção em ordem crescente (ou decrescente). (c) Com inserção em ordem crescente, $h = n-1$ e todas as operações custam $\Theta(n)$ no pior caso.
+
+% \paragraph{8.} (a) Raiz 10, filho esquerdo 5, filho direito de 5 igual a 12. Testes locais: em 10, $5 \le 10$ \checkmark; em 5, $12 \ge 5$ \checkmark. Mas 12 está na subárvore esquerda de 10 com $12 > 10$: não é ABB. (b) \texttt{check}$(x, \textit{lo}, \textit{hi})$: se $x =$ \textsc{Nil}, retorne verdadeiro; se $x.\textit{key} \notin (\textit{lo}, \textit{hi})$, retorne falso; retorne \texttt{check}$(x.\textit{left}, \textit{lo}, x.\textit{key})$ $\wedge$ \texttt{check}$(x.\textit{right}, x.\textit{key}, \textit{hi})$, iniciando com $(-\infty, +\infty)$. Alternativa: percurso em ordem verificando monotonicidade. (c) Cada nó é visitado uma vez com trabalho $O(1)$: $\Theta(n)$.
+
+% \paragraph{9.} (a) $\Theta(n^2)$: entrada ordenada (crescente ou decrescente) produz cadeia, e a $i$-ésima inserção custa $\Theta(i)$; $\sum_i i = \Theta(n^2)$. (b) $n$ inserções de custo esperado $O(\log n)$ mais percurso $\Theta(n)$: $O(n \log n)$ esperado. (c) Não. \emph{Tree sort} é uma ordenação por comparações; o limite $\Omega(n \log n)$ vale para o pior caso e também para o custo médio sobre permutações. O custo esperado $O(n \log n)$ é, portanto, assintoticamente ótimo.
+
+% \paragraph{10.} (a) 1) Todo nó é vermelho ou preto; 2) a raiz é preta; 3) toda folha ($T.\textit{nil}$) é preta; 4) se um nó é vermelho, seus dois filhos são pretos; 5) para cada nó, todos os caminhos simples do nó até folhas descendentes contêm o mesmo número de nós pretos. (b) $\textit{bh}(x)$ é o número de nós pretos em qualquer caminho simples de $x$ (exclusive) até uma folha (inclusive); bem definida pela propriedade 5. (c) Com todos os 15 nós internos pretos: $\textit{bh}(\text{raiz}) = 4$ (3 internos $+$ a folha $T.\textit{nil}$). Colorindo de vermelho apenas o nível de profundidade 2: $\textit{bh} = 3$. Colorindo de vermelho os níveis 1 e 3: filhos de vermelhos são pretos (os de profundidade 3 têm filhos $T.\textit{nil}$, pretos) e $\textit{bh} = 2$.
+
+% \paragraph{11.} (a) Indução na altura de $x$. Base: $x = T.\textit{nil}$ tem $\textit{bh} = 0$ e $2^0 - 1 = 0$ nós internos. Passo: cada filho de $x$ tem altura negra $\textit{bh}(x)$ (se vermelho) ou $\textit{bh}(x) - 1$ (se preto), em ambos os casos $\ge \textit{bh}(x) - 1$; por hipótese, cada subárvore tem $\ge 2^{\textit{bh}(x)-1} - 1$ internos; total $\ge 2(2^{\textit{bh}(x)-1} - 1) + 1 = 2^{\textit{bh}(x)} - 1$. (b) Pela propriedade 4, em qualquer caminho da raiz a uma folha não há dois vermelhos consecutivos, logo pelo menos metade dos nós é preta: $\textit{bh}(\text{raiz}) \ge h/2$. Então $n \ge 2^{h/2} - 1$, donde $h \le 2\lg(n+1)$. (c) Todas $O(h) = O(\log n)$.
+
+% \paragraph{12.} (a) O caminho mais curto de $x$ a uma folha tem comprimento $\ge \textit{bh}(x)$ (há $\textit{bh}(x)$ pretos nele). O mais longo tem no máximo $2\,\textit{bh}(x)$ nós internos, pois vermelhos não são consecutivos e pretos somam exatamente $\textit{bh}(x)$. Logo, longo $\le 2 \cdot$ curto. (b) Mínimo: todos pretos, árvore completa de altura $k$: $2^k - 1$ internos. Máximo: alternando níveis preto/vermelho até altura $2k$: $2^{2k} - 1$ internos. (c) Em uma cadeia com $n \ge 4$, a raiz tem um filho \textsc{Nil}: a altura negra da raiz por esse lado é 1. Pelo lado da cadeia há $\ge 3$ nós internos; como não há vermelhos consecutivos (prop.\ 4), pelo menos 2 deles são pretos, e somando a folha a altura negra é $\ge 3 > 1$: viola a propriedade 5. (Qualquer coloração alternativa preserva a contradição.)
+
+% \paragraph{13.} (a) \textsc{Left-Rotate}$(T,x)$: $y \gets x.\textit{right}$; $x.\textit{right} \gets y.\textit{left}$ (com atualização de pai se não-\textsc{Nil}); $y.\textit{p} \gets x.\textit{p}$ (com os três subcasos: raiz, filho esquerdo, filho direito); $y.\textit{left} \gets x$; $x.\textit{p} \gets y$. Cerca de seis atualizações de ponteiros: $O(1)$. (b) Antes: subárvores $(\alpha\, x\, \beta)\, y\, \gamma$; depois: $\alpha\, x\, (\beta\, y\, \gamma)$. O percurso em ordem é idêntico, logo a propriedade de ABB é preservada. (c) Na árvore da questão 4: $x = 22$, $y = 30$; após a rotação, 30 toma o lugar de 22 (filho esquerdo de 41), com filho esquerdo 22 (filhos 10 e 28) e filho direito \textsc{Nil}; 28, antiga subárvore esquerda de 30, vira filho direito de 22. \textsc{Right-Rotate} é o procedimento simétrico, trocando \textit{left} $\leftrightarrow$ \textit{right}.
+
+% \paragraph{14.} Evolução (V = vermelho, P = preto):
 % \begin{itemize}
-%   \item Se $\pi_k$ está no topo de $S$, faça \textsc{Pop}.
-%   \item Caso contrário, faça \textsc{Push} de $\textit{next}, \textit{next}+1, \ldots$ até que $\pi_k$ seja empilhado, depois \textsc{Pop}.
-%   \item Se em algum momento ambos falham (já passamos de $\pi_k$ na entrada), $\pi$ não é alcançável.
+%   \item 41: raiz, recolorida P. Árvore: 41P.
+%   \item 38: V, filho esquerdo de 41. Sem violação. 41P(38V).
+%   \item 31: V sob 38V: violação. Tio = \textsc{Nil} (P), configuração zigue-zigue (esq-esq): caso 3 -- rotação à direita em 41 e recoloração: 38P(31V, 41V).
+%   \item 12: V sob 31V: violação. Tio 41 V: caso 1 -- recolore 31 e 41 de P, 38 de V; 38 é raiz, recolorida P. 38P(31P(12V), 41P).
+%   \item 19: V, filho direito de 12V: violação. Tio (filho direito de 31) = \textsc{Nil} (P), zigue-zague: caso 2 -- rotação à esquerda em 12; caso 3 -- rotação à direita em 31 e recoloração. 38P(19P(12V, 31V), 41P).
+%   \item 8: V sob 12V: violação. Tio 31 V: caso 1 -- recolore 12 e 31 de P, 19 de V; pai de 19 (38) é P: fim. \impt{Final:} 38P(19V(12P(8V), 31P), 41P).
 % \end{itemize}
-% Cada elemento é empilhado e desempilhado no máximo uma vez, então o custo é $O(n)$.
 
-% \paragraph{7.} Adotando convenção CLRS (head é o próximo a sair, tail é o próximo a entrar; vazio sse $\textit{head} = \textit{tail}$):
-% \begin{center}
-% \begin{tabular}{lcc}
-% \toprule
-% Operação & Conteúdo (head $\to$ tail) & (head, tail) \\
-% \midrule
-% Inicial & $[\,\;\;\;\;]$ & (1,1) \\
-% \textsc{Enqueue}(Q,4) & $[4]$ & (1,2) \\
-% \textsc{Enqueue}(Q,1) & $[4,1]$ & (1,3) \\
-% \textsc{Enqueue}(Q,3) & $[4,1,3]$ & (1,4) \\
-% \textsc{Dequeue}(Q) → 4 & $[1,3]$ & (2,4) \\
-% \textsc{Enqueue}(Q,8) & $[1,3,8]$ & (2,5) \\
-% \textsc{Dequeue}(Q) → 1 & $[3,8]$ & (3,5) \\
-% \bottomrule
-% \end{tabular}
-% \end{center}
+% \paragraph{15.} (a) Apenas as propriedades 2 (se $z$ é a raiz) ou 4 (se o pai de $z$ é vermelho) podem ser violadas. Inserir vermelho preserva automaticamente a propriedade 5 (nenhuma altura negra muda); inserir preto a violaria em \emph{todos} os caminhos que passam por $z$, um conserto global muito mais caro. (b) Caso 1 (tio vermelho): recolore pai e tio de preto, avô de vermelho, e sobe $z$ dois níveis. Caso 2 (tio preto, zigue-zague): rotação no pai converte ao caso 3. Caso 3 (tio preto, zigue-zigue): rotação no avô e troca de cores pai/avô; encerra o laço. (c) Só o caso 1 itera, e cada iteração sobe $z$ dois níveis: $O(\log n)$ iterações, todas $O(1)$. Rotações só ocorrem nos casos 2 e 3, executados no máximo uma vez cada: $\le 2$ rotações.
 
-% \paragraph{8.} Use um array circular $Q[1\mathinner{.\,.} n]$, com índices $\textit{head}$ e $\textit{tail}$ módulo $n$. Invariante: itens estão em $Q[\textit{head}], Q[\textit{head}+1], \ldots, Q[\textit{tail}-1]$ (módulo $n$); vazio sse $\textit{head} = \textit{tail}$ e $\textit{size}=0$. Mantenha um contador $\textit{size}$. As quatro operações ajustam $\textit{head}$ ou $\textit{tail}$ em $\pm 1$ (módulo $n$) e atualizam $\textit{size}$: $O(1)$. Overflow sse $\textit{size} = n$; underflow sse $\textit{size} = 0$.
+% \paragraph{16.} (a) Se o nó efetivamente removido (ou movido, quando o sucessor assume outra posição) é preto, todo caminho que passava por ele perde um preto: viola a propriedade 5. Conceitualmente, deposita-se um ``preto extra'' sobre o nó $x$ que ocupou a posição: contando-o, a propriedade 5 volta a valer, mas $x$ fica ``duplamente preto'' ou ``vermelho-e-preto'', violando a propriedade 1; o \emph{fixup} empurra o preto extra para cima até descarregá-lo. (b) Com $w$ o irmão de $x$: caso 1 ($w$ vermelho): rotação no pai e recoloração, convertendo para 2, 3 ou 4; caso 2 ($w$ preto com dois filhos pretos): recolore $w$ de vermelho e sobe o preto extra para o pai; caso 3 ($w$ preto, filho próximo vermelho, distante preto): rotação em $w$, convertendo para o caso 4; caso 4 ($w$ preto, filho distante vermelho): rotação no pai e recoloração, \impt{descarregando o preto extra e encerrando imediatamente}. (c) Só o caso 2 itera (sobe um nível por vez): $O(\log n)$. A pior sequência de rotações é caso 1 $\to$ caso 3 $\to$ caso 4: três rotações. O \textsc{RB-Insert-Fixup} faz no máximo 2; ambos custam $O(\log n)$, mas a remoção tem mais casos porque a violação envolve falta de preto (prop.\ 5), não vermelhos consecutivos (prop.\ 4).
 
-% \paragraph{9.} \textsc{Enqueue}: \textsc{Push} em $S_1$. \textsc{Dequeue}: se $S_2$ vazio, transfira todo $S_1$ para $S_2$ (invertendo a ordem), depois \textsc{Pop} de $S_2$. Caso contrário, apenas \textsc{Pop} de $S_2$. (a) Invariante: o conteúdo da fila, em ordem do mais antigo ao mais novo, é (topo a base de $S_2$) seguido de (base a topo de $S_1$). (b) Pior caso de \textsc{Dequeue}: $\Theta(n)$. Amortizado: cada elemento é empilhado em $S_1$ uma vez e transferido para $S_2$ uma vez (i.e., empilhado e desempilhado de $S_1$, e empilhado em $S_2$), totalizando custo $O(1)$ amortizado por operação.
-
-% \paragraph{10.} (a) Sim: \textsc{Insert} no início é $O(1)$ -- novo nó aponta para o head atual, head $\gets$ novo nó. (b) Em lista \emph{duplamente} encadeada, dado o ponteiro $x$, fazemos $x.\textit{prev}.\textit{next} \gets x.\textit{next}$ e $x.\textit{next}.\textit{prev} \gets x.\textit{prev}$: $O(1)$. Em lista \emph{simplesmente} encadeada, precisamos do nó \emph{anterior} a $x$, que custa $O(n)$ percorrer a partir do head. (c) Truque: copie $x.\textit{next}.\textit{key}$ para $x.\textit{key}$ e remova $x.\textit{next}$ em $O(1)$. Falha se $x$ é o último nó (não há $x.\textit{next}$), ou se outros ponteiros externos apontam para $x.\textit{next}$ (o endereço removido é o sucessor, não $x$).
-
-% \paragraph{11.} Em uma lista duplamente encadeada circular com sentinela $L.\textit{nil}$ (inicialmente $L.\textit{nil}.\textit{next} = L.\textit{nil}.\textit{prev} = L.\textit{nil}$):
-
-% \textsc{List-Insert}$(L,x)$:
-% \begin{algorithmic}[1]
-% \State $x.\textit{next} \gets L.\textit{nil}.\textit{next}$
-% \State $L.\textit{nil}.\textit{next}.\textit{prev} \gets x$
-% \State $L.\textit{nil}.\textit{next} \gets x$
-% \State $x.\textit{prev} \gets L.\textit{nil}$
-% \end{algorithmic}
-
-% \textsc{List-Delete}$(L,x)$:
-% \begin{algorithmic}[1]
-% \State $x.\textit{prev}.\textit{next} \gets x.\textit{next}$
-% \State $x.\textit{next}.\textit{prev} \gets x.\textit{prev}$
-% \end{algorithmic}
-
-% (a) A versão sem sentinela precisa de \textbf{se} para detectar $x = \textit{head}$ ou $x = \textit{tail}$ (e atualizar $\textit{head}/\textit{tail}$), o que dá pelo menos 2 testes em \textsc{Delete} e 1 em \textsc{Insert}. A versão com sentinela tem 0 testes. (b) Desvantagem: memória extra para o sentinela. Em sistemas com muitas listas curtas (e.g., encadeamento em hash table com milhares de slots vazios), o custo cumulativo pode ser significativo.
-
-% \paragraph{12.} Sejam $a = L_1.\textit{nil}$, $b = L_2.\textit{nil}$. Concatenação:
-% \begin{algorithmic}[1]
-% \State $\textit{first}_2 \gets b.\textit{next}$ \Comment{primeiro nó real de $L_2$}
-% \State $\textit{last}_2 \gets b.\textit{prev}$ \Comment{último nó real de $L_2$}
-% \State $\textit{last}_1 \gets a.\textit{prev}$
-% \State $\textit{last}_1.\textit{next} \gets \textit{first}_2$
-% \State $\textit{first}_2.\textit{prev} \gets \textit{last}_1$
-% \State $\textit{last}_2.\textit{next} \gets a$
-% \State $a.\textit{prev} \gets \textit{last}_2$
-% \State $b.\textit{next} \gets b$; $b.\textit{prev} \gets b$ \Comment{$L_2$ fica vazia}
-% \end{algorithmic}
-% Número constante de atribuições: $O(1)$.
-
-% \paragraph{13.} (a) Adequada quando $|U|$ é pequeno e cabe em memória: array $T[0\mathinner{.\,.} |U|-1]$, com $T[k]$ guardando o elemento de chave $k$ (ou \textsc{Nil}). \textsc{Search}, \textsc{Insert}, \textsc{Delete}: $\Theta(1)$ no pior caso. (b) Para $|U| = 2^{32}$ ponteiros de 8 bytes, $\approx 32$ GiB. Inviável apenas para armazenar $10^5$ chaves. (c) Hash usa uma tabela de tamanho $m \ll |U|$ e uma função $h: U \to \{0,\ldots,m-1\}$. Como $|U| > m$, pelo princípio das casas dos pombos, podem existir $k_1 \ne k_2$ com $h(k_1) = h(k_2)$: colisão.
-
-% \paragraph{14.} (a) Sob SUHA, uma chave $k$ não presente é distribuída uniformemente entre os $m$ slots; o tamanho esperado da lista em $T[h(k)]$ é $\alpha = n/m$; portanto, são esperadas $\alpha$ comparações até esgotar a lista, mais $\Theta(1)$ para calcular $h(k)$ e acessar $T[h(k)]$: $\Theta(1 + \alpha)$. (b) Numere as chaves na ordem em que foram inseridas; ao buscar a $i$-ésima, esperamos comparar com as chaves \emph{inseridas depois dela} que caíram no mesmo slot, em média $(n-i)/m$. Tomando a média sobre $i$: $1 + \frac{1}{n}\sum_{i=1}^n (n-i)/m = 1 + \alpha/2 - 1/(2m) = \Theta(1+\alpha)$. (c) Se $n = O(m)$, então $\alpha = O(1)$ e as três operações esperam $\Theta(1)$.
-
-% \paragraph{15.} (a) Com $m = 2^p$, $h(k) = k \bmod m$ retorna os $p$ bits menos significativos de $k$. Isso é ruim porque ignora o restante de $k$: chaves que diferem apenas em bits altos colidem. (b) Se chaves são números em base 10 (e.g., CPFs, RAs) e $m = 10^p$, $h(k)$ é os $p$ últimos dígitos, que frequentemente têm padrões (e.g., dígitos verificadores). (c) $h(k) = \lfloor m\,(kA \bmod 1)\rfloor$ multiplica $k$ por $A$, descarta a parte inteira, e escalona por $m$. Knuth sugere $A = (\sqrt{5}-1)/2 \approx 0{,}6180$ (razão áurea), pois mistura bem as fontes de não-uniformidade da entrada. O valor de $m$ não precisa ser primo, o que dá liberdade de escolha (e.g., $m = 2^p$ permite implementação eficiente).
-
-% \paragraph{16.} (a) Em uma sequência de sondagens de busca mal-sucedida, a probabilidade de a $i$-ésima sondagem ser realizada é a probabilidade de as $i-1$ anteriores terem caído em slots ocupados. Sob hashing uniforme, a $i$-ésima é necessária com probabilidade no máximo $\prod_{j=0}^{i-2}\frac{n-j}{m-j} \le \alpha^{i-1}$. O número esperado de sondagens é, portanto, no máximo $\sum_{i=1}^{\infty} \alpha^{i-1} = \frac{1}{1-\alpha}$. (b) \textsc{Insert} faz uma busca mal-sucedida seguida da gravação: mesmo limite $1/(1-\alpha)$. (c) \emph{Sondagem linear}: $h(k,i) = (h'(k) + i) \bmod m$ -- sofre \impt{clustering primário} (blocos longos de slots consecutivos ocupados crescem rapidamente). \emph{Sondagem quadrática}: $h(k,i) = (h'(k) + c_1 i + c_2 i^2) \bmod m$ -- elimina clustering primário, mas duas chaves com mesmo $h'$ percorrem a mesma sequência: \impt{clustering secundário}. \emph{Duplo hashing}: $h(k,i) = (h_1(k) + i \cdot h_2(k)) \bmod m$ -- a sequência depende de duas funções, eliminando os dois tipos de clustering (na prática, é a melhor aproximação de hashing uniforme).
-
-% \paragraph{17.} Use uma segunda pilha $S_{\min}$. \textsc{Push}$(x)$: empilha $x$ em $S$; empilha em $S_{\min}$ o menor entre $x$ e $\textsc{Top}(S_{\min})$ (ou $x$ se $S_{\min}$ vazia). \textsc{Pop}$()$: \textsc{Pop} em ambas. \textsc{Min}$()$: $\textsc{Top}(S_{\min})$. Como $|S_{\min}| = |S|$, espaço $O(n)$. Todas as operações: $O(1)$.
-
-% \paragraph{18-20.} \emph{Soluções de referência em Python.} Espera-se: 18) sentinela único, sem \texttt{None}-checks nos métodos; 19) rehash dispara quando $\alpha > 1$, próximo primo via crivo ou teste de primalidade simples; 20) o dicionário Python guarda \texttt{key} $\to$ \texttt{node}; o nó está em uma DLL com sentinela; \texttt{get/put} fazem unlink + push\_front em $O(1)$; eviction = remover \texttt{nil.prev} e deletar do dict. As soluções completas estão no repositório da disciplina.
+% \paragraph{17--20.} \emph{Soluções de referência em Python.} Espera-se: 17) sucessores e buscas iterativas sem recursão de cauda desnecessária; 18) \textsc{Transplant} idêntico ao CLRS, testes nomeando os três casos; 19) \texttt{is\_bst} por intervalos, rejeitando o contraexemplo da questão 8a; tabela típica: ordem aleatória produz altura próxima de $2{,}99\lg n$, ordem crescente produz exatamente $n-1$; 20) sentinela única compartilhada como folha e pai da raiz; \texttt{check\_properties()} computa a altura negra recursivamente exigindo igualdade entre subárvores; após $10^4$ inserções ordenadas, a ARN tem altura $\le 2\lg(n+1) \approx 27$, contra $9\,999$ da ABB simples. As soluções completas estão no repositório da disciplina.
 
 \end{document}
