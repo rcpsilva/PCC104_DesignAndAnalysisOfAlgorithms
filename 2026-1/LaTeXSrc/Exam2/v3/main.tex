@@ -1,0 +1,133 @@
+\documentclass[9pt,a4paper]{extarticle}
+
+% ======================
+% Codificação, idioma e layout
+% ======================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+% ======================
+% Matemática e símbolos
+% ======================
+\usepackage{amsmath, amssymb, amsthm, bm}
+
+% Algoritmos (CLRS-style)
+\usepackage{algpseudocode}
+
+% Cores
+\usepackage{xcolor}
+
+% ======================
+% Figuras e tabelas
+% ======================
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ======================
+% Hiperlinks
+% ======================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+% ======================
+% Início do documento
+% ======================
+\begin{document}
+
+\begin{center}
+  \Large \textbf{Prova 2} \\[4pt]
+\end{center}
+
+\vspace{-0.0cm}
+
+\textbf{Atenção: Você deverá entregar o código das implementações da lista de exercícios impresso juntamente com a prova. Algumas das questões farão referência ao seu próprio código. A não entrega do código implica em nota 0 nestas questões.}
+
+\begin{enumerate}
+  \item Baseado na sua implementação do \texttt{quicksort}, mostre a execução do método \texttt{partition} para:
+
+  \[A = [6,4,9,1,5]\]
+  \[p = 0\]
+  \[r = 4\]
+
+  \item Em quais linhas da sua implementação do método \texttt{partition} são feitas as comparações entre elementos do arranjo e o pivô? Qual o custo dessas comparações?
+
+  \item Construa um \texttt{max-heap} para o array $A = [5,3,17,10,84,19,6,22,9,1]$. Mostre o heap em forma de árvore e em forma de array.
+
+  \item Considere o algoritmo abaixo, que verifica se o arranjo $A[1\,..\,n]$ contém algum par de elementos iguais (isto é, algum elemento duplicado).
+
+    \begin{center}
+    \begin{minipage}{0.65\textwidth}
+    \textbf{\textsc{Tem-Duplicata}}$(A, n)$
+    \begin{algorithmic}[1]
+        \For{$i \gets 1$ \textbf{to} $n - 1$}
+            \For{$j \gets i + 1$ \textbf{to} $n$}
+                \If{$A[i] = A[j]$}
+                    \State \Return \textsc{verdadeiro}
+                \EndIf
+            \EndFor
+        \EndFor
+        \State \Return \textsc{falso}
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Defina o tamanho da entrada do algoritmo.
+    \item Determine o número de vezes que o teste do laço interno (linha 2) é executado no \textbf{pior caso}, em função de $n$. Descreva uma instância que produza o pior caso.
+
+    \textit{Sugestão: para cada valor de $i$, conte quantos valores de $j$ são considerados e some sobre $i$. Use a identidade $\sum_{i=1}^{n-1} (n - i) = \dfrac{n(n-1)}{2}$.}
+
+    \item Construa a tabela de custos no estilo CLRS para o pior caso e escreva $T_{\text{pior}}(n)$ como soma dos termos $c_i$ ponderados por suas frequências.
+    \item Mostre que $T_{\text{pior}}(n) = \Theta(n^2)$, exibindo as constantes da definição assintótica.
+    \item Descreva o \textbf{melhor caso} do algoritmo: quantas execuções da linha 3 ocorrem? Qual é a classe assintótica de $T_{\text{melhor}}(n)$?
+\end{enumerate}
+
+  \item Considere o algoritmo recursivo abaixo, que retorna o maior elemento do arranjo $A[p\,..\,r]$ pelo método de divisão e conquista.
+
+    \begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \textbf{\textsc{Maximo}}$(A, p, r)$
+    \begin{algorithmic}[1]
+        \If{$p = r$}
+            \State \Return $A[p]$
+        \EndIf
+        \State $q \gets \lfloor (p + r) / 2 \rfloor$
+        \State $m_1 \gets \textsc{Maximo}(A, p, q)$
+        \State $m_2 \gets \textsc{Maximo}(A, q + 1, r)$
+        \If{$m_1 \geq m_2$}
+            \State \Return $m_1$
+        \Else
+            \State \Return $m_2$
+        \EndIf
+    \end{algorithmic}
+    \end{minipage}
+    \end{center}
+
+    Considere $n = r - p + 1$ o tamanho do subarranjo na chamada corrente.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Identifique os passos de \textbf{dividir}, \textbf{conquistar} e \textbf{combinar} no algoritmo, no espírito do paradigma de divisão e conquista.
+        \item Escreva a relação de recorrência $T(n)$, justificando o número de chamadas recursivas, o tamanho de cada subproblema e o custo de combinar os resultados.
+        \item Resolva a recorrência.
+        \item Mostre que $T(n) = \Theta(n)$.
+    \end{enumerate}
+\end{enumerate}
+
+
+\end{document}
