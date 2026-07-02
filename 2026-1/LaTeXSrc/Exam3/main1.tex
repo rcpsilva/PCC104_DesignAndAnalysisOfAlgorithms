@@ -1,0 +1,136 @@
+\documentclass[9pt,a4paper]{extarticle}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{enumitem}
+\usepackage{amsmath, amssymb, amsthm, bm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+
+\definecolor{important}{RGB}{200, 50, 50}
+\definecolor{notice}{RGB}{0, 102, 204}
+\newcommand{\impt}[1]{\textcolor{important}{\textbf{#1}}}
+\newcommand{\ntc}[1]{\textcolor{notice}{#1}}
+
+\begin{document}
+
+\begin{center}
+  \Large \textbf{Prova 3 \\ Estruturas de Dados Elementares e Árvores} \\[4pt]
+  \normalsize Disciplina: PCC104 -- Projeto e Análise de Algoritmos \quad|\quad DECOM -- UFOP \\[2pt]
+  \normalsize \today
+\end{center}
+
+\medskip
+\noindent\textbf{Instruções.} Esta prova contém 7 questões discursivas. Você deverá entregar o código das implementações da lista de exercícios impresso juntamente com a prova. Algumas das questões farão referência ao seu próprio código. A não entrega do código implica em nota 0 nestas questões.
+
+\bigskip\hrule\bigskip
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=2em]
+
+% ------------------------------------------------------------------
+% Q1 – Arrays
+% ------------------------------------------------------------------
+\item \textbf{(Arrays.)}
+  Escreva o pseudocódigo de um algoritmo que recebe um array \(A[1\,..\,n]\) já
+  \emph{ordenado em ordem crescente} e um valor \(x\), e devolve o índice de
+  \(x\) em \(A\) (ou \textsc{nil} caso \(x\) não esteja presente). Apresente a análise de complexidade deste algoritmo.
+  
+% ------------------------------------------------------------------
+% Q2 – Pilhas
+% ------------------------------------------------------------------
+\item \textbf{(Pilha com mínimo em \(O(1)\).)}
+  Considere sua implementação de \textsc{MinStack}.
+  Execute a sequência de operações abaixo sobre uma instância inicialmente vazia,
+  mostrando após cada chamada o estado das duas pilhas e o valor devolvido
+  (quando houver):
+  \[
+    \textsc{Push}(8),\;
+    \textsc{Push}(3),\;
+    \textsc{Push}(5),\;
+    \textsc{Push}(1),\;
+    \textsc{Min}(),\;
+    \textsc{Pop}(),\;
+    \textsc{Min}(),\;
+    \textsc{Pop}(),\;
+    \textsc{Min}()
+  \]
+  Em seguida, enuncie o invariante que sua estrutura auxiliar mantém e explique
+  por que \textsc{Min}() é \(O(1)\) no pior caso.
+% ------------------------------------------------------------------
+% Q3 – Filas
+% ------------------------------------------------------------------
+\item \textbf{(Filas.)}
+  Escreva o pseudocódigo de \textsc{Enqueue}$(Q, x)$ e \textsc{Dequeue}$(Q)$ para
+  uma fila implementada em um array circular \(Q[0\,..\,m-1]\) com atributos
+  \(Q.\mathit{head}\), \(Q.\mathit{tail}\) e \(Q.\mathit{size}\). Indique o custo de cada operação.
+
+% ------------------------------------------------------------------
+% Q4 – Listas duplamente encadeadas
+% ------------------------------------------------------------------
+\item \textbf{(Listas duplamente encadeadas.)}
+  Seja \(L\) uma lista duplamente encadeada com sentinela \(L.\mathit{nil}\) no
+  estilo CLRS, contendo \(n\) elementos.
+  Justifique a complexidade de tempo de \textsc{List-Insert} (inserção no início),
+  \textsc{List-Delete} (dado ponteiro \(x\) para o nó) e \textsc{List-Search}
+  (busca por chave \(k\)).
+
+% ------------------------------------------------------------------
+% Q5 – Tabelas hash
+% ------------------------------------------------------------------
+% ------------------------------------------------------------------
+% Q5 – Tabelas hash
+% ------------------------------------------------------------------
+\item \textbf{(Tabelas hash.)} O pseudo-código abaixo apresenta o algoritmo de inserção em uma tabela hash com encadeamento separado, onde cada posição aponta para uma lista encadeada e a função hash é dada por \(h(k) = k \bmod m\).
+
+  \begin{algorithmic}[1]
+  \Procedure{Hash-Insert}{$T, k$}
+    \State $j \gets k \bmod m$
+    \State cria novo nó $z$ com $z.\mathit{key} = k$
+    \State $z.\mathit{next} \gets T[j]$
+    \State $T[j] \gets z$
+  \EndProcedure
+\end{algorithmic}
+
+  Execute \textsc{Hash-Insert} para cada chave da sequência
+  \[
+    10,\; 22,\; 31,\; 4,\; 15,\; 28,\; 17
+  \]
+  em uma tabela com \(m = 7\), mostrando o estado completo de \(T\) após cada inserção.
+
+% ------------------------------------------------------------------
+% Q7 – Altura de ABB  (mantida como estava)
+% ------------------------------------------------------------------
+\item \textbf{(Altura de uma árvore binária de busca.)}
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Escreva o pseudocódigo de \textsc{Tree-Height}$(x)$, que recebe a raiz
+          \(x\) de uma ABB e devolve sua altura (árvore vazia $= -1$, nó folha $= 0$).
+          Apresente a versão recursiva, identificando caso base e passo recursivo.
+    \item Formule a recorrência \(T(n)\) no pior caso, resolva-a e expresse o
+          resultado em notação \(\Theta\).
+    \item Uma ABB é construída inserindo as chaves \(10, 5, 15, 3, 7, 12, 20\)
+          nessa ordem. Desenhe a árvore e aplique \textsc{Tree-Height} à raiz,
+          mostrando os valores devolvidos em cada chamada recursiva.
+  \end{enumerate}
+
+% ------------------------------------------------------------------
+% Q8 – Árvores rubro-negras (simplificada)
+% ------------------------------------------------------------------
+\item \textbf{(Árvores rubro-negras.)}
+  Quando devemos utilizar árvores rubro-negras? 
+\end{enumerate}
+
+\end{document}
