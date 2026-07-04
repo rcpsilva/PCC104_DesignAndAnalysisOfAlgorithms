@@ -1,0 +1,112 @@
+\documentclass[10pt,a4paper]{extarticle}
+\usepackage{parskip}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\babelprovide[import,main]{brazilian}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[expansion=false]{microtype}
+\usepackage{csquotes}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\definecolor{important}{RGB}{255, 100, 100}
+\definecolor{notice}{RGB}{0, 102, 204}
+
+\newcommand{\impt}[1]{\textcolor{important}{#1}}
+\newcommand{\ntc}[1]{\textcolor{notice}{#1}}
+
+\setlist{nosep}
+\geometry{margin=2cm}
+
+% Python listings
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
+\lstset{
+    language=Python,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red!70!black},
+    showstringspaces=false,
+    frame=single,
+    breaklines=true,
+    inputencoding=utf8
+}
+
+% Convenções CLRS para algpseudocode
+\algrenewcommand\algorithmicwhile{\textbf{enquanto}}
+\algrenewcommand\algorithmicdo{\textbf{faça}}
+\algrenewcommand\algorithmicif{\textbf{se}}
+\algrenewcommand\algorithmicthen{\textbf{então}}
+\algrenewcommand\algorithmicelse{\textbf{senão}}
+\algrenewcommand\algorithmicfor{\textbf{para}}
+\algrenewcommand\algorithmicreturn{\textbf{retorne}}
+\algrenewcommand\algorithmicend{\textbf{fim}}
+
+\title{Lista de Exercícios: Grafos e Algoritmos de Busca\footnote{Material baseado em Cormen, Leiserson, Rivest e Stein (CLRS), \emph{Introduction to Algorithms}, 4ª ed., MIT Press, 2022, capítulos 12 e 13.}}
+\author{PCC104 -- Projeto e Análise de Algoritmos \\ DECOM -- UFOP}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+  \item Reimplemente o algoritmo de busca visto em sala utilizando a representação de grafos em matriz de adjacência. 
+  \item Calcule o custo em memória e número de operações das versões em largura e em profundidade.
+\end{enumerate}
+
+% \section*{Gabarito}
+
+% \paragraph{1.} (a) Para todo nó $x$: se $y$ está na subárvore \emph{esquerda} de $x$, então $y.\textit{key} \le x.\textit{key}$; se está na subárvore \emph{direita}, $y.\textit{key} \ge x.\textit{key}$. Restringir aos filhos imediatos é insuficiente: um descendente distante da subárvore esquerda poderia exceder $x.\textit{key}$ sem violar nenhum teste local (cf.\ questão 8a). (b) Altura 2: raiz 10, filhos 4 e 17, netos 1, 5, 16, 21 (árvore completa). Altura 6: cadeia obtida por inserção em ordem crescente $1,4,5,10,16,17,21$. (c) $C_3 = 5$ formas (número de Catalan): as duas cadeias monotônicas, as duas em ``zigue-zague'' e a árvore balanceada com raiz na chave mediana.
+
+% \paragraph{2.} (a) \textsc{Inorder}$(x)$: se $x \ne$ \textsc{Nil}: \textsc{Inorder}$(x.\textit{left})$; imprime $x.\textit{key}$; \textsc{Inorder}$(x.\textit{right})$. Indução no tamanho $n$ da subárvore: para $n = 0$ nada é impresso. Para $n \ge 1$, por hipótese de indução as subárvores esquerda e direita são impressas em ordem; pela propriedade de ABB, toda chave da esquerda é $\le x.\textit{key} \le$ toda chave da direita; logo a concatenação é ordenada. (b) Cada nó é visitado exatamente uma vez com trabalho $O(1)$ fora das chamadas recursivas; formalmente, $T(n) \le (c+d)n + c$ por substituição (CLRS, Teorema 12.1), e $T(n) = \Omega(n)$ pois todos os nós são impressos. (c) Min-heap exige apenas $x.\textit{key} \le$ chaves dos \emph{filhos}; nada ordena as subárvores entre si. Imprimir em ordem a partir de um heap em $O(n)$ daria uma ordenação por comparações em $O(n)$ (construir heap custa $O(n)$), contradizendo o limite inferior $\Omega(n \log n)$. Logo, não é possível.
+
+% \paragraph{3.} Contraexemplo com 4 nós: raiz 4; filho esquerdo 2; filhos de 2: 1 e 3. Busca por $1$: caminho $B = \{4, 2, 1\}$. Ao descer à esquerda em $2$, a chave $3$ (subárvore direita de 2) fica à direita do caminho: $C = \{3\}$; $A = \emptyset$. A afirmação exige $b \le c$ para todos $b \in B$, $c \in C$, mas $4 \in B$ e $3 \in C$ com $4 > 3$. A falha ocorre porque chaves em $C$ penduradas abaixo de um nó do caminho podem ser menores que nós do caminho \emph{acima} desse ponto.
+
+% \paragraph{4.} Árvore final: raiz 41; subárvore esquerda: 22 com filhos 10 e 30, e 30 com filho esquerdo 28; subárvore direita: 64 com filhos 55 e 70. (As árvores intermediárias acrescentam um nó por vez nessa configuração; nenhuma inserção provoca reorganização.) Busca por 28: $41 \to 22 \to 30 \to 28$ (4 nós). Busca por 56: $41 \to 64 \to 55 \to$ (filho direito de 55 é \textsc{Nil}): mal-sucedida após 3 nós.
+
+% \paragraph{5.} (a) \textsc{Tree-Minimum}: desça por $\textit{left}$ até \textsc{Nil}; \textsc{Tree-Maximum}: simétrico por $\textit{right}$. Cada passo desce um nível: $O(h)$. (b) Caso 1: se $x.\textit{right} \ne$ \textsc{Nil}, sucessor $=$ \textsc{Tree-Minimum}$(x.\textit{right})$. Caso 2: suba por ponteiros de pai até encontrar o primeiro ancestral $y$ tal que $x$ está na subárvore \emph{esquerda} de $y$; esse $y$ é o sucessor. Corretude do caso 2: todo nó entre $x$ e $y$ no caminho de subida tem $x$ em sua subárvore direita, logo tem chave $\le x.\textit{key}$; $y$ é o menor ancestral com chave $> x.\textit{key}$, e nenhuma outra chave da árvore está estritamente entre $x.\textit{key}$ e $y.\textit{key}$. (c) Se $x$ tem dois filhos, o sucessor é o mínimo da subárvore direita; se tivesse filho esquerdo, esse filho seria menor, contradição com a minimalidade. Predecessor: simétrico (máximo da subárvore esquerda não tem filho direito).
+
+% \paragraph{6.} (a) \textsc{Transplant}$(T,u,v)$ substitui a subárvore enraizada em $u$ pela enraizada em $v$, atualizando o ponteiro do pai de $u$ (e $v.\textit{p}$, se $v \ne$ \textsc{Nil}). Casos: (i) sem filhos: transplanta \textsc{Nil}; (ii) um filho: transplanta o filho; (iii) dois filhos: $y \gets$ \textsc{Tree-Minimum}$(z.\textit{right})$; se $y$ não é filho direto de $z$, primeiro transplanta $y$ por seu filho direito e anexa a subárvore direita de $z$ a $y$; então transplanta $z$ por $y$ e anexa a subárvore esquerda. (b) Remover 22 (dois filhos): sucessor $= 28$; resultado: 41 com esquerda 28 (filhos 10 e 30) e direita 64 (filhos 55 e 70). Remover 41 (dois filhos): sucessor $= 55$ (mínimo da direita, sem filho esquerdo); resultado: raiz 55, esquerda 28 (10, 30), direita 64 (apenas filho direito 70). (c) O sucessor $y$ é maior que todas as chaves da subárvore esquerda de $z$ (pois $y \ge z.\textit{key}$) e menor ou igual a todas as chaves restantes da subárvore direita (pois é o mínimo dela). Logo, colocado na posição de $z$, a propriedade de ABB vale.
+
+% \paragraph{7.} (a) Cada operação percorre um único caminho descendente (ou ascendente, no caso 2 do sucessor), com trabalho $O(1)$ por nó: $O(h)$. (b) Mínima: $\lceil \lg(n+1) \rceil - 1 = \Theta(\log n)$, atingida por árvore balanceada -- e.g., inserindo sempre a mediana do intervalo restante. Máxima: $n - 1$ (cadeia), produzida pela inserção em ordem crescente (ou decrescente). (c) Com inserção em ordem crescente, $h = n-1$ e todas as operações custam $\Theta(n)$ no pior caso.
+
+% \paragraph{8.} (a) Raiz 10, filho esquerdo 5, filho direito de 5 igual a 12. Testes locais: em 10, $5 \le 10$ \checkmark; em 5, $12 \ge 5$ \checkmark. Mas 12 está na subárvore esquerda de 10 com $12 > 10$: não é ABB. (b) \texttt{check}$(x, \textit{lo}, \textit{hi})$: se $x =$ \textsc{Nil}, retorne verdadeiro; se $x.\textit{key} \notin (\textit{lo}, \textit{hi})$, retorne falso; retorne \texttt{check}$(x.\textit{left}, \textit{lo}, x.\textit{key})$ $\wedge$ \texttt{check}$(x.\textit{right}, x.\textit{key}, \textit{hi})$, iniciando com $(-\infty, +\infty)$. Alternativa: percurso em ordem verificando monotonicidade. (c) Cada nó é visitado uma vez com trabalho $O(1)$: $\Theta(n)$.
+
+% \paragraph{9.} (a) $\Theta(n^2)$: entrada ordenada (crescente ou decrescente) produz cadeia, e a $i$-ésima inserção custa $\Theta(i)$; $\sum_i i = \Theta(n^2)$. (b) $n$ inserções de custo esperado $O(\log n)$ mais percurso $\Theta(n)$: $O(n \log n)$ esperado. (c) Não. \emph{Tree sort} é uma ordenação por comparações; o limite $\Omega(n \log n)$ vale para o pior caso e também para o custo médio sobre permutações. O custo esperado $O(n \log n)$ é, portanto, assintoticamente ótimo.
+
+% \paragraph{10.} (a) 1) Todo nó é vermelho ou preto; 2) a raiz é preta; 3) toda folha ($T.\textit{nil}$) é preta; 4) se um nó é vermelho, seus dois filhos são pretos; 5) para cada nó, todos os caminhos simples do nó até folhas descendentes contêm o mesmo número de nós pretos. (b) $\textit{bh}(x)$ é o número de nós pretos em qualquer caminho simples de $x$ (exclusive) até uma folha (inclusive); bem definida pela propriedade 5. (c) Com todos os 15 nós internos pretos: $\textit{bh}(\text{raiz}) = 4$ (3 internos $+$ a folha $T.\textit{nil}$). Colorindo de vermelho apenas o nível de profundidade 2: $\textit{bh} = 3$. Colorindo de vermelho os níveis 1 e 3: filhos de vermelhos são pretos (os de profundidade 3 têm filhos $T.\textit{nil}$, pretos) e $\textit{bh} = 2$.
+
+% \paragraph{11.} (a) Indução na altura de $x$. Base: $x = T.\textit{nil}$ tem $\textit{bh} = 0$ e $2^0 - 1 = 0$ nós internos. Passo: cada filho de $x$ tem altura negra $\textit{bh}(x)$ (se vermelho) ou $\textit{bh}(x) - 1$ (se preto), em ambos os casos $\ge \textit{bh}(x) - 1$; por hipótese, cada subárvore tem $\ge 2^{\textit{bh}(x)-1} - 1$ internos; total $\ge 2(2^{\textit{bh}(x)-1} - 1) + 1 = 2^{\textit{bh}(x)} - 1$. (b) Pela propriedade 4, em qualquer caminho da raiz a uma folha não há dois vermelhos consecutivos, logo pelo menos metade dos nós é preta: $\textit{bh}(\text{raiz}) \ge h/2$. Então $n \ge 2^{h/2} - 1$, donde $h \le 2\lg(n+1)$. (c) Todas $O(h) = O(\log n)$.
+
+% \paragraph{12.} (a) O caminho mais curto de $x$ a uma folha tem comprimento $\ge \textit{bh}(x)$ (há $\textit{bh}(x)$ pretos nele). O mais longo tem no máximo $2\,\textit{bh}(x)$ nós internos, pois vermelhos não são consecutivos e pretos somam exatamente $\textit{bh}(x)$. Logo, longo $\le 2 \cdot$ curto. (b) Mínimo: todos pretos, árvore completa de altura $k$: $2^k - 1$ internos. Máximo: alternando níveis preto/vermelho até altura $2k$: $2^{2k} - 1$ internos. (c) Em uma cadeia com $n \ge 4$, a raiz tem um filho \textsc{Nil}: a altura negra da raiz por esse lado é 1. Pelo lado da cadeia há $\ge 3$ nós internos; como não há vermelhos consecutivos (prop.\ 4), pelo menos 2 deles são pretos, e somando a folha a altura negra é $\ge 3 > 1$: viola a propriedade 5. (Qualquer coloração alternativa preserva a contradição.)
+
+% \paragraph{13.} (a) \textsc{Left-Rotate}$(T,x)$: $y \gets x.\textit{right}$; $x.\textit{right} \gets y.\textit{left}$ (com atualização de pai se não-\textsc{Nil}); $y.\textit{p} \gets x.\textit{p}$ (com os três subcasos: raiz, filho esquerdo, filho direito); $y.\textit{left} \gets x$; $x.\textit{p} \gets y$. Cerca de seis atualizações de ponteiros: $O(1)$. (b) Antes: subárvores $(\alpha\, x\, \beta)\, y\, \gamma$; depois: $\alpha\, x\, (\beta\, y\, \gamma)$. O percurso em ordem é idêntico, logo a propriedade de ABB é preservada. (c) Na árvore da questão 4: $x = 22$, $y = 30$; após a rotação, 30 toma o lugar de 22 (filho esquerdo de 41), com filho esquerdo 22 (filhos 10 e 28) e filho direito \textsc{Nil}; 28, antiga subárvore esquerda de 30, vira filho direito de 22. \textsc{Right-Rotate} é o procedimento simétrico, trocando \textit{left} $\leftrightarrow$ \textit{right}.
+
+% \paragraph{14.} Evolução (V = vermelho, P = preto):
+% \begin{itemize}
+%   \item 41: raiz, recolorida P. Árvore: 41P.
+%   \item 38: V, filho esquerdo de 41. Sem violação. 41P(38V).
+%   \item 31: V sob 38V: violação. Tio = \textsc{Nil} (P), configuração zigue-zigue (esq-esq): caso 3 -- rotação à direita em 41 e recoloração: 38P(31V, 41V).
+%   \item 12: V sob 31V: violação. Tio 41 V: caso 1 -- recolore 31 e 41 de P, 38 de V; 38 é raiz, recolorida P. 38P(31P(12V), 41P).
+%   \item 19: V, filho direito de 12V: violação. Tio (filho direito de 31) = \textsc{Nil} (P), zigue-zague: caso 2 -- rotação à esquerda em 12; caso 3 -- rotação à direita em 31 e recoloração. 38P(19P(12V, 31V), 41P).
+%   \item 8: V sob 12V: violação. Tio 31 V: caso 1 -- recolore 12 e 31 de P, 19 de V; pai de 19 (38) é P: fim. \impt{Final:} 38P(19V(12P(8V), 31P), 41P).
+% \end{itemize}
+
+% \paragraph{15.} (a) Apenas as propriedades 2 (se $z$ é a raiz) ou 4 (se o pai de $z$ é vermelho) podem ser violadas. Inserir vermelho preserva automaticamente a propriedade 5 (nenhuma altura negra muda); inserir preto a violaria em \emph{todos} os caminhos que passam por $z$, um conserto global muito mais caro. (b) Caso 1 (tio vermelho): recolore pai e tio de preto, avô de vermelho, e sobe $z$ dois níveis. Caso 2 (tio preto, zigue-zague): rotação no pai converte ao caso 3. Caso 3 (tio preto, zigue-zigue): rotação no avô e troca de cores pai/avô; encerra o laço. (c) Só o caso 1 itera, e cada iteração sobe $z$ dois níveis: $O(\log n)$ iterações, todas $O(1)$. Rotações só ocorrem nos casos 2 e 3, executados no máximo uma vez cada: $\le 2$ rotações.
+
+% \paragraph{16.} (a) Se o nó efetivamente removido (ou movido, quando o sucessor assume outra posição) é preto, todo caminho que passava por ele perde um preto: viola a propriedade 5. Conceitualmente, deposita-se um ``preto extra'' sobre o nó $x$ que ocupou a posição: contando-o, a propriedade 5 volta a valer, mas $x$ fica ``duplamente preto'' ou ``vermelho-e-preto'', violando a propriedade 1; o \emph{fixup} empurra o preto extra para cima até descarregá-lo. (b) Com $w$ o irmão de $x$: caso 1 ($w$ vermelho): rotação no pai e recoloração, convertendo para 2, 3 ou 4; caso 2 ($w$ preto com dois filhos pretos): recolore $w$ de vermelho e sobe o preto extra para o pai; caso 3 ($w$ preto, filho próximo vermelho, distante preto): rotação em $w$, convertendo para o caso 4; caso 4 ($w$ preto, filho distante vermelho): rotação no pai e recoloração, \impt{descarregando o preto extra e encerrando imediatamente}. (c) Só o caso 2 itera (sobe um nível por vez): $O(\log n)$. A pior sequência de rotações é caso 1 $\to$ caso 3 $\to$ caso 4: três rotações. O \textsc{RB-Insert-Fixup} faz no máximo 2; ambos custam $O(\log n)$, mas a remoção tem mais casos porque a violação envolve falta de preto (prop.\ 5), não vermelhos consecutivos (prop.\ 4).
+
+% \paragraph{17--20.} \emph{Soluções de referência em Python.} Espera-se: 17) sucessores e buscas iterativas sem recursão de cauda desnecessária; 18) \textsc{Transplant} idêntico ao CLRS, testes nomeando os três casos; 19) \texttt{is\_bst} por intervalos, rejeitando o contraexemplo da questão 8a; tabela típica: ordem aleatória produz altura próxima de $2{,}99\lg n$, ordem crescente produz exatamente $n-1$; 20) sentinela única compartilhada como folha e pai da raiz; \texttt{check\_properties()} computa a altura negra recursivamente exigindo igualdade entre subárvores; após $10^4$ inserções ordenadas, a ARN tem altura $\le 2\lg(n+1) \approx 27$, contra $9\,999$ da ABB simples. As soluções completas estão no repositório da disciplina.
+
+\end{document}
