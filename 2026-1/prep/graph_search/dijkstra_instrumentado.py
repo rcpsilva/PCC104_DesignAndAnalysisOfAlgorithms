@@ -61,48 +61,6 @@ def dijkstra(G, w, s):
             })
     return V, historico
 
-
-def dijkstra_instrumentado(G, w, s):
-    """
-    Executa Dijkstra e retorna (V_final, historico), onde historico é uma
-    lista de snapshots, um por vértice extraído, contendo:
-        {'u': id extraído, 'S': set já finalizado (após incluir u),
-         'd': lista de custos correntes, 'pai': lista de pais correntes,
-         'relaxados': lista de (v_id, melhorou?) tentados nesta iteração}
-    """
-    V = inicializa(G, s)
-    S = set()
-    Q = [(0, s)]
-    historico = []
-
-    while Q:
-        custo_u, u_id = heappop(Q)
-        if u_id in S:
-            continue  # entrada obsoleta (lazy deletion, sem decrease-key)
-        S.add(u_id)
-        u = V[u_id]
-
-        relaxados = []
-        for v_id in G[u_id]:
-            v = V[v_id]
-            if v_id in S:
-                continue
-            melhorou = relaxa(u, v, w)
-            if melhorou:
-                heappush(Q, (v['custo'], v_id))
-            relaxados.append((v_id, melhorou))
-
-            historico.append({
-                'u': u_id,
-                'S': set(S),
-                'd': [x['custo'] for x in V],
-                'pai': [x['pai'] for x in V],
-                'relaxados': relaxados,
-            })
-
-    return V, historico
-
-
 # ----------------------------------------------------------------------
 # 2. Visualização textual (tabela no terminal, a cada iteração)
 # ----------------------------------------------------------------------
