@@ -1,0 +1,23 @@
+\begin{thebibliography}{}
+
+\bibitem[Cook, 1971]{cook1971}
+Cook, S.~A. (1971).
+\newblock The complexity of theorem-proving procedures.
+\newblock In {\em Proceedings of the Third Annual ACM Symposium on Theory of Computing (STOC)}, pages 151--158.
+
+\bibitem[Cormen et~al., 2009]{clrs2009}
+Cormen, T.~H., Leiserson, C.~E., Rivest, R.~L., and Stein, C. (2009).
+\newblock {\em Introduction to Algorithms}.
+\newblock MIT Press, Cambridge, MA, 3 edition.
+
+\bibitem[Garey and Johnson, 1979]{garey1979}
+Garey, M.~R. and Johnson, D.~S. (1979).
+\newblock {\em Computers and Intractability: A Guide to the Theory of NP-Completeness}.
+\newblock W. H. Freeman, New York.
+
+\bibitem[Karp, 1972]{karp1972}
+Karp, R.~M. (1972).
+\newblock Reducibility among combinatorial problems.
+\newblock In Miller, R.~E. and Thatcher, J.~W., editors, {\em Complexity of Computer Computations}, pages 85--103. Plenum Press.
+
+\end{thebibliography}

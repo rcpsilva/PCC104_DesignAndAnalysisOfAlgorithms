@@ -1,0 +1,19 @@
+\babel@toc {brazilian}{}\relax 
+\contentsline {section}{\numberline {1}Motivação: por que precisamos disso}{1}{section.1}%
+\contentsline {paragraph}{Por que isso importa na prática?}{1}{section*.2}%
+\contentsline {section}{\numberline {2}Problemas de decisão e a classe P}{2}{section.2}%
+\contentsline {paragraph}{Notação.}{2}{section*.3}%
+\contentsline {section}{\numberline {3}A classe NP: fácil de \emph {verificar}}{2}{section.3}%
+\contentsline {section}{\numberline {4}Reduções em tempo polinomial}{3}{section.4}%
+\contentsline {section}{\numberline {5}NP-completude: definição}{3}{section.5}%
+\contentsline {section}{\numberline {6}O Teorema de Cook-Levin (como caixa-preta)}{4}{section.6}%
+\contentsline {paragraph}{Ideia da prova.}{4}{section*.4}%
+\contentsline {section}{\numberline {7}A receita prática e a cadeia de reduções}{4}{section.7}%
+\contentsline {subsection}{\numberline {7.1}\textsc {3-Cnf-Sat} \(\leq _p\) \textsc {Clique} (completa)}{5}{subsection.7.1}%
+\contentsline {paragraph}{Construção do gadget.}{5}{section*.5}%
+\contentsline {paragraph}{Correção.}{5}{section*.6}%
+\contentsline {subsection}{\numberline {7.2}\textsc {Clique} \(\leq _p\) \textsc {Vertex-Cover} (completa)}{5}{subsection.7.2}%
+\contentsline {paragraph}{Construção.}{5}{section*.7}%
+\contentsline {paragraph}{Correção.}{5}{section*.8}%
+\contentsline {subsection}{\numberline {7.3}As demais reduções da cadeia (esboço)}{6}{subsection.7.3}%
+\contentsline {section}{\numberline {8}E agora? Vivendo com problemas NP-completos}{6}{section.8}%
