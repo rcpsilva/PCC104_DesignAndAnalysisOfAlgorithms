@@ -1,0 +1,113 @@
+\documentclass[11pt,a4paper]{extarticle}
+\usepackage{parskip}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{csquotes}
+
+\definecolor{important}{RGB}{255, 100, 100}
+\definecolor{notice}{RGB}{0, 102, 204}
+
+\newcommand{\impt}[1]{\textcolor{important}{#1}}
+\newcommand{\ntc}[1]{\textcolor{notice}{#1}}
+
+\setlist{nosep}
+\geometry{margin=2cm}
+
+\title{Lista de Exercícios: NP-Completude\footnote{Exercícios de fixação, baseados nas notas de aula sobre \emph{NP-Completude}.}}
+\author{PCC104 -- Projeto e Análise de Algoritmos}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+
+\item \textbf{P versus NP.}
+\begin{enumerate}[label=(\alph*)]
+  \item Explique, com suas próprias palavras, a diferença entre \emph{resolver} um problema de decisão e \emph{verificar} uma solução proposta para ele.
+  \item Por que essa assimetria entre resolver e verificar é o conceito central que motiva a definição da classe NP (Seção 3)?
+  \item Um colega afirma: ``NP quer dizer que o problema não pode ser resolvido em tempo polinomial.'' Aponte o erro nessa afirmação e corrija-a.
+\end{enumerate}
+
+\item \textbf{Certificados e verificadores.} Para cada problema abaixo, indique (i) qual seria um certificado (testemunha) adequado e (ii) por que o verificador correspondente roda em tempo polinomial no tamanho da entrada.
+\begin{enumerate}[label=(\alph*)]
+  \item \textsc{Subset-Sum}$(S, t)$.
+  \item \textsc{Tsp}$(G, w, k)$ (versão de decisão).
+  \item \textsc{3-Cnf-Sat}$(\varphi)$.
+\end{enumerate}
+
+\item \textbf{A direção da redução.} Um estudante quer provar que \textsc{Vertex-Cover} é NP-difícil e escreve: ``Vou reduzir \textsc{Vertex-Cover} a \textsc{Clique}, que já sabemos ser NP-completo, e isso prova que \textsc{Vertex-Cover} é NP-difícil.''
+\begin{enumerate}[label=(\alph*)]
+  \item Esse argumento está correto? Justifique.
+  \item Qual é, de fato, a direção correta da redução entre esses dois problemas? Explique por que uma única redução nessa direção correta já basta para concluir que \textsc{Vertex-Cover} é NP-completo.
+\end{enumerate}
+
+\item \textbf{Aplicando a redução \textsc{Clique} $\leq_p$ \textsc{Vertex-Cover}.} Considere o grafo $G$ com vértices $V = \{a, b, c, d\}$ e arestas $E = \{(a,b), (a,c), (b,c)\}$ (isto é, $\{a,b,c\}$ formam um triângulo e $d$ é um vértice isolado).
+\begin{enumerate}[label=(\alph*)]
+  \item $G$ possui uma clique de tamanho $3$? Se sim, qual?
+  \item Construa o grafo complementar $\bar{G}$: liste explicitamente suas arestas.
+  \item Pela redução da Seção 7.2 (das notas de aula), a que instância de \textsc{Vertex-Cover} sobre $\bar{G}$ essa clique corresponde? Verifique diretamente em $\bar{G}$ que essa cobertura de vértices de fato existe.
+\end{enumerate}
+
+\item \textbf{Vivendo com NP-completude.} Para cada situação prática abaixo, identifique qual das cinco estratégias da Seção 8 (das notas de aula) está sendo empregada (algoritmo exponencial rápido na prática, caso especial tratável, algoritmo de aproximação, heurística/metaheurística, ou complexidade parametrizada), justificando em uma frase.
+\begin{enumerate}[label=(\alph*)]
+  \item Uma transportadora usa um algoritmo garantidamente polinomial para \textsc{Vertex-Cover} que devolve uma cobertura de tamanho no máximo o dobro do ótimo.
+  \item Um pesquisador percebe que sua instância de \textsc{Vertex-Cover} vem de um grafo planar (um mapa de circuito impresso) e aplica um algoritmo específico para esse caso.
+  \item Um \emph{SAT solver} industrial resolve rotineiramente instâncias com milhões de variáveis usando backtracking com poda agressiva, embora o pior caso permaneça exponencial.
+  \item Um algoritmo resolve \textsc{Vertex-Cover} em tempo $O(2^k \cdot n)$, eficiente quando o tamanho $k$ da cobertura procurada é pequeno, independentemente do tamanho do grafo.
+\end{enumerate}
+
+\end{enumerate}
+
+%\newpage
+%\section*{Gabarito}
+
+%\begin{enumerate}[label=\textbf{\arabic*.}]
+
+%\item
+%\begin{enumerate}[label=(\alph*)]
+%  \item Resolver significa encontrar (ou decidir a existência de) uma solução partindo do zero; verificar significa checar se uma solução \emph{já proposta} é válida. A segunda tarefa costuma ser muito mais barata computacionalmente que a primeira.
+%  \item Porque NP é definida exatamente como a classe dos problemas para os quais essa verificação é fácil (polinomial), independentemente de a busca pela solução ser fácil ou não. É essa lacuna entre ``fácil de verificar'' e ``fácil de resolver'' que a pergunta $P = NP$?\ tenta esclarecer.
+%  \item O erro é confundir NP com ``não-polinomial''. NP significa \emph{Nondeterministic Polynomial time} e refere-se a problemas com verificador polinomial -- não a problemas necessariamente difíceis de resolver. De fato $P \subseteq NP$ (Teorema 3.1), logo todo problema de P também está em NP.
+%\end{enumerate}
+
+%\item
+%\begin{enumerate}[label=(\alph*)]
+%  \item Certificado: o próprio subconjunto $S' \subseteq S$ proposto. O verificador soma os elementos de $S'$ (tempo linear no tamanho de $S'$) e compara o resultado com $t$.
+%  \item Certificado: a sequência de vértices da turnê proposta. O verificador soma os pesos das $n$ arestas percorridas e compara o total com $k$, em tempo $O(n)$.
+%  \item Certificado: a atribuição de valores-verdade às variáveis de $\varphi$. O verificador avalia cada cláusula sob essa atribuição, em tempo linear no tamanho de $\varphi$.
+%\end{enumerate}
+
+%\item
+%\begin{enumerate}[label=(\alph*)]
+%  \item Está incorreto -- é exatamente o erro descrito na Observação 4.1. Para provar que um problema $L$ é NP-difícil, é preciso reduzir um problema \emph{já sabido difícil} \textbf{para} $L$ (isto é, $L' \leq_p L$), não o contrário. Reduzir \textsc{Vertex-Cover} \emph{para} \textsc{Clique} mostraria apenas que \textsc{Vertex-Cover} não é mais difícil que \textsc{Clique} -- o que nada diz sobre a dificuldade de \textsc{Vertex-Cover}.
+%  \item A direção correta é $\textsc{Clique} \leq_p \textsc{Vertex-Cover}$ (Seção 7.2). Como \textsc{Clique} já é NP-completo, todo problema de NP reduz a \textsc{Clique}; combinando com $\textsc{Clique} \leq_p \textsc{Vertex-Cover}$, a transitividade (Lema 4.2) garante que todo problema de NP também reduz a \textsc{Vertex-Cover}. Junto com $\textsc{Vertex-Cover} \in NP$, o Corolário 5.2 conclui a NP-completude a partir dessa única redução.
+%\end{enumerate}
+
+%\item
+%\begin{enumerate}[label=(\alph*)]
+%  \item Sim: $\{a, b, c\}$ é uma clique de tamanho $3$, pois as três arestas $(a,b)$, $(a,c)$ e $(b,c)$ estão todas presentes em $G$.
+%  \item As arestas possíveis sobre $\{a,b,c,d\}$ são $(a,b), (a,c), (a,d), (b,c), (b,d), (c,d)$. $\bar{G}$ contém exatamente as que \emph{não} estão em $G$: $\bar{G}$ tem arestas $\{(a,d), (b,d), (c,d)\}$ -- uma estrela centrada em $d$.
+%  \item A redução produz a instância $(\bar{G}, |V| - k) = (\bar{G}, 4 - 3) = (\bar{G}, 1)$: deve existir cobertura de vértices de tamanho $1$ em $\bar{G}$. De fato, $\{d\}$ cobre as três arestas $(a,d)$, $(b,d)$, $(c,d)$, já que $d$ é extremidade de todas elas -- confirmando a equivalência $S$ clique em $G \Leftrightarrow V \setminus S$ cobertura em $\bar{G}$.
+%\end{enumerate}
+
+%\item
+%\begin{enumerate}[label=(\alph*)]
+%  \item Algoritmo de aproximação: garantia formal de fator $2$ sobre o ótimo, mantendo tempo polinomial.
+%  \item Caso especial tratável: a estrutura restrita da entrada (grafo planar) permite um algoritmo específico, mais eficiente que o caso geral.
+%  \item Algoritmo exponencial, mas rápido na prática: o pior caso é exponencial, mas a poda agressiva evita esse pior caso em instâncias reais.
+%  \item Complexidade parametrizada: o tempo é polinomial em $n$ para $k$ fixo, mesmo que a dependência em $k$ seja exponencial.
+%\end{enumerate}
+
+%\end{enumerate}
+
+\end{document}
