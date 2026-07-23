@@ -1,0 +1,159 @@
+\documentclass[10pt,a4paper]{extarticle}
+\usepackage{parskip}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+
+\definecolor{important}{RGB}{255, 100, 100}
+\definecolor{notice}{RGB}{0, 102, 204}
+
+\newcommand{\impt}[1]{\textcolor{important}{#1}}
+\newcommand{\ntc}[1]{\textcolor{notice}{#1}}
+
+\setlist{nosep}
+\geometry{margin=2.2cm}
+
+% Python listings
+\definecolor{codebg}{rgb}{0.96,0.96,0.96}
+\lstset{
+    language=Python,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red!70!black},
+    showstringspaces=false,
+    frame=single,
+    breaklines=true,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    inputencoding=utf8
+}
+
+\newcommand{\pontos}[1]{\hfill\textnormal{\small\ntc{(#1 pontos)}}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Avaliação --- Grafos, Algoritmos de Busca e NP-Completude}\\[0.3cm]
+    {\large PCC104 --- Projeto e Análise de Algoritmos}\\[0.15cm]
+    {DECOM --- ICEB --- UFOP}\\[0.35cm]
+\end{center}
+
+\noindent
+
+\small
+\textit{Instruções: Esta prova é individual e possui \textbf{5 questões}. É permitido consultar o código que você mesmo implementou nas listas de exercícios. Justifique todas as respostas --- respostas sem justificativa não recebem pontuação}
+
+\normalsize
+\vspace{0.4cm}
+
+%============================================================
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=0.7cm, leftmargin=*]
+
+%----------------------- Q1 -----------------------
+\item \textbf{Busca em grafos.} \\
+Considere a função de busca genérica cujo trecho principal é reproduzido abaixo. Cada vértice é armazenado como \texttt{[id, cor, pai, dist]}, com cores \texttt{'B'} (branco), \texttt{'C'} (cinza) e \texttt{'P'} (preto).
+
+\begin{lstlisting}
+while F:
+    if type == 'dfs':
+        x = F.pop(-1)
+    elif type == 'bfs':
+        x = F.pop(0)
+    if x[0] in O:
+        return x
+    for xi in G[x[0]]:
+        if V[xi][1] == 'B':
+            V[xi][1] = 'C'
+            V[xi][2] = x[0]
+            V[xi][3] = V[x[0]][3] + 1
+            F.append(V[xi])
+    V[x[0]][1] = 'P'
+\end{lstlisting}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Explique qual estrutura de dados a lista \texttt{F} representa quando \texttt{type='dfs'} e quando \texttt{type='bfs'}, e por que essa única diferença (\texttt{pop(-1)} vs.\ \texttt{pop(0)}) altera a ordem de visitação.
+    \item O campo \texttt{dist} (\texttt{V[xi][3]}) corresponde ao número de arestas no caminho a partir da origem. Esse valor é garantidamente o \emph{menor} número de arestas até cada vértice na versão \texttt{bfs}? E na versão \texttt{dfs}? Justifique.
+\end{enumerate}
+
+%----------------------- Q2 -----------------------
+\item \textbf{Representação de grafos.} \\
+Considere um grafo com $n$ vértices representado por uma matriz de adjacência $M$ de dimensão $n \times n$.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Descreva, em pseudocódigo ou em texto preciso, como implementar as operações \texttt{inserir\_aresta(u,v)} e \texttt{remover\_vertice(key)}. Indique a complexidade de cada uma em função de $n$.
+    \item A mesma operação \texttt{remover\_vertice(key)}, se o grafo estivesse representado por lista de adjacência, teria complexidade diferente? Compare os dois casos justificando.
+\end{enumerate}
+
+%----------------------- Q3 -----------------------
+\item \textbf{Caminhos mínimos (Dijkstra).} \\
+Considere o grafo direcionado ponderado abaixo, com origem no vértice $0$.
+
+\begin{center}
+\begin{tikzpicture}[
+    >={Stealth[round]},
+    node distance=2.6cm,
+    vertex/.style={circle, draw, thick, minimum size=0.85cm, font=\bfseries},
+    every edge/.style={draw, thick, ->}
+]
+\node[vertex] (0) {0};
+\node[vertex] (1) [right=of 0] {1};
+\node[vertex] (2) [below=2cm of 0] {2};
+\node[vertex] (3) [below=2cm of 1] {3};
+\node[vertex] (4) [right=of 3] {4};
+
+\draw (0) edge node[above]{10} (1);
+\draw (0) edge node[left]{5} (2);
+\draw (1) edge node[right, pos=0.4]{1} (3);
+\draw (2) edge node[pos=0.5, fill=white, inner sep=1pt]{3} (1);
+\draw (2) edge node[above, pos=0.6]{9} (3);
+\draw (2) edge[bend right=40] node[above]{2} (4);
+\draw (3) edge node[above]{4} (4);
+\draw (4) edge[bend left=30] node[above]{6} (3);
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Execute o algoritmo de Dijkstra a partir de $0$. Apresente uma tabela mostrando, a cada extração de vértice, a distância \texttt{d} e o predecessor \texttt{pai} de cada vértice. Indique a distância final até todos os vértices.
+    \item Na sua implementação (\texttt{dijkstra.py}), a atualização só ocorre quando \texttt{v['d'] > u['d'] + w[(u,v)]}. Explique o que essa condição representa e por que ela é essencial para a corretude do algoritmo.
+\end{enumerate}
+
+%----------------------- Q4 -----------------------
+\item \textbf{NP-Completude.} \\
+Um estudante quer provar que \textsc{Vertex-Cover} é NP-difícil e afirma: \textit{``Vou reduzir \textsc{Vertex-Cover} a \textsc{Clique}, que já sabemos ser NP-completo, e isso prova que \textsc{Vertex-Cover} é NP-difícil.''} O argumento está correto? Aponte o erro (se houver) e indique qual é a direção correta da redução entre \textsc{Clique} e \textsc{Vertex-Cover}.
+
+%----------------------- Vivendo com NP-completude -----------------------
+\item \textbf{Vivendo com problemas NP-completos.} \\
+Uma empresa de logística precisa resolver, no dia a dia, instâncias de um problema NP-completo de roteamento. Diante da impossibilidade de uma garantia polinomial de pior caso, a equipe de engenharia adota abordagens diferentes conforme o contexto. Para cada situação abaixo, identifique qual das cinco estratégias da Seção 8 das notas está sendo empregada (algoritmo exponencial rápido na prática, caso especial tratável, algoritmo de aproximação, heurística/metaheurística, ou complexidade parametrizada) e justifique em uma frase.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Para o planejamento noturno da frota inteira, a equipe roda um solver de programação por restrições com \textit{backtracking} e poda agressiva; ele quase sempre termina em minutos, embora não haja garantia de tempo no pior caso.
+    \item Percebendo que as entregas de uma certa região sempre acontecem ao longo de uma única via expressa (o grafo de rotas é essencialmente um caminho), a equipe usa um algoritmo específico que resolve esse formato em tempo polinomial.
+    \item Para um relatório rápido de estimativa de custo, basta uma solução comprovadamente no máximo o dobro do ótimo, obtida por um procedimento garantidamente polinomial.
+    \item Um módulo do sistema precisa alocar apenas até $5$ veículos especiais por vez; a equipe usa um algoritmo cujo tempo é exponencial somente nesse número pequeno de veículos, mas linear no tamanho total do mapa.
+    \item Sem exigir nenhuma garantia formal de qualidade, a equipe aplica \textit{simulated annealing} para melhorar iterativamente as rotas de um turno, aceitando o resultado que estiver disponível quando o tempo acabar.
+\end{enumerate}
+
+\end{enumerate}
+
+\vfill
+\begin{center}
+\small\ntc{Boa prova!}
+\end{center}
+
+\end{document}
